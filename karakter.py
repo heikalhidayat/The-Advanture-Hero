@@ -62,7 +62,7 @@ class Karakter:
             self.hp = 100
         return True
 
-class mage(Karakter):
+class Mage(Karakter):
     def __init__(self, name, max_exp, mana=50, level=0, exp=0, hp=100, energy=100, damage=20, agility=5, defense=5):
         super().__init__(name, max_exp, level, exp, hp, energy, damage, agility, defense)
         self.mana = mana
@@ -78,3 +78,8 @@ class mage(Karakter):
             return f"{self.name} melakukan sihir! mana berkurang {amount}"
         else:
             return f"{self.name} tidak memiliki mana yang cukup!"
+            
+class Warrior(Karakter):
+	  def __init__(self, name, max_exp, aura=50, level=0, exp=0, hp=100, energy=100, damage=15, agility=15, defense=15):
+	      super().__init__(name, max_exp, level, exp, hp, energy, damage, agility, defense)
+	      self.aura = aura
