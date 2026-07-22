@@ -1,10 +1,11 @@
 class Karakter:
-    def __init__(self, name, max_exp, level=0, exp=0, hp=100, energy=100, damage=10, agility=10, defense=10):
+    def __init__(self, name, max_exp, max_hp, level=0, exp=0, hp=100, energy=100, damage=10, agility=10, defense=10):
         self.name = name
         self.exp = exp
         self.level = level
-        self.max_exp = 100
         self.hp = hp
+        self.max_exp = max_exp
+        self.max_hp = max_hp
         self.energy = energy
         self.damage = damage
         self.agility = agility
@@ -57,15 +58,16 @@ class Karakter:
 
     def heal(self, amount):
         self.hp += amount
-        if self.hp > 100:
+        if self.hp > max_hp:
             print(f"{self.name} memulihkan HP sebesar {amount}. HP sekarang: {self.hp}")
-            self.hp = 100
+            self.hp = max_hp
         return True
 
 class Mage(Karakter):
-    def __init__(self, name, max_exp, mana=50, level=0, exp=0, hp=100, energy=100, damage=20, agility=5, defense=5):
+    def __init__(self, name, max_exp, max_mana, mana=50, level=0, exp=0, hp=100, energy=100, damage=30, agility=10, defense=10):
         super().__init__(name, max_exp, level, exp, hp, energy, damage, agility, defense)
         self.mana = mana
+        self.max_mana = max_mana
 
     def level_up(self):
         super().level_up()
@@ -78,8 +80,38 @@ class Mage(Karakter):
             return f"{self.name} melakukan sihir! mana berkurang {amount}"
         else:
             return f"{self.name} tidak memiliki mana yang cukup!"
+
+    def restore_mana(self, amount):
+        self.mana += amount
+        if self.mana > 100:
+            self.mana = 100
+            return True
             
 class Warrior(Karakter):
-	  def __init__(self, name, max_exp, aura=50, level=0, exp=0, hp=100, energy=100, damage=15, agility=15, defense=15):
+	  def __init__(self, name, max_exp, aura=50, level=0, exp=0, hp=100, energy=100, damage=20, agility=15, defense=15):
 	      super().__init__(name, max_exp, level, exp, hp, energy, damage, agility, defense)
 	      self.aura = aura
+
+    def cast_aura(self, amount):
+        if self.aura >= amount:
+            self.aura -= amount
+            return f"{self.name} mengeluarkan aura! aura berkurang {amount}"
+        else:
+            return f"{self.name} tidak memiliki aura yang cukup!"
+
+    def level_up(self):
+        super().level_up()
+        self.aura += 10
+        print(f"Aura {self.name} bertambah! Aura sekarang: {self.aura}")
+
+class Guardian(Karakter):
+    def __init__(self, name, max_exp, level=0, exp=0, hp=100, energy=100, damage=10, agility=10, defense=30):
+	      super().__init__(name, max_exp, level, exp, hp, energy, damage, agility, defense)
+       
+class Assasin(Karakter):
+    def __init__(self, name, max_exp, aura=50, level=0, exp=0, hp=100, energy=100, damage=15, agility=25, defense=15):
+	      super().__init__(name, max_exp, level, exp, hp, energy, damage, agility, defense)
+       
+class Archer(Karakter):
+    def __init__(self, name, max_exp, aura=50, level=0, exp=0, hp=100, energy=100, damage=20, agility=20, defense=10):
+	      super().__init__(name, max_exp, level, exp, hp, energy, damage, agility, defense)
