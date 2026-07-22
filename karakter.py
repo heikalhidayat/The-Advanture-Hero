@@ -88,7 +88,7 @@ class Mage(Karakter):
             return True
             
 class Warrior(Karakter):
-	  def __init__(self, name, max_exp, aura=50, level=0, exp=0, hp=100, energy=100, damage=20, agility=15, defense=15):
+	def __init__(self, name, max_exp, aura=50, level=0, exp=0, hp=100, energy=100, damage=20, agility=15, defense=15):
 	      super().__init__(name, max_exp, level, exp, hp, energy, damage, agility, defense)
 	      self.aura = aura
 
