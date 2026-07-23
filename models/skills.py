@@ -1,72 +1,29 @@
-skills = {
-      "physical_attack": {
-            "unarmed": {
-                  "melee": {
-                        "basic_jab": {
-                              "damage": 10,
-                              "agility": 10
-                        },
-                        "low_kick": {
-                              "damage": 12,
-                              "agility": 15
-                        },
-                        "heavy_fist": {
-                              "damage": 15,
-                              "agility": 20
-                        }
-                  },
-                  "mid_range": {
-                        "sweeping_leg": {
-                              "damage": 15,
-                              "agility": 20
-                        },
-                        "palm_push": {
-                              "damage": 10,
-                              "agility": 10,
-                              "energy": 15
-                        },
-                        "elbow_charge": {
-                              "damage": 15,
-                              "defense": 15,
-                              "agility": 10
-                        }
-                  },
-                  "long_range": {
-                        "stone_throw": {
-                              "damage": 10,
-                              "agility": 12
-                        },
-                        "air_slap": {
-                              "energy": 20,
-                              "agility": 15
-                        }
-                  }
-            },
-            "armed": {
-                  "melee": {
-                  },
-                  "mid_range": {
-                  },
-                  "long_range": {
-                  }
-            }
-      },
-      "magic_attack": {
-            "unarmed": {
-                  "melee": {
-                  },
-                  "mid_range": {
-                  },
-                  "long_range": {
-                  }
-            },
-            "armed": {
-                  "melee": {
-                  },
-                  "mid_range": {
-                  },
-                  "long_range": {
-                  }
-            }
-      }
-}
+class Skills:
+    def __init__(self, name, category, range_type, energy, damage, agility, defense):
+        self.name = name
+        self.category = category
+        self.range_type = range_type
+        self.energy = energy
+        self.damage = damage
+        self.agility = agility
+        self.defense = defense
+        
+    def execute(self, user, target):
+    	if user.energy >= self.energy:
+            user.energy -= self.energy
+            print(f"{user.name} menggunakan {self.name}!")
+            target.take_damage(self.damage)
+        else:
+            print(f"Energy {user.name} tidak cukup untuk {self.name}!")
+
+class BasicJab(Skill):
+    def __init__(self):
+        super().__init__(
+            name="Basic Jab",
+            category="physical",
+            range_type="melee",
+            energy=5,
+            damage=10,
+            agility=10,
+            defense=0
+        )
