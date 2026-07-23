@@ -1,7 +1,7 @@
-SKILLS = {
-      "PHYSICAL_ATTACK": {
-            "UNARMED": {
-                  "MELEE": {
+skills = {
+      "physical_attack": {
+            "unarmed": {
+                  "melee": {
                         "basic_jab": {
                               "damage": 10,
                               "agility": 10
@@ -15,7 +15,7 @@ SKILLS = {
                               "agility": 20
                         }
                   },
-                  "MID_RANGE": {
+                  "mid_range": {
                         "sweeping_leg": {
                               "damage": 15,
                               "agility": 20
@@ -31,7 +31,7 @@ SKILLS = {
                               "agility": 10
                         }
                   },
-                  "LONG_RANGE": {
+                  "long_range": {
                         "stone_throw": {
                               "damage": 10,
                               "agility": 12
@@ -42,30 +42,30 @@ SKILLS = {
                         }
                   }
             },
-            "ARMED": {
-                  "MELEE": {
+            "armed": {
+                  "melee": {
                   },
-                  "MID_RANGE": {
+                  "mid_range": {
                   },
-                  "LONG_RANGE": {
+                  "long_range": {
                   }
             }
       },
-      "MAGIC_ATTACK": {
-            "UNARMED": {
-                  "MELEE": {
+      "magic_attack": {
+            "unarmed": {
+                  "melee": {
                   },
-                  "MID_RANGE": {
+                  "mid_range": {
                   },
-                  "LONG_RANGE": {
+                  "long_range": {
                   }
             },
-            "ARMED": {
-                  "MELEE": {
+            "armed": {
+                  "melee": {
                   },
-                  "MID_RANGE": {
+                  "mid_range": {
                   },
-                  "LONG_RANGE": {
+                  "long_range": {
                   }
             }
       }
