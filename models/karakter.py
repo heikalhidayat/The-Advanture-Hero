@@ -1,4 +1,4 @@
-class Kclass Karakter:
+class Karakter:
     def __init__(self, name, max_exp, max_hp, level=0, exp=0, hp=100, energy=100, damage=10, agility=10, defense=10):
         self.name = name
         self.exp = exp
