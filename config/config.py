@@ -3,7 +3,7 @@
 # ============================================
 DATABASE_NAME = "game.db"
 GAME_TITLE = "The Adventure Hero"
-GAME_VERSION = "1.0.0"
+GAME_VERSION = "0.0.1"
 
 # ============================================
 # 2. BALANCING BASE STATS PLAYER
