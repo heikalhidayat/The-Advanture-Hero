@@ -9,14 +9,14 @@ class Skills:
         self.defense = defense
         
     def execute(self, user, target):
-    	if user.energy >= self.energy:
+        if user.energy >= self.energy:
             user.energy -= self.energy
             print(f"{user.name} menggunakan {self.name}!")
             target.take_damage(self.damage)
         else:
             print(f"Energy {user.name} tidak cukup untuk {self.name}!")
 
-class BasicJab(Skill):
+class BasicJab(Skills):
     def __init__(self):
         super().__init__(
             name="Basic Jab",
