@@ -36,3 +36,13 @@ class Enemy:
             print(f"{target.name} terluka dengan damage {self.damage}")
         else:
             print(f"Serangan kurang efektif!! Defense {target.name} sangat tinggi!!")
+
+    def use_energy(self, amount: int) -> bool:
+        """Kurangi energy jika cukup, kembalikan True; jika tidak cukup, jangan ubah energy dan kembalikan False."""
+        if amount <= 0:
+            return True
+        if amount > self.energy:
+            print(f"{self.name} tidak memiliki energy yang cukup!")
+            return False
+        self.energy -= amount
+        return True
