@@ -1,5 +1,14 @@
 class Enemy:
-    def __init__(self, name, level=0, hp=100, energy=100, damage=10, agility=10, defense=10):
+    def __init__(
+        self, 
+        name, 
+        level=0, 
+        hp=100, 
+        energy=100, 
+        damage=10, 
+        agility=10, 
+        defense=10
+    ):
         self.name = name
         self.level = level
         self.hp = hp
@@ -7,6 +16,9 @@ class Enemy:
         self.damage = damage
         self.agility = agility
         self.defense = defense
+
+    def __repr__(self):
+        return f"<Karakter {self.name} L{self.level} HP:{self.hp}/{self.max_hp}>"
 
     def take_damage(self, damage):
       sisa_damage = damage - self.defense
