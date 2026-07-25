@@ -1,7 +1,8 @@
 class Skills:
-    def __init__(self, name, category, range_type, debuff, energy, damage, agility, defense):
+    def __init__(self, name, category, armed, range_type, debuff, energy, damage, agility, defense):
         self.name = name
         self.category = category
+        self.armed = armed
         self.range_type = range_type
         self.debuff = debuff
         self.energy = energy
@@ -18,7 +19,7 @@ class Skills:
             print(f"Energy {user.name} tidak cukup untuk {self.name}!")
 
 class BasicJab(Skills):
-    """Pukulan lurus cepat untuk mencicil damage musuh"""
+    '''Pukulan lurus cepat untuk mencicil damage musuh'''
     def __init__(self):
         super().__init__(
             name="Basic Jab",
@@ -32,11 +33,12 @@ class BasicJab(Skills):
         )
 
 class LowKick(Skills):
-    """Tendangan ke arah kaki untuk mengganggu keseimbangan lawan"""
-    def __init__(self, debuff):
+    '''Tendangan ke arah kaki untuk mengganggu keseimbangan lawan'''
+    def __init__(self):
         super().__init__(
             name="Low Kick",
             category="physical",
+            armed=False,
             range_type="melee",
             debuff="stun",
             energy=10,
@@ -46,10 +48,12 @@ class LowKick(Skills):
         )
 
 class HeavyFist(Skills):
+    '''Pukulan berat penghancur pertahanan'''
     def __init__(self):
         super().__init__(
             name="Heavy Fist",
             category="physical",
+            armed=False,
             range_type="melee",
             debuff=None,
             energy=15,
@@ -59,10 +63,12 @@ class HeavyFist(Skills):
         )
 
 class HeavyPunch(Skills):
+    '''Pukulan berat untuk menghancurkan musuh'''
     def __init__(self):
         super().__init__(
             name="Heavy Punch",
             category="physical",
+            armed=False,
             range_type="melee",
             debuff=None,
             energy=25,
@@ -72,10 +78,12 @@ class HeavyPunch(Skills):
         )
 
 class SwepingLeg(Skills):
+    '''Tendangan memutar menyapu area depan'''
     def __init__(self):
         super().__init__(
             name="Sweping Leg",
             category="physical",
+            armed=False,
             range_type="mid_range",
             debuff=None,
             energy=20,
@@ -85,10 +93,12 @@ class SwepingLeg(Skills):
         )
 
 class PalmPush(Skills):
+    '''Dorongan telapak tangan bertekanan udara'''
     def __init__(self):
         super().__init__(
             name="Palm Push",
             category="physical",
+            armed=False,
             range_type="mid_range",
             debuff=None,
             energy=20,
@@ -98,13 +108,127 @@ class PalmPush(Skills):
         )
 
 class ElbowCharge(Skills):
+    '''Terjangan siku ke depan sambil menahan serangan'''
     def __init__(self):
         super().__init__(
             name="Elbow Charge",
             category="physical",
+            armed=False,
             range_type="mid_range",
             debuff=None,
             energy=15,
             damage=15,
+            agility=0
+        )
+
+class AirSlap(Skills):
+    '''Tebasan angin tipis dari kecepatan tangan'''
+    def __init__(self):
+        super().__init__(
+            name="Air Slap",
+            category="physical",
+            armed=False,
+            range_type="long_range",
+            debuff=None,
+            energy=15,
+            damage=15,
+            agility=0
+        )
+
+class StraightSlash(Skills):
+    '''Ayunan senjata standar ke depan'''
+    def __init__(self):
+        super().__init__(
+            name="Straight Slash",
+            category="physical",
+            armed=True,
+            range_type="melee",
+            debuff=None,
+            energy=15,
+            damage=15,
+            agility=0
+        )
+
+class QuickTrust(Skills):
+    '''Tusukan instan yang sangat cepat'''
+    def __init__(self):
+        super().__init__(
+            name="Quick Trust",
+            category="physical",
+            armed=True,
+            range_type="melee",
+            debuff=None,
+            energy=15,
+            damage=15,
+            agility=20
+        )
+
+class PommelStrike(Skills):
+    '''Hantaman gagang senjata untuk mengejutkan musuh'''
+    def __init__(self):
+        super().__init__(
+            name="Pommel Strike",
+            category="physical",
+            armed=True,
+            range_type="melee",
+            debuff=None,
+            energy=20,
+            damage=20,
+            agility=0
+        )
+
+class WideSwing(Skills):
+    '''Tebasan melebar area depan'''
+    def __init__(self):
+        super().__init__(
+            name="Wide Swing",
+            category="physical",
+            armed=True,
+            range_type="mid_range",
+            debuff=None,
+            energy=15,
+            damage=15,
+            agility=12
+        )
+
+class GuardBreak(Skills):
+    '''Serangan vertikal berat dari atas ke bawah'''
+    def __init__(self):
+        super().__init__(
+            name="Guard Break",
+            category="physical",
+            armed=True,
+            range_type="mid_range",
+            debuff=None,
+            energy=20,
+            damage=25,
+            agility=0
+        )
+
+class CircularSlash(Skills):
+    '''Menebas melingkar 360 derajat di sekeliling musuh'''
+    def __init__(self):
+        super().__init__(
+            name="Circular Slash",
+            category="physical",
+            armed=True,
+            range_type="mid_range",
+            debuff=None,
+            energy=25,
+            damage=18,
+            agility=18
+        )
+
+class EnergyEdge(Skills):
+    '''Ayunan senjata yang melepaskan gelombang energi'''
+    def __init__(self):
+        super().__init__(
+            name="Energy Edge",
+            category="physical",
+            armed=True,
+            range_type="long_range",
+            debuff=None,
+            energy=25,
+            damage=25,
             agility=0
         )
