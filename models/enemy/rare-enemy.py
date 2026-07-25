@@ -129,7 +129,7 @@ class CentaurArcher(Enemy):
             energy=200,
             damage=250,
             agility=250,
-            defense=250
+            defense=250,
             drop_exp=300,
             drop_item=None
         )
