@@ -1,4 +1,5 @@
 class Enemy:
+    '''Base class untuk semua monster'''
     def __init__(
         self, 
         name, 
@@ -7,7 +8,9 @@ class Enemy:
         energy=100, 
         damage=10, 
         agility=10, 
-        defense=10
+        defense=10,
+        drop_exp=10,
+        drop_item=None,
     ):
         self.name = name
         self.level = level
@@ -16,6 +19,8 @@ class Enemy:
         self.damage = damage
         self.agility = agility
         self.defense = defense
+        self.drop_exp = drop_exp
+        self.drop_item = drop_item
 
     def __repr__(self):
         return f"<Karakter {self.name} L{self.level} HP:{self.hp}/{self.max_hp}>"
@@ -46,3 +51,33 @@ class Enemy:
             return False
         self.energy -= amount
         return True
+
+class Slime(Enemy):
+    '''Gumpalan jeli penggangu dengan serangan ringan'''
+    def __init__(self):
+        super().__init__(
+            name="Slime",
+            level=1,
+            hp=20,
+            energy=20,
+            damage=5,
+            agility=5,
+            defense=5,
+            drop_exp=10,
+            drop_item=None,
+        )
+
+class GoblinScout(Enemy):
+    '''Makhluk hijau kecil bersenjata pisau belati'''
+    def __init__(self):
+        super().__init__(
+            name="Goblin Scout",
+            level=1,
+            hp=30,
+            energy=30,
+            damage=10,
+            agility=10,
+            defense=10,
+            drop_exp=20,
+            drop_item=None,
+        )
