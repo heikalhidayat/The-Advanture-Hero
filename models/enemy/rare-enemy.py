@@ -11,7 +11,7 @@ class Enemy:
         agility=10, 
         defense=10,
         drop_exp=10,
-        drop_item=None,
+        drop_item=None
     ):
         self.name = name
         self.class_enemy = class_enemy
@@ -96,8 +96,88 @@ class Lizardman(Enemy):
             hp=150,
             energy=120,
             damage=100,
-            agiliti=80,
+            agility=80,
             defense=150,
             drop_exp=200,
+            drop_item=None
+        )
+
+class Harpy(Enemy):
+    '''Mkhluk setengah wanita setengah burung yang menyerang dari udara'''
+    def __init__(self):
+        super().__init__(
+            name="Harpy",
+            class_enemy="rare",
+            level=1,
+            hp=250,
+            energy=150,
+            damage=200,
+            agility=200,
+            defense=150,
+            drop_exp=200,
+            drop_item=None
+        )
+
+class CentaurArcher(Enemy):
+    '''Manusia setengah kuda yang mahir memanah'''
+    def __init__(self):
+        super().__init__(
+            name="Centaur Archer",
+            class_enemy="rare",
+            level=1,
+            hp=300,
+            energy=200,
+            damage=250,
+            agility=250,
+            defense=250
+            drop_exp=300,
+            drop_item=None
+        )
+
+class ZombiePlaguebringer(Enemy):
+    '''Mayat hidup yang menyebarkan racun di area sekitar'''
+    def __init__(self):
+        super().__init__(
+            name="Zombie Plaguebringer",
+            class_enemy="rare",
+            level=1,
+            hp=400,
+            energy=300,
+            damage=300,
+            agility=250,
+            defense=150,
+            drop_exp=300,
+            drop_item=None
+        )
+
+class Werewolf(Enemy):
+    '''Manusia serigala lincah dengan serangan cakar beruntun'''
+    def __init__(self):
+        super().__init__(
+            name="Werewolf",
+            class_enemy="rare",
+            level=1,
+            hp=350,
+            energy=250,
+            damage=200,
+            agility=300,
+            defense=300,
+            drop_exp=350,
+            drop_item=None
+        )
+
+class Basilisk(Enemy):
+    '''Kadal besar yang bisa memberikan efek kutukan atau kaku'''
+    def __init__(self):
+        super().__init__(
+            name="Basilisk",
+            class_enemy="rare",
+            level=1,
+            hp=450,
+            energy=350,
+            damage=350,
+            agility=300,
+            defense=400,
+            drop_exp=400,
             drop_item=None
         )
