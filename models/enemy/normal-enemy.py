@@ -64,7 +64,7 @@ class Slime(Enemy):
             agility=5,
             defense=5,
             drop_exp=10,
-            drop_item=None,
+            drop_item=None
         )
 
 class GoblinScout(Enemy):
@@ -79,5 +79,95 @@ class GoblinScout(Enemy):
             agility=10,
             defense=10,
             drop_exp=20,
-            drop_item=None,
+            drop_item=None
         )
+
+class GiantRat(Enemy):
+    '''Tikus selokan seukuran anjing yang menyerang berpasangan'''
+    def __init__(self):
+        super().__init__(
+            name="Giant Rat",
+            level=1,
+            hp=40,
+            energy=40,
+            damage=15,
+            agility=15,
+            defense=15,
+            drop_exp=20
+            drop_item=None
+        )
+
+class SkeletonWarrior(Enemy):
+    '''Mayat hidup rapuh yang membawa pedang tua'''
+    def __init__(self):
+        super().__init__(
+            name="Skeleton Warrior",
+            level=1,
+            hp=50,
+            energy=50,
+            damage=20,
+            agility=15,
+            defense=15,
+            drop_exp=30,
+            drop_item=None
+        )
+
+class Kobold(Enemy):
+    '''Makhluk mirip anjing humanoid yang suka mencuri barang'''
+    def __init__(self):
+        super().__init__(
+            name="Kobold",
+            level=1,
+            hp=60,
+            energy=60,
+            damage=25,
+            agility=20,
+            defense=20,
+            drop_exp=40
+            drop_item=None
+        )
+
+class GiantSpider(Enemy):
+    '''Laba-laba hutan yang bisa memperlambat anda'''
+    def __init__(self):
+        super().__init__(
+            name="Giant Spider",
+            level=1,
+            hp=70,
+            energy=70,
+            damage=30,
+            agility=25,
+            defense=25,
+            drop_exp=50,
+            drop_item=None
+        )
+
+class FeralWolf(Enemy):
+    '''Serigala lapar yang mengincar pemain yang sendirian'''
+    def __init__(self):
+        super().__init__(
+            name="Feral Wolf",
+            level=1,
+            hp=80,
+            energy=80,
+            damage=35,
+            agility=25,
+            defense=30,
+            drop_exp=60,
+            drop_item=None
+        )
+
+class Imps(Enemy):
+    '''Setan kecil yang hobi melemparkan bola api kecil'''
+    def __init__(self):
+        super().__init__(
+            name="Imps",
+            level=1,
+            hp=90,
+            energy=90,
+            damage=40,
+            agility=30,
+            defense=35,
+            drop_exp=70,
+        )
+
