@@ -18,5 +18,10 @@ def init_database():
         item_name VARCHAR(50))
         ''')
     
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS wallet (
+        gold_player INTEGER)
+        ''')
+    
     conn.commit()
     conn.close()
