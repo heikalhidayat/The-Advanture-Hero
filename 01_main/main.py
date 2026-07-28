@@ -10,7 +10,7 @@ from utils.database import init_database
 
 def login():
     user_name = input("Masukkan username: ")
-    
+
     conn = sqlite3.connect(DATABASE_NAME)
     cursor = conn.cursor()
 
@@ -21,7 +21,7 @@ def login():
     if data_player is not None:
         id_player = data_player[0]
         print(f"Welcome back {user_name}")
-        
+
         # Load inventori dan wallet
         cursor.execute("SELECT item_name FROM inventory WHERE id_player = ?", (id_player,))
         items = [item[0] for item in cursor.fetchall()]
@@ -44,7 +44,7 @@ def login():
         print(f"\n[LOADING] WELCOME, {user_name} (ID: {id_player})")
         time.sleep(1)
 
-def validasi_menu():
+def menu():
     print("-" * 40, "\n   Welcome In Game The Advanture Hero   \n", "-" * 40, sep="")
     print("1. Main")
     print("2. Status karakter")
@@ -53,4 +53,4 @@ def validasi_menu():
 
 init_database()
 login()
-validasi_menu()
+menu()
