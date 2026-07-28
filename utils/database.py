@@ -1,4 +1,4 @@
-from config.config import DATABASE_NAME
+from config import DATABASE_NAME
 import sqlite3
 
 def init_database():
