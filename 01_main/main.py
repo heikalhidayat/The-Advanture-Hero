@@ -76,13 +76,21 @@ def get_menu_choice():
             print(f"X {e}")
 
 def main():
+    init_database()
+    id_player, user_name, items, gold_player = login()
+
     print("-" * 40, "\n   Welcome In Game The Advanture Hero   \n", "-" * 40, sep="")
 
     while True:
-        init_database()
-        id_player, user_name, items, gold_player = login()
         menu()
         choice = get_menu_choice()
+
+        if choice == 1:
+            pass
+
+        if choice == 2:
+            print("\n--------------- KARAKTER ---------------")
+            print("HERO CARD")
 
 # =================================================
 # MAIN PROGRAM
