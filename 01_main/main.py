@@ -73,7 +73,7 @@ def get_menu_choice():
             print("Invalid input. Please enter a number.")
 
         except InvalidMenuChoiceError as e:
-            print(f"X {e}")
+            print(f"Invalid Input! {e}")
 
 def main():
     init_database()
