@@ -5,9 +5,9 @@ import time
 import random
 
 # Import constanta
-from config.config import DATABASE_NAME, MENU_OPTIONS, CLASS_KARAKTER_CARD
-from utils.database import init_database
-from models.karakter import Karakter, Mage, Warrior, Guardian, Assassin, Archer
+from config import DATABASE_NAME, MENU_OPTIONS, CLASS_KARAKTER_CARD
+from database import init_database
+from karakter import Karakter, Mage, Warrior, Guardian, Assassin, Archer
 
 def login():
     user_name = input("Masukkan username: ")
@@ -78,7 +78,7 @@ def get_choice(y, x):
 
 def karakter_card():
     print("\n--------------- KARAKTER ---------------")
-    print("HERO CARD :")
+    print("\nHERO CARD :")
     print("1. Mage")
     print("2. Warrior")
     print("3. Guardian")
@@ -89,18 +89,33 @@ def main():
     init_database()
     id_player, user_name, items, gold_player = login()
 
-    print("-" * 40, "\n   Welcome In Game The Advanture Hero   \n", "-" * 40, sep="")
+    print("\n", "-" * 40, "\n   Welcome In Game The Advanture Hero   \n", "-" * 40, sep="")
 
     while True:
         menu()
-        choice = get_choice(MENU_OPTIONS, "menu")
+        menu_choice = get_choice(MENU_OPTIONS, "menu")
 
-        if choice == 1:
+        if menu_choice == 1:
             pass
 
-        if choice == 2:
+        elif menu_choice == 2:
             karakter_card()
-            choice = get_choice(CLASS_KARAKTER_CARD, "your hero")
+            card_choice = get_choice(CLASS_KARAKTER_CARD, "your hero")
+
+            if card_choice == 1:
+                print(Mage(Karakter))
+
+            elif card_choice == 2:
+                print(Warrior(Karakter))  
+
+            elif card_choice == 3:
+                print(Guardian(Karakter))
+
+            elif card_choice == 4:
+                print(Assassin(Karakter))
+
+            elif card_choice == 5:
+                print(Archer(Karakter))
 
 # =================================================
 # MAIN PROGRAM
