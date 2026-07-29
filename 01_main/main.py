@@ -5,8 +5,9 @@ import time
 import random
 
 # Import constanta
-from config.config import DATABASE_NAME, MENU_OPTIONS
+from config.config import DATABASE_NAME, MENU_OPTIONS, CLASS_KARAKTER_CARD
 from utils.database import init_database
+from models.karakter import Karakter, Mage, Warrior, Guardian, Assassin, Archer
 
 def login():
     user_name = input("Masukkan username: ")
@@ -20,7 +21,7 @@ def login():
 
     if data_player is not None:
         id_player = data_player[0]
-        print(f"Welcome back {user_name} (ID: {id_player})")
+        print(f"\n[LOADING] Welcome back {user_name} (ID: {id_player})")
 
         # Load inventori
         cursor.execute("SELECT item_name FROM inventory WHERE id_player = ?", (id_player,))
@@ -50,21 +51,21 @@ def login():
     return id_player, user_name, items, gold_player
 
 def menu():
-    print("\n------- MENU UTAMA -------")
+    print("\n============== MENU UTAMA ==============\n")
     print("1. Main")
-    print("2. Status karakter")
+    print("2. karakter")
     print("3. Shop")
     print("4. Exit")
 
 class InvalidMenuChoiceError(Exception):
     pass
 
-def get_menu_choice():
+def get_choice(y, x):
     while True:
         try:
-            choice = int(input("choice menu: "))
+            choice = int(input(f"\nchoice {x}: "))
 
-            if choice not in MENU_OPTIONS:
+            if choice not in y:
                 raise InvalidMenuChoiceError
 
             return choice
@@ -73,7 +74,16 @@ def get_menu_choice():
             print("Invalid input. Please enter a number.")
 
         except InvalidMenuChoiceError as e:
-            print(f"Invalid Input! {e}")
+            print(f"Invalid input {e}")
+
+def karakter_card():
+    print("\n--------------- KARAKTER ---------------")
+    print("HERO CARD :")
+    print("1. Mage")
+    print("2. Warrior")
+    print("3. Guardian")
+    print("4. Assassin")
+    print("5. Archer")
 
 def main():
     init_database()
@@ -83,14 +93,14 @@ def main():
 
     while True:
         menu()
-        choice = get_menu_choice()
+        choice = get_choice(MENU_OPTIONS, "menu")
 
         if choice == 1:
             pass
 
         if choice == 2:
-            print("\n--------------- KARAKTER ---------------")
-            print("HERO CARD")
+            karakter_card()
+            choice = get_choice(CLASS_KARAKTER_CARD, "your hero")
 
 # =================================================
 # MAIN PROGRAM
