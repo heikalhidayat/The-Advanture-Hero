@@ -103,19 +103,19 @@ def main():
             card_choice = get_choice(CLASS_KARAKTER_CARD, "your hero")
 
             if card_choice == 1:
-                print(Mage(Karakter))
+                print(Mage("Mage"))
 
             elif card_choice == 2:
-                print(Warrior(Karakter))  
+                print(Warrior("Warrior"))  
 
             elif card_choice == 3:
-                print(Guardian(Karakter))
+                print(Guardian("Guardian"))
 
             elif card_choice == 4:
-                print(Assassin(Karakter))
+                print(Assassin("Assassin"))
 
             elif card_choice == 5:
-                print(Archer(Karakter))
+                print(Archer("Archer"))
 
 # =================================================
 # MAIN PROGRAM
