@@ -28,7 +28,7 @@ class Karakter:
         self.weapon = None
 
     def __repr__(self):
-        return f"<Karakter {self.name} L{self.level} HP:{self.hp}/{self.max_hp} EXP:{self.exp}/{self.max_exp}>"
+        return f"<Karakter {self.name} L.{self.level} HP:{self.hp}/{self.max_hp} EXP:{self.exp}/{self.max_exp}>"
 
     def exp_up(self, amount: int):
         self.exp += amount
@@ -97,7 +97,7 @@ class Karakter:
 class Mage(Karakter):
     def __init__(
         self,
-        name: str,
+        name: Mage,
         max_exp: int = 100,
         max_hp: int = 100,
         max_mana: int = 100,
@@ -139,7 +139,7 @@ class Mage(Karakter):
 class Warrior(Karakter):
     def __init__(
         self,
-        name: str,
+        name: Warrior,
         max_exp: int = 100,
         max_hp: int = 120,
         aura: int = 50,
@@ -171,7 +171,7 @@ class Warrior(Karakter):
 class Guardian(Karakter):
     def __init__(
         self,
-        name: str,
+        name: Guardian,
         max_exp: int = 100,
         max_hp: int = 140,
         level: int = 0,
@@ -188,7 +188,7 @@ class Guardian(Karakter):
 class Assassin(Karakter):
     def __init__(
         self,
-        name: str,
+        name: Assassin,
         max_exp: int = 100,
         max_hp: int = 100,
         level: int = 0,
@@ -205,7 +205,7 @@ class Assassin(Karakter):
 class Archer(Karakter):
     def __init__(
         self,
-        name: str,
+        name: Archer,
         max_exp: int = 100,
         max_hp: int = 100,
         aura: int = 50,
