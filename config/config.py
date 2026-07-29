@@ -26,11 +26,19 @@ STAT_INCREASE_AGILITY = 5   # Penambahan Agility saat level up
 STAT_INCREASE_DEFENSE = 5   # Penambahan Defense saat level up
 
 # ============================================
-# MENU OPTIONS
+# 
 # ============================================
 MENU_OPTIONS = {
     1: "main",
     2: "status karakter",
     3: "shop",
     4: "exit"
+}
+
+CLASS_KARAKTER_CARD = {
+    1: "Warrior",
+    2: "Mage",
+    3: "Archer",
+    4: "Assassin",
+    5: "Guardian"
 }
