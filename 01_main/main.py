@@ -45,7 +45,7 @@ def login():
 
         print(f"\n[LOADING] WELCOME, {user_name} (ID: {id_player})")
         time.sleep(1)
-    
+
     conn.close()
 
     return id_player, user_name, items, gold_player
@@ -76,6 +76,9 @@ def get_choice(y, x):
         except InvalidMenuChoiceError as e:
             print(f"Invalid input {e}")
 
+def exit_bottom(x, y):
+    input(f"\nPress {x} to {y}...")
+
 def karakter_card():
     print("\n--------------- KARAKTER ---------------")
     print("\nHERO CARD :")
@@ -104,18 +107,30 @@ def main():
 
             if card_choice == 1:
                 print(Mage("Mage"))
+                exit_bottom("enter", "continue")
 
             elif card_choice == 2:
-                print(Warrior("Warrior"))  
+                print(Warrior("Warrior"))
+                exit_bottom("enter", "continue")
 
             elif card_choice == 3:
                 print(Guardian("Guardian"))
+                exit_bottom("enter", "continue")
 
             elif card_choice == 4:
                 print(Assassin("Assassin"))
+                exit_bottom("enter", "continue")
 
             elif card_choice == 5:
                 print(Archer("Archer"))
+                exit_bottom("enter", "continue")
+
+        elif menu_choice == 3:
+            pass
+
+        elif menu_choice == 4:
+            print("\nThank you for playing!")
+            break
 
 # =================================================
 # MAIN PROGRAM
