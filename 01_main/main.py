@@ -60,7 +60,7 @@ def menu():
 class InvalidMenuChoiceError(Exception):
     pass
 
-def get_choice(y, x):
+def get_choice(x, y):
     while True:
         try:
             choice = int(input(f"\nchoice {x}: "))
@@ -96,14 +96,14 @@ def main():
 
     while True:
         menu()
-        menu_choice = get_choice(MENU_OPTIONS, "menu")
+        menu_choice = get_choice("menu", MENU_OPTIONS)
 
         if menu_choice == 1:
             pass
 
         elif menu_choice == 2:
             karakter_card()
-            card_choice = get_choice(CLASS_KARAKTER_CARD, "your hero")
+            card_choice = get_choice("your hero", CLASS_KARAKTER_CARD)
 
             if card_choice == 1:
                 print(Mage("Mage"))
