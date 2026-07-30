@@ -9,6 +9,13 @@ from config import DATABASE_NAME, MENU_OPTIONS, CLASS_KARAKTER_CARD
 from database import init_database
 from karakter import Karakter, Mage, Warrior, Guardian, Assassin, Archer
 
+def jeda_loading(second):
+     '''jeda loading'''
+     for i in range(5):
+         print(".", end="")
+         time.sleep(second)
+
+
 def login():
     user_name = input("Masukkan username: ")
 
@@ -99,7 +106,33 @@ def main():
         menu_choice = get_choice("menu", MENU_OPTIONS)
 
         if menu_choice == 1:
-            pass
+            karakter_card()
+            karakter_choice = get_choice("your hero", CLASS_KARAKTER_CARD)
+
+            if karakter_choice == 1:
+                print("\nYour hero is Mage!")
+                jeda_loading(1)
+                exit_bottom("enter", "continue")
+
+            elif karakter_choice == 2:
+                print("\nYour hero is Warrior!")
+                jeda_loading(1)
+                exit_bottom("enter", "continue")
+
+            elif karakter_choice == 3:
+                print("\nYour hero is Guardian!")
+                jeda_loading(1)
+                exit_bottom("enter", "continue")
+
+            elif karakter_choice == 4:
+                print("\nYour hero is Assassin!")
+                jeda_loading(1)
+                exit_bottom("enter", "continue")
+
+            elif karakter_choice == 5:
+                print("\nYour hero is Archer!")
+                jeda_loading(1)
+                exit_bottom("enter", "continue")
 
         elif menu_choice == 2:
             karakter_card()
