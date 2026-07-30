@@ -28,7 +28,7 @@ class Karakter:
         self.weapon = None
 
     def __repr__(self):
-        return f"<Karakter {self.name}>\tL.{self.level}\nHP:{self.hp}/{self.max_hp}\tEXP:{self.exp}/{self.max_exp}>"
+        return f"<Karakter {self.name}>\t\tL.{self.level}\nHP:{self.hp}/{self.max_hp}\t\tEXP:{self.exp}/{self.max_exp}>"
 
     def exp_up(self, amount: int):
         self.exp += amount
