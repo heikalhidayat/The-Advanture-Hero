@@ -2,21 +2,30 @@ class Enemy:
     '''Base class untuk semua monster'''
     def __init__(
         self, 
-        name, 
-        level=0, 
-        hp=100, 
-        energy=100, 
-        damage=10, 
-        agility=10, 
+        # Indentitas & progresi
+        name: str,
+        monster_type: str,
+        level: int = 0,
+        
+        # Pools
+        hp: int = 100, 
+        energy: int = 100,
+
+        # Core Stats 
+        strength: int = 10, 
+        agility: int = 10, 
         defense=10,
+
+        # Item drop
         drop_exp=10,
         drop_item=None,
     ):
         self.name = name
+        self.monster_type = monster_type
         self.level = level
         self.hp = hp
         self.energy = energy
-        self.damage = damage
+        self.strength = strength
         self.agility = agility
         self.defense = defense
         self.drop_exp = drop_exp
@@ -25,8 +34,8 @@ class Enemy:
     def __repr__(self):
         return f"<Karakter {self.name} L{self.level} HP:{self.hp}/{self.max_hp}>"
 
-    def take_damage(self, damage):
-      sisa_damage = damage - self.defense
+    def take_damage(self, strength):
+      sisa_damage = strength - self.defense
 
       if sisa_damage > 0:
           self.hp -= sisa_damage
@@ -35,10 +44,10 @@ class Enemy:
           return False
 
     def attack(self, target):
-        print(f"{self.name} menyerang {target.name} dengan damage {self.damage}")
-        terluka = target.take_damage(self.damage)
+        print(f"{self.name} menyerang {target.name} dengan damage {self.strength}")
+        terluka = target.take_damage(self.strength)
         if terluka:
-            print(f"{target.name} terluka dengan damage {self.damage}")
+            print(f"{target.name} terluka dengan damage {self.strength}")
         else:
             print(f"Serangan kurang efektif!! Defense {target.name} sangat tinggi!!")
 
@@ -57,14 +66,15 @@ class Slime(Enemy):
     def __init__(self):
         super().__init__(
             name="Slime",
+            monster_type="normal",
             level=1,
             hp=20,
             energy=20,
-            damage=5,
+            strength=5,
             agility=5,
             defense=5,
             drop_exp=10,
-            drop_item=None
+            drop_item="sticky slime gel" # Cairan kenyal serbaguna untuk bahan ramuan (5 gold)
         )
 
 class GoblinScout(Enemy):
@@ -72,14 +82,15 @@ class GoblinScout(Enemy):
     def __init__(self):
         super().__init__(
             name="Goblin Scout",
+            monster_type="normal",
             level=1,
             hp=30,
             energy=30,
-            damage=10,
+            strength=10,
             agility=10,
             defense=10,
             drop_exp=20,
-            drop_item=None
+            drop_item="Tattered goblin pouch" # Kanton kulit kecil berisi koin-koin berkarat hasil curian goblin (12 gold)
         )
 
 class GiantRat(Enemy):
@@ -87,14 +98,15 @@ class GiantRat(Enemy):
     def __init__(self):
         super().__init__(
             name="Giant Rat",
+            monster_type="normal",
             level=1,
             hp=40,
             energy=40,
-            damage=15,
+            strength=15,
             agility=15,
             defense=15,
-            drop_exp=20
-            drop_item=None
+            drop_exp=20,
+            drop_item="Coarse rat pelt" # kulit berbulu kasar yang biasanya di beli pengrajun untuk latihan menyamak kulit (8 gold)
         )
 
 class SkeletonWarrior(Enemy):
@@ -102,14 +114,15 @@ class SkeletonWarrior(Enemy):
     def __init__(self):
         super().__init__(
             name="Skeleton Warrior",
+            monster_type="normal",
             level=1,
             hp=50,
             energy=50,
-            damage=20,
+            strength=20,
             agility=15,
             defense=15,
             drop_exp=30,
-            drop_item=None
+            drop_item="Brittle bone fragment" # Tulang tua yang diselimuti energi kegelapan, dicari oleh ahli nujum amatir (15 gold)
         )
 
 class Kobold(Enemy):
@@ -117,14 +130,15 @@ class Kobold(Enemy):
     def __init__(self):
         super().__init__(
             name="Kobold",
+            monster_type="normal",
             level=1,
             hp=60,
             energy=60,
-            damage=25,
+            strength=25,
             agility=20,
             defense=20,
-            drop_exp=40
-            drop_item=None
+            drop_exp=40,
+            drop_item="Kobold shiny pebble" # Batu tiruan yan gidkira emas oleh para kobold karena permukaannya yang mengkilap (20 gold)
         )
 
 class GiantSpider(Enemy):
@@ -132,6 +146,7 @@ class GiantSpider(Enemy):
     def __init__(self):
         super().__init__(
             name="Giant Spider",
+            monster_type="normal",
             level=1,
             hp=70,
             energy=70,
@@ -139,7 +154,7 @@ class GiantSpider(Enemy):
             agility=25,
             defense=25,
             drop_exp=50,
-            drop_item=None
+            drop_item="Sticky spider silk" # Benang sutra tebal yang sangat kuat (18 gold)
         )
 
 class FeralWolf(Enemy):
@@ -147,14 +162,15 @@ class FeralWolf(Enemy):
     def __init__(self):
         super().__init__(
             name="Feral Wolf",
+            monster_type="normal",
             level=1,
             hp=80,
             energy=80,
-            damage=35,
+            strength=35,
             agility=25,
             defense=30,
             drop_exp=60,
-            drop_item=None
+            drop_item="Sharp wolf fang" # Taring tajam yang bisa dijadikan bahan dasar senjata (25 gold)
         )
 
 class Imps(Enemy):
@@ -162,12 +178,13 @@ class Imps(Enemy):
     def __init__(self):
         super().__init__(
             name="Imps",
+            monster_type="normal",
             level=1,
             hp=90,
             energy=90,
-            damage=40,
+            strength=40,
             agility=30,
             defense=35,
             drop_exp=70,
+            drop_item=None
         )
-
