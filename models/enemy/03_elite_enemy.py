@@ -74,7 +74,7 @@ class Minotaur(Enemy):
             agility=345,
             defense=450,
             drop_exp=500,
-            drop_item=None,
+            drop_item="Polished minotaur horn" # Tanduk raksasa kokoh yang melambangkan kekuatatan. sangat bernilai untuk pembuatan item (500 gold)
         )
 
 class Golem(Enemy):
@@ -90,7 +90,7 @@ class Golem(Enemy):
             agility=345,
             defense=450,
             drop_exp=500,
-            drop_item=None,
+            drop_item="Pure iron ore core" # Bagian terdalam golem yang merupakan bongkahan besi tanpa cacat (650 gold)
         )
 
 class Wyvern(Enemy):
@@ -106,7 +106,7 @@ class Wyvern(Enemy):
             agility=345,
             defense=450,
             drop_exp=500,
-            drop_item=None,
+            drop_item=None
         )
 
 class Necromancer(Enemy):
@@ -122,7 +122,7 @@ class Necromancer(Enemy):
             agility=345,
             defense=450,
             drop_exp=500,
-            drop_item=None,
+            drop_item="Forbidden spellbook page" # Lembaran kertas kuno berisi catatan mantra pembangkit mayat (750 gold)
         )
 
 class Cyclops(Enemy):
@@ -138,7 +138,7 @@ class Cyclops(Enemy):
             agility=345,
             defense=450,
             drop_exp=500,
-            drop_item=None,
+            drop_item="Cyclops giant tear" # Cairan kristal langka yang keluar saat cyclop mati (800 gold)
         )
 
 class Succubus(Enemy):
@@ -154,7 +154,7 @@ class Succubus(Enemy):
             agility=345,
             defense=450,
             drop_exp=500,
-            drop_item=None,
+            drop_item=None
         )
 
 class Chimera(Enemy):
@@ -170,7 +170,7 @@ class Chimera(Enemy):
             agility=345,
             defense=450,
             drop_exp=500,
-            drop_item=None,
+            drop_item="Chimera triple-blood" # campuran darah singa, kambing, dan ular yang menghasilkan energi alkia murni (950 gold)
         )
 
 class Lich(Enemy):
@@ -186,5 +186,5 @@ class Lich(Enemy):
             agility=345,
             defense=450,
             drop_exp=500,
-            drop_item=None,
+            drop_item="Frozen lich phylactery" # Wadah jiwa kristal es abadi tempat lich menyimpan keabadiannya (1.200 gold)
         )
