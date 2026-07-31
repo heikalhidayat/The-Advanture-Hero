@@ -65,7 +65,7 @@ class AncientDragon(Enemy):
     def __init__(self):
         super().__init__(
             name="Ancient Dragon",
-            monster_type="mythic",
+            monster_type="legendary",
             level=100,
             hp=1000,
             energy=1000,
@@ -80,7 +80,7 @@ class Kraken(Enemy):
     def __init__(self):
         super().__init__(
             name="Kraken",
-            monster_type="mythic",
+            monster_type="legendary",
             level=100,
             hp=1000,
             energy=1000,
@@ -95,7 +95,7 @@ class Phoenix(Enemy):
     def __init__(self):
         super().__init__(
             name="Phoenix",
-            monster_type="mythic",
+            monster_type="legendary",
             level=100,
             hp=1000,
             energy=1000,
@@ -111,7 +111,7 @@ class Leviathan(Ememy):
     def __init__(self):
         super().__init__(
             name="Leviathan",
-            monster_type="mythic",
+            monster_type="legendary",
             level=100,
             hp=1000,
             energy=1000,
@@ -127,7 +127,7 @@ class Titan(Enemy):
     def __init__(self):
         super().__init__(
             name="Titan",
-            monster_type="mythic",
+            monster_type="legendary",
             level=100,
             hp=1000,
             energy=1000,
