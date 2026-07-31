@@ -2,23 +2,30 @@ class Enemy:
     '''Base class untuk semua monster'''
     def __init__(
         self, 
-        name,
-        class_enemy, 
-        level=0, 
-        hp=100, 
-        energy=100, 
-        damage=10, 
-        agility=10, 
+        # Indentitas & progresi
+        name: str,
+        monster_type: str,
+        level: int = 0,
+        
+        # Pools
+        hp: int = 100, 
+        energy: int = 100,
+
+        # Core Stats 
+        strength: int = 10, 
+        agility: int = 10, 
         defense=10,
+
+        # Item drop
         drop_exp=10,
-        drop_item=None
+        drop_item=None,
     ):
         self.name = name
-        self.class_enemy = class_enemy
+        self.monster_type = monster_type
         self.level = level
         self.hp = hp
         self.energy = energy
-        self.damage = damage
+        self.strength = strength
         self.agility = agility
         self.defense = defense
         self.drop_exp = drop_exp
@@ -27,8 +34,8 @@ class Enemy:
     def __repr__(self):
         return f"<Karakter {self.name} L{self.level} HP:{self.hp}/{self.max_hp}>"
 
-    def take_damage(self, damage):
-      sisa_damage = damage - self.defense
+    def take_damage(self, strength):
+      sisa_damage = strength - self.defense
 
       if sisa_damage > 0:
           self.hp -= sisa_damage
@@ -37,10 +44,10 @@ class Enemy:
           return False
 
     def attack(self, target):
-        print(f"{self.name} menyerang {target.name} dengan damage {self.damage}")
-        terluka = target.take_damage(self.damage)
+        print(f"{self.name} menyerang {target.name} dengan damage {self.strength}")
+        terluka = target.take_damage(self.strength)
         if terluka:
-            print(f"{target.name} terluka dengan damage {self.damage}")
+            print(f"{target.name} terluka dengan damage {self.strength}")
         else:
             print(f"Serangan kurang efektif!! Defense {target.name} sangat tinggi!!")
 
@@ -59,15 +66,15 @@ class OrcBerseker(Enemy):
     def __init__(self):
         super().__init__(
             name="Orc Berseker",
-            class_enemy="rare",
+            monster_type="rare",
             level=1,
             hp=100,
             energy=80,
-            damage=90, 
+            strength=90, 
             agility=10, 
             defense=80,
             drop_exp=100,
-            drop_item=None
+            drop_item="Broken orc cleaver" # Potongan besi berat dari senjata orc yang bisa dilebur kembali oleh pandai besi (90 gold)
         )
 
 class Gargoyle(Enemy):
@@ -75,15 +82,15 @@ class Gargoyle(Enemy):
     def __init__(self):
         super().__init__(
             name="Gargoyle",
-            class_enemy="rare",
+            monster_type="rare",
             level=1,
             hp=200,
             energy=100,
-            damage=150,
+            strength=150,
             agility=50,
             defense=100,
             drop_exp=200,
-            drop_item=None
+            drop_item="Gargoyle heartstone" # Batu berbentuk jantung yang menyimpan energi magis penyokong hidup sang patung (110 gold)
         )
 
 class Lizardman(Enemy):
@@ -91,11 +98,11 @@ class Lizardman(Enemy):
     def __init__(self):
         super().__init__(
             name="Lizardman",
-            class_enemy="rare",
+            monster_type="rare",
             level=1,
             hp=150,
             energy=120,
-            damage=100,
+            strength=100,
             agility=80,
             defense=150,
             drop_exp=200,
@@ -107,11 +114,11 @@ class Harpy(Enemy):
     def __init__(self):
         super().__init__(
             name="Harpy",
-            class_enemy="rare",
+            monster_type="rare",
             level=1,
             hp=250,
             energy=150,
-            damage=200,
+            strength=200,
             agility=200,
             defense=150,
             drop_exp=200,
@@ -123,15 +130,15 @@ class CentaurArcher(Enemy):
     def __init__(self):
         super().__init__(
             name="Centaur Archer",
-            class_enemy="rare",
+            monster_type="rare",
             level=1,
             hp=300,
             energy=200,
-            damage=250,
+            strength=250,
             agility=250,
             defense=250,
             drop_exp=300,
-            drop_item=None
+            drop_item="Centaur tail hair" # Rambut ekor yang sangat elastis, sangat bagus untuk dijadikan tali busur panah berkualitas (130 gold)
         )
 
 class ZombiePlaguebringer(Enemy):
@@ -139,11 +146,11 @@ class ZombiePlaguebringer(Enemy):
     def __init__(self):
         super().__init__(
             name="Zombie Plaguebringer",
-            class_enemy="rare",
+            monster_type="rare",
             level=1,
             hp=400,
             energy=300,
-            damage=300,
+            strength=300,
             agility=250,
             defense=150,
             drop_exp=300,
@@ -155,15 +162,15 @@ class Werewolf(Enemy):
     def __init__(self):
         super().__init__(
             name="Werewolf",
-            class_enemy="rare",
+            monster_type="rare",
             level=1,
             hp=350,
             energy=250,
-            damage=200,
+            strength=200,
             agility=300,
             defense=300,
             drop_exp=350,
-            drop_item=None
+            drop_item="Tuft of cursed fur" # Bulu tebal manusia serigala yang tetap hangat meski berada di cuaca ekstrim (150 gold)
         )
 
 class Basilisk(Enemy):
@@ -171,13 +178,13 @@ class Basilisk(Enemy):
     def __init__(self):
         super().__init__(
             name="Basilisk",
-            class_enemy="rare",
+            monster_type="rare",
             level=1,
             hp=450,
             energy=350,
-            damage=350,
+            strength=350,
             agility=300,
             defense=400,
             drop_exp=400,
-            drop_item=None
+            drop_item="Basilisk petrifying eye" # Bola mata reptil yang telah mati namun tatapannya masih menyisakan aura (220 gold)
         )
