@@ -29,11 +29,18 @@ STAT_INCREASE_DEFENSE = 5   # Penambahan Defense saat level up
 # 
 # ============================================
 MENU_OPTIONS = {
-    1: "main",
+    1: "lobby",
     2: "status karakter",
     3: "shop",
     4: "exit"
 }
+
+LOBBY_ROOM = {
+    1: "tower gate",
+    2: "hero_room",
+    3: "training_area",
+    4: "armory"
+    5: "dining_area"
 
 CLASS_KARAKTER_CARD = {
     1: "Warrior",
