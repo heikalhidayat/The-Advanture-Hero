@@ -81,27 +81,19 @@ def exit_bottom(x, y):
 
 def menu():
     print("\n============== MENU UTAMA ==============\n")
-    print("1. Lobby")
-    print("2. karakter")
-    print("3. Shop")
-    print("4. Exit")
+    for i,(number, option) in enumerate(MENU_OPTIONS.items()):
+        print(f"{i+1}. {option}")
 
 def lobby():
     print("\n============== LOBBY ==============\n")
-    print("1. Tower Gate")
-    print("2. Barracks")
-    print("3. Training Area")
-    print("4. Armory")
-    print("5. Dining Hall")
+    for i,(number, option) in enumerate(LOBBY_ROOM.items()):
+        print(f"{i+1}. {option}")
 
 def karakter_card():
     print("\n--------------- KARAKTER ---------------")
     print("\nHERO CARD :")
-    print("1. Mage")
-    print("2. Warrior")
-    print("3. Guardian")
-    print("4. Assassin")
-    print("5. Archer")
+    for i,(number, option) in enumerate(CLASS_KARAKTER_CARD.items()):
+        print(f"{i+1}. {option}")
 
 def main():
     init_database()
