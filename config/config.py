@@ -39,7 +39,7 @@ LOBBY_ROOM = {
     1: "tower gate",
     2: "hero_room",
     3: "training_area",
-    4: "armory"
+    4: "armory",
     5: "dining_area"
 }
 
