@@ -6,7 +6,11 @@ import random
 
 # Import constanta
 from config import DATABASE_NAME, MENU_OPTIONS, CLASS_KARAKTER_CARD, LOBBY_ROOM
+
+# Import database
 from database import init_database
+
+#Import models
 from karakter import Karakter, Mage, Warrior, Guardian, Assassin, Archer
 
 def jeda_loading(second):
