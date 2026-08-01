@@ -5,7 +5,7 @@ import time
 import random
 
 # Import constanta
-from config import DATABASE_NAME, MENU_OPTIONS, CLASS_KARAKTER_CARD
+from config import DATABASE_NAME, MENU_OPTIONS, CLASS_KARAKTER_CARD, LOBBY_ROOM
 from database import init_database
 from karakter import Karakter, Mage, Warrior, Guardian, Assassin, Archer
 
@@ -57,13 +57,6 @@ def login():
 
     return id_player, user_name, items, gold_player
 
-def menu():
-    print("\n============== MENU UTAMA ==============\n")
-    print("1. Main")
-    print("2. karakter")
-    print("3. Shop")
-    print("4. Exit")
-
 class InvalidMenuChoiceError(Exception):
     pass
 
@@ -86,6 +79,21 @@ def get_choice(x, y):
 def exit_bottom(x, y):
     input(f"\nPress {x} to {y}...")
 
+def menu():
+    print("\n============== MENU UTAMA ==============\n")
+    print("1. Lobby")
+    print("2. karakter")
+    print("3. Shop")
+    print("4. Exit")
+
+def lobby():
+    print("\n============== LOBBY ==============\n")
+    print("1. Tower Gate")
+    print("2. Barracks")
+    print("3. Training Area")
+    print("4. Armory")
+    print("5. Dining Hall")
+
 def karakter_card():
     print("\n--------------- KARAKTER ---------------")
     print("\nHERO CARD :")
@@ -106,33 +114,9 @@ def main():
         menu_choice = get_choice("menu", MENU_OPTIONS)
 
         if menu_choice == 1:
-            karakter_card()
-            karakter_choice = get_choice("your hero", CLASS_KARAKTER_CARD)
-
-            if karakter_choice == 1:
-                print("\nYour hero is Mage!")
-                jeda_loading(1)
-                exit_bottom("enter", "continue")
-
-            elif karakter_choice == 2:
-                print("\nYour hero is Warrior!")
-                jeda_loading(1)
-                exit_bottom("enter", "continue")
-
-            elif karakter_choice == 3:
-                print("\nYour hero is Guardian!")
-                jeda_loading(1)
-                exit_bottom("enter", "continue")
-
-            elif karakter_choice == 4:
-                print("\nYour hero is Assassin!")
-                jeda_loading(1)
-                exit_bottom("enter", "continue")
-
-            elif karakter_choice == 5:
-                print("\nYour hero is Archer!")
-                jeda_loading(1)
-                exit_bottom("enter", "continue")
+            lobby()
+            lobby_choice = get_choice("Lobby", LOBBY_ROOM)
+            exit_bottom("enter", "continue")
 
         elif menu_choice == 2:
             karakter_card()
