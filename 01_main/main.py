@@ -11,7 +11,7 @@ from config import DATABASE_NAME, MENU_OPTIONS, CLASS_KARAKTER_CARD, LOBBY_ROOM
 from database import init_database
 
 #Import models
-from karakter import Karakter, Mage, Warrior, Guardian, Assassin, Archer
+from base_karakter import Karakter
 
 def jeda_loading(second):
      '''jeda loading'''
@@ -81,7 +81,7 @@ def get_choice(x, y):
             print(f"Invalid input {e}")
 
 def exit_bottom(x, y):
-    input(f"\nPress {x} to {y}...")
+    input(f"\nPress {x} to {y}...") 
 
 def menu():
     print("\n============== MENU UTAMA ==============\n")
@@ -98,6 +98,10 @@ def karakter_card():
     print("\nHERO CARD :")
     for i,(number, option) in enumerate(CLASS_KARAKTER_CARD.items()):
         print(f"{i+1}. {option}")
+
+def summoning_card():
+    input("Master! choise card summoning! ")
+    exit_bottom("enter", "continue")
 
 def main():
     init_database()
@@ -118,24 +122,19 @@ def main():
             karakter_card()
             card_choice = get_choice("your hero", CLASS_KARAKTER_CARD)
 
-            if card_choice == 1:
-                print(Mage("Mage"))
+            if card_choice == 1
                 exit_bottom("enter", "continue")
 
             elif card_choice == 2:
-                print(Warrior("Warrior"))
                 exit_bottom("enter", "continue")
 
             elif card_choice == 3:
-                print(Guardian("Guardian"))
                 exit_bottom("enter", "continue")
 
             elif card_choice == 4:
-                print(Assassin("Assassin"))
                 exit_bottom("enter", "continue")
 
             elif card_choice == 5:
-                print(Archer("Archer"))
                 exit_bottom("enter", "continue")
 
         elif menu_choice == 3:
