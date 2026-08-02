@@ -2,7 +2,7 @@
 from config import BASE_HP, BASE_ENERGY, BASE_MANA, BASE_STRENGTH, BASE_AGILITY, BASE_DEFENSE, BASE_MAGIC, BASE_DEXTERITY, BASE_RESISTANCE
 
 # Import config multiplier atribut
-from config import MULTIPLIER_HP, MULTIPLIER_ENERGY, MULTIPLIER_MANA, MULTIPLIER_STRENGTH, MULTIPLIER_AGILITY, MULTIPLIER_DEFENSE, MULTIPLIER_MAGIC, MULTIPLIER_DEXTERITY, MULTIPLIER_RESISTANCE
+from config import BASE_HP_MULTIPLIER, BASE_ENERGY_MULTIPLIER, BASE_MANA_MULTIPLIER, BASE_STRENGTH_MULTIPLIER, BASE_AGILITY_MULTIPLIER, BASE_DEFENSE_MULTIPLIER, BASE_MAGIC_MULTIPLIER, BASE_DEXTERITY_MULTIPLIER, BASE_RESISTANCE_MULTIPLIER
 
 class Karakter:
     def __init__(
@@ -12,7 +12,7 @@ class Karakter:
         name: str,
         job: str,
         level: int = 1,
-        exp: int = 0,
+        exp: int = 1,
 
         # Sumber daya utama
         hp: int = BASE_HP,
@@ -23,13 +23,13 @@ class Karakter:
         strength: int = BASE_STRENGTH,
         agility: int = BASE_AGILITY,
         defense: int = BASE_DEFENSE,
-        vitality: int = 0,
+        vitality: int = 1,
 
         # Core stats class magical
         magic: int = BASE_MAGIC,
         dexterity: int = BASE_DEXTERITY,
         resistance: int = BASE_RESISTANCE,
-        intelligence: int = 0,
+        intelligence: int = 1,
 
         # Equipment
         strength_bonus: int = 0,
@@ -60,33 +60,40 @@ class Karakter:
         self.magic_bonus = magic_bonus
         self.dexterity_bonus = dexterity_bonus
         self.resistance_bonus = resistance_bonus
+        self.max_hp = self.max_hp()
+        self.max_energy = self.max_energy()
+        self.max_mana = self.max_mana()
+        self.max_exp = self.max_exp()
 
     def max_exp(self):
         return self.level ** 2 * 100
 
     def max_hp(self):
-        return self.hp + (self.vitality * MULTIPLIER_HP)
+        return self.hp + (self.vitality * BASE_HP_MULTIPLIER)
 
     def max_energy(self):
-        return self.energy + (self.vitality * MULTIPLIER_ENERGY)
+        return self.energy + (self.vitality * BASE_ENERGY_MULTIPLIER)
 
     def max_mana(self):
-        return self.mana + (self.intelligence * MULTIPLIER_MANA)
+        return self.mana + (self.intelligence * BASE_MANA_MULTIPLIER)
+
+    def repr(self):
+        return f"Name: {self.name}\tJob: {self.job}\nHp:{self.hp}/{self.max_hp}"
 
     def __repr__(self):
-        return f"<{self.name}>\t\tL.{self.level}\nHP:{self.hp}/{self.max_hp}\t\tEXP:{self.exp}/{max_exp()}"
+        return f"<{self.name}>\n{self.job}\nLV.{self.level}[EXP:{self.exp}/{self.max_exp}]\nHP:{self.hp}/{self.max_hp}"
 
     def exp_up(self, amount: int):
         self.exp += amount
-        print(f"{self.name} mendapatkan {amount} EXP! ({self.exp}/{max_exp()})")
-        while self.exp >= max_exp():
-            self.exp -= max_exp()
+        print(f"{self.name} mendapatkan {amount} EXP! ({self.exp}/{self.max_exp})")
+        while self.exp >= self.max_exp:
+            self.exp -= self.max_exp
             self.level_up()
 
     def level_up(self):
         self.level += 1
         # pulihkan sedikit HP ketika naik level
-        self.hp = min(self.hp + 10, max_hp())
+        self.hp = min(self.hp + 10, self.max_hp)
         # Energy dan atribut lain
         self.energy += 10
         self.strength += 5
@@ -95,7 +102,7 @@ class Karakter:
         # Batas exp untuk level berikutnya
         self.max_exp *= 2
         print(f"LEVEL UP! {self.name} naik ke Level {self.level}")
-        print(f"Batas EXP baru untuk level berikutnya: {max_exp()}")
+        print(f"Batas EXP baru untuk level berikutnya: {self.max_exp}")
 
     def take_damage(self, strength: int) -> bool:
         """Kembalikan True jika ada HP yang berkurang, False jika seluruhnya diblock oleh defense."""
