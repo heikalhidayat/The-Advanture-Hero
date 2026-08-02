@@ -10,31 +10,24 @@ from config import STAT_INCREASE_HP, STAT_INCREASE_ENERGY, STAT_INCREASE_MANA, S
 class Karakter:
     def __init__(
         self,
-        
-        # Data Identitas & progresi
         name: str,
         job: str,
         level: int = 1,
-        exp: int = 1,
-
-        # Sumber daya utama
-        hp: int = BASE_HP,
-        energy: int = BASE_ENERGY,
-        mana: int = BASE_MANA,
-
-        # Core Stats class physical
+        exp: int = 0,
+        # base values
+        base_hp: int = BASE_HP,
+        base_energy: int = BASE_ENERGY,
+        base_mana: int = BASE_MANA,
+        # core stats
         strength: int = BASE_STRENGTH,
         agility: int = BASE_AGILITY,
         defense: int = BASE_DEFENSE,
         vitality: int = 1,
-
-        # Core stats class magical
         magic: int = BASE_MAGIC,
         dexterity: int = BASE_DEXTERITY,
         resistance: int = BASE_RESISTANCE,
         intelligence: int = 1,
-
-        # Equipment
+        # equipment bonuses
         strength_bonus: int = 0,
         agility_bonus: int = 0,
         defense_bonus: int = 0,
@@ -46,9 +39,16 @@ class Karakter:
         self.job = job
         self.level = level
         self.exp = exp
-        self.hp = hp
-        self.energy = energy
-        self.mana = mana
+
+        # base values and current values
+        self.base_hp = base_hp
+        self.current_hp = base_hp
+        self.base_energy = base_energy
+        self.current_energy = base_energy
+        self.base_mana = base_mana
+        self.current_mana = base_mana
+
+        # stats
         self.strength = strength
         self.agility = agility
         self.defense = defense
@@ -57,101 +57,111 @@ class Karakter:
         self.dexterity = dexterity
         self.resistance = resistance
         self.intelligence = intelligence
+
+        # bonuses
         self.strength_bonus = strength_bonus
         self.agility_bonus = agility_bonus
         self.defense_bonus = defense_bonus
         self.magic_bonus = magic_bonus
         self.dexterity_bonus = dexterity_bonus
         self.resistance_bonus = resistance_bonus
-        self.max_hp = self.max_hp()
-        self.max_energy = self.max_energy()
-        self.max_mana = self.max_mana()
-        self.max_exp = self.max_exp()
 
-    def max_exp(self):
+        # derived persisted value
+        self.max_exp = self.compute_max_exp()
+
+    def compute_max_exp(self) -> int:
         return self.level ** 2 * 100
 
-    def max_hp(self):
-        return self.hp + (self.vitality * BASE_HP_MULTIPLIER)
+    @property
+    def max_hp(self) -> int:
+        return self.base_hp + (self.vitality * BASE_HP_MULTIPLIER)
 
-    def max_energy(self):
-        return self.energy + (self.vitality * BASE_ENERGY_MULTIPLIER)
+    @property
+    def max_energy(self) -> int:
+        return self.base_energy + (self.vitality * BASE_ENERGY_MULTIPLIER)
 
-    def max_mana(self):
-        return self.mana + (self.intelligence * BASE_MANA_MULTIPLIER)
+    @property
+    def max_mana(self) -> int:
+        return self.base_mana + (self.intelligence * BASE_MANA_MULTIPLIER)
 
-    def total_strength(self):
+    def total_strength(self) -> int:
         return self.strength + (self.vitality * BASE_STRENGTH_MULTIPLIER) + self.strength_bonus
 
-    def total_agility(self):
-        return self.agility + (self.vitality * BASE_AGILITY_MULTIPLIER) + self.agility_bonus
-
-    def total_defense(self):
+    def total_defense(self) -> int:
         return self.defense + (self.vitality * BASE_DEFENSE_MULTIPLIER) + self.defense_bonus
-
-    def total_magic(self):
-        return self.magic + (self.intelligence * BASE_MAGIC_MULTIPLIER) + self.magic_bonus
-
-    def total_dexterity(self):
-        return self.dexterity + (self.intelligence * BASE_DEXTERITY_MULTIPLIER) + self.dexterity_bonus
-
-    def total_resistance(self):
-        return self.resistance + (self.intelligence * BASE_RESISTANCE_MULTIPLIER) + self.resistance_bonus
-
-    def __repr__(self):
-        return f'''======================\n<{self.name}>\n======================\n{self.job}\n \nLV.{self.level}[EXP:{self.exp}/{self.max_exp}]\nHP:{self.hp}/{self.max_hp}\nEnergy:{self.energy}/{self.max_energy}'''
-
-    def exp_up(self, amount: int):
-        self.exp += amount
-        print(f"{self.name} mendapatkan {amount} EXP! ({self.exp}/{self.max_exp})")
-        while self.exp >= self.max_exp:
-            self.exp -= self.max_exp
-            self.level_up()
 
     def level_up(self):
         self.level += 1
-        
-        # pulihkan sedikit HP ketika naik level
-        self.hp = min(self.hp + 10, self.max_hp)
-
-        # Tingkatkan atribut dasar
-        self.max_hp += (STAT_INCREASE_HP * self.level)
-        self.max.energy += (STAT_INCREASE_ENERGY * self.level)
-        self.max.mana += (STAT_INCREASE_MANA * self.level)
-
-        # Tingkatkan artibut tambahan
+        # restore sedikit current HP tapi tidak melebihi max
+        self.current_hp = min(self.current_hp + 10, self.max_hp)
+        # naikkan base stats
+        self.base_hp += (STAT_INCREASE_HP * 1)
+        self.base_energy += (STAT_INCREASE_ENERGY * self.level)
+        self.base_mana += (STAT_INCREASE_MANA * self.level)
         self.strength += (STAT_INCREASE_STRENGTH * self.level)
         self.agility += (STAT_INCREASE_AGILITY * self.level)
         self.defense += (STAT_INCREASE_DEFENSE * self.level)
         self.magic += (STAT_INCREASE_MAGIC * self.level)
         self.dexterity += (STAT_INCREASE_DEXTERITY * self.level)
         self.resistance += (STAT_INCREASE_RESISTANCE * self.level)
-
-        # Batas exp untuk level berikutnya
-        self.max_exp *= 2
-
+        # recompute exp cap
+        self.max_exp = self.compute_max_exp()
         print(f"LEVEL UP! {self.name} naik ke Level {self.level}")
-        print(f"Batas EXP baru untuk level berikutnya: {self.max_exp}")
 
-    def take_damage(self, strength: int) -> bool:
-        """Kembalikan True jika ada HP yang berkurang, False jika seluruhnya diblock oleh defense."""
-        sisa_damage = max(0, strength - self.defense)
-        if sisa_damage > 0:
-            self.hp = max(0, self.hp - sisa_damage)
+    def __repr__(self) -> str:
+        # ringkas, unambiguous, cocok untuk debugging
+        try:
+            exp_cap = self.max_exp
+        except Exception:
+            exp_cap = "?"
+        return f"Karakter(name={self.name!r}, job={self.job!r}, level={self.level}, exp={self.exp}/{exp_cap})"
+
+    def __str__(self) -> str:
+        # user-friendly multi-line; gunakan getattr untuk fallback aman
+        hp_cur = getattr(self, "current_hp", getattr(self, "hp", "?"))
+        hp_max = getattr(self, "max_hp", "?")
+        energy_cur = getattr(self, "current_energy", getattr(self, "energy", "?"))
+        en_max = getattr(self, "max_energy", "?")
+        mana_cur = getattr(self, "current_mana", getattr(self, "mana", "?"))
+        ma_max = getattr(self, "max_mana", "?")
+
+        # safe total helpers: jika method ada, panggil; jika atribut, ambil; jika error, fallback
+        def safe_total(name):
+            attr = getattr(self, name, None)
+            try:
+                return attr() if callable(attr) else attr
+            except Exception:
+                return "?"
+
+        return (
+            "======================\n"
+            f"<{self.name}>\n"
+            "======================\n"
+            f"{self.job}\n\n"
+            f"LV.{self.level} [EXP: {self.exp}/{self.max_exp}]\n"
+            f"HP: {hp_cur}/{hp_max}\n"
+            f"Energy: {energy_cur}/{en_max}\n"
+            f"Mana: {mana_cur}/{ma_max}\n\n"
+            f"STR: {safe_total('total_strength')} | DEF: {safe_total('total_defense')}\n"
+        )
+
+    def take_damage(self, amount: int) -> bool:
+        effective = max(0, amount - self.total_defense())
+        if effective > 0:
+            self.current_hp = max(0, self.current_hp - effective)
             return True
         return False
 
     def attack(self, target: "Karakter") -> bool:
-        total_damage = self.total_strength()
-        print(f"{self.name} menyerang {target.name} dengan damage {total_damage}")
-        terluka = target.take_damage(total_damage)
-        if terluka:
-            print(f"{target.name} terluka dengan damage {total_damage}")
-            if target.hp <= 0:
+        dmg = self.total_strength()
+        print(f"{self.name} menyerang {target.name} dengan damage {dmg}")
+        if target.take_damage(dmg):
+            print(f"{target.name} terluka; HP: {target.current_hp}/{target.max_hp}")
+            if target.current_hp <= 0:
                 print(f"{target.name} mati!")
             return True
         else:
-            print(f"Serangan kurang efektif!! Defense {target.name} sangat tinggi!!")
+            print(f"Serangan kurang efektif—pertahanan {target.name} sangat tinggi.")
             return False
 
     def use_energy(self, amount: int) -> bool:
