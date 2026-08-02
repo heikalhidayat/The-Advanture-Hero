@@ -34,13 +34,17 @@ BASE_DEXTERITY_MULTIPLIER = 15
 BASE_RESISTANCE_MULTIPLIER = 15
 
 # ============================================
-# 4. BALANCING EXP & LEVEL UP
+# 4. LEVEL UP
 # ============================================
-EXP_MULTIPLIER = 2          # Batas EXP berlipat ganda saat level up
-STAT_INCREASE_HP = 10       # Penambahan HP saat level up
-STAT_INCREASE_DAMAGE = 5    # Penambahan Damage saat level up
-STAT_INCREASE_AGILITY = 5   # Penambahan Agility saat level up
-STAT_INCREASE_DEFENSE = 5   # Penambahan Defense saat level up
+STAT_INCREASE_HP = 10         # Penambahan HP saat level up
+STAT_INCREASE_ENERGY = 10     # Penambahan energy saat level up
+STAT_INCREASE_MANA = 10       # Penambahan mana saat level up
+STAT_INCREASE_STRENGTH = 10   # Penambahan Strength saat level up
+STAT_INCREASE_AGILITY = 10    # Penambahan Agility saat level up
+STAT_INCREASE_DEFENSE = 10    # Penambahan Defense saat level up
+STAT_INCREASE_MAGIC = 10      # Penambahan Magic saat level up
+STAT_INCREASE_DEXTERITY = 10  # Penambahan Dexterity saat level up
+STAT_INCREASE_RESISTANCE = 10 # Penambahan Resistance saat level up
 
 # ============================================
 # 
