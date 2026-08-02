@@ -79,8 +79,8 @@ class Karakter:
     def exp_up(self, amount: int):
         self.exp += amount
         print(f"{self.name} mendapatkan {amount} EXP! ({self.exp}/{max_exp()})")
-        while self.exp >= self.max_exp:
-            self.exp -= self.max_exp
+        while self.exp >= max_exp():
+            self.exp -= max_exp()
             self.level_up()
 
     def level_up(self):
