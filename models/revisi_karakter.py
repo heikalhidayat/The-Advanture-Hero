@@ -77,9 +77,6 @@ class Karakter:
     def max_mana(self):
         return self.mana + (self.intelligence * BASE_MANA_MULTIPLIER)
 
-    def repr(self):
-        return f"Name: {self.name}\tJob: {self.job}\nHp:{self.hp}/{self.max_hp}"
-
     def __repr__(self):
         return f'''======================\n<{self.name}>\n======================\n{self.job}\n \nLV.{self.level}[EXP:{self.exp}/{self.max_exp}]\nHP:{self.hp}/{self.max_hp}\nEnergy:{self.energy}/{self.max_energy}'''
 
