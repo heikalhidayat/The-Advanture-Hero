@@ -10,13 +10,31 @@ GAME_VERSION = "0.0.1"
 # ============================================
 BASE_HP = 100
 BASE_ENERGY = 100
-BASE_MANA = 50
+BASE_MANA = 100
+# PHYSICAL
 BASE_STRENGTH = 10
 BASE_AGILITY = 10
 BASE_DEFENSE = 10
+# MAGICAL
+BASE_MAGIC = 10
+BASE_DEXTERITY = 10
+BASE_RESISTANCE = 10
 
 # ============================================
 # 3. BALANCING EXP & LEVEL UP
+# ============================================
+BASE_HP_MULTIPLIER = 15
+BASE_ENERGY_MULTIPLIER = 15
+BASE_MANA_MULTIPLIER = 15
+BASE_STRENGTH_MULTIPLIER = 15
+BASE_AGILITY_MULTIPLIER = 15
+BASE_DEFENSE_MULTIPLIER = 15
+BASE_MAGIC_MULTIPLIER = 15
+BASE_DEXTERITY_MULTIPLIER = 15
+BASE_RESISTANCE_MULTIPLIER = 15
+
+# ============================================
+# 4. BALANCING EXP & LEVEL UP
 # ============================================
 EXP_MULTIPLIER = 2          # Batas EXP berlipat ganda saat level up
 STAT_INCREASE_HP = 10       # Penambahan HP saat level up
