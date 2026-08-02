@@ -81,7 +81,7 @@ class Karakter:
         return f"Name: {self.name}\tJob: {self.job}\nHp:{self.hp}/{self.max_hp}"
 
     def __repr__(self):
-        return f"<{self.name}>\n{self.job}\nLV.{self.level}[EXP:{self.exp}/{self.max_exp}]\nHP:{self.hp}/{self.max_hp}"
+        return f'''======================\n<{self.name}>\n======================\n{self.job}\n \nLV.{self.level}[EXP:{self.exp}/{self.max_exp}]\nHP:{self.hp}/{self.max_hp}\nEnergy:{self.energy}/{self.max_energy}'''
 
     def exp_up(self, amount: int):
         self.exp += amount
