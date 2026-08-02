@@ -92,7 +92,7 @@ class Karakter:
 
     def level_up(self):
         self.level += 1
-        # restore sedikit current HP tapi tidak melebihi max
+        # restore sedikit current HP
         self.current_hp = min(self.current_hp + 10, self.max_hp)
         # naikkan base stats
         self.base_hp += (STAT_INCREASE_HP * 1)
@@ -109,7 +109,6 @@ class Karakter:
         print(f"LEVEL UP! {self.name} naik ke Level {self.level}")
 
     def __repr__(self) -> str:
-        # ringkas, unambiguous, cocok untuk debugging
         try:
             exp_cap = self.max_exp
         except Exception:
@@ -117,7 +116,6 @@ class Karakter:
         return f"Karakter(name={self.name!r}, job={self.job!r}, level={self.level}, exp={self.exp}/{exp_cap})"
 
     def __str__(self) -> str:
-        # user-friendly multi-line; gunakan getattr untuk fallback aman
         hp_cur = getattr(self, "current_hp", getattr(self, "hp", "?"))
         hp_max = getattr(self, "max_hp", "?")
         energy_cur = getattr(self, "current_energy", getattr(self, "energy", "?"))
@@ -125,7 +123,6 @@ class Karakter:
         mana_cur = getattr(self, "current_mana", getattr(self, "mana", "?"))
         ma_max = getattr(self, "max_mana", "?")
 
-        # safe total helpers: jika method ada, panggil; jika atribut, ambil; jika error, fallback
         def safe_total(name):
             attr = getattr(self, name, None)
             try:
