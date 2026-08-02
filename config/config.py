@@ -62,6 +62,7 @@ LOBBY_ROOM = {
     3: "Training Area",
     4: "Armory",
     5: "Dining Hall"
+    6: "Summoning Room"
 }
 
 CLASS_KARAKTER_CARD = {
