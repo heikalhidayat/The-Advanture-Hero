@@ -12,7 +12,7 @@ class Karakter:
         self,
         name: str,
         job: str,
-        tier: int = 0,
+        tier: int = 1,
         level: int = 1,
         exp: int = 0,
         # base values
@@ -76,21 +76,21 @@ class Karakter:
 
     @property
     def max_hp(self) -> int:
-        return self.base_hp + (self.vitality * BASE_HP_MULTIPLIER)
+        return self.base_hp + (self.vitality * self.tier * BASE_HP_MULTIPLIER)
 
     @property
     def max_energy(self) -> int:
-        return self.base_energy + (self.vitality * BASE_ENERGY_MULTIPLIER)
+        return self.base_energy + (self.vitality * self.tier * BASE_ENERGY_MULTIPLIER)
 
     @property
     def max_mana(self) -> int:
-        return self.base_mana + (self.intelligence * BASE_MANA_MULTIPLIER)
+        return self.base_mana + (self.intelligence * self.tier * BASE_MANA_MULTIPLIER)
 
     def total_strength(self) -> int:
-        return self.strength + (self.vitality * BASE_STRENGTH_MULTIPLIER) + self.strength_bonus
+        return self.strength + (self.vitality * self.tier * BASE_STRENGTH_MULTIPLIER) + self.strength_bonus
 
     def total_defense(self) -> int:
-        return self.defense + (self.vitality * BASE_DEFENSE_MULTIPLIER) + self.defense_bonus
+        return self.defense + (self.vitality * self.tier * BASE_DEFENSE_MULTIPLIER) + self.defense_bonus
 
     def level_up(self):
         self.level += 1
