@@ -72,3 +72,8 @@ CLASS_KARAKTER_CARD = {
     4: "Assassin",
     5: "Archer"
 }
+
+SUMMONING_TYPE = {
+    1: "Use Card Free",
+    2: "Use Card Crystal",
+}
