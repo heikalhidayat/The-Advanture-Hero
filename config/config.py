@@ -61,7 +61,7 @@ LOBBY_ROOM = {
     2: "Barracks",
     3: "Training Area",
     4: "Armory",
-    5: "Dining Hall"
+    5: "Dining Hall",
     6: "Summoning Room"
 }
 
