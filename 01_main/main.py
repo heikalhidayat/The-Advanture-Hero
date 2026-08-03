@@ -10,9 +10,6 @@ from config import DATABASE_NAME, MENU_OPTIONS, CLASS_KARAKTER_CARD, LOBBY_ROOM,
 # Import database
 from database import init_database
 
-#Import models
-from base_karakter import Karakter
-
 def jeda_loading(second):
      '''jeda loading'''
      for i in range(5):
@@ -89,9 +86,13 @@ def menu():
         print(f"{i+1}. {option}")
 
 def lobby():
-    print("\n============== LOBBY ==============\n")
+    print("\n================= LOBBY ================\n")
     for i,(number, option) in enumerate(LOBBY_ROOM.items()):
         print(f"{i+1}. {option}")
+
+def tower_gate():
+    print("\n======== Go Beyond Your Limits =========")
+    print("-" * 40)
 
 def karakter_card():
     print("\n--------------- KARAKTER ---------------")
@@ -100,8 +101,12 @@ def karakter_card():
         print(f"{i+1}. {option}")
 
 def summoning_card():
-    input("Master! choise card summoning! ")
-    exit_bottom("enter", "continue")
+    print("\n--------------- Summoning ---------------\n")
+    for i,(number, option) in enumerate(SUMMONING_TYPE.items()):
+        print(f"{i+1}. {option}")
+
+def summoning_gacha():
+    summoning_free = random.choice()
 
 def main():
     init_database()
@@ -116,26 +121,36 @@ def main():
         if menu_choice == 1:
             lobby()
             lobby_choice = get_choice("Lobby", LOBBY_ROOM)
+
+            if lobby_choice == 1:
+                tower_gate()
+                exit_bottom("enter", "continue")
+
+            elif lobby_choice == 2:
+                pass
+
+            elif lobby_choice == 3:
+                pass
+
+            elif lobby_choice == 4:
+                pass
+
+            elif lobby_choice == 5:
+                pass
+
+            elif lobby_choice == 6:
+                summoning_card()
+                summoning_choice = get_choice("Your card summoning", SUMMONING_TYPE)
+                if summoning_choice == 1:
+                    exit_bottom("enter", "continue")
+
+                elif summoning_choice == 2:
+                    exit_bottom("enter", "continue")
+
             exit_bottom("enter", "continue")
 
         elif menu_choice == 2:
-            karakter_card()
-            card_choice = get_choice("your hero", CLASS_KARAKTER_CARD)
-
-            if card_choice == 1:
-                exit_bottom("enter", "continue")
-
-            elif card_choice == 2:
-                exit_bottom("enter", "continue")
-
-            elif card_choice == 3:
-                exit_bottom("enter", "continue")
-
-            elif card_choice == 4:
-                exit_bottom("enter", "continue")
-
-            elif card_choice == 5:
-                exit_bottom("enter", "continue")
+            pass
 
         elif menu_choice == 3:
             pass
