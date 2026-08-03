@@ -5,7 +5,7 @@ import time
 import random
 
 # Import constanta
-from config import DATABASE_NAME, MENU_OPTIONS, CLASS_KARAKTER_CARD, LOBBY_ROOM
+from config import DATABASE_NAME, MENU_OPTIONS, CLASS_KARAKTER_CARD, LOBBY_ROOM, SUMMONING_TYPE
 
 # Import database
 from database import init_database
@@ -122,7 +122,7 @@ def main():
             karakter_card()
             card_choice = get_choice("your hero", CLASS_KARAKTER_CARD)
 
-            if card_choice == 1
+            if card_choice == 1:
                 exit_bottom("enter", "continue")
 
             elif card_choice == 2:
