@@ -12,6 +12,7 @@ class Karakter:
         self,
         name: str,
         job: str,
+        tier: int = 0,
         level: int = 1,
         exp: int = 0,
         # base values
@@ -37,6 +38,7 @@ class Karakter:
     ):
         self.name = name
         self.job = job
+        self.tier = tier
         self.level = level
         self.exp = exp
 
