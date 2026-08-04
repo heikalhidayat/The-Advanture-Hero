@@ -11,8 +11,8 @@ class Karakter:
     def __init__(
         self,
         name: str,
-        tier: int = 1,
         job: str,
+        tier: int = 1,
         level: int = 1,
         exp: int = 0,
         # base values
