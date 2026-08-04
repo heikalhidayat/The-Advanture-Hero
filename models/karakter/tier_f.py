@@ -1,12 +1,12 @@
-from config import BASE_HP, BASE_ENERGY, BASE_MANA, TIER_F
+from config import BASE_HP, BASE_ENERGY, BASE_MANA, TIER_F, TIER_D
 from base_karakter import Karakter
 
 class Fighter(Karakter):
     def __init__(
         self,
         name,
-        tier = TIER_F,
         job = "Fighter",
+        tier = 0,
         level = 1, 
         exp = 0,
         base_hp = BASE_HP,
@@ -33,8 +33,8 @@ class Tank(Karakter):
     def __init__(
         self,
         name,
-        tier = TIER_F,
         job = "Tanker",
+        tier = 0,
         level = 1, 
         exp = 0, 
         base_hp = BASE_HP,
@@ -61,8 +61,8 @@ class Mage(Karakter):
     def __init__(
         self,
         name,
-        tier = TIER_F,
         job = "Mage",
+        tier = 0,
         level = 1, 
         exp = 0,
         base_hp = BASE_HP,
@@ -89,8 +89,8 @@ class Assassin(Karakter):
     def __init__(
         self,
         name,
-        tier = TIER_F,
         job = "Assassin",
+        tier = 0,
         level = 1, 
         exp = 0,
         base_hp = BASE_HP,
@@ -117,8 +117,8 @@ class Marksman(Karakter):
     def __init__(
         self,
         name,
-        tier = TIER_F,
         job = "Marksman",
+        tier = 0,
         level = 1, 
         exp = 0,
         base_hp = BASE_HP,
@@ -145,8 +145,8 @@ class Support(Karakter):
     def __init__(
         self,
         name,
-        tier = TIER_F,
         job = "Support",
+        tier = 0,
         level = 1, 
         exp = 0,
         base_hp = BASE_HP,
