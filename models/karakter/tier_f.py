@@ -1,6 +1,34 @@
 from config import BASE_HP, BASE_ENERGY, BASE_MANA, TIER_F
 from base_karakter import Karakter
 
+class Fighter(Karakter):
+    def __init__(
+        self,
+        name,
+        tier = TIER_F,
+        job = "Fighter",
+        level = 1, 
+        exp = 0,
+        base_hp = BASE_HP,
+        base_energy = BASE_ENERGY,
+        base_mana = 0,
+        strength = 10,
+        agility = 6,
+        defense = 4, 
+        vitality = 18,
+        magic = 0,
+        dexterity = 2,
+        resistance = 2,
+        intelligence = 7,
+        strength_bonus = 0,
+        agility_bonus = 0,
+        defense_bonus = 0,
+        magic_bonus = 0,
+        dexterity_bonus = 0,
+        resistance_bonus = 0
+    ):
+        super().__init__(name, tier, job, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus, defense_bonus)
+
 class Tank(Karakter):
     def __init__(
         self,
