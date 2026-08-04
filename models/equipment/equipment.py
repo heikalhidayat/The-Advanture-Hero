@@ -1,0 +1,2 @@
+class equipment:
+    pass
