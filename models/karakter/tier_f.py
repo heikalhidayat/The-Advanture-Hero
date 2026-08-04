@@ -168,3 +168,59 @@ class Support(Karakter):
         resistance_bonus = 0
     ):
         super().__init__(name, tier, job, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus, defense_bonus)
+
+class Wizard(Karakter):
+    def __init__(
+        self,
+        name,
+        job = "Wizard",
+        tier = 0,
+        level = 1, 
+        exp = 0,
+        base_hp = BASE_HP,
+        base_energy = BASE_ENERGY,
+        base_mana = BASE_MANA,
+        strength = 0,
+        agility = 0,
+        defense = 0, 
+        vitality = 5,
+        magic = 14,
+        dexterity = 6,
+        resistance = 4,
+        intelligence = 20,
+        strength_bonus = 0,
+        agility_bonus = 0,
+        defense_bonus = 0,
+        magic_bonus = 0,
+        dexterity_bonus = 0,
+        resistance_bonus = 0
+    ):
+        super().__init__(name, tier, job, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus, defense_bonus)
+
+class Necromancer(Karakter):
+    def __init__(
+        self,
+        name,
+        job = "Necromancer",
+        tier = 0,
+        level = 1, 
+        exp = 0,
+        base_hp = BASE_HP,
+        base_energy = BASE_ENERGY,
+        base_mana = BASE_MANA,
+        strength = 0,
+        agility = 0,
+        defense = 0,
+        vitality = 5,
+        magic = 14,
+        dexterity = 6,
+        resistance = 4,
+        intelligence = 20,
+        strength_bonus = 0,
+        agility_bonus = 0,
+        defense_bonus = 0,
+        magic_bonus = 0,
+        dexterity_bonus = 0,
+        resistance_bonus = 0
+    ):
+        super().__init__(name, tier, job, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus, defense_bonus)
