@@ -51,7 +51,7 @@ def login():
         items = []
         gold_player = 0
 
-        print(f"\n[LOADING] WELCOME, {user_name} (ID: {id_player})")
+        print(f"\n[LOADING] WELCOME... {user_name} (ID: {id_player})")
         time.sleep(1)
 
     conn.close()
@@ -86,7 +86,9 @@ def menu():
         print(f"{i+1}. {option}")
 
 def lobby():
-    print("\n================= LOBBY ================\n")
+    print("-" * 40)
+    print("================= LOBBY ================")
+    print("-" * 40, "\n")
     for i,(number, option) in enumerate(LOBBY_ROOM.items()):
         print(f"{i+1}. {option}")
 
@@ -94,15 +96,31 @@ def tower_gate():
     print("\n======== Go Beyond Your Limits =========")
     print("-" * 40)
 
-def karakter_card():
-    print("\n--------------- KARAKTER ---------------")
-    print("\nHERO CARD :")
-    for i,(number, option) in enumerate(CLASS_KARAKTER_CARD.items()):
+def barracks():
+    print("\n=============== BARRACKS ===============")
+    print("-" * 40)
+
+def training_area():
+    print("\n============= TRAINING AREA ============")
+    print("-" * 40)
+
+def armory():
+    print("\n================ ARMORY ================")
+    print("-" * 40)
+
+def dining_hall():
+    print("\n============== DINING HALL =============")
+    print("-" * 40)
+
+def summoning_room():
+    print("\n=========== Summoning ROOM ============\n")
+    for i,(number, option) in enumerate(SUMMONING_TYPE.items()):
         print(f"{i+1}. {option}")
 
-def summoning_card():
-    print("\n--------------- Summoning ---------------\n")
-    for i,(number, option) in enumerate(SUMMONING_TYPE.items()):
+def karakter_card():
+    print("\n=============== KARAKTER ===============")
+    print("\nHERO CARD :")
+    for i,(number, option) in enumerate(CLASS_KARAKTER_CARD.items()):
         print(f"{i+1}. {option}")
 
 def summoning_gacha():
@@ -127,27 +145,29 @@ def main():
                 exit_bottom("enter", "continue")
 
             elif lobby_choice == 2:
-                pass
+                barracks()
+                exit_bottom("enter", "continue")
 
             elif lobby_choice == 3:
-                pass
+                training_area()
+                exit_bottom("enter", "continue")
 
             elif lobby_choice == 4:
-                pass
+                armory()
+                exit_bottom("enter", "continue")
 
             elif lobby_choice == 5:
-                pass
+                dining_hall()
+                exit_bottom("enter", "continue")
 
             elif lobby_choice == 6:
-                summoning_card()
+                summoning_room()
                 summoning_choice = get_choice("Your card summoning", SUMMONING_TYPE)
                 if summoning_choice == 1:
                     exit_bottom("enter", "continue")
 
                 elif summoning_choice == 2:
                     exit_bottom("enter", "continue")
-
-            exit_bottom("enter", "continue")
 
         elif menu_choice == 2:
             pass
