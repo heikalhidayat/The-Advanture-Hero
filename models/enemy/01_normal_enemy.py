@@ -1,20 +1,13 @@
-import random
 from base_enemy import Enemy
-
-random_tier = random.randint(1, 2)
-random_level = random.randint(1, 5)
-random_exp = random.randint(100, 200)
-random_drop_item = random.randint(1, 2)
-total_exp = random_exp * (random_tier * random_level)
 
 class Slime(Enemy):
     def __init__(
         self,
         name = "Slime",
         job = "Normal", 
-        tier = random_tier,
-        level = random_level,
-        exp = total_exp,
+        tier = 1,
+        level = 1,
+        exp = 0,
         base_hp = 100,
         base_energy = 0,
         base_mana = 0,
@@ -32,7 +25,7 @@ class Slime(Enemy):
         magic_bonus = 0,
         dexterity_bonus = 0,
         resistance_bonus = 0,
-        drop_item = random_drop_item,
+        drop_item = 1,
     ):
         super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus)
 
@@ -41,9 +34,9 @@ class GoblinScout(Enemy):
         self,
         name = "Goblin Scout",
         job = "Normal", 
-        tier = random_tier,
-        level = random_level,
-        exp = total_exp,
+        tier = 1,
+        level = 1,
+        exp = 0,
         base_hp = 150,
         base_energy = 0,
         base_mana = 0,
@@ -61,7 +54,7 @@ class GoblinScout(Enemy):
         magic_bonus = 0,
         dexterity_bonus = 0,
         resistance_bonus = 0,
-        drop_item = random_drop_item,
+        drop_item = 0,
     ):
         super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus)
 
@@ -70,9 +63,9 @@ class Giantrat(Enemy):
         self,
         name = "Giant Rat",
         job = "Normal", 
-        tier = random_tier,
-        level = random_level,
-        exp = total_exp,
+        tier = 1,
+        level = 1,
+        exp = 0,
         base_hp = 200,
         base_energy = 0,
         base_mana = 0,
@@ -90,7 +83,7 @@ class Giantrat(Enemy):
         magic_bonus = 0,
         dexterity_bonus = 0,
         resistance_bonus = 0,
-        drop_item = random_drop_item,
+        drop_item = 1,
     ):
         super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus)
 
@@ -99,9 +92,9 @@ class GoblinWarrior(Enemy):
         self,
         name = "Goblin Warrior",
         job = "Normal", 
-        tier = random_tier,
-        level = random_level,
-        exp = total_exp,
+        tier = 1,
+        level = 1,
+        exp = 0,
         base_hp = 250,
         base_energy = 0,
         base_mana = 0,
@@ -119,7 +112,7 @@ class GoblinWarrior(Enemy):
         magic_bonus = 0,
         dexterity_bonus = 0,
         resistance_bonus = 0,
-        drop_item = random_drop_item,
+        drop_item = 0,
     ):
         super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus)
 
@@ -128,9 +121,9 @@ class SkeletonWarrior(Enemy):
         self,
         name = "Skeleton Warrior",
         job = "Normal", 
-        tier = random_tier,
-        level = random_level,
-        exp = total_exp,
+        tier = 1,
+        level = 1,
+        exp = 0,
         base_hp = 300,
         base_energy = 0,
         base_mana = 0,
@@ -148,7 +141,7 @@ class SkeletonWarrior(Enemy):
         magic_bonus = 0,
         dexterity_bonus = 0,
         resistance_bonus = 0,
-        drop_item = random_drop_item,
+        drop_item = 0,
     ):
         super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus)
 
@@ -157,9 +150,9 @@ class Kobold(Enemy):
         self,
         name = "Kobold",
         job = "Normal", 
-        tier = random_tier,
-        level = random_level,
-        exp = total_exp,
+        tier = 1,
+        level = 1,
+        exp = 0,
         base_hp = 350,
         base_energy = 0,
         base_mana = 0,
@@ -177,7 +170,7 @@ class Kobold(Enemy):
         magic_bonus = 0,
         dexterity_bonus = 0,
         resistance_bonus = 0,
-        drop_item = random_drop_item,
+        drop_item = 1,
     ):
         super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus)
 
@@ -186,9 +179,9 @@ class GiantSpider(Enemy):
         self,
         name = "Giant Spider",
         job = "Normal", 
-        tier = random_tier,
-        level = random_level,
-        exp = total_exp,
+        tier = 1,
+        level = 1,
+        exp = 0,
         base_hp = 400,
         base_energy = 0,
         base_mana = 0,
@@ -206,7 +199,7 @@ class GiantSpider(Enemy):
         magic_bonus = 0,
         dexterity_bonus = 0,
         resistance_bonus = 0,
-        drop_item = random_drop_item,
+        drop_item = 0,
     ):
         super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus)
 
@@ -215,9 +208,9 @@ class FeralWolf(Enemy):
         self,
         name = "Feral Wolf",
         job = "Normal", 
-        tier = random_tier,
-        level = random_level,
-        exp = total_exp,
+        tier = 1,
+        level = 1,
+        exp = 0,
         base_hp = 450,
         base_energy = 0,
         base_mana = 0,
@@ -235,7 +228,7 @@ class FeralWolf(Enemy):
         magic_bonus = 0,
         dexterity_bonus = 0,
         resistance_bonus = 0,
-        drop_item = random_drop_item,
+        drop_item = 0,
     ):
         super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus)
 
@@ -244,9 +237,9 @@ class Imps(Enemy):
         self,
         name = "Imps",
         job = "Normal", 
-        tier = random_tier,
-        level = random_level,
-        exp = total_exp,
+        tier = 1,
+        level = 1,
+        exp = 0,
         base_hp = 500,
         base_energy = 0,
         base_mana = 0,
@@ -264,6 +257,6 @@ class Imps(Enemy):
         magic_bonus = 0,
         dexterity_bonus = 0,
         resistance_bonus = 0,
-        drop_item = random_drop_item,
+        drop_item = 0,
     ):
         super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus)
