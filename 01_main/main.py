@@ -5,10 +5,14 @@ import time
 import random
 
 # Import constanta
-from config import DATABASE_NAME, MENU_OPTIONS, CLASS_KARAKTER_CARD, LOBBY_ROOM, SUMMONING_TYPE
+from config import DATABASE_NAME, MENU_OPTIONS, CLASS_KARAKTER_CARD, LOBBY_ROOM, SUMMONING_TYPE, TOWER_FLOOR
 
 # Import database
 from database import init_database
+
+# Import monster
+
+from normal_enemy import Slime
 
 def jeda_loading(second):
      '''jeda loading'''
@@ -92,9 +96,11 @@ def lobby():
     for i,(number, option) in enumerate(LOBBY_ROOM.items()):
         print(f"{i+1}. {option}")
 
-def tower_gate():
+def tower_floor():
     print("\n======== Go Beyond Your Limits =========")
     print("-" * 40)
+    for i,(number, option) in enumerate(TOWER_FLOOR.items()):
+        print(f"{i+1}. {option}")
 
 def barracks():
     print("\n=============== BARRACKS ===============")
@@ -141,7 +147,14 @@ def main():
             lobby_choice = get_choice("Lobby", LOBBY_ROOM)
 
             if lobby_choice == 1:
-                tower_gate()
+                tower_floor()
+                tower_floor_choice = get_choice("Tower Floor", TOWER_FLOOR)
+
+                if tower_floor_choice == 1:
+                    print("Defeat the enemies in front of you!\n")
+                    
+                    print(Slime().__str_monster__())
+                    
                 exit_bottom("enter", "continue")
 
             elif lobby_choice == 2:
