@@ -75,6 +75,19 @@ LOBBY_ROOM = {
     6: "Summoning Room"
 }
 
+TOWER_FLOOR = {
+    1: "The Threshold",
+    2: "Whispering Woods",
+    3: "Clockwork Foundry",
+    4: "Catacombs of Despair",
+    5: "Molten Core",
+    6: "Frostbite Peak",
+    7: "Stromseeker Spires",
+    8: "Archive of Forbidden Lore",
+    9: "Void Nexus",
+    10: "Apex of the Conqueror"
+}
+    
 CLASS_KARAKTER_CARD = {
     1: "Mage",
     2: "Warrior",
