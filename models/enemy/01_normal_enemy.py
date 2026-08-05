@@ -6,16 +6,13 @@ class Enemy:
         name: str,
         monster_type: str,
         level: int = 0,
-        
-        # Pools
+        # base values
         hp: int = 100, 
         energy: int = 100,
-
         # Core Stats 
         strength: int = 10, 
         agility: int = 10, 
         defense=10,
-
         # Item drop
         drop_exp=10,
         drop_item=None,
@@ -23,8 +20,14 @@ class Enemy:
         self.name = name
         self.monster_type = monster_type
         self.level = level
+
+        # base values and current values
         self.hp = hp
+        self.max_hp = hp
         self.energy = energy
+        self.max_energy = energy
+
+        # stats
         self.strength = strength
         self.agility = agility
         self.defense = defense
