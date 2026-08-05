@@ -182,6 +182,32 @@ class Karakter:
             f"MGC: {safe_total('total_magic')} | DEX: {safe_total('total_dexterity')} | RES: {safe_total('total_resistance')}\n"
         )
 
+    def __str_monster__(self) -> str:
+        hp_cur = getattr(self, "current_hp", getattr(self, "hp", "?"))
+        hp_max = getattr(self, "max_hp", "?")
+        energy_cur = getattr(self, "current_energy", getattr(self, "energy", "?"))
+        en_max = getattr(self, "max_energy", "?")
+        mana_cur = getattr(self, "current_mana", getattr(self, "mana", "?"))
+        ma_max = getattr(self, "max_mana", "?")
+
+        def safe_total(name):
+            attr = getattr(self, name, None)
+            try:
+                return attr() if callable(attr) else attr
+            except Exception:
+                return "?"
+
+        return (
+            "======================\n"
+            f"<{self.name}>\n"
+            "======================\n"
+            f"{self.job}\t[{self.tier}]\n\n"
+            f"LV.{self.level} [EXP: {self.exp}]\n"
+            f"HP: {hp_cur}/{hp_max}\n"
+            f"Energy: {energy_cur}/{en_max}\n"
+            f"STR: {safe_total('total_strength')} | AGI: {safe_total('total_agility')} | DEF: {safe_total('total_defense')}\n"
+        )
+
     def use_energy(self, amount: int) -> bool:
         """Kurangi energy jika cukup, kembalikan True; jika tidak cukup, jangan ubah energy dan kembalikan False."""
         if amount <= 0:
