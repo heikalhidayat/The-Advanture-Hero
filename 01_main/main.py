@@ -10,8 +10,10 @@ from config import DATABASE_NAME, MENU_OPTIONS, CLASS_KARAKTER_CARD, LOBBY_ROOM,
 # Import database
 from database import init_database
 
-# Import monster
+# Import karakter
+from tier_f import Mage, Tank, Assassin, Support, Marksman, Fighter
 
+# Import monster
 from normal_enemy import Slime
 
 def jeda_loading(second):
@@ -102,6 +104,13 @@ def tower_floor():
     for i,(number, option) in enumerate(TOWER_FLOOR.items()):
         print(f"{i+1}. {option}")
 
+def monster():
+    print("\nDefeat the enemies in front of you!\n")
+    tier_monster = random.randint(1, 3)
+    level_monster = random.randint(1, 5)                
+    total_exp = random.randint(100, 200) * (tier_monster * level_monster)
+    print(Slime(tier=tier_monster, level=level_monster, exp=total_exp).__str_monster__())
+
 def barracks():
     print("\n=============== BARRACKS ===============")
     print("-" * 40)
@@ -123,14 +132,9 @@ def summoning_room():
     for i,(number, option) in enumerate(SUMMONING_TYPE.items()):
         print(f"{i+1}. {option}")
 
-def karakter_card():
-    print("\n=============== KARAKTER ===============")
-    print("\nHERO CARD :")
-    for i,(number, option) in enumerate(CLASS_KARAKTER_CARD.items()):
-        print(f"{i+1}. {option}")
-
-def summoning_gacha():
-    summoning_free = random.choice()
+def karakter_summon():
+    summoning_free = random.choice(list(CLASS_KARAKTER_CARD.values()))
+    print(f"Selamat Master! Anda mendapatkan Hero {summoning_free}")
 
 def main():
     init_database()
@@ -151,10 +155,8 @@ def main():
                 tower_floor_choice = get_choice("Tower Floor", TOWER_FLOOR)
 
                 if tower_floor_choice == 1:
-                    print("Defeat the enemies in front of you!\n")
-                    
-                    print(Slime().__str_monster__())
-                    
+                    monster()
+
                 exit_bottom("enter", "continue")
 
             elif lobby_choice == 2:
@@ -177,6 +179,7 @@ def main():
                 summoning_room()
                 summoning_choice = get_choice("Your card summoning", SUMMONING_TYPE)
                 if summoning_choice == 1:
+                    karakter_summon()
                     exit_bottom("enter", "continue")
 
                 elif summoning_choice == 2:
