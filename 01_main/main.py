@@ -11,7 +11,7 @@ from config import DATABASE_NAME, MENU_OPTIONS, CLASS_KARAKTER_CARD, LOBBY_ROOM,
 from database import init_database
 
 # Import karakter
-from karakter import Mage, Tank, Assassin, Support, Marksman, Fighter
+from karakter import Mage, Tank, Assassin, Support, Marksman, Fighter, Wizard, Necromancer
 
 # Import monster
 from normal_enemy import Slime
@@ -133,8 +133,9 @@ def summoning_room():
         print(f"{i+1}. {option}")
 
 def karakter_summon():
-    summoning_free = random.choice(list(CLASS_KARAKTER_CARD.values()))
-    print(f"Selamat Master! Anda mendapatkan Hero {summoning_free}")
+    list_karakter = [Mage(), Tank(), Assassin(), Support(), Marksman(), Fighter(), Wizard(), Necromancer()]
+    summoning_free = random.choice(list_karakter)
+    print(f"Selamat Master! Anda mendapatkan Hero:\n {summoning_free.__str_physic__()}")
 
 def main():
     init_database()
