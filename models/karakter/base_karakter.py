@@ -129,33 +129,7 @@ class Karakter:
             exp_cap = "?"
         return f"Karakter(name={self.name!r}, job={self.job!r}, level={self.level}, exp={self.exp}/{exp_cap})"
 
-    def __str_physic__(self) -> str:
-        hp_cur = getattr(self, "current_hp", getattr(self, "hp", "?"))
-        hp_max = getattr(self, "max_hp", "?")
-        energy_cur = getattr(self, "current_energy", getattr(self, "energy", "?"))
-        en_max = getattr(self, "max_energy", "?")
-        mana_cur = getattr(self, "current_mana", getattr(self, "mana", "?"))
-        ma_max = getattr(self, "max_mana", "?")
-
-        def safe_total(name):
-            attr = getattr(self, name, None)
-            try:
-                return attr() if callable(attr) else attr
-            except Exception:
-                return "?"
-
-        return (
-            "======================\n"
-            f"<{self.name}>\n"
-            "======================\n"
-            f"{self.job}\t[{self.tier}]\n\n"
-            f"LV.{self.level} [EXP: {self.exp}/{self.max_exp}]\n"
-            f"HP: {hp_cur}/{hp_max}\n"
-            f"Energy: {energy_cur}/{en_max}\n"
-            f"STR: {safe_total('total_strength')} | AGI: {safe_total('total_agility')} | DEF: {safe_total('total_defense')}\n"
-        )
-
-    def __str_magic__(self) -> str:
+    def __str__(self) -> str:
         hp_cur = getattr(self, "current_hp", getattr(self, "hp", "?"))
         hp_max = getattr(self, "max_hp", "?")
         energy_cur = getattr(self, "current_energy", getattr(self, "energy", "?"))
@@ -179,6 +153,7 @@ class Karakter:
             f"HP: {hp_cur}/{hp_max}\n"
             f"Energy: {energy_cur}/{en_max}\n"
             f"Mana: {mana_cur}/{ma_max}\n\n"
+            f"STR: {safe_total('total_strength')} | AGI: {safe_total('total_agility')} | DEF: {safe_total('total_defense')}\n"
             f"MGC: {safe_total('total_magic')} | DEX: {safe_total('total_dexterity')} | RES: {safe_total('total_resistance')}\n"
         )
 
