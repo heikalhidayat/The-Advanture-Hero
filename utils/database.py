@@ -19,7 +19,7 @@ def init_database():
         ''')
     
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS wallet (
+        CREATE TABLE IF NOT EXISTS pocket (
         id_player INTEGER PRIMARY KEY,
         gold_player INTEGER)
         ''')
