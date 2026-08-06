@@ -135,7 +135,7 @@ def summoning_room():
 def karakter_summon():
     list_karakter = [Mage(), Tank(), Assassin(), Support(), Marksman(), Fighter(), Wizard(), Necromancer()]
     summoning_free = random.choice(list_karakter)
-    print(f"Selamat Master! Anda mendapatkan Hero:\n\n {summoning_free.__str_physic__()}")
+    print(f"Selamat Master! Anda mendapatkan Hero:\n\n {summoning_free.__str__()}")
 
 def main():
     init_database()
