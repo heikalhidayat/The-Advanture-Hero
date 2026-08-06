@@ -11,7 +11,7 @@ from config import DATABASE_NAME, MENU_OPTIONS, CLASS_KARAKTER_CARD, LOBBY_ROOM,
 from database import init_database
 
 # Import karakter
-from tier_f import Mage, Tank, Assassin, Support, Marksman, Fighter
+from karakter import Mage, Tank, Assassin, Support, Marksman, Fighter
 
 # Import monster
 from normal_enemy import Slime
