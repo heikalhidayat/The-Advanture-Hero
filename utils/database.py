@@ -26,6 +26,7 @@ def init_database():
 
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS karakter (
+        id_karakter INTEGER PRIMARY KEY,
         id_player INTEGER,
         name VARCHAR,
         job VARCHAR,
@@ -48,7 +49,7 @@ def init_database():
         defense_bonus INTEGER,
         magic_bonus INTEGER,
         dexterity_bonus INTEGER,
-        resistance_bonus INTEGER
+        resistance_bonus INTEGER)
         ''')
     
     conn.commit()
