@@ -56,6 +56,8 @@ def login():
         cursor.execute("INSERT INTO inventory (id_player) VALUES (?)", (id_player,))
         cursor.execute("INSERT INTO pocket (id_player) VALUES (?)", (id_player,))
         cursor.execute("INSERT INTO karakter (id_player) VALUES (?)", (id_player,))
+        id_karakter = cursor.lastrowid
+        cursor.execute("UPDATE inventory SET id_karakter = ? WHERE id_player = ?", (id_karakter, id_player))
         conn.commit()
         items = []
         gold_player = 0
@@ -65,7 +67,7 @@ def login():
 
     conn.close()
 
-    return id_player, user_name, items, gold_player, karakter_tersimpan
+    return id_player, user_name, items, gold_player, id_karakter
 
 class InvalidMenuChoiceError(Exception):
     pass
@@ -114,9 +116,16 @@ def monster():
     total_exp = random.randint(100, 200) * (tier_monster * level_monster)
     print(Slime(tier=tier_monster, level=level_monster, exp=total_exp).__str_monster__())
 
-def barracks():
+def barracks(id_player):
     print("\n=============== BARRACKS ===============")
     print("-" * 40)
+
+    conn = sqlite3.connect(DATABASE_NAME)
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT id_karakter FROM inventory WHERE id_player = ?", (id_player,))
+    karakter_01 = [id_karakter[0] for id_karakter in cursor.fetchall()]
+    print(karakter_01.__str__())
 
 def training_area():
     print("\n============= TRAINING AREA ============")
@@ -171,10 +180,12 @@ def karakter_summon(id_player):
                    (summoning_free.dexterity_bonus),
                    (summoning_free.resistance_bonus))
           )
+    conn.commit()
+    conn.close()
 
 def main():
     init_database()
-    id_player, user_name, items, gold_player, karakter_tersimpan = login()
+    id_player, user_name, items, gold_player, id_karakter = login()
 
     print("\n", "-" * 40, "\n   Welcome In Game The Advanture Hero   \n", "-" * 40, sep="")
 
@@ -196,7 +207,7 @@ def main():
                 exit_bottom("enter", "continue")
 
             elif lobby_choice == 2:
-                barracks()
+                barracks(id_player)
                 exit_bottom("enter", "continue")
 
             elif lobby_choice == 3:
