@@ -26,7 +26,7 @@ def init_database():
 
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS karakter (
-        id_karakter INTEGER PRIMARY KEY,
+        id_karakter INTEGER PRIMARY KEY AUTOINCREMENT,
         id_player INTEGER,
         name VARCHAR,
         job VARCHAR,
