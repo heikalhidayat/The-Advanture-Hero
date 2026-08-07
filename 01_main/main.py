@@ -42,7 +42,7 @@ def login():
         items = [item[0] for item in cursor.fetchall()]
 
         # Load gold player
-        cursor.execute("SELECT gold_player FROM wallet WHERE id_player = ?", (id_player,))
+        cursor.execute("SELECT gold_player FROM pocket WHERE id_player = ?", (id_player,))
         gold_player = cursor.fetchone()[0]
 
         print(f"\nGold: {gold_player}")
@@ -52,7 +52,7 @@ def login():
         conn.commit()
         id_player = cursor.lastrowid
         cursor.execute("INSERT INTO inventory (id_player) VALUES (?)", (id_player,))
-        cursor.execute("INSERT INTO wallet (id_player) VALUES (?)", (id_player,))
+        cursor.execute("INSERT INTO pocket (id_player) VALUES (?)", (id_player,))
         conn.commit()
         items = []
         gold_player = 0
@@ -132,10 +132,42 @@ def summoning_room():
     for i,(number, option) in enumerate(SUMMONING_TYPE.items()):
         print(f"{i+1}. {option}")
 
-def karakter_summon():
+def karakter_summon(id_player):
     list_karakter = [Mage(), Tank(), Assassin(), Support(), Marksman(), Fighter(), Wizard(), Necromancer()]
     summoning_free = random.choice(list_karakter)
     print(f"Selamat Master! Anda mendapatkan Hero:\n\n {summoning_free.__str__()}")
+
+    # Masukkan ke database
+    conn = sqlite3.connect(DATABASE_NAME)
+    cursor = conn.cursor()
+
+    cursor.execute('''
+        INSERT INTO karakter (id_player, name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus) VALUES 
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
+                   (id_player),
+                   (summoning_free.name),
+                   (summoning_free.job),
+                   (summoning_free.tier),
+                   (summoning_free.level),
+                   (summoning_free.exp),
+                   (summoning_free.base_hp),
+                   (summoning_free.base_energy),
+                   (summoning_free.base_mana),
+                   (summoning_free.strength),
+                   (summoning_free.agility),
+                   (summoning_free.defense),
+                   (summoning_free.vitality),
+                   (summoning_free.magic),
+                   (summoning_free.dexterity),
+                   (summoning_free.resistance),
+                   (summoning_free.intelligence),
+                   (summoning_free.strength_bonus),
+                   (summoning_free.agility_bonus),
+                   (summoning_free.defense_bonus),
+                   (summoning_free.magic_bonus),
+                   (summoning_free.dexterity_bonus),
+                   (summoning_free.resistance_bonus),
+          )
 
 def main():
     init_database()
@@ -180,7 +212,7 @@ def main():
                 summoning_room()
                 summoning_choice = get_choice("Your card summoning", SUMMONING_TYPE)
                 if summoning_choice == 1:
-                    karakter_summon()
+                    karakter_summon(id_player)
                     exit_bottom("enter", "continue")
 
                 elif summoning_choice == 2:
