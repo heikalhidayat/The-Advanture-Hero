@@ -45,7 +45,9 @@ def login():
         cursor.execute("SELECT gold_player FROM pocket WHERE id_player = ?", (id_player,))
         gold_player = cursor.fetchone()[0]
 
-        print(f"\nGold: {gold_player}")
+        # Load karakter tersimpan
+        cursor.execute("SELECT id_karakter FROM karakter WHERE id_player = ?", (id_player,))      
+        karakter_tersimpan = cursor.fetchall()
 
     else:
         cursor.execute("INSERT INTO username (user_name) VALUES (?)", (user_name,))
@@ -53,6 +55,7 @@ def login():
         id_player = cursor.lastrowid
         cursor.execute("INSERT INTO inventory (id_player) VALUES (?)", (id_player,))
         cursor.execute("INSERT INTO pocket (id_player) VALUES (?)", (id_player,))
+        cursor.execute("INSERT INTO karakter (id_player) VALUES (?)", (id_player,))
         conn.commit()
         items = []
         gold_player = 0
@@ -62,7 +65,7 @@ def login():
 
     conn.close()
 
-    return id_player, user_name, items, gold_player
+    return id_player, user_name, items, gold_player, karakter_tersimpan
 
 class InvalidMenuChoiceError(Exception):
     pass
@@ -171,7 +174,7 @@ def karakter_summon(id_player):
 
 def main():
     init_database()
-    id_player, user_name, items, gold_player = login()
+    id_player, user_name, items, gold_player, karakter_tersimpan = login()
 
     print("\n", "-" * 40, "\n   Welcome In Game The Advanture Hero   \n", "-" * 40, sep="")
 
