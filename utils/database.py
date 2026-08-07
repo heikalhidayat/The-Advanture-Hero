@@ -45,7 +45,7 @@ def init_database():
         resistance INTEGER,
         intelligence INTEGER,
         strength_bonus INTEGER,
-        aility_bonus INTEGER, 
+        agility_bonus INTEGER, 
         defense_bonus INTEGER,
         magic_bonus INTEGER,
         dexterity_bonus INTEGER,
