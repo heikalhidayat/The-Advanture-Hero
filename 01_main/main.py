@@ -144,7 +144,7 @@ def karakter_summon(id_player):
     cursor.execute('''
         INSERT INTO karakter (id_player, name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus) VALUES 
         (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
-                   (id_player),
+                   ((id_player),
                    (summoning_free.name),
                    (summoning_free.job),
                    (summoning_free.tier),
@@ -166,7 +166,7 @@ def karakter_summon(id_player):
                    (summoning_free.defense_bonus),
                    (summoning_free.magic_bonus),
                    (summoning_free.dexterity_bonus),
-                   (summoning_free.resistance_bonus),
+                   (summoning_free.resistance_bonus))
           )
 
 def main():
