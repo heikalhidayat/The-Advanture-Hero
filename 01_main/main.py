@@ -27,6 +27,7 @@ def login():
     user_name = input("Masukkan username: ")
 
     conn = sqlite3.connect(DATABASE_NAME)
+    conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
     # Cek apakah sudah terdaftar
@@ -126,10 +127,19 @@ def barracks(id_karakter):
     print("-" * 40)
 
     conn = sqlite3.connect(DATABASE_NAME)
+    conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
-    cursor.execute("SELECT id_karakter FROM karakter WHERE id_karakter = ?", (id_karakter,))
-    print(cursor.fetchall())
+    cursor.execute('''SELECT name, job, tier, level, exp, 
+                             base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, 
+                             strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus
+                      FROM karakter 
+                      WHERE id_karakter = ?''', (id_karakter,)
+                  )
+    
+    print(cursor.Karakter(cursor.fetchone()).__str__())
+    conn.commit()
+    conn.close()
 
 def training_area():
     print("\n============= TRAINING AREA ============")
