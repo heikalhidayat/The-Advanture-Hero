@@ -89,14 +89,14 @@ TOWER_FLOOR = {
 }
     
 CLASS_KARAKTER_CARD = {
-    1: "Mage",
-    2: "Tank",
-    3: "Assassin",
-    4: "Support",
-    5: "Marksman",
-    6: "Fighter",
-    7: "Wizard",
-    8: "Necromancer"
+    "Mage": Mage,
+    "Tank": Tank,
+    "Assassin": Assassin,
+    "Support": Support,
+    "Marksman": Marksman,
+    "Fighter": Fighter,
+    "Wizard": Wizard,
+    "Necromancer": Necromancer
 }
 
 SUMMONING_TYPE = {
