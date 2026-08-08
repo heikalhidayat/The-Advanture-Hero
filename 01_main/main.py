@@ -47,17 +47,22 @@ def login():
 
         # Load karakter tersimpan
         cursor.execute("SELECT id_karakter FROM karakter WHERE id_player = ?", (id_player,))      
-        karakter_tersimpan = cursor.fetchall()
+        id_karakter = cursor.fetchall()
 
     else:
         cursor.execute("INSERT INTO username (user_name) VALUES (?)", (user_name,))
-        conn.commit()
         id_player = cursor.lastrowid
+        conn.commit()
         cursor.execute("INSERT INTO inventory (id_player) VALUES (?)", (id_player,))
+        conn.commit()
         cursor.execute("INSERT INTO pocket (id_player) VALUES (?)", (id_player,))
+        conn.commit()
         cursor.execute("INSERT INTO karakter (id_player) VALUES (?)", (id_player,))
+        conn.commit()
+
         id_karakter = cursor.lastrowid
-        cursor.execute("UPDATE inventory SET id_karakter = ? WHERE id_player = ?", (id_karakter, id_player))
+
+        cursor.execute("UPDATE karakter SET id_karakter = ? WHERE id_player = ?", (id_karakter, id_player))
         conn.commit()
         items = []
         gold_player = 0
