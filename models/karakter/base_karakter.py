@@ -74,6 +74,33 @@ class Karakter:
     def compute_max_exp(self) -> int:
         return self.level ** 2 * 100
 
+    @classmethod
+    def from_db_row(cls, row):
+        return cls(
+            name=row["name"],
+            job=row["job"],
+            tier=row["tier"],
+            level=row["level"],
+            exp=row["exp"],
+            base_hp=row["base_hp"],
+            base_energy=row["base_energy"],
+            base_mana=row["base_mana"],
+            strength=row["strength"],
+            agility=row["agility"],
+            defense=row["defense"],
+            vitality=row["vitality"],
+            magic=row["magic"],
+            dexterity=row["dexterity"],
+            resistance=row["resistance"],
+            intelligence=row["intelligence"],
+            strength_bonus=row["strength_bonus"],
+            agility_bonus=row["agility_bonus"],
+            defense_bonus=row["defense_bonus"],
+            magic_bonus=row["magic_bonus"],
+            dexterity_bonus=row["dexterity_bonus"],
+            resistance_bonus=row["resistance_bonus"],
+        )
+
     @property
     def max_hp(self) -> int:
         return self.base_hp + (self.vitality * self.tier * BASE_HP_MULTIPLIER)
