@@ -121,16 +121,15 @@ def monster():
     total_exp = random.randint(100, 200) * (tier_monster * level_monster)
     print(Slime(tier=tier_monster, level=level_monster, exp=total_exp).__str_monster__())
 
-def barracks(id_player):
+def barracks(id_karakter):
     print("\n=============== BARRACKS ===============")
     print("-" * 40)
 
     conn = sqlite3.connect(DATABASE_NAME)
     cursor = conn.cursor()
 
-    cursor.execute("SELECT id_karakter FROM inventory WHERE id_player = ?", (id_player,))
-    karakter_01 = [id_karakter[0] for id_karakter in cursor.fetchall()]
-    print(karakter_01.__str__())
+    cursor.execute("SELECT id_karakter FROM karakter WHERE id_karakter = ?", (id_karakter,))
+    print(cursor.fetchall())
 
 def training_area():
     print("\n============= TRAINING AREA ============")
