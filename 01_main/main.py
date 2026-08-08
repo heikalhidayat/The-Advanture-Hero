@@ -137,7 +137,12 @@ def barracks(id_karakter):
                       WHERE id_karakter = ?''', (id_karakter,)
                   )
     
-    print(cursor.Karakter(cursor.fetchone()).__str__())
+    job = cursor.fetchone()["job"]
+    class_karakter = CLASS_KARAKTER_CARD[job]
+
+    for i,(number, option) in enumerate(class_karakter.job()):
+        print(f"{i+1}. {option}")
+
     conn.commit()
     conn.close()
 
