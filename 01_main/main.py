@@ -144,11 +144,11 @@ def barracks(id_karakter):
     job = cursor.fetchone()["job"]
     class_karakter = CLASS_KARAKTER_CARD[job]
 
-    karakter = class_karakter()
+    karakter = [class_karakter()]
 
     if karakter is not None:
-        for i,(number, option) in enumerate(karakter.job):
-            print(f"{i+1}. {option}")
+        for _ in karakter:
+            print(karakter.__str__())
 
     else:
         print("Master! Anda belum memiliki hero")
@@ -237,16 +237,6 @@ def main():
                 exit_bottom("enter", "continue")
 
             elif lobby_choice == 2:
-                conn = sqlite3.connect(DATABASE_NAME)
-                conn.row_factory = sqlite3.Row
-                cursor = conn.cursor()
-
-                cursor.execute("SELECT * FROM karakter")
-                for r in cursor.fetchall():
-                    print(dict(r))
-                conn.commit()
-                conn.close()
-
                 barracks(id_player)
                 exit_bottom("enter", "continue")
 
