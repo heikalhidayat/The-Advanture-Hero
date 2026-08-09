@@ -5,7 +5,7 @@ import time
 import random
 
 # Import constanta
-from config import DATABASE_NAME, MENU_OPTIONS, CLASS_KARAKTER_CARD, LOBBY_ROOM, SUMMONING_TYPE, TOWER_FLOOR
+from config import DATABASE_NAME, MENU_OPTIONS, LOBBY_ROOM, SUMMONING_TYPE, TOWER_FLOOR
 
 # Import database
 from database import init_database
@@ -15,6 +15,17 @@ from karakter import Mage, Tank, Assassin, Support, Marksman, Fighter, Wizard, N
 
 # Import monster
 from normal_enemy import Slime
+
+CLASS_KARAKTER_CARD = {
+    "Mage": Mage,
+    "Tank": Tank,
+    "Assassin": Assassin,
+    "Support": Support,
+    "Marksman": Marksman,
+    "Fighter": Fighter,
+    "Wizard": Wizard,
+    "Necromancer": Necromancer
+}
 
 def jeda_loading(second):
      '''jeda loading'''
@@ -47,7 +58,7 @@ def login():
         gold_player = cursor.fetchone()[0]
 
         # Load karakter tersimpan
-        cursor.execute("SELECT id_karakter FROM karakter WHERE id_player = ?", (id_player,))      
+        cursor.execute("SELECT id_karakter FROM karakter WHERE id_player = ?", (id_player,))
         id_karakter = cursor.fetchall()
 
     else:
@@ -58,13 +69,6 @@ def login():
         conn.commit()
         cursor.execute("INSERT INTO pocket (id_player) VALUES (?)", (id_player,))
         conn.commit()
-        cursor.execute("INSERT INTO karakter (id_player) VALUES (?)", (id_player,))
-        conn.commit()
-
-        id_karakter = cursor.lastrowid
-
-        cursor.execute("UPDATE karakter SET id_karakter = ? WHERE id_player = ?", (id_karakter, id_player))
-        conn.commit()
         items = []
         gold_player = 0
 
@@ -73,7 +77,7 @@ def login():
 
     conn.close()
 
-    return id_player, user_name, items, gold_player, id_karakter
+    return id_player, user_name, items, gold_player
 
 class InvalidMenuChoiceError(Exception):
     pass
@@ -95,7 +99,7 @@ def get_choice(x, y):
             print(f"Invalid input {e}")
 
 def exit_bottom(x, y):
-    input(f"\nPress {x} to {y}...") 
+    input(f"\nPress {x} to {y}...")
 
 def menu():
     print("\n============== MENU UTAMA ==============\n")
@@ -118,7 +122,7 @@ def tower_floor():
 def monster():
     print("\nDefeat the enemies in front of you!\n")
     tier_monster = random.randint(1, 3)
-    level_monster = random.randint(1, 5)                
+    level_monster = random.randint(1, 5)
     total_exp = random.randint(100, 200) * (tier_monster * level_monster)
     print(Slime(tier=tier_monster, level=level_monster, exp=total_exp).__str_monster__())
 
@@ -130,18 +134,24 @@ def barracks(id_karakter):
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
-    cursor.execute('''SELECT name, job, tier, level, exp, 
-                             base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, 
+    cursor.execute('''SELECT name, job, tier, level, exp,
+                             base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence,
                              strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus
-                      FROM karakter 
+                      FROM karakter
                       WHERE id_karakter = ?''', (id_karakter,)
                   )
     
     job = cursor.fetchone()["job"]
     class_karakter = CLASS_KARAKTER_CARD[job]
 
-    for i,(number, option) in enumerate(class_karakter.job()):
-        print(f"{i+1}. {option}")
+    karakter = class_karakter()
+
+    if karakter is not None:
+        for i,(number, option) in enumerate(karakter.job):
+            print(f"{i+1}. {option}")
+
+    else:
+        print("Master! Anda belum memiliki hero")
 
     conn.commit()
     conn.close()
@@ -170,10 +180,11 @@ def karakter_summon(id_player):
 
     # Masukkan ke database
     conn = sqlite3.connect(DATABASE_NAME)
+    conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
     cursor.execute('''
-        INSERT INTO karakter (id_player, name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus) VALUES 
+        INSERT INTO karakter (id_player, name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus) VALUES
         (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
                    ((id_player),
                    (summoning_free.name),
@@ -204,7 +215,7 @@ def karakter_summon(id_player):
 
 def main():
     init_database()
-    id_player, user_name, items, gold_player, id_karakter = login()
+    id_player, user_name, items, gold_player = login()
 
     print("\n", "-" * 40, "\n   Welcome In Game The Advanture Hero   \n", "-" * 40, sep="")
 
@@ -226,6 +237,16 @@ def main():
                 exit_bottom("enter", "continue")
 
             elif lobby_choice == 2:
+                conn = sqlite3.connect(DATABASE_NAME)
+                conn.row_factory = sqlite3.Row
+                cursor = conn.cursor()
+
+                cursor.execute("SELECT * FROM karakter")
+                for r in cursor.fetchall():
+                    print(dict(r))
+                conn.commit()
+                conn.close()
+
                 barracks(id_player)
                 exit_bottom("enter", "continue")
 
