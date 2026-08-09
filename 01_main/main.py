@@ -126,7 +126,7 @@ def monster():
     total_exp = random.randint(100, 200) * (tier_monster * level_monster)
     print(Slime(tier=tier_monster, level=level_monster, exp=total_exp).__str_monster__())
 
-def barracks(id_karakter):
+def barracks(id_player):
     print("\n=============== BARRACKS ===============")
     print("-" * 40)
 
@@ -138,7 +138,7 @@ def barracks(id_karakter):
                              base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence,
                              strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus
                       FROM karakter
-                      WHERE id_karakter = ?''', (id_karakter,)
+                      WHERE id_karakter = ?''', (id_player,)
                   )
     
     job = cursor.fetchone()["job"]
@@ -147,8 +147,8 @@ def barracks(id_karakter):
     karakter = [class_karakter()]
 
     if karakter is not None:
-        for _ in karakter:
-            print(karakter.__str__())
+        for i, option in enumerate(karakter):
+            print(f"{i+1}.\n {karakter.__str__()}", sep="")
 
     else:
         print("Master! Anda belum memiliki hero")
@@ -245,7 +245,7 @@ def main():
                 exit_bottom("enter", "continue")
 
             elif lobby_choice == 4:
-                armory()
+                armory() 
                 exit_bottom("enter", "continue")
 
             elif lobby_choice == 5:
