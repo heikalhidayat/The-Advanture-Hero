@@ -87,17 +87,6 @@ TOWER_FLOOR = {
     9: "Void Nexus",
     10: "Apex of the Conqueror"
 }
-    
-CLASS_KARAKTER_CARD = {
-    "Mage": Mage,
-    "Tank": Tank,
-    "Assassin": Assassin,
-    "Support": Support,
-    "Marksman": Marksman,
-    "Fighter": Fighter,
-    "Wizard": Wizard,
-    "Necromancer": Necromancer,
-}
 
 SUMMONING_TYPE = {
     1: "Use Card Free",
