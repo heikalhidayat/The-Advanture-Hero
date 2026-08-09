@@ -101,5 +101,5 @@ CLASS_KARAKTER_CARD = {
 
 SUMMONING_TYPE = {
     1: "Use Card Free",
-    2: "Use Card Crystal",
+    2: "Use Card Crystal"
 }
