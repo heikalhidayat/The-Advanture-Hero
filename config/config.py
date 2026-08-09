@@ -96,7 +96,7 @@ CLASS_KARAKTER_CARD = {
     "Marksman" = Marksman,
     "Fighter" = Fighter,
     "Wizard" = Wizard,
-    "Necromancer" = Necromancer
+    "Necromancer" = Necromancer,
 }
 
 SUMMONING_TYPE = {
