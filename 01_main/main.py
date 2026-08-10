@@ -1,4 +1,3 @@
-
 # Import library yang dibutuhkan
 import copy
 import sqlite3
