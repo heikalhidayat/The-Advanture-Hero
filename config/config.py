@@ -72,7 +72,8 @@ LOBBY_ROOM = {
     3: "Training Area",
     4: "Armory",
     5: "Dining Hall",
-    6: "Summoning Room"
+    6: "Summoning Room",
+    7: "Back"
 }
 
 TOWER_FLOOR = {
@@ -85,10 +86,12 @@ TOWER_FLOOR = {
     7: "Stromseeker Spires",
     8: "Archive of Forbidden Lore",
     9: "Void Nexus",
-    10: "Apex of the Conqueror"
+    10: "Apex of the Conqueror",
+    11: "Back
 }
 
 SUMMONING_TYPE = {
     1: "Use Card Free",
-    2: "Use Card Crystal"
+    2: "Use Card Crystal",
+    3: "Back"
 }
