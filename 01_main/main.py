@@ -1,3 +1,4 @@
+
 # Import library yang dibutuhkan
 import copy
 import sqlite3
@@ -143,8 +144,6 @@ def barracks(id_player):
     
     if cursor.fetchone() is None:
         print("\nMaster! Anda belum memiliki hero")
-        exit_bottom("enter", "continue")
-
     else:
         all_character = cursor.fetchall()
         for i, character in enumerate(all_character):
@@ -255,14 +254,19 @@ def main():
                 exit_bottom("enter", "continue")
 
             elif lobby_choice == 6:
-                summoning_room()
-                summoning_choice = get_choice("Your card summoning", SUMMONING_TYPE)
-                if summoning_choice == 1:
-                    karakter_summon(id_player)
-                    exit_bottom("enter", "continue")
+                while True:
+                    summoning_room()
+                    summoning_choice = get_choice("Your card summoning", SUMMONING_TYPE)
+                    if summoning_choice == 1:
+                        karakter_summon(id_player)
+                        exit_bottom("enter", "continue")
 
-                elif summoning_choice == 2:
-                    exit_bottom("enter", "continue")
+                    elif summoning_choice == 2:
+                        exit_bottom("enter", "continue")
+
+                    elif summoning_choice == 3:
+                        break
+                        
 
         elif menu_choice == 2:
             pass
