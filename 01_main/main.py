@@ -146,13 +146,14 @@ def barracks(id_player):
         exit_bottom("enter", "continue")
 
     else:
-        class_karakter = CLASS_KARAKTER_CARD[cursor.fetchone()["job"]]
-        print(type(class_karakter))
+        all_character = cursor.fetchall()
+        for i, character in enumerate(all_character):
+            print(f"{i+1}. Name: {character["name"]} | Job: {character["job"]}")
 
-        karakter = [class_karakter()]
+        choice = get_choice("your character for more information", range(1, len(all_character) + 1))
+        selected_character = all_character[choice - 1]
 
-        for i, option in enumerate(karakter):
-            print(f"{i+1}.\n {karakter.__str__()}", sep="")
+        print(f"{CLASS_KARAKTER_CARD[selected_character["job"]]().__str__()}")
 
     conn.commit()
     conn.close()
