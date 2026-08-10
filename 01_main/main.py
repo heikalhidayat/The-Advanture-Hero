@@ -138,20 +138,21 @@ def barracks(id_player):
                              base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence,
                              strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus
                       FROM karakter
-                      WHERE id_karakter = ?''', (id_player,)
+                      WHERE id_player = ?''', (id_player,)
                   )
     
-    job = cursor.fetchone()["job"]
-    class_karakter = CLASS_KARAKTER_CARD[job]
-
-    karakter = [class_karakter()]
-
-    if karakter is not None:
-        for i, option in enumerate(karakter):
-            print(f"{i+1}.\n {karakter.__str__()}", sep="")
+    if cursor.fetchone() is None:
+        print("\nMaster! Anda belum memiliki hero")
+        exit_bottom("enter", "continue")
 
     else:
-        print("Master! Anda belum memiliki hero")
+        class_karakter = CLASS_KARAKTER_CARD[cursor.fetchone()["job"]]
+        print(type(class_karakter))
+
+        karakter = [class_karakter()]
+
+        for i, option in enumerate(karakter):
+            print(f"{i+1}.\n {karakter.__str__()}", sep="")
 
     conn.commit()
     conn.close()
@@ -176,7 +177,7 @@ def summoning_room():
 def karakter_summon(id_player):
     list_karakter = [Mage(), Tank(), Assassin(), Support(), Marksman(), Fighter(), Wizard(), Necromancer()]
     summoning_free = random.choice(list_karakter)
-    print(f"Selamat Master! Anda mendapatkan Hero:\n\n {summoning_free.__str__()}")
+    print(f"Selamat Master! Anda mendapatkan Hero:\n\n {summoning_free.__str__()}", sep="")
 
     # Masukkan ke database
     conn = sqlite3.connect(DATABASE_NAME)
