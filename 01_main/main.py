@@ -5,7 +5,7 @@ import time
 import random
 
 # Import constanta
-from config import DATABASE_NAME, MENU_OPTIONS, LOBBY_ROOM, SUMMONING_TYPE, TOWER_FLOOR
+from config import DATABASE_NAME, MENU_OPTIONS, LOBBY_ROOM, SUMMONING_TYPE, TOWER_FLOOR, CARD_SUMMONING
 
 # Import database
 from database import init_database
@@ -85,7 +85,7 @@ class InvalidMenuChoiceError(Exception):
 def get_choice(x, y):
     while True:
         try:
-            choice = int(input(f"\nchoice {x}: "))
+            choice = int(input(f"\n{x}: "))
 
             if choice not in y:
                 raise InvalidMenuChoiceError
@@ -140,7 +140,7 @@ def barracks(id_player):
                       FROM karakter
                       WHERE id_player = ?''', (id_player,)
                   )
-    
+
     if cursor.fetchone() is None:
         print("\nMaster! Anda belum memiliki hero")
     else:
@@ -148,7 +148,7 @@ def barracks(id_player):
         for i, character in enumerate(all_character):
             print(f"{i+1}. Name: {character["name"]} | Job: {character["job"]}")
 
-        choice = get_choice("your character for more information", range(1, len(all_character) + 1))
+        choice = get_choice("Select a character to view more information.", range(1, len(all_character) + 1))
         selected_character = all_character[choice - 1]
 
         print(f"{CLASS_KARAKTER_CARD[selected_character["job"]]().__str__()}")
@@ -169,14 +169,14 @@ def dining_hall():
     print("-" * 40)
 
 def summoning_room():
-    print("\n=========== Summoning ROOM ============\n")
+    print("\n=========== SUMMONING ROOM ============\n")
     for i,(number, option) in enumerate(SUMMONING_TYPE.items()):
         print(f"{i+1}. {option}")
 
 def karakter_summon(id_player):
     list_karakter = [Mage(), Tank(), Assassin(), Support(), Marksman(), Fighter(), Wizard(), Necromancer()]
     summoning_free = random.choice(list_karakter)
-    print(f"Selamat Master! Anda mendapatkan Hero:\n\n {summoning_free.__str__()}", sep="")
+    print(f"Congratulations, Master! You have gained a hero.:\n\n {summoning_free.__str__()}", sep="")
 
     # Masukkan ke database
     conn = sqlite3.connect(DATABASE_NAME)
@@ -229,7 +229,7 @@ def main():
 
             if lobby_choice == 1:
                 tower_floor()
-                tower_floor_choice = get_choice("Tower Floor", TOWER_FLOOR)
+                tower_floor_choice = get_choice("Select the desired Tower Floor", TOWER_FLOOR)
 
                 if tower_floor_choice == 1:
                     monster()
@@ -245,7 +245,7 @@ def main():
                 exit_bottom("enter", "continue")
 
             elif lobby_choice == 4:
-                armory() 
+                armory()
                 exit_bottom("enter", "continue")
 
             elif lobby_choice == 5:
@@ -255,8 +255,9 @@ def main():
             elif lobby_choice == 6:
                 while True:
                     summoning_room()
-                    summoning_choice = get_choice("Your card summoning", SUMMONING_TYPE)
+                    summoning_choice = get_choice("Choose the summon you want, Master!", SUMMONING_TYPE)
                     if summoning_choice == 1:
+                        card_summoning_choice = get_choice("Select a summoning card, Master!", CARD_SUMMONING)
                         karakter_summon(id_player)
                         exit_bottom("enter", "continue")
 
@@ -265,7 +266,7 @@ def main():
 
                     elif summoning_choice == 3:
                         break
-                        
+
 
         elif menu_choice == 2:
             pass
