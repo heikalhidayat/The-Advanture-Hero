@@ -87,7 +87,7 @@ TOWER_FLOOR = {
     8: "Archive of Forbidden Lore",
     9: "Void Nexus",
     10: "Apex of the Conqueror",
-    11: "Back
+    11: "Back"
 }
 
 SUMMONING_TYPE = {
