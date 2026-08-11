@@ -141,18 +141,19 @@ def barracks(id_player):
                       FROM karakter
                       WHERE id_player = ?''', (id_player,)
                   )
+    all_character = cursor.fetchall()
 
-    if cursor.fetchone() is None:
+    # Cek apakah sudah ada karakter
+    if len(all_character) == 0:
         print("\nMaster! Anda belum memiliki hero")
     else:
-        all_character = cursor.fetchall()
         for i, character in enumerate(all_character):
             print(f"{i+1}. Name: {character["name"]} | Job: {character["job"]}")
 
-        choice = get_choice("Select a character to view more information.", range(1, len(all_character) + 1))
-        selected_character = all_character[choice - 1]
+            choice = get_choice("Select a character to view more information", range(1, len(all_character) + 1))
+            selected_character = all_character[choice - 1]
 
-        print(f"{CLASS_KARAKTER_CARD[selected_character["job"]]().__str__()}")
+            print(f"{CLASS_KARAKTER_CARD[selected_character["job"]]().__str__()}")
 
     conn.commit()
     conn.close()
@@ -184,7 +185,7 @@ def card_summoning_weapon():
 def summoning_heroes(id_player):
     list_karakter = [Mage(), Tank(), Assassin(), Support(), Marksman(), Fighter(), Wizard(), Necromancer()]
     summoning_free = random.choice(list_karakter)
-    print(f"Congratulations, Master! You have gained a hero.:\n\n {summoning_free.__str__()}", sep="")
+    print(f"Congratulations, Master! You have gained a hero:\n\n{summoning_free.__str__()}", sep="")
 
     # Masukkan ke database
     conn = sqlite3.connect(DATABASE_NAME)
@@ -277,7 +278,7 @@ def main():
                             exit_bottom("enter", "continue")
 
                         elif card_summoning_hero_choice == 3:
-                            continue
+                            break
 
                     elif summoning_choice == 2:
                         card_summoning_weapon()
@@ -290,10 +291,10 @@ def main():
                             exit_bottom("enter", "continue")
 
                         elif card_summoning_weapon_choice == 3:
-                            continue
+                            break
 
                     elif summoning_choice == 3:
-                        continue
+                        break
 
 
         elif menu_choice == 2:
