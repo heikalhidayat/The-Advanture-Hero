@@ -1,3 +1,4 @@
+from math import e
 # Import library yang dibutuhkan
 import copy
 import sqlite3
@@ -173,7 +174,14 @@ def summoning_room():
     for i,(number, option) in enumerate(SUMMONING_TYPE.items()):
         print(f"{i+1}. {option}")
 
-def karakter_summon(id_player):
+def card_summoning_hero():
+    for i,(number, option) in enumerate(CARD_SUMMONING.items()):
+        print(f"{i+1}. {option}")
+
+def card_summoning_weapon():
+    pass
+
+def summoning_heroes(id_player):
     list_karakter = [Mage(), Tank(), Assassin(), Support(), Marksman(), Fighter(), Wizard(), Necromancer()]
     summoning_free = random.choice(list_karakter)
     print(f"Congratulations, Master! You have gained a hero.:\n\n {summoning_free.__str__()}", sep="")
@@ -256,16 +264,36 @@ def main():
                 while True:
                     summoning_room()
                     summoning_choice = get_choice("Choose the summon you want, Master!", SUMMONING_TYPE)
+
                     if summoning_choice == 1:
-                        card_summoning_choice = get_choice("Select a summoning card, Master!", CARD_SUMMONING)
-                        karakter_summon(id_player)
-                        exit_bottom("enter", "continue")
+                        card_summoning_hero()
+                        card_summoning_hero_choice = get_choice("Select a summoning card, Master!", CARD_SUMMONING)
+
+                        if card_summoning_hero_choice == 1:
+                            summoning_heroes(id_player)
+                            exit_bottom("enter", "continue")
+
+                        elif card_summoning_hero_choice == 2:
+                            exit_bottom("enter", "continue")
+
+                        elif card_summoning_hero_choice == 3:
+                            continue
 
                     elif summoning_choice == 2:
-                        exit_bottom("enter", "continue")
+                        card_summoning_weapon()
+                        card_summoning_weapon_choice = get_choice("Select a summoning card, Master!", CARD_SUMMONING)
+
+                        if card_summoning_weapon_choice == 1:
+                            exit_bottom("enter", "continue")
+
+                        elif card_summoning_weapon_choice == 2:
+                            exit_bottom("enter", "continue")
+
+                        elif card_summoning_weapon_choice == 3:
+                            continue
 
                     elif summoning_choice == 3:
-                        break
+                        continue
 
 
         elif menu_choice == 2:
