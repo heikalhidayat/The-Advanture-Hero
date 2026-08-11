@@ -166,8 +166,12 @@ def armory():
     print("\n================ ARMORY ================")
     print("-" * 40)
 
-def dining_hall():
-    print("\n============== DINING HALL =============")
+def blacksmith_shop():
+    print("\n============ BLACKSMITH SHOP ===========")
+    print("-" * 40)
+
+def alchemical_laboratory():
+    print("\n======== ALCHEMICAL RABORATORY ========")
     print("-" * 40)
 
 def summoning_room():
@@ -258,10 +262,14 @@ def main():
                 exit_bottom("enter", "continue")
 
             elif lobby_choice == 5:
-                dining_hall()
+                blacksmith_shop()
                 exit_bottom("enter", "continue")
 
             elif lobby_choice == 6:
+                alchemical_laboratory()
+                exit_bottom("enter", "continue")
+
+            elif lobby_choice == 7:
                 while True:
                     summoning_room()
                     summoning_choice = get_choice("Choose the summon you want, Master!", SUMMONING_TYPE)
