@@ -71,9 +71,10 @@ LOBBY_ROOM = {
     2: "Barracks",
     3: "Training Area",
     4: "Armory",
-    5: "Dining Hall",
-    6: "Summoning Room",
-    7: "Back"
+    5: "Blacksmith Shop",
+    6: "Alchemical Laboratory",
+    7: "Summoning Room",
+    8: "Back"
 }
 
 TOWER_FLOOR = {
