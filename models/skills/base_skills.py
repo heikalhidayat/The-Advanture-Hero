@@ -105,3 +105,28 @@ class Skills:
             for i, item in enumerate(missing):
                 missing[i] = item.capitalize()
                 return f"({', '.join(missing)}) tidak memenuhi persyaratan"
+
+    def __repr__(self):
+        return f"Skills(name={self.name!r}, category={self.category!r}, armed={self.armed}, range_type={self.range_type!r}, debuff={self.debuff!r}, level={self.level})"
+
+    def __str__(self) -> str:
+        return (
+            "=============================\n"
+            f"<{self.name}>\n"
+            "=============================\n"
+            f"Category: {self.category}\n"
+            f"Armed: {self.armed}\n"
+            f"Range Type: {self.range_type}\n"
+            f"Debuff: {self.debuff}\n"
+            f"Level: {self.level}\n"
+            f"Energy: {self.energy}\n"
+            f"Mana: {self.mana}\n"
+            f"Strength: {self.strength}\n"
+            f"Agility: {self.agility}\n"
+            f"Defense: {self.defense}\n"
+            f"Vitality: {self.vitality}\n"
+            f"Magic: {self.magic}\n"
+            f"Dexterity: {self.dexterity}\n"
+            f"Resistance: {self.resistance}\n"
+            f"Intelligence: {self.intelligence}\n"
+        )
