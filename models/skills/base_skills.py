@@ -72,7 +72,7 @@ class Skills:
         player_dexterity,
         player_resistance,
         player_intelligence
-    ):
+    ) -> str:
 
         missing = list([])
 
