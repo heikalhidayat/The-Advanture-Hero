@@ -76,27 +76,27 @@ class Skills:
 
         missing = list([])
 
-        if self.level >= player_level:
+        if self.level > player_level:
             missing.append("level")
-        if self.energy >= player_energy:
+        if self.energy > player_energy:
             missing.append("energy")
-        if self.mana >= player_mana:
+        if self.mana > player_mana:
             missing.append("mana")
-        if self.strength >= player_strength:
+        if self.strength > player_strength:
             missing.append("strength")
-        if self.agility >= player_agility:
+        if self.agility > player_agility:
             missing.append("agility")
-        if self.defense >= player_defense:
+        if self.defense > player_defense:
             missing.append("defense")
-        if self.vitality >= player_vitality:
+        if self.vitality > player_vitality:
             missing.append("vitality")
-        if self.magic >= player_magic:
+        if self.magic > player_magic:
             missing.append("magic")
-        if self.dexterity >= player_dexterity:
+        if self.dexterity > player_dexterity:
             missing.append("dexterity")
-        if self.resistance >= player_resistance:
+        if self.resistance > player_resistance:
             missing.append("resistance")
-        if self.intelligence >= player_intelligence:
+        if self.intelligence > player_intelligence:
             missing.append("intelligence")
 
         if len(missing) == 0:
