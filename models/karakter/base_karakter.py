@@ -149,10 +149,10 @@ class Karakter:
         self.max_exp = self.compute_max_exp()
         print(f"LEVEL UP! {self.name} naik ke Level {self.level}")
 
-    def up(self, level_up):
+    def up(self):
         while self.exp >= self.max_exp:
             self.exp -= self.max_exp
-            level_up()
+            self.level_up()
 
     def __repr__(self) -> str:
         try:
