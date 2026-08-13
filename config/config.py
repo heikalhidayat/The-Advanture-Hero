@@ -47,7 +47,7 @@ STAT_INCREASE_DEXTERITY = 10  # Penambahan Dexterity saat level up
 STAT_INCREASE_RESISTANCE = 10 # Penambahan Resistance saat level up
 
 # ============================================
-# 4. TIER POINT
+# 5. TIER POINT
 # ============================================
 TIER_F = 1
 TIER_D = 2
@@ -55,6 +55,11 @@ TIER_C = 3
 TIER_B = 4
 TIER_A = 5
 TIER_S = 6
+
+# ============================================
+# 6. BASE ATRIBUT EQUIPMENT
+# ============================================
+BASE_DURABILITY = 10
 
 # ============================================
 # 
