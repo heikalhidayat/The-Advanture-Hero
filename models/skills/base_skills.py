@@ -6,8 +6,8 @@ class Skills:
         armed: bool,
         range_type: str,
         debuff: str,
-        durability: int,
         level: int,
+        competence: int,
         energy: int,
         mana: int,
         strength: int,
@@ -19,13 +19,14 @@ class Skills:
         resistance: int,
         intelligence: int
     ):
+        # Information
         self.name = name
         self.category = category
         self.armed = armed
         self.range_type = range_type
         self.debuff = debuff
-        self.durability = durability
         self.level = level
+        self.competence = competence
         self.energy = energy
         self.mana = mana
         self.strength = strength
@@ -37,6 +38,9 @@ class Skills:
         self.resistance = resistance
         self.intelligence = intelligence
 
+    def compute_max_competence(self):
+        return self.level ** 2 * self.competence
+
     @classmethod
     def from_db_row(cls, row):
         return cls(
@@ -45,8 +49,8 @@ class Skills:
             armed=row["armed"],
             range_type=row["range_type"],
             debuff=row["debuff"],
-            durability=row["durability"],
             level=row["level"],
+            competence=row["competence"],
             energy=row["energy"],
             mana=row["mana"],
             strength=row["strength"],
@@ -58,6 +62,9 @@ class Skills:
             resistance=row["resistance"],
             intelligence=row["intelligence"]
         )
+
+    def level_up(self):
+        pass       
 
     def activate_skill(
         self,
@@ -106,19 +113,19 @@ class Skills:
                 missing[i] = item.capitalize()
                 return f"({', '.join(missing)}) tidak memenuhi persyaratan"
 
-    def __repr__(self) -> str:
+    def __repr__(self):
         return f"Skills(name={self.name!r}, category={self.category!r}, armed={self.armed}, range_type={self.range_type!r}, debuff={self.debuff!r}, level={self.level})"
 
     def __str__(self) -> str:
         return (
             "=============================\n"
-            f"<{self.name}>\n"
+            f"<{self.name}>\tLV.{self.level}\n"
             "=============================\n"
+            f"Competence: {self.competence}\n\n"
             f"Category: {self.category}\n"
             f"Armed: {self.armed}\n"
             f"Range Type: {self.range_type}\n"
             f"Debuff: {self.debuff}\n"
-            f"Level: {self.level}\n"
             f"Energy: {self.energy}\n"
             f"Mana: {self.mana}\n"
             f"Strength: {self.strength}\n"
