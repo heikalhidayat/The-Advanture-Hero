@@ -1,6 +1,7 @@
 # Import stat increase
 from config import STAT_INCREASE_HP, STAT_INCREASE_ENERGY, STAT_INCREASE_MANA, STAT_INCREASE_STRENGTH, STAT_INCREASE_AGILITY, STAT_INCREASE_DEFENSE, STAT_INCREASE_MAGIC, STAT_INCREASE_DEXTERITY, STAT_INCREASE_RESISTANCE, STAT_INCREASE_INTELLIGENCE, STAT_INCREASE_VITALITY
 
+
 class Skills:
     def __init__(
         self,
@@ -144,15 +145,11 @@ class Skills:
         return f"Skills(name={self.name!r}, category={self.category!r}, armed={self.armed}, range_type={self.range_type!r}, debuff={self.debuff!r}, level={self.level})"
 
     def __str__(self) -> str:
-        try:
-            competence_cap = self.max_competence
-        except Exception:
-            competence_cap = "?"
         return (
             "=============================\n"
             f"<{self.name}>\tLV.{self.level}\n"
             "=============================\n"
-            f"{self.competence}/{competence_cap}\n\n"
+            f"{self.competence}/{self.max_competence}\n\n"
             f"Category: {self.category}\n"
             f"Armed: {self.armed}\n"
             f"Range Type: {self.range_type}\n"
