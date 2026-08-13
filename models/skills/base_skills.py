@@ -1,7 +1,6 @@
 # Import stat increase
 from config import STAT_INCREASE_HP, STAT_INCREASE_ENERGY, STAT_INCREASE_MANA, STAT_INCREASE_STRENGTH, STAT_INCREASE_AGILITY, STAT_INCREASE_DEFENSE, STAT_INCREASE_MAGIC, STAT_INCREASE_DEXTERITY, STAT_INCREASE_RESISTANCE, STAT_INCREASE_INTELLIGENCE, STAT_INCREASE_VITALITY
 
-
 class Skills:
     def __init__(
         self,
@@ -89,10 +88,10 @@ class Skills:
         self.max_competence = self.compute_max_competence()
         print(f"LEVEL SKILL UP! {self.name} naik ke Level {self.level}")
     
-    def up(self, level_up):
+    def up(self):
         while self.competence >= self.max_competence:
             self.competence -= self.max_competence
-            level_up()
+            self.level_up()
 
     def activate_skill(
         self,
