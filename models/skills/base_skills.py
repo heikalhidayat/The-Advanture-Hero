@@ -106,7 +106,7 @@ class Skills:
                 missing[i] = item.capitalize()
                 return f"({', '.join(missing)}) tidak memenuhi persyaratan"
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Skills(name={self.name!r}, category={self.category!r}, armed={self.armed}, range_type={self.range_type!r}, debuff={self.debuff!r}, level={self.level})"
 
     def __str__(self) -> str:
