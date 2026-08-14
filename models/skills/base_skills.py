@@ -1,7 +1,6 @@
 from typing import Required
 # Import stat increase
 from config import (
-    STAT_INCREASE_HP,
     STAT_INCREASE_ENERGY, 
     STAT_INCREASE_MANA, 
     STAT_INCREASE_STRENGTH,
@@ -62,24 +61,28 @@ class Skills:
 
     @classmethod
     def from_db_row(cls, row):
+        required = {"name", "category", "armed", "range_type", "debuff", "level", "competence", "energy", "mana", "strength", "agility", "defense", "vitality", "magic", "dexterity", "resistance", "intelligence"}
+        missing = required - set(row.keys())
+        if missing:
+            raise KeyError(f"Missing fields: {missing}")
         return cls(
             name=row["name"],
             category=row["category"],
-            armed=row["armed"],
+            armed=bool(row.get("armed")),
             range_type=row["range_type"],
             debuff=row["debuff"],
-            level=row["level"],
-            competence=row["competence"],
-            energy=row["energy"],
-            mana=row["mana"],
-            strength=row["strength"],
-            agility=row["agility"],
-            defense=row["defense"],
-            vitality=row["vitality"],
-            magic=row["magic"],
-            dexterity=row["dexterity"],
-            resistance=row["resistance"],
-            intelligence=row["intelligence"]
+            level=int(row("level",1)),
+            competence=int(row("competence",0)),
+            energy=int(row("energy",0)),
+            mana=int(row("mana",0)),
+            strength=int(row("strength",0)),
+            agility=int(row("agility",0)),
+            defense=int(row("defense",0)),
+            vitality=int(row("vitality",0)),
+            magic=int(row("magic",0)),
+            dexterity=int(row("dexterity",0)),
+            resistance=int(row("resistance",0)),
+            intelligence=int(row("intelligence",0))
         )
 
     def level_up(self):
@@ -109,8 +112,6 @@ class Skills:
             old_value = getattr(self, stat_name)
             increase = stat_increases[stat_name]
             setattr(self, stat_name, old_value + (increase * self.level))
-
-        self.max_competence
         print(f"LEVEL SKILL UP! {self.name} naik ke Level {self.level}")
 
     def gain_experience(self, amount: int):
