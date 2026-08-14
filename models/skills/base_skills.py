@@ -1,5 +1,17 @@
 # Import stat increase
-from config import STAT_INCREASE_HP, STAT_INCREASE_ENERGY, STAT_INCREASE_MANA, STAT_INCREASE_STRENGTH, STAT_INCREASE_AGILITY, STAT_INCREASE_DEFENSE, STAT_INCREASE_MAGIC, STAT_INCREASE_DEXTERITY, STAT_INCREASE_RESISTANCE, STAT_INCREASE_INTELLIGENCE, STAT_INCREASE_VITALITY
+from config import (
+    STAT_INCREASE_HP,
+    STAT_INCREASE_ENERGY, 
+    STAT_INCREASE_MANA, 
+    STAT_INCREASE_STRENGTH,
+    STAT_INCREASE_AGILITY,
+    STAT_INCREASE_DEFENSE,
+    STAT_INCREASE_MAGIC, 
+    STAT_INCREASE_DEXTERITY,
+    STAT_INCREASE_RESISTANCE, 
+    STAT_INCREASE_INTELLIGENCE, 
+    STAT_INCREASE_VITALITY
+)
 
 class Skills:
     def __init__(
@@ -43,11 +55,8 @@ class Skills:
         self.resistance = resistance
         self.intelligence = intelligence
 
-        # recompute max competence
-        self.max_competence = self.compute_max_competence
-
     @property
-    def compute_max_competence(self):
+    def max_competence(self):
         return self.level ** 2 * 100
 
     @classmethod
@@ -100,7 +109,7 @@ class Skills:
             increase = stat_increases[stat_name]
             setattr(self, stat_name, old_value + (increase * self.level))
 
-        self.max_competence = self.compute_max_competence
+        self.max_competence
         print(f"LEVEL SKILL UP! {self.name} naik ke Level {self.level}")
 
     def gain_experience(self, amount: int):
