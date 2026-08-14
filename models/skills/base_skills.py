@@ -95,7 +95,7 @@ class Skills:
 
         stats_to_update = ["energy"] + category_stats.get(self.category, [])
 
-        for stat_name in enumerate stats_to_update:
+        for stat_name in stats_to_update:
             old_value = getattr(self, stat_name)
             increase = stat_increases[stat_name]
             setattr(self, stat_name, old_value + (increase * self.level))
@@ -104,11 +104,11 @@ class Skills:
         print(f"LEVEL SKILL UP! {self.name} naik ke Level {self.level}")
 
     def gain_experience(self, amount: int):
-    """Tambah pengalaman skill dan level up jika cukup."""
-    self.competence += amount
-    while self.competence >= self.max_competence:
-        self.competence -= self.max_competence
-        self.level_up()
+        '''Tambah pengalaman skill dan level up jika cukup'''
+        self.competence += amount
+        while self.competence >= self.max_competence:
+            self.competence -= self.max_competence
+            self.level_up()
         
     def activate_skill(
         self,
