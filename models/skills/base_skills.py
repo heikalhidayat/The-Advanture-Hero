@@ -1,3 +1,4 @@
+from typing import Required
 # Import stat increase
 from config import (
     STAT_INCREASE_HP,
@@ -118,54 +119,28 @@ class Skills:
         while self.competence >= self.max_competence:
             self.competence -= self.max_competence
             self.level_up()
-        
-    def activate_skill(
-        self,
-        player_level,
-        player_energy,
-        player_mana,
-        player_strength,
-        player_agility,
-        player_defense,
-        player_vitality,
-        player_magic,
-        player_dexterity,
-        player_resistance,
-        player_intelligence
-    ) -> str:
 
-        missing = list([])
+    def activate_skill(self, player_stats: dict) -> str:
+        reqs = {
+            "Level": self.level,
+            "Energy": self.energy,
+            "Mana": self.mana,
+            "Strength": self.strength,
+            "Agility": self.agility,
+            "Defense": self.defense,
+            "Vitality": self.vitality,
+            "Magic": self.magic,
+            "Dexterity": self.dexterity,
+            "Resistance": self.resistance,
+            "Intelligence": self.intelligence,
+        }
+        missing = [name for name, required in reqs.items() if player_stats.get(name.lower(), 0) < required]
 
-        if self.level > player_level:
-            missing.append("level")
-        if self.energy > player_energy:
-            missing.append("energy")
-        if self.mana > player_mana:
-            missing.append("mana")
-        if self.strength > player_strength:
-            missing.append("strength")
-        if self.agility > player_agility:
-            missing.append("agility")
-        if self.defense > player_defense:
-            missing.append("defense")
-        if self.vitality > player_vitality:
-            missing.append("vitality")
-        if self.magic > player_magic:
-            missing.append("magic")
-        if self.dexterity > player_dexterity:
-            missing.append("dexterity")
-        if self.resistance > player_resistance:
-            missing.append("resistance")
-        if self.intelligence > player_intelligence:
-            missing.append("intelligence")
-
-        if len(missing) == 0:
+        if not missing:
             return f"{self.name} activated"
-        else:
-            for i, item in enumerate(missing):
-                missing = [item.capitalize() for item in missing]
-                return f"({', '.join(missing)}) tidak memenuhi persyaratan"
-
+        
+        return f"({', '.join(missing)}) tidak memenuhi persyaratan"
+ 
     def __repr__(self) -> str:
         return f"Skills(name={self.name!r}, category={self.category!r}, armed={self.armed}, range_type={self.range_type!r}, debuff={self.debuff!r}, level={self.level})"
 
@@ -190,3 +165,48 @@ class Skills:
             f"Resistance: {self.resistance}\n"
             f"Intelligence: {self.intelligence}\n"
           )
+        
+class BasicJab(Skills):
+    def __init__(
+        self,
+        name = "BASIC JAB",
+        category = "Physical",
+        armed = False,
+        range_type = "Melee",
+        debuff = None,
+        level = 1,
+        competence = 100,
+        energy = 20,
+        mana = 0,
+        strength = 50,
+        agility = 0,
+        defense = 0,
+        vitality = 0,
+        magic = 0,
+        dexterity = 0,
+        resistance = 0,
+        intelligence = 0
+    ):
+        super().__init__(name, category, armed, range_type, debuff, level, competence, energy, mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence)
+
+        
+player_stats = {
+      "Level": 1,
+      "Energy": 100,
+      "Mana": 100,
+      "Strength": 100,
+      "Agility": 100,
+      "Defense": 100,
+      "Vitality": 100,
+      "Magic": 100,
+      "Dexterity": 100,
+      "Resistance": 100,
+      "Intelligence": 100,
+}
+tinju = BasicJab()
+print(tinju.activate_skill(player_stats))
+print(tinju.__str__())
+tinju.gain_experience(500)
+print()
+print(tinju.__str__())
+print(tinju.__repr__())
