@@ -74,21 +74,6 @@ class Skills:
     def level_up(self):
         self.level += 1
         # Naikkan persyaratan stats
-        self.energy += (STAT_INCREASE_ENERGY * self.level)
-        self.mana += (STAT_INCREASE_MANA * self.level)
-        self.strength += (STAT_INCREASE_STRENGTH * self.level)
-        self.agility += (STAT_INCREASE_AGILITY * self.level)
-        self.defense += (STAT_INCREASE_DEFENSE * self.level)
-        self.vitality += (STAT_INCREASE_VITALITY * self.level)
-        self.magic += (STAT_INCREASE_MAGIC * self.level)
-        self.dexterity += (STAT_INCREASE_DEXTERITY * self.level)
-        self.resistance += (STAT_INCREASE_RESISTANCE * self.level)
-        self.intelligence += (STAT_INCREASE_INTELLIGENCE * self.level)
-        # recompute competence cap
-        self.max_competence = self.compute_max_competence()
-        print(f"LEVEL SKILL UP! {self.name} naik ke Level {self.level}")
-
-    def level_up(self):
         get_energy = getattr(self, "energy")
         get_mana = getattr(self, "mana")
         get_strength = getattr(self, "strength")
@@ -120,7 +105,12 @@ class Skills:
         stat_to_update = netral_category + (physical_category or magical_category)
 
         for i, item in enumerate(stat_to_update):
-            setattr(self, stat_to_update[i], get_energy + (STAT_INCREASE_ENERGY * self.level))
+            old_value = getattr(self, item)
+            increase_constant = globals()["STAT_INCREASE_" + item.upper()]
+            setattr(self, item, old_value + (increase_constant * self.level))
+
+        self.max_competence = self.compute_max_competence()
+        print(f"LEVEL SKILL UP! {self.name} naik ke Level {self.level}")
 
     def up(self):
         while self.competence >= self.max_competence:
@@ -197,4 +187,4 @@ class Skills:
             f"Dexterity: {self.dexterity}\n"
             f"Resistance: {self.resistance}\n"
             f"Intelligence: {self.intelligence}\n"
-        )
+          )
