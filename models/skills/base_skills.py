@@ -44,7 +44,7 @@ class Skills:
         self.intelligence = intelligence
 
         # recompute max competence
-        self.max_competence = self.compute_max_competence()
+        self.max_competence = self.compute_max_competence
 
     @property
     def compute_max_competence(self):
@@ -100,7 +100,7 @@ class Skills:
             increase = stat_increases[stat_name]
             setattr(self, stat_name, old_value + (increase * self.level))
 
-        self.max_competence = self.compute_max_competence()
+        self.max_competence = self.compute_max_competence
         print(f"LEVEL SKILL UP! {self.name} naik ke Level {self.level}")
 
     def gain_experience(self, amount: int):
