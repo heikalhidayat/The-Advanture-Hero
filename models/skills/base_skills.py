@@ -70,7 +70,7 @@ class Skills:
             resistance=row["resistance"],
             intelligence=row["intelligence"]
         )
-    
+
     def level_up(self):
         self.level += 1
         # Naikkan persyaratan stats
@@ -87,7 +87,41 @@ class Skills:
         # recompute competence cap
         self.max_competence = self.compute_max_competence()
         print(f"LEVEL SKILL UP! {self.name} naik ke Level {self.level}")
-    
+
+    def level_up(self):
+        get_energy = getattr(self, "energy")
+        get_mana = getattr(self, "mana")
+        get_strength = getattr(self, "strength")
+        get_agility = getattr(self, "agility")
+        get_defense = getattr(self, "defense")
+        get_vitality = getattr(self, "vitality")
+        get_magic = getattr(self, "magic")
+        get_dexterity = getattr(self, "dexterity")
+        get_resistance = getattr(self, "resistance")
+        get_intelligence = getattr(self, "intelligence")
+
+        physical_category = list([])
+        if self.category == "Physical":
+            physical_category.append("energy")
+            physical_category.append("strength")
+            physical_category.append("agility")
+            physical_category.append("defense")
+            physical_category.append("vitality")
+            physical_category.append("dexterity")
+
+        magical_category = list([])
+        if self.category == "Magical":
+            magical_category.append("energy")
+            magical_category.append("mana")
+            magical_category.append("magic")
+            magical_category.append("resistance")
+            magical_category.append("intelligence")
+
+        stat_to_update = physical_category or magical_category
+
+        for i, item in enumerate(stat_to_update):
+            setattr(self, stat_to_update[i], get_energy + (STAT_INCREASE_ENERGY * self.level))
+
     def up(self):
         while self.competence >= self.max_competence:
             self.competence -= self.max_competence
