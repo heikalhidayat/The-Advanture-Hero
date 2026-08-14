@@ -194,7 +194,7 @@ player_stats = {
       "Level": 1,
       "Energy": 100,
       "Mana": 100,
-      "Strength": 100,
+      "Strength": 50,
       "Agility": 100,
       "Defense": 100,
       "Vitality": 100,
@@ -203,8 +203,11 @@ player_stats = {
       "Resistance": 100,
       "Intelligence": 100,
 }
+
+stats_lower = {key.lower(): value for key, value in player_stats.items()}
+
 tinju = BasicJab()
-print(tinju.activate_skill(player_stats))
+print(tinju.activate_skill(stats_lower))
 print(tinju.__str__())
 tinju.gain_experience(500)
 print()
