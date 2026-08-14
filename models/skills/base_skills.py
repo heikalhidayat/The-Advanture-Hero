@@ -103,11 +103,13 @@ class Skills:
         self.max_competence = self.compute_max_competence()
         print(f"LEVEL SKILL UP! {self.name} naik ke Level {self.level}")
 
-    def up(self):
-        while self.competence >= self.max_competence:
-            self.competence -= self.max_competence
-            self.level_up()
-
+    def gain_experience(self, amount: int):
+    """Tambah pengalaman skill dan level up jika cukup."""
+    self.competence += amount
+    while self.competence >= self.max_competence:
+        self.competence -= self.max_competence
+        self.level_up()
+        
     def activate_skill(
         self,
         player_level,
