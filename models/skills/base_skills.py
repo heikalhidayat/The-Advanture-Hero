@@ -101,23 +101,23 @@ class Skills:
         get_intelligence = getattr(self, "intelligence")
 
         physical_category = list([])
+        magical_category = list([])
+        netral_category = list(["energy"])
+
         if self.category == "Physical":
-            physical_category.append("energy")
             physical_category.append("strength")
             physical_category.append("agility")
             physical_category.append("defense")
             physical_category.append("vitality")
             physical_category.append("dexterity")
 
-        magical_category = list([])
-        if self.category == "Magical":
-            magical_category.append("energy")
+        elif self.category == "Magical":
             magical_category.append("mana")
             magical_category.append("magic")
             magical_category.append("resistance")
             magical_category.append("intelligence")
 
-        stat_to_update = physical_category or magical_category
+        stat_to_update = netral_category + (physical_category or magical_category)
 
         for i, item in enumerate(stat_to_update):
             setattr(self, stat_to_update[i], get_energy + (STAT_INCREASE_ENERGY * self.level))
