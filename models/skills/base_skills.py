@@ -46,6 +46,7 @@ class Skills:
         # recompute max competence
         self.max_competence = self.compute_max_competence()
 
+    @property
     def compute_max_competence(self):
         return self.level ** 2 * 100
 
@@ -74,40 +75,30 @@ class Skills:
     def level_up(self):
         self.level += 1
         # Naikkan persyaratan stats
-        get_energy = getattr(self, "energy")
-        get_mana = getattr(self, "mana")
-        get_strength = getattr(self, "strength")
-        get_agility = getattr(self, "agility")
-        get_defense = getattr(self, "defense")
-        get_vitality = getattr(self, "vitality")
-        get_magic = getattr(self, "magic")
-        get_dexterity = getattr(self, "dexterity")
-        get_resistance = getattr(self, "resistance")
-        get_intelligence = getattr(self, "intelligence")
+        stat_increases = {
+            "energy": STAT_INCREASE_ENERGY,
+            "mana": STAT_INCREASE_MANA,
+            "strength": STAT_INCREASE_STRENGTH,
+            "agility": STAT_INCREASE_AGILITY,
+            "defense": STAT_INCREASE_DEFENSE,
+            "vitality": STAT_INCREASE_VITALITY,
+            "magic": STAT_INCREASE_MAGIC,
+            "dexterity": STAT_INCREASE_DEXTERITY,
+            "resistance": STAT_INCREASE_RESISTANCE,
+            "intelligence": STAT_INCREASE_INTELLIGENCE
+        }
 
-        physical_category = list([])
-        magical_category = list([])
-        netral_category = list(["energy"])
+        category_stats = {
+            "Physical": ["strength", "agility", "defense", "vitality", "dexterity"],
+            "Magical": ["mana", "magic", "resistance", "intelligence"]
+        }
 
-        if self.category == "Physical":
-            physical_category.append("strength")
-            physical_category.append("agility")
-            physical_category.append("defense")
-            physical_category.append("vitality")
-            physical_category.append("dexterity")
+        stats_to_update = ["energy"] + category_stats.get(self.category, [])
 
-        elif self.category == "Magical":
-            magical_category.append("mana")
-            magical_category.append("magic")
-            magical_category.append("resistance")
-            magical_category.append("intelligence")
-
-        stat_to_update = netral_category + (physical_category or magical_category)
-
-        for i, item in enumerate(stat_to_update):
-            old_value = getattr(self, item)
-            increase_constant = globals()["STAT_INCREASE_" + item.upper()]
-            setattr(self, item, old_value + (increase_constant * self.level))
+        for stat_name in enumerate stats_to_update:
+            old_value = getattr(self, stat_name)
+            increase = stat_increases[stat_name]
+            setattr(self, stat_name, old_value + (increase * self.level))
 
         self.max_competence = self.compute_max_competence()
         print(f"LEVEL SKILL UP! {self.name} naik ke Level {self.level}")
@@ -161,7 +152,7 @@ class Skills:
             return f"{self.name} activated"
         else:
             for i, item in enumerate(missing):
-                missing[i] = item.capitalize()
+                missing = [item.capitalize() for item in missing]
                 return f"({', '.join(missing)}) tidak memenuhi persyaratan"
 
     def __repr__(self) -> str:
