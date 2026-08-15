@@ -12,17 +12,19 @@ class Equipment:
         self.base_durability = base_durability
         self.current_durability = base_durability
     
-    def repair(self, amount: int):
+    def repair(self, amount: int) -> int:
         self.current_durability += amount
         if self.current_durability > self.base_durability:
             self.current_durability = self.base_durability
+        return self.current_durability
     
-    def use(self, amount: int):
+    def use(self, amount: int) -> int:
         self.current_durability -= amount
         if self.current_durability < 0:
             self.current_durability = 0
+        return self.current_durability
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         try:
             dur_max = self.base_durability
         except Exception:
