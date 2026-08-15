@@ -65,7 +65,33 @@ TIER_S = 6
 BASE_DURABILITY = 10
 
 # ============================================
-# 
+# 7. DICT
+# ============================================
+DEBUFF = {
+    "Crowd Control": {
+        "Stun": 2,
+        "Slow": 2,
+        "Knockback": 2,
+        "pull": 2,
+        "freeze": 2
+    },
+    "Utility": {
+        "Blind": 2,
+        "Taunt": 2, 
+        "Charm": 2,
+        "Fear": 2,
+        "Sleep": 2,
+        "Silence": 2
+    },
+    "Damage over Time": {
+        "Born": 2,
+        "Poison": 2,
+        "Bleed": 2,
+        "Corrosion": 2
+    }
+}
+# ============================================
+# 8. MAIN OPTION
 # ============================================
 MENU_OPTIONS = {
     1: "Lobby",
