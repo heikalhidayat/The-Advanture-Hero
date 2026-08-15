@@ -9,7 +9,7 @@ class Agility(Equipment):
         base_durability: int,
         agility: int
     ):
-        super().__init__(name, category, kind, capasity, base_durability)
+        super().__init__(name, category, kind, price, capasity, base_durability)
         self.agility = agility
 
     def total_agility(self, amount: int) -> int:
