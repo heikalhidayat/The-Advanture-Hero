@@ -4,12 +4,14 @@ class Equipment:
         name: str,
         category: str,
         kind: str,
+        price: int,
         capasity: int,
         base_durability: int,
     ):
         self.name = name
         self.category = category
         self.kind = kind
+        self.price = price
         self.capasity = capasity
         self.base_durability = base_durability
         self.current_durability = base_durability
