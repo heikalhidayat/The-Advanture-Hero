@@ -4,11 +4,12 @@ class Dexterity(Equipment):
         name: str,
         category: "Dexterity",
         kind: str,
+        price: int,
         capasity: int,
         base_durability: int,
         dexterity: int
     ):
-        super().__init__(name, category, kind, capasity, base_durability)
+        super().__init__(name, category, kind, price, capasity, base_durability)
         self.dexterity = dexterity
 
     def total_dexterity(self, amount: int) -> int:
