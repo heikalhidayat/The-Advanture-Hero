@@ -4,11 +4,12 @@ class Defense(Equipment):
         name: str,
         category: "Defense",
         kind: str,
+        price: int,
         capasity: int,
         base_durability: int,
         defense: int
     ):
-        super().__init__(name, category, kind, capasity, base_durability)
+        super().__init__(name, category, kind, price, capasity, base_durability)
         self.defense = defense
 
     def total_defense(self, amount: int) -> int:
