@@ -4,11 +4,12 @@ class Magic(Equipment):
         name: str,
         category: "Magic",
         kind: str,
+        price: int,
         capasity: int,
         base_durability: int,
         magic: int
     ):
-        super().__init__(name, category, kind, capasity, base_durability)
+        super().__init__(name, category, kind, price, capasity, base_durability)
         self.magic = magic
 
     def total_magic(self, amount: int) -> int:
