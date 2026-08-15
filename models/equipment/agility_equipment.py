@@ -4,6 +4,7 @@ class Agility(Equipment):
         name: str,
         category: "Agility",
         kind: str,
+        price: int,
         capasity: int,
         base_durability: int,
         agility: int
