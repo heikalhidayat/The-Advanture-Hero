@@ -32,28 +32,35 @@ class GreatSword(Strength):
         super().__init__(name, category, kind, price, capasity, base_durability, strength)
 
 class BattleAxe(Strength):
+    '''
+    Kapak perang berat yang membutuhkan tenaga besar untuk diayunkan,
+    namun menghasilkan damage yang besar.
+    '''
     def __init__(
         self,
         name = "Battle Axe",
         category = "Strength",
         kind = "Weapon",
-        price = 500,
-        capasity = 8,
+        price = 300,
+        capasity = 7,
         base_durability = BASE_DURABILITY,
         strength = 20
     ):
         super().__init__(name, category, kind, price, capasity, base_durability, strength)
 
 class LongSword(Strength):
+    '''
+    Pedang besi dua tangan standar.
+    '''
     def __init__(
         self,
         name = "Long Sword",
         category = "Strength",
         kind = "Weapon",
-        price = 500,
+        price = 150,
         capasity = 8,
         base_durability = BASE_DURABILITY,
-        strength = 20
+        strength = 5
     ):
         super().__init__(name, category, kind, price, capasity, base_durability, strength)
 
@@ -63,9 +70,25 @@ class Mace(Strength):
         name = "Mace",
         category = "Strength",
         kind = "Weapon",
-        price = 500,
+        price = 200,
         capasity = 8,
         base_durability = BASE_DURABILITY,
-        strength = 20
+        strength = 10
+    ):
+        super().__init__(name, category, kind, price, capasity, base_durability, strength)
+
+class IronGauntlets(Strength):
+    '''
+    Sarung tangan besi yang menambah berat pukulan tangan.
+    '''
+    def __init__(
+        slef,
+        name = "Iron Gauntlets",
+        category = "Strength",
+        kind = "Armor",
+        price = 100,
+        capasity = 8,
+        base_durability = BASE_DURABILITY,
+        strength = 5
     ):
         super().__init__(name, category, kind, price, capasity, base_durability, strength)
