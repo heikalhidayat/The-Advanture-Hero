@@ -1,3 +1,5 @@
+from config import BASE_DURABILITY
+
 class Dexterity(Equipment):
     def __init__(
         self,
