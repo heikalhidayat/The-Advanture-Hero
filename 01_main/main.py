@@ -17,6 +17,17 @@ from karakter import Mage, Tank, Assassin, Support, Marksman, Fighter, Wizard, N
 # Import monster
 from normal_enemy import Slime
 
+# Import Skills
+from magical import (
+    ManaBurst, ShockTounch, ShockWave, RepelWave, ArcaneRing,
+    MagicShield, MagicArrow, SparkProjectile
+)
+from physical import (
+    BasicJab, LowKick, HeavyFist, SwepingLeg, PalmPush,
+    ElbowCharge, AirSlap, StrikeSlash, QuickTrust, WideSwing,
+    GuardBreak, CircularSlash, EnergyEdge
+)
+
 CLASS_KARAKTER_CARD = {
     "Mage": Mage,
     "Tank": Tank,
@@ -150,13 +161,15 @@ def barracks(id_player):
         for i, character in enumerate(all_character):
             print(f"{i+1}. Name: {character["name"]} | Job: {character["job"]}")
 
-            choice = get_choice("Select a character to view more information", range(1, len(all_character) + 1))
-            selected_character = all_character[choice - 1]
-
-            print(f"{CLASS_KARAKTER_CARD[selected_character["job"]]().__str__()}")
+        choice = get_choice("Select a character to view more information", range(1, len(all_character) + 1))
+        selected_character = all_character[choice - 1]
+        print(f"{CLASS_KARAKTER_CARD[selected_character["job"]]().__str__()}")
 
     conn.commit()
     conn.close()
+
+def activate_ability():
+    print(BasicJab())
 
 def training_area():
     print("\n============= TRAINING AREA ============")
@@ -235,14 +248,14 @@ def main():
     while True:
         menu()
         menu_choice = get_choice("menu", MENU_OPTIONS)
-        
+
         # LOBBY
         if menu_choice == 1:
 
           while True:
                 lobby()
                 lobby_choice = get_choice("Lobby", LOBBY_ROOM)
-            
+
                 # Tower Floor
                 if lobby_choice == 1:
                     while True:
@@ -270,22 +283,23 @@ def main():
                             pass
                         elif tower_floor_choice == 11:
                             break
-            
+
                 # Barracks
                 elif lobby_choice == 2:
                     barracks(id_player)
                     exit_bottom("enter", "continue")
-            
+                    break
+
                 # Training Area
                 elif lobby_choice == 3:
                     training_area()
                     exit_bottom("enter", "continue")
-            
+
                 # Armory
                 elif lobby_choice == 4:
                     armory()
                     exit_bottom("enter", "continue")
-            
+
                 # Blacksmith Shop
                 elif lobby_choice == 5:
                     blacksmith_shop()
@@ -303,10 +317,9 @@ def main():
                         summoning_choice = get_choice("Choose the summon you want, Master!", SUMMONING_TYPE)
 
                         if summoning_choice == 1:
-                            card_summoning_hero()
-                            card_summoning_hero_choice = get_choice("Select a summoning card, Master!", CARD_SUMMONING)
-
                             while True:
+                                card_summoning_hero()
+                                card_summoning_hero_choice = get_choice("Select a summoning card, Master!", CARD_SUMMONING)
                                 if card_summoning_hero_choice == 1:
                                     summoning_heroes(id_player)
                                     exit_bottom("enter", "continue")
@@ -316,10 +329,9 @@ def main():
                                     break
 
                         elif summoning_choice == 2:
-                            card_summoning_weapon()
-                            card_summoning_weapon_choice = get_choice("Select a summoning card, Master!", CARD_SUMMONING)
-
                             while True:
+                                card_summoning_weapon()
+                                card_summoning_weapon_choice = get_choice("Select a summoning card, Master!", CARD_SUMMONING)
                                 if card_summoning_weapon_choice == 1:
                                     exit_bottom("enter", "continue")
                                 elif card_summoning_weapon_choice == 2:
@@ -337,11 +349,11 @@ def main():
         # KARAKTER
         elif menu_choice == 2:
             pass
-        
+
         # SHOP
         elif menu_choice == 3:
             pass
-        
+
         # EXIT
         elif menu_choice == 4:
             print("\nThank you for playing!")
