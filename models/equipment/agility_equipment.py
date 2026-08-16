@@ -1,4 +1,5 @@
 from config import BASE_DURABILITY
+from base_equipment import Equipment
 
 class Agility(Equipment):
     def __init__(
