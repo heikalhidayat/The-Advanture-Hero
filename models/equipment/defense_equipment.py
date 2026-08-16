@@ -1,3 +1,5 @@
+from config import BASE_DURABILITY
+
 class Defense(Equipment):
     def __init__(
         self,
