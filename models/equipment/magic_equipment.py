@@ -1,4 +1,5 @@
 from config import BASE_DURABILITY
+from base_equipment import Equipment
 
 class Magic(Equipment):
     def __init__(
