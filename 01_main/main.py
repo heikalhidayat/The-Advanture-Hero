@@ -238,78 +238,101 @@ def main():
         
         # LOBBY
         if menu_choice == 1:
-            lobby()
-            lobby_choice = get_choice("Lobby", LOBBY_ROOM)
-            
-            # Tower Floor
-            if lobby_choice == 1:
-                tower_floor()
-                tower_floor_choice = get_choice("Select the desired Tower Floor", TOWER_FLOOR)
-                if tower_floor_choice == 1:
-                    monster()
 
-                exit_bottom("enter", "continue")
+          while True:
+                lobby()
+                lobby_choice = get_choice("Lobby", LOBBY_ROOM)
             
-            # Barracks
-            elif lobby_choice == 2:
-                barracks(id_player)
-                exit_bottom("enter", "continue")
+                # Tower Floor
+                if lobby_choice == 1:
+                    while True:
+                        tower_floor()
+                        tower_floor_choice = get_choice("Select the desired Tower Floor", TOWER_FLOOR)
+                        if tower_floor_choice == 1:
+                            monster()
+                        elif tower_floor_choice == 2:
+                            pass
+                        elif tower_floor_choice == 3:
+                            pass
+                        elif tower_floor_choice == 4:
+                            pass
+                        elif tower_floor_choice == 5:
+                            pass
+                        elif tower_floor_choice == 6:
+                            pass
+                        elif tower_floor_choice == 7:
+                            pass
+                        elif tower_floor_choice == 8:
+                            pass
+                        elif tower_floor_choice == 9:
+                            pass
+                        elif tower_floor_choice == 10:
+                            pass
+                        elif tower_floor_choice == 11:
+                            break
             
-            # Training Area
-            elif lobby_choice == 3:
-                training_area()
-                exit_bottom("enter", "continue")
+                # Barracks
+                elif lobby_choice == 2:
+                    barracks(id_player)
+                    exit_bottom("enter", "continue")
             
-            # Armory
-            elif lobby_choice == 4:
-                armory()
-                exit_bottom("enter", "continue")
+                # Training Area
+                elif lobby_choice == 3:
+                    training_area()
+                    exit_bottom("enter", "continue")
             
-            # Blacksmith Shop
-            elif lobby_choice == 5:
-                blacksmith_shop()
-                exit_bottom("enter", "continue")
+                # Armory
+                elif lobby_choice == 4:
+                    armory()
+                    exit_bottom("enter", "continue")
+            
+                # Blacksmith Shop
+                elif lobby_choice == 5:
+                    blacksmith_shop()
+                    exit_bottom("enter", "continue")
 
-            # Alchemical Laboratory
-            elif lobby_choice == 6:
-                alchemical_laboratory()
-                exit_bottom("enter", "continue")
+                # Alchemical Laboratory
+                elif lobby_choice == 6:
+                    alchemical_laboratory()
+                    exit_bottom("enter", "continue")
 
-            # Summoning Room
-            elif lobby_choice == 7:
-                while True:
-                    summoning_room()
-                    summoning_choice = get_choice("Choose the summon you want, Master!", SUMMONING_TYPE)
+                # Summoning Room
+                elif lobby_choice == 7:
+                    while True:
+                        summoning_room()
+                        summoning_choice = get_choice("Choose the summon you want, Master!", SUMMONING_TYPE)
 
-                    if summoning_choice == 1:
-                        card_summoning_hero()
-                        card_summoning_hero_choice = get_choice("Select a summoning card, Master!", CARD_SUMMONING)
+                        if summoning_choice == 1:
+                            card_summoning_hero()
+                            card_summoning_hero_choice = get_choice("Select a summoning card, Master!", CARD_SUMMONING)
 
-                        if card_summoning_hero_choice == 1:
-                            summoning_heroes(id_player)
-                            exit_bottom("enter", "continue")
-                        elif card_summoning_hero_choice == 2:
-                            exit_bottom("enter", "continue")
-                        elif card_summoning_hero_choice == 3:
+                            while True:
+                                if card_summoning_hero_choice == 1:
+                                    summoning_heroes(id_player)
+                                    exit_bottom("enter", "continue")
+                                elif card_summoning_hero_choice == 2:
+                                    exit_bottom("enter", "continue")
+                                elif card_summoning_hero_choice == 3:
+                                    break
+
+                        elif summoning_choice == 2:
+                            card_summoning_weapon()
+                            card_summoning_weapon_choice = get_choice("Select a summoning card, Master!", CARD_SUMMONING)
+
+                            while True:
+                                if card_summoning_weapon_choice == 1:
+                                    exit_bottom("enter", "continue")
+                                elif card_summoning_weapon_choice == 2:
+                                    exit_bottom("enter", "continue")
+                                elif card_summoning_weapon_choice == 3:
+                                    break
+
+                        elif summoning_choice == 3:
                             break
 
-                    elif summoning_choice == 2:
-                        card_summoning_weapon()
-                        card_summoning_weapon_choice = get_choice("Select a summoning card, Master!", CARD_SUMMONING)
-
-                        if card_summoning_weapon_choice == 1:
-                            exit_bottom("enter", "continue")
-                        elif card_summoning_weapon_choice == 2:
-                            exit_bottom("enter", "continue")
-                        elif card_summoning_weapon_choice == 3:
-                            break
-
-                    elif summoning_choice == 3:
-                        break
-
-            # Back
-            elif lobby_choice == 8:
-                break
+                # Back
+                elif lobby_choice == 8:
+                    break
 
         # KARAKTER
         elif menu_choice == 2:
