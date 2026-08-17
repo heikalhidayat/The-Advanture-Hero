@@ -7,6 +7,9 @@ from config import BASE_HP_MULTIPLIER, BASE_ENERGY_MULTIPLIER, BASE_MANA_MULTIPL
 # Import stat increase
 from config import STAT_INCREASE_HP, STAT_INCREASE_ENERGY, STAT_INCREASE_MANA, STAT_INCREASE_STRENGTH, STAT_INCREASE_AGILITY, STAT_INCREASE_DEFENSE, STAT_INCREASE_MAGIC, STAT_INCREASE_DEXTERITY, STAT_INCREASE_RESISTANCE
 
+# Import slot skil
+from config import SLOT_SKILL
+
 class Karakter:
     def __init__(
         self,
@@ -15,6 +18,7 @@ class Karakter:
         tier: int = 1,
         level: int = 1,
         exp: int = 0,
+        slot_skill = SLOT_SKILL,
         # base values
         base_hp: int = BASE_HP,
         base_energy: int = BASE_ENERGY,
@@ -41,6 +45,7 @@ class Karakter:
         self.tier = tier
         self.level = level
         self.exp = exp
+        self.slot_skill = slot_skill
 
         # base values and current values
         self.base_hp = base_hp
