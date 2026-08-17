@@ -167,30 +167,7 @@ class Skills:
             f"Intelligence: {self.intelligence}\n"
           )
         
-class BasicJab(Skills):
-    def __init__(
-        self,
-        name = "BASIC JAB",
-        category = "Physical",
-        armed = False,
-        range_type = "Melee",
-        debuff = None,
-        level = 1,
-        competence = 100,
-        energy = 20,
-        mana = 0,
-        strength = 50,
-        agility = 0,
-        defense = 0,
-        vitality = 0,
-        magic = 0,
-        dexterity = 0,
-        resistance = 0,
-        intelligence = 0
-    ):
-        super().__init__(name, category, armed, range_type, debuff, level, competence, energy, mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence)
-
-        
+# Example 
 player_stats = {
       "Level": 1,
       "Energy": 100,
@@ -206,11 +183,3 @@ player_stats = {
 }
 
 stats_lower = {key.lower(): value for key, value in player_stats.items()}
-
-tinju = BasicJab()
-print(tinju.activate_skill(stats_lower))
-print(tinju.__str__())
-tinju.gain_experience(500)
-print()
-print(tinju.__str__())
-print(tinju.__repr__())
