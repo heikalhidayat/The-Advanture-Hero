@@ -142,6 +142,13 @@ class Karakter:
     def total_resistance(self) -> int:
         return self.resistance + (self.intelligence * self.tier * BASE_RESISTANCE_MULTIPLIER) + self.resistance_bonus
 
+    def skill_slot_limit(self) -> str:
+        count = len(self.slot_skill)
+        if count == 0:
+            return f"The {self.name} does not yet possess any skills"
+        elif count > 4:
+            return f"inadequate capacity"
+
     def level_up(self):
         self.level += 1
         # restore sedikit current HP
