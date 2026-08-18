@@ -13,7 +13,7 @@ from config import (
     STAT_INCREASE_STRENGTH, STAT_INCREASE_AGILITY, STAT_INCREASE_DEFENSE,
     STAT_INCREASE_MAGIC, STAT_INCREASE_DEXTERITY, STAT_INCREASE_RESISTANCE,
     # Import slot skil
-    SLOT_SKILL
+    SLOT_SKILL, BASE_CAPASITY_SKILL
 )
 
 class Karakter:
@@ -146,7 +146,7 @@ class Karakter:
         count = len(self.slot_skill)
         if count == 0:
             return f"The {self.name} does not yet possess any skills"
-        elif count > 4:
+        elif count > BASE_CAPASITY_SKILL:
             return f"inadequate capacity"
 
     def level_up(self):
