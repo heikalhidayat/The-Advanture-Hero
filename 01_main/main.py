@@ -168,7 +168,25 @@ def barracks(id_player):
     conn.commit()
     conn.close()
 
-def activate_ability():
+def activate_ability(id_player):
+    # belum lengkap
+    conn = sqlite3.connect(DATABASE_NAME)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    cursor.execute('''
+        INSERT INTO skill (
+            id_player, name, category, armed, range_type, debuff, level, competence, energy, mana,
+            strength, agility, defense, vitality, magic, dexterity, resistance, intelligence
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',(
+            (id_player),
+        )
+    )
+        
+    conn.commit()
+    conn.close()
+
     skill_available = SLOT_SKILL # ganti jadi ke database
     if len(skill_available) == 0:
         print("Do not yet possess those skills")
@@ -246,7 +264,7 @@ def summoning_heroes(id_player):
                    (summoning_free.resistance_bonus)
            )
     )
-    
+
     conn.commit()
     conn.close()
 
