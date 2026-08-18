@@ -9,6 +9,7 @@ class Fighter(Karakter):
         tier = 1,
         level = 1, 
         exp = 0,
+        slot_skill = 4,
         base_hp = BASE_HP,
         base_energy = BASE_ENERGY,
         base_mana = BASE_MANA,
@@ -27,7 +28,7 @@ class Fighter(Karakter):
         dexterity_bonus = 0,
         resistance_bonus = 0
     ):
-        super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus, defense_bonus)
+        super().__init__(name, job, tier, level, exp, slot_skill, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus, defense_bonus)
 
 class Tank(Karakter):
     def __init__(
@@ -37,6 +38,7 @@ class Tank(Karakter):
         tier = 1,
         level = 1, 
         exp = 0, 
+        slot_skill = 4,
         base_hp = BASE_HP,
         base_energy = BASE_ENERGY,
         base_mana = BASE_MANA, 
@@ -55,7 +57,7 @@ class Tank(Karakter):
         dexterity_bonus = 0,
         resistance_bonus = 0
     ):
-        super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus, defense_bonus)
+        super().__init__(name, job, tier, level, exp, slot_skill, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus, defense_bonus)
 
 class Mage(Karakter):
     def __init__(
@@ -65,6 +67,7 @@ class Mage(Karakter):
         tier = 1,
         level = 1, 
         exp = 0,
+        slot_skill = 4,
         base_hp = BASE_HP,
         base_energy = BASE_ENERGY,
         base_mana = BASE_MANA,
@@ -83,7 +86,7 @@ class Mage(Karakter):
         dexterity_bonus = 0,
         resistance_bonus = 0
     ):
-        super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus, defense_bonus)
+        super().__init__(name, job, tier, level, exp, slot_skill, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus, defense_bonus)
 
 class Assassin(Karakter):
     def __init__(
@@ -93,6 +96,7 @@ class Assassin(Karakter):
         tier = 1,
         level = 1, 
         exp = 0,
+        slot_skill = 4,
         base_hp = BASE_HP,
         base_energy = BASE_ENERGY,
         base_mana = BASE_MANA,
@@ -111,7 +115,7 @@ class Assassin(Karakter):
         dexterity_bonus = 0,
         resistance_bonus = 0
     ):
-        super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus, defense_bonus)
+        super().__init__(name, job, tier, level, exp, slot_skill, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus, defense_bonus)
 
 class Marksman(Karakter):
     def __init__(
@@ -121,6 +125,7 @@ class Marksman(Karakter):
         tier = 1,
         level = 1, 
         exp = 0,
+        slot_skill = 4,
         base_hp = BASE_HP,
         base_energy = BASE_ENERGY,
         base_mana = BASE_MANA,
@@ -139,7 +144,7 @@ class Marksman(Karakter):
         dexterity_bonus = 0,
         resistance_bonus = 0
     ):
-        super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus, defense_bonus)
+        super().__init__(name, job, tier, level, exp, slot_skill, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus, defense_bonus)
 
 class Support(Karakter):
     def __init__(
@@ -149,6 +154,7 @@ class Support(Karakter):
         tier = 1,
         level = 1, 
         exp = 0,
+        slot_skill = 4,
         base_hp = BASE_HP,
         base_energy = BASE_ENERGY,
         base_mana = BASE_MANA,
@@ -167,7 +173,7 @@ class Support(Karakter):
         dexterity_bonus = 0,
         resistance_bonus = 0
     ):
-        super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus, defense_bonus)
+        super().__init__(name, job, tier, level, exp, slot_skill, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus, defense_bonus)
 
 class Wizard(Karakter):
     def __init__(
@@ -177,6 +183,7 @@ class Wizard(Karakter):
         tier = 1,
         level = 1, 
         exp = 0,
+        slot_skill = 4,
         base_hp = BASE_HP,
         base_energy = BASE_ENERGY,
         base_mana = BASE_MANA,
@@ -195,7 +202,7 @@ class Wizard(Karakter):
         dexterity_bonus = 0,
         resistance_bonus = 0
     ):
-        super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus, defense_bonus)
+        super().__init__(name, job, tier, level, exp, slot_skill, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus, defense_bonus)
 
 class Necromancer(Karakter):
     def __init__(
@@ -205,6 +212,7 @@ class Necromancer(Karakter):
         tier = 1,
         level = 1, 
         exp = 0,
+        slot_skill = 4,
         base_hp = BASE_HP,
         base_energy = BASE_ENERGY,
         base_mana = BASE_MANA,
@@ -223,4 +231,4 @@ class Necromancer(Karakter):
         dexterity_bonus = 0,
         resistance_bonus = 0
     ):
-        super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus, defense_bonus)
+        super().__init__(name, job, tier, level, exp, slot_skill, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus, defense_bonus)
