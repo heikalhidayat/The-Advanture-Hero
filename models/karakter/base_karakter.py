@@ -167,7 +167,8 @@ class Karakter:
         self.max_exp = self.compute_max_exp()
         print(f"LEVEL UP! {self.name} naik ke Level {self.level}")
 
-    def up(self):
+    def gain_exp(self, amount: int):
+        self.exp += amount
         while self.exp >= self.max_exp:
             self.exp -= self.max_exp
             self.level_up()
