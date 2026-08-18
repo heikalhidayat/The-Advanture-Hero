@@ -169,7 +169,12 @@ def barracks(id_player):
     conn.close()
 
 def activate_ability():
-    print(BasicJab())
+    skill_available = SLOT_SKILL # ganti jadi ke database
+    if len(skill_available) == 0:
+        print("Do not yet possess those skills")
+    else:
+        for i, skill in enumerate(skill_available):
+            print(f"{i+1}. {skill}")
 
 def training_area():
     print("\n============= TRAINING AREA ============")
@@ -210,9 +215,13 @@ def summoning_heroes(id_player):
     cursor = conn.cursor()
 
     cursor.execute('''
-        INSERT INTO karakter (id_player, name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus) VALUES
-        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
-                   ((id_player),
+        INSERT INTO karakter (
+            id_player, name, job, tier, level, exp, base_hp, base_energy, base_mana, strength,
+            agility, defense, vitality, magic, dexterity, resistance, intelligence,
+            strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus
+        ) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''', (
+                   (id_player),
                    (summoning_free.name),
                    (summoning_free.job),
                    (summoning_free.tier),
@@ -234,8 +243,10 @@ def summoning_heroes(id_player):
                    (summoning_free.defense_bonus),
                    (summoning_free.magic_bonus),
                    (summoning_free.dexterity_bonus),
-                   (summoning_free.resistance_bonus))
-          )
+                   (summoning_free.resistance_bonus)
+           )
+    )
+    
     conn.commit()
     conn.close()
 
