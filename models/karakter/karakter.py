@@ -1,6 +1,6 @@
 from config import BASE_HP, BASE_ENERGY, BASE_MANA
 from base_karakter import Karakter
-from physical import HeavySmash, BattleCry, CycloneSlash, BerserkCharge
+from physical import HeavySmash, BattleCry, CycloneSlash, BerserkCharge, BasicJab
 
 class Fighter(Karakter):
     def __init__(
@@ -43,9 +43,6 @@ class Fighter(Karakter):
         self.skill_02 = BattleCry()
         self.skill_03 = CycloneSlash()
         self.skill_04 = BerserkCharge()
-
-        def change_skill(self, new_skill):
-            pass
 
 class Tank(Karakter):
     def __init__(
@@ -308,7 +305,8 @@ class Necromancer(Karakter):
 
 # EXAMPLE
 karu = Fighter()
-
+jab = BasicJab()
+print(jab.dict_karaker)
 print(karu.skill_01)
 print(karu.strength)
 print(karu.dict_karaker["Energy"])
