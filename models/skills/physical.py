@@ -1,473 +1,303 @@
-from base_skills import Skills
+from config import BASE_HP, BASE_ENERGY, BASE_MANA
+from base_karakter import Karakter
+from physical import HeavySmash, BattleCry, CycloneSlash, BerserkCharge
 
-from config import (
-      BASE_ENERGY,
-      BASE_MANA,
-      BASE_STRENGTH,
-      BASE_AGILITY,
-      BASE_DEFENSE,
-      BASE_VITALITY,
-      BASE_MAGIC,
-      BASE_DEXTERITY,
-      BASE_RESISTANCE,
-      BASE_INTELLIGENCE
-)
-
-class BasicJab(Skills):
+class Fighter(Karakter):
     def __init__(
         self,
-        name = "BASIC JAB",
-        category = "Physical",
-        armed = False,
-        range_type = "Melee",
-        debuff = None,
-        level = 1,
-        competence = 0,
-        energy = BASE_ENERGY,
-        mana = 0,
-        strength = BASE_STRENGTH,
-        agility = BASE_AGILITY,
-        defense = BASE_DEFENSE,
-        vitality = BASE_VITALITY,
+        name = "Ragnar",
+        job = "Fighter",
+        tier = 1,
+        level = 1, 
+        exp = 0,
+        skill_01 = None,
+        skill_02 = None,
+        skill_03 = None,
+        skill_04 = None,
+        base_hp = BASE_HP,
+        base_energy = BASE_ENERGY,
+        base_mana = BASE_MANA,
+        strength = 10,
+        agility = 6,
+        defense = 8, 
+        vitality = 20,
         magic = 0,
-        dexterity = BASE_DEXTERITY,
-        resistance = 0,
-        intelligence = 0
+        dexterity = 2,
+        resistance = 4,
+        intelligence = 10,
+        strength_bonus = 0,
+        agility_bonus = 0,
+        defense_bonus = 0,
+        magic_bonus = 0,
+        dexterity_bonus = 0,
+        resistance_bonus = 0
     ):
         super().__init__(
-            name, category, armed, range_type, debuff, level, competence,
-            energy, mana, strength, agility, defense, vitality, magic,
-            dexterity, resistance, intelligence
+            name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04, 
+            base_hp, base_energy, base_mana, strength, agility, defense, 
+            vitality, magic, dexterity, resistance, intelligence, strength_bonus,
+            agility_bonus, defense_bonus
         )
+        self.skill_01 = HeavySmash()
+        self.skill_02 = BattleCry()
+        self.skill_03 = CycloneSlash()
+        self.skill_04 = BerserkCharge()
 
-class LowKick(Skills):
+class Tank(Karakter):
     def __init__(
         self,
-        name = "Low Kick",
-        category = "Physical",
-        armed = False,
-        range_type = "Melee",
-        debuff = "Stun",
-        level = 1,
-        competence = 0,
-        energy = BASE_ENERGY,
-        mana = 0,
-        strength = BASE_STRENGTH,
-        agility = BASE_AGILITY,
-        defense = BASE_DEFENSE,
-        vitality = BASE_VITALITY,
+        name = "Aegis",
+        job = "Tanker",
+        tier = 1,
+        level = 1, 
+        exp = 0, 
+        skill_01 = None,
+        skill_02 = None,
+        skill_03 = None,
+        skill_04 = None,
+        base_hp = BASE_HP,
+        base_energy = BASE_ENERGY,
+        base_mana = BASE_MANA, 
+        strength = 10,
+        agility = 5,
+        defense = 13, 
+        vitality = 25,
         magic = 0,
-        dexterity = BASE_DEXTERITY,
-        resistance = 0,
-        intelligence = 0
+        dexterity = 0,
+        resistance = 2,
+        intelligence = 5,
+        strength_bonus = 0,
+        agility_bonus = 0,
+        defense_bonus = 0,
+        magic_bonus = 0,
+        dexterity_bonus = 0,
+        resistance_bonus = 0
     ):
         super().__init__(
-            name, category, armed, range_type, debuff, level, competence,
-            energy, mana, strength, agility, defense, vitality, magic, 
-            dexterity, resistance, intelligence
+            name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04, 
+            base_hp, base_energy, base_mana, strength, agility, defense, 
+            vitality, magic, dexterity, resistance, intelligence, strength_bonus,
+            agility_bonus, defense_bonus
         )
 
-class HeavyFist(Skills):
+class Mage(Karakter):
     def __init__(
         self,
-        name = "Heavy Fist",
-        category = "Physical",
-        armed = False,
-        range_type = "Melee",
-        debuff = "Knockback",
-        level = 1,
-        competence = 0,
-        energy = BASE_ENERGY,
-        mana = 0,
-        strength = BASE_STRENGTH,
-        agility = BASE_AGILITY,
-        defense = BASE_DEFENSE,
-        vitality = BASE_VITALITY,
-        magic = 0,
-        dexterity = BASE_DEXTERITY,
-        resistance = 0,
-        intelligence = 0
+        name = "Ignis",
+        job = "Mage",
+        tier = 1,
+        level = 1, 
+        exp = 0,
+        skill_01 = None,
+        skill_02 = None,
+        skill_03 = None,
+        skill_04 = None,
+        base_hp = BASE_HP,
+        base_energy = BASE_ENERGY,
+        base_mana = BASE_MANA,
+        strength = 2,
+        agility = 2,
+        defense = 1, 
+        vitality = 5,
+        magic = 15,
+        dexterity = 6,
+        resistance = 4,
+        intelligence = 25,
+        strength_bonus = 0,
+        agility_bonus = 0,
+        defense_bonus = 0,
+        magic_bonus = 0,
+        dexterity_bonus = 0,
+        resistance_bonus = 0
     ):
         super().__init__(
-            name, category, armed, range_type, debuff, level, competence, 
-            energy, mana, strength, agility, defense, vitality, magic, 
-            dexterity, resistance, intelligence
+            name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04, 
+            base_hp, base_energy, base_mana, strength, agility, defense, 
+            vitality, magic, dexterity, resistance, intelligence, strength_bonus,
+            agility_bonus, defense_bonus
         )
 
-class HeavySmash(Skills):
+class Assassin(Karakter):
     def __init__(
         self,
-        name = "Heavy Smash",
-        category = "Physical",
-        armed = True,
-        range_type = "Melee",
-        debuff = "Stun",
-        level = 1,
-        competence = 0,
-        energy = BASE_ENERGY,
-        mana = 0,
-        strength = 6,
-        agility = 1,
+        name = "Grim",
+        job = "Assassin",
+        tier = 1,
+        level = 1, 
+        exp = 0,
+        skill_01 = None,
+        skill_02 = None,
+        skill_03 = None,
+        skill_04 = None,
+        base_hp = BASE_HP,
+        base_energy = BASE_ENERGY,
+        base_mana = BASE_MANA,
+        strength = 8,
+        agility = 15,
         defense = 1,
-        vitality = 1,
+        vitality = 18,
         magic = 0,
-        dexterity = 1,
+        dexterity = 6,
         resistance = 0,
-        intelligence = 0
+        intelligence = 12,
+        strength_bonus = 0,
+        agility_bonus = 0,
+        defense_bonus = 0,
+        magic_bonus = 0,
+        dexterity_bonus = 0,
+        resistance_bonus = 0
     ):
         super().__init__(
-            name, category, armed, range_type, debuff, level, competence,
-            energy, mana, strength, agility, defense, vitality, magic, 
-            dexterity, resistance, intelligence
+            name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04, 
+            base_hp, base_energy, base_mana, strength, agility, defense, 
+            vitality, magic, dexterity, resistance, intelligence, strength_bonus,
+            agility_bonus, defense_bonus
         )
 
-class BattleCry(Skills):
+class Marksman(Karakter):
     def __init__(
         self,
-        name = "Battle Cry",
-        category = "Physical",
-        armed = False,
-        range_type = "Melee",
-        debuff = None,
-        level = 1,
-        competence = 0,
-        energy = BASE_ENERGY,
-        mana = 0,
-        strength = 5,
-        agility = 1,
-        defense = 3,
-        vitality = 1,
+        name = "Hawkeye",
+        job = "Marksman",
+        tier = 1,
+        level = 1, 
+        exp = 0,
+        skill_01 = None,
+        skill_02 = None,
+        skill_03 = None,
+        skill_04 = None,
+        base_hp = BASE_HP,
+        base_energy = BASE_ENERGY,
+        base_mana = BASE_MANA,
+        strength = 6,
+        agility = 6,
+        defense = 1, 
+        vitality = 12,
         magic = 0,
-        dexterity = 1,
-        resistance = 0,
-        intelligence = 0
+        dexterity = 15,
+        resistance = 2,
+        intelligence = 18,
+        strength_bonus = 0,
+        agility_bonus = 0,
+        defense_bonus = 0,
+        magic_bonus = 0,
+        dexterity_bonus = 0,
+        resistance_bonus = 0
     ):
         super().__init__(
-            name, category, armed, range_type, debuff, level, competence, 
-            energy, mana, strength, agility, defense, vitality, magic, 
-            dexterity, resistance, intelligence
-        ) 
+            name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04, 
+            base_hp, base_energy, base_mana, strength, agility, defense, 
+            vitality, magic, dexterity, resistance, intelligence, strength_bonus,
+            agility_bonus, defense_bonus
+        )
 
-class CycloneSlash(Skills):
+class Support(Karakter):
     def __init__(
         self,
-        name = "Cyclone Slash",
-        category = "Physical",
-        armed = True,
-        range_type = "Melee",
-        debuff = None,
-        level = 1,
-        competence = 0,
-        energy = BASE_ENERGY,
-        mana = 0,
-        strength = 4,
+        name = "Lyra",
+        job = "Support",
+        tier = 1,
+        level = 1, 
+        exp = 0,
+        skill_01 = None,
+        skill_02 = None,
+        skill_03 = None,
+        skill_04 = None,
+        base_hp = BASE_HP,
+        base_energy = BASE_ENERGY,
+        base_mana = BASE_MANA,
+        strength = 2,
         agility = 2,
-        defense = 0,
-        vitality = 1,
-        magic = 0,
-        dexterity = 3,
-        resistance = 0,
-        intelligence = 0
+        defense = 4, 
+        vitality = 8,
+        magic = 10,
+        dexterity = 2,
+        resistance = 10,
+        intelligence = 22,
+        strength_bonus = 0,
+        agility_bonus = 0,
+        defense_bonus = 0,
+        magic_bonus = 0,
+        dexterity_bonus = 0,
+        resistance_bonus = 0
     ):
         super().__init__(
-            name, category, armed, range_type, debuff, level, competence,
-            energy, mana, strength, agility, defense, vitality, magic,
-            dexterity, resistance, intelligence
+            name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04, 
+            base_hp, base_energy, base_mana, strength, agility, defense, 
+            vitality, magic, dexterity, resistance, intelligence, strength_bonus,
+            agility_bonus, defense_bonus
         )
 
-class BerserkCharge(Skills):
+class Wizard(Karakter):
     def __init__(
         self,
-        name = "Berserk Charge",
-        category = "Physical",
-        armed = False,
-        range_type = "Melee",
-        debuff = None,
-        level = 1,
-        competence = 0,
-        energy = BASE_ENERGY,
-        mana = 0,
-        strength = 5,
+        name = "Zphyr",
+        job = "Wizard",
+        tier = 1,
+        level = 1, 
+        exp = 0,
+        skill_01 = None,
+        skill_02 = None,
+        skill_03 = None,
+        skill_04 = None,
+        base_hp = BASE_HP,
+        base_energy = BASE_ENERGY,
+        base_mana = BASE_MANA,
+        strength = 0,
         agility = 2,
+        defense = 0, 
+        vitality = 5,
+        magic = 18,
+        dexterity = 6,
+        resistance = 4,
+        intelligence = 25,
+        strength_bonus = 0,
+        agility_bonus = 0,
+        defense_bonus = 0,
+        magic_bonus = 0,
+        dexterity_bonus = 0,
+        resistance_bonus = 0
+    ):
+        super().__init__(
+            name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04, 
+            base_hp, base_energy, base_mana, strength, agility, defense, 
+            vitality, magic, dexterity, resistance, intelligence, strength_bonus,
+            agility_bonus, defense_bonus
+        )
+
+class Necromancer(Karakter):
+    def __init__(
+        self,
+        name = "Mortis",
+        job = "Necromancer",
+        tier = 1,
+        level = 1, 
+        exp = 0,
+        skill_01 = None,
+        skill_02 = None,
+        skill_03 = None,
+        skill_04 = None,
+        base_hp = BASE_HP,
+        base_energy = BASE_ENERGY,
+        base_mana = BASE_MANA,
+        strength = 0,
+        agility = 0,
         defense = 0,
-        vitality = 2,
-        magic = 0,
-        dexterity = 1,
-        resistance = 0,
-        intelligence = 0
+        vitality = 5,
+        magic = 20,
+        dexterity = 2,
+        resistance = 8,
+        intelligence = 25,
+        strength_bonus = 0,
+        agility_bonus = 0,
+        defense_bonus = 0,
+        magic_bonus = 0,
+        dexterity_bonus = 0,
+        resistance_bonus = 0
     ):
         super().__init__(
-            name, category, armed, range_type, debuff, level, competence,
-            energy, mana, strength, agility, defense, vitality, magic,
-            dexterity, resistance, intelligence
-    )     
-         
-class SwepingLeg(Skills):
-    def __init__(
-        self,
-        name = "Sweping Leg",
-        category = "Physical",
-        armed = False,
-        range_type = "Melee",
-        debuff = "Stun",
-        level = 1,
-        competence = 0,
-        energy = BASE_ENERGY,
-        mana = 0,
-        strength = BASE_STRENGTH,
-        agility = BASE_AGILITY,
-        defense = BASE_DEFENSE,
-        vitality = BASE_VITALITY,
-        magic = 0,
-        dexterity = BASE_DEXTERITY,
-        resistance = 0,
-        intelligence = 0
-    ):
-        super().__init__(
-            name, category, armed, range_type, debuff, level, competence,
-            energy, mana, strength, agility, defense, vitality, magic, 
-            dexterity, resistance, intelligence
-        )
-
-class PalmPush(Skills):
-    def __init__(
-        self,
-        name = "Palm Push",
-        category = "Physical",
-        armed = False,
-        range_type = "Melee",
-        debuff = "Stun",
-        level = 1,
-        competence = 0,
-        energy = BASE_ENERGY,
-        mana = 0,
-        strength = BASE_STRENGTH,
-        agility = BASE_AGILITY,
-        defense = BASE_DEFENSE,
-        vitality = BASE_VITALITY,
-        magic = 0,
-        dexterity = BASE_DEXTERITY,
-        resistance = 0,
-        intelligence = 0
-    ):
-        super().__init__(
-            name, category, armed, range_type, debuff, level, competence,
-            energy, mana, strength, agility, defense, vitality, magic, 
-            dexterity, resistance, intelligence
-        )
-
-class ElbowCharge(Skills):
-    def __init__(
-        self,
-        name = "Elbow Charge",
-        category = "Physical",
-        armed = False,
-        range_type = "Melee",
-        debuff = "Stun",
-        level = 1,
-        competence = 0,
-        energy = BASE_ENERGY,
-        mana = 0,
-        strength = BASE_STRENGTH,
-        agility = BASE_AGILITY,
-        defense = BASE_DEFENSE,
-        vitality = BASE_VITALITY,
-        magic = 0,
-        dexterity = BASE_DEXTERITY,
-        resistance = 0,
-        intelligence = 0
-    ):
-        super().__init__(
-            name, category, armed, range_type, debuff, level, competence, 
-            energy, mana, strength, agility, defense, vitality, magic,
-            dexterity, resistance, intelligence
-        )
-
-class AirSlap(Skills):
-    def __init__(
-        self,
-        name = "Air Slap",
-        category = "Physical",
-        armed = False,
-        range_type = "Melee",
-        debuff = "Stun",
-        level = 1,
-        competence = 0,
-        energy = BASE_ENERGY,
-        mana = 0,
-        strength = BASE_STRENGTH,
-        agility = BASE_AGILITY,
-        defense = BASE_DEFENSE,
-        vitality = BASE_VITALITY,
-        magic = 0,
-        dexterity = BASE_DEXTERITY,
-        resistance = 0,
-        intelligence = 0
-    ):
-        super().__init__(
-            name, category, armed, range_type, debuff, level, competence, 
-            energy, mana, strength, agility, defense, vitality, magic, 
-            dexterity, resistance, intelligence
-        )
-
-class StrikeSlash(Skills):
-    def __init__(
-        self,
-        name = "Strike Slash",
-        category = "Physical",
-        armed = True,
-        range_type = "Melee",
-        debuff = "Stun",
-        level = 1,
-        competence = 0,
-        energy = BASE_ENERGY,
-        mana = 0,
-        strength = BASE_STRENGTH,
-        agility = BASE_AGILITY,
-        defense = BASE_DEFENSE,
-        vitality = BASE_VITALITY,
-        magic = 0,
-        dexterity = BASE_DEXTERITY,
-        resistance = 0,
-        intelligence = 0
-    ):
-        super().__init__(
-            name, category, armed, range_type, debuff, level, competence,
-            energy, mana, strength, agility, defense, vitality, magic,
-            dexterity, resistance, intelligence
-        )
-
-class QuickTrust(Skills):
-    def __init__(
-        self,
-        name = "Quick Trust",
-        category = "Physical",
-        armed = True,
-        range_type = "Melee",
-        debuff = "Stun",
-        level = 1,
-        competence = 0,
-        energy = BASE_ENERGY,
-        mana = 0,
-        strength = BASE_STRENGTH,
-        agility = BASE_AGILITY,
-        defense = BASE_DEFENSE,
-        vitality = BASE_VITALITY,
-        magic = 0,
-        dexterity = BASE_DEXTERITY,
-        resistance = 0,
-        intelligence = 0
-    ):
-        super().__init__(
-            name, category, armed, range_type, debuff, level, competence, 
-            energy, mana, strength, agility, defense, vitality, magic,
-            dexterity, resistance, intelligence
-        )
-
-class WideSwing(Skills):
-    def __init__(
-        self,
-        name = "Wide Swing",
-        category = "Physical",
-        armed = True,
-        range_type = "Melee",
-        debuff = "Stun",
-        level = 1,
-        competence = 0,
-        energy = BASE_ENERGY,
-        mana = 0,
-        strength = BASE_STRENGTH,
-        agility = BASE_AGILITY,
-        defense = BASE_DEFENSE,
-        vitality = BASE_VITALITY,
-        magic = 0,
-        dexterity = BASE_DEXTERITY,
-        resistance = 0,
-        intelligence = 0
-    ):
-        super().__init__(
-            name, category, armed, range_type, debuff, level, competence,
-            energy, mana, strength, agility, defense, vitality, magic, 
-            dexterity, resistance, intelligence
-        )
-
-class GuardBreak(Skills):
-    def __init__(
-        self,
-        name = "Guard Break",
-        category = "Physical",
-        armed = True,
-        range_type = "Melee",
-        debuff = "Stun",
-        level = 1,
-        competence = 0,
-        energy = BASE_ENERGY,
-        mana = 0,
-        strength = BASE_STRENGTH,
-        agility = BASE_AGILITY,
-        defense = BASE_DEFENSE,
-        vitality = BASE_VITALITY,
-        magic = 0,
-        dexterity = BASE_DEXTERITY,
-        resistance = 0,
-        intelligence = 0
-    ):
-        super().__init__(
-            name, category, armed, range_type, debuff, level, competence,
-            energy, mana, strength, agility, defense, vitality, magic,
-            dexterity, resistance, intelligence
-        )
-
-class CircularSlash(Skills):
-    def __init__(
-        self,
-        name = "Circular Slash",
-        category = "Physical",
-        armed = True,
-        range_type = "Melee",
-        debuff = "Stun",
-        level = 1,
-        competence = 0,
-        energy = BASE_ENERGY,
-        mana = 0,
-        strength = BASE_STRENGTH,
-        agility = BASE_AGILITY,
-        defense = BASE_DEFENSE,
-        vitality = BASE_VITALITY,
-        magic = 0,
-        dexterity = BASE_DEXTERITY,
-        resistance = 0,
-        intelligence = 0
-    ):
-        super().__init__(
-            name, category, armed, range_type, debuff, level, competence, 
-            energy, mana, strength, agility, defense, vitality, magic,
-            dexterity, resistance, intelligence
-        )
-
-class EnergyEdge(Skills):
-    def __init__(
-        self,
-        name = "Energy Edge",
-        category = "Magical",
-        armed = False,
-        range_type = "Ranged",
-        debuff = "Stun",
-        level = 1,
-        competence = 0,
-        energy = BASE_ENERGY,
-        mana = 0,
-        strength = BASE_STRENGTH,
-        agility = BASE_AGILITY,
-        defense = BASE_DEFENSE,
-        vitality = BASE_VITALITY,
-        magic = 0,
-        dexterity = BASE_DEXTERITY,
-        resistance = 0,
-        intelligence = 0
-    ):
-        super().__init__(
-            name, category, armed, range_type, debuff, level, competence, 
-            energy, mana, strength, agility, defense, vitality, magic, 
-            dexterity, resistance, intelligence
+            name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04, 
+            base_hp, base_energy, base_mana, strength, agility, defense, 
+            vitality, magic, dexterity, resistance, intelligence, strength_bonus,
+            agility_bonus, defense_bonus
         )
