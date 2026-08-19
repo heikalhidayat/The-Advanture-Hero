@@ -24,7 +24,7 @@ class BasicJab(Skills):
         level = 1,
         competence = 0,
         energy = BASE_ENERGY,
-        mana = BASE_MANA,
+        mana = 0,
         strength = BASE_STRENGTH,
         agility = BASE_AGILITY,
         defense = BASE_DEFENSE,
@@ -34,7 +34,11 @@ class BasicJab(Skills):
         resistance = 0,
         intelligence = 0
     ):
-        super().__init__(name, category, armed, range_type, debuff, level, competence, energy, mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence)
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence,
+            energy, mana, strength, agility, defense, vitality, magic,
+            dexterity, resistance, intelligence
+        )
 
 class LowKick(Skills):
     def __init__(
@@ -47,7 +51,7 @@ class LowKick(Skills):
         level = 1,
         competence = 0,
         energy = BASE_ENERGY,
-        mana = BASE_MANA,
+        mana = 0,
         strength = BASE_STRENGTH,
         agility = BASE_AGILITY,
         defense = BASE_DEFENSE,
@@ -57,7 +61,11 @@ class LowKick(Skills):
         resistance = 0,
         intelligence = 0
     ):
-        super().__init__(name, category, armed, range_type, debuff, level, competence, energy, mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence)
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence,
+            energy, mana, strength, agility, defense, vitality, magic, 
+            dexterity, resistance, intelligence
+        )
 
 class HeavyFist(Skills):
     def __init__(
@@ -70,7 +78,7 @@ class HeavyFist(Skills):
         level = 1,
         competence = 0,
         energy = BASE_ENERGY,
-        mana = BASE_MANA,
+        mana = 0,
         strength = BASE_STRENGTH,
         agility = BASE_AGILITY,
         defense = BASE_DEFENSE,
@@ -80,8 +88,120 @@ class HeavyFist(Skills):
         resistance = 0,
         intelligence = 0
     ):
-        super().__init__(name, category, armed, range_type, debuff, level, competence, energy, mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence)
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence, 
+            energy, mana, strength, agility, defense, vitality, magic, 
+            dexterity, resistance, intelligence
+        )
 
+class HeavySmash(Skills):
+    def __init__(
+        self,
+        name = "Heavy Smash",
+        category = "Physical",
+        armed = True,
+        range_type = "Melee",
+        debuff = "Stun",
+        level = 1,
+        competence = 0,
+        energy = BASE_ENERGY,
+        mana = 0,
+        strength = 6,
+        agility = 1,
+        defense = 1,
+        vitality = 1,
+        magic = 0,
+        dexterity = 1,
+        resistance = 0,
+        intelligence = 0
+    ):
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence,
+            energy, mana, strength, agility, defense, vitality, magic, 
+            dexterity, resistance, intelligence
+        )
+
+class BattleCry(Skills):
+    def __init__(
+        self,
+        name = "Battle Cry",
+        category = "Physical",
+        armed = False,
+        range_type = "Melee",
+        debuff = None,
+        level = 1,
+        competence = 0,
+        energy = BASE_ENERGY,
+        mana = 0,
+        strength = 5,
+        agility = 1,
+        defense = 3,
+        vitality = 1,
+        magic = 0,
+        dexterity = 1,
+        resistance = 0,
+        intelligence = 0
+    ):
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence, 
+            energy, mana, strength, agility, defense, vitality, magic, 
+            dexterity, resistance, intelligence
+        ) 
+
+class CycloneSlash(Skills):
+    def __init__(
+        self,
+        name = "Cyclone Slash",
+        category = "Physical",
+        armed = True,
+        range_type = "Melee",
+        debuff = None,
+        level = 1,
+        competence = 0,
+        energy = BASE_ENERGY,
+        mana = 0,
+        strength = 4,
+        agility = 2,
+        defense = 0,
+        vitality = 1,
+        magic = 0,
+        dexterity = 3,
+        resistance = 0,
+        intelligence = 0
+    ):
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence,
+            energy, mana, strength, agility, defense, vitality, magic,
+            dexterity, resistance, intelligence
+        )
+
+class BerserkCharge(Skills):
+    def __init__(
+        self,
+        name = "Berserk Charge",
+        category = "Physical",
+        armed = False,
+        range_type = "Melee",
+        debuff = None,
+        level = 1,
+        competence = 0,
+        energy = BASE_ENERGY,
+        mana = 0,
+        strength = 5,
+        agility = 2,
+        defense = 0,
+        vitality = 2,
+        magic = 0,
+        dexterity = 1,
+        resistance = 0,
+        intelligence = 0
+    ):
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence,
+            energy, mana, strength, agility, defense, vitality, magic,
+            dexterity, resistance, intelligence
+    )     
+         
 class SwepingLeg(Skills):
     def __init__(
         self,
@@ -93,7 +213,7 @@ class SwepingLeg(Skills):
         level = 1,
         competence = 0,
         energy = BASE_ENERGY,
-        mana = BASE_MANA,
+        mana = 0,
         strength = BASE_STRENGTH,
         agility = BASE_AGILITY,
         defense = BASE_DEFENSE,
@@ -103,7 +223,11 @@ class SwepingLeg(Skills):
         resistance = 0,
         intelligence = 0
     ):
-        super().__init__(name, category, armed, range_type, debuff, level, competence, energy, mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence)
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence,
+            energy, mana, strength, agility, defense, vitality, magic, 
+            dexterity, resistance, intelligence
+        )
 
 class PalmPush(Skills):
     def __init__(
@@ -116,7 +240,7 @@ class PalmPush(Skills):
         level = 1,
         competence = 0,
         energy = BASE_ENERGY,
-        mana = BASE_MANA,
+        mana = 0,
         strength = BASE_STRENGTH,
         agility = BASE_AGILITY,
         defense = BASE_DEFENSE,
@@ -126,7 +250,11 @@ class PalmPush(Skills):
         resistance = 0,
         intelligence = 0
     ):
-        super().__init__(name, category, armed, range_type, debuff, level, competence, energy, mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence)
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence,
+            energy, mana, strength, agility, defense, vitality, magic, 
+            dexterity, resistance, intelligence
+        )
 
 class ElbowCharge(Skills):
     def __init__(
@@ -139,7 +267,7 @@ class ElbowCharge(Skills):
         level = 1,
         competence = 0,
         energy = BASE_ENERGY,
-        mana = BASE_MANA,
+        mana = 0,
         strength = BASE_STRENGTH,
         agility = BASE_AGILITY,
         defense = BASE_DEFENSE,
@@ -149,7 +277,11 @@ class ElbowCharge(Skills):
         resistance = 0,
         intelligence = 0
     ):
-        super().__init__(name, category, armed, range_type, debuff, level, competence, energy, mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence)
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence, 
+            energy, mana, strength, agility, defense, vitality, magic,
+            dexterity, resistance, intelligence
+        )
 
 class AirSlap(Skills):
     def __init__(
@@ -162,7 +294,7 @@ class AirSlap(Skills):
         level = 1,
         competence = 0,
         energy = BASE_ENERGY,
-        mana = BASE_MANA,
+        mana = 0,
         strength = BASE_STRENGTH,
         agility = BASE_AGILITY,
         defense = BASE_DEFENSE,
@@ -172,7 +304,11 @@ class AirSlap(Skills):
         resistance = 0,
         intelligence = 0
     ):
-        super().__init__(name, category, armed, range_type, debuff, level, competence, energy, mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence)
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence, 
+            energy, mana, strength, agility, defense, vitality, magic, 
+            dexterity, resistance, intelligence
+        )
 
 class StrikeSlash(Skills):
     def __init__(
@@ -185,7 +321,7 @@ class StrikeSlash(Skills):
         level = 1,
         competence = 0,
         energy = BASE_ENERGY,
-        mana = BASE_MANA,
+        mana = 0,
         strength = BASE_STRENGTH,
         agility = BASE_AGILITY,
         defense = BASE_DEFENSE,
@@ -195,7 +331,11 @@ class StrikeSlash(Skills):
         resistance = 0,
         intelligence = 0
     ):
-        super().__init__(name, category, armed, range_type, debuff, level, competence, energy, mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence)
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence,
+            energy, mana, strength, agility, defense, vitality, magic,
+            dexterity, resistance, intelligence
+        )
 
 class QuickTrust(Skills):
     def __init__(
@@ -208,7 +348,7 @@ class QuickTrust(Skills):
         level = 1,
         competence = 0,
         energy = BASE_ENERGY,
-        mana = BASE_MANA,
+        mana = 0,
         strength = BASE_STRENGTH,
         agility = BASE_AGILITY,
         defense = BASE_DEFENSE,
@@ -218,7 +358,11 @@ class QuickTrust(Skills):
         resistance = 0,
         intelligence = 0
     ):
-        super().__init__(name, category, armed, range_type, debuff, level, competence, energy, mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence)
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence, 
+            energy, mana, strength, agility, defense, vitality, magic,
+            dexterity, resistance, intelligence
+        )
 
 class WideSwing(Skills):
     def __init__(
@@ -231,7 +375,7 @@ class WideSwing(Skills):
         level = 1,
         competence = 0,
         energy = BASE_ENERGY,
-        mana = BASE_MANA,
+        mana = 0,
         strength = BASE_STRENGTH,
         agility = BASE_AGILITY,
         defense = BASE_DEFENSE,
@@ -241,7 +385,11 @@ class WideSwing(Skills):
         resistance = 0,
         intelligence = 0
     ):
-        super().__init__(name, category, armed, range_type, debuff, level, competence, energy, mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence)
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence,
+            energy, mana, strength, agility, defense, vitality, magic, 
+            dexterity, resistance, intelligence
+        )
 
 class GuardBreak(Skills):
     def __init__(
@@ -254,7 +402,7 @@ class GuardBreak(Skills):
         level = 1,
         competence = 0,
         energy = BASE_ENERGY,
-        mana = BASE_MANA,
+        mana = 0,
         strength = BASE_STRENGTH,
         agility = BASE_AGILITY,
         defense = BASE_DEFENSE,
@@ -264,7 +412,11 @@ class GuardBreak(Skills):
         resistance = 0,
         intelligence = 0
     ):
-        super().__init__(name, category, armed, range_type, debuff, level, competence, energy, mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence)
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence,
+            energy, mana, strength, agility, defense, vitality, magic,
+            dexterity, resistance, intelligence
+        )
 
 class CircularSlash(Skills):
     def __init__(
@@ -277,7 +429,7 @@ class CircularSlash(Skills):
         level = 1,
         competence = 0,
         energy = BASE_ENERGY,
-        mana = BASE_MANA,
+        mana = 0,
         strength = BASE_STRENGTH,
         agility = BASE_AGILITY,
         defense = BASE_DEFENSE,
@@ -287,7 +439,11 @@ class CircularSlash(Skills):
         resistance = 0,
         intelligence = 0
     ):
-        super().__init__(name, category, armed, range_type, debuff, level, competence, energy, mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence)
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence, 
+            energy, mana, strength, agility, defense, vitality, magic,
+            dexterity, resistance, intelligence
+        )
 
 class EnergyEdge(Skills):
     def __init__(
@@ -300,7 +456,7 @@ class EnergyEdge(Skills):
         level = 1,
         competence = 0,
         energy = BASE_ENERGY,
-        mana = BASE_MANA,
+        mana = 0,
         strength = BASE_STRENGTH,
         agility = BASE_AGILITY,
         defense = BASE_DEFENSE,
@@ -310,4 +466,8 @@ class EnergyEdge(Skills):
         resistance = 0,
         intelligence = 0
     ):
-        super().__init__(name, category, armed, range_type, debuff, level, competence, energy, mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence)
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence, 
+            energy, mana, strength, agility, defense, vitality, magic, 
+            dexterity, resistance, intelligence
+        )
