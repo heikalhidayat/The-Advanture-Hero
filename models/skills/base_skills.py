@@ -1,15 +1,15 @@
 from typing import Required
 # Import stat increase
 from config import (
-    STAT_INCREASE_ENERGY, 
-    STAT_INCREASE_MANA, 
+    STAT_INCREASE_ENERGY,
+    STAT_INCREASE_MANA,
     STAT_INCREASE_STRENGTH,
     STAT_INCREASE_AGILITY,
     STAT_INCREASE_DEFENSE,
-    STAT_INCREASE_MAGIC, 
+    STAT_INCREASE_MAGIC,
     STAT_INCREASE_DEXTERITY,
-    STAT_INCREASE_RESISTANCE, 
-    STAT_INCREASE_INTELLIGENCE, 
+    STAT_INCREASE_RESISTANCE,
+    STAT_INCREASE_INTELLIGENCE,
     STAT_INCREASE_VITALITY
 )
 
@@ -61,7 +61,11 @@ class Skills:
 
     @classmethod
     def from_db_row(cls, row):
-        required = {"name", "category", "armed", "range_type", "debuff", "level", "competence", "energy", "mana", "strength", "agility", "defense", "vitality", "magic", "dexterity", "resistance", "intelligence"}
+        required = {
+            "name", "category", "armed", "range_type", "debuff", "level",
+            "competence", "energy", "mana", "strength", "agility", "defense",
+            "vitality", "magic", "dexterity", "resistance", "intelligence"
+        }
         missing = required - set(row.keys())
         if missing:
             raise KeyError(f"Missing fields: {missing}")
@@ -84,6 +88,10 @@ class Skills:
             resistance=int(row("resistance",0)),
             intelligence=int(row("intelligence",0))
         )
+
+    def total_damage(self) -> int:
+        damage = (((self.strength + self.agility or self.dexterity)*self.vitality)*self.level) or (((self.magic + self.dexterity)*self.intelligence)*self.level)
+        return damage
 
     def level_up(self):
         self.level += 1
@@ -139,9 +147,9 @@ class Skills:
 
         if not missing:
             return f"{self.name} activated"
-        
+
         return f"({', '.join(missing)}) tidak memenuhi persyaratan"
- 
+
     def __repr__(self) -> str:
         return f"Skills(name={self.name!r}, category={self.category!r}, armed={self.armed}, range_type={self.range_type!r}, debuff={self.debuff!r}, level={self.level})"
 
@@ -166,8 +174,8 @@ class Skills:
             f"Resistance: {self.resistance}\n"
             f"Intelligence: {self.intelligence}\n"
           )
-        
-# Example 
+
+# Example
 player_stats = {
       "Level": 1,
       "Energy": 100,
