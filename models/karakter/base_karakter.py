@@ -5,8 +5,8 @@ from config import (
     BASE_MAGIC, BASE_DEXTERITY, BASE_RESISTANCE,
     # Import config multiplier atribut
     BASE_HP_MULTIPLIER, BASE_ENERGY_MULTIPLIER, BASE_MANA_MULTIPLIER,
-    BASE_STRENGTH_MULTIPLIER, BASE_AGILITY_MULTIPLIER, 
-    BASE_DEFENSE_MULTIPLIER, BASE_MAGIC_MULTIPLIER, BASE_DEXTERITY_MULTIPLIER, 
+    BASE_STRENGTH_MULTIPLIER, BASE_AGILITY_MULTIPLIER,
+    BASE_DEFENSE_MULTIPLIER, BASE_MAGIC_MULTIPLIER, BASE_DEXTERITY_MULTIPLIER,
     BASE_RESISTANCE_MULTIPLIER,
     # Import stat increase
     STAT_INCREASE_HP, STAT_INCREASE_ENERGY, STAT_INCREASE_MANA,
@@ -21,10 +21,13 @@ class Karakter:
         self,
         name: str,
         job: str,
-        tier: int = 1,
-        level: int = 1,
-        exp: int = 0,
-        slot_skill = SLOT_SKILL,
+        tier: int,
+        level: int,
+        exp: int,
+        skill_01: str,
+        skill_02: str,
+        skill_03: str,
+        skill_04: str,
         # base values
         base_hp: int = BASE_HP,
         base_energy: int = BASE_ENERGY,
@@ -51,7 +54,10 @@ class Karakter:
         self.tier = tier
         self.level = level
         self.exp = exp
-        self.slot_skill = slot_skill
+        self.skill_01 = skill_01
+        self.skill_02 = skill_02
+        self.skill_03 = skill_03
+        self.skill_04 = skill_04
 
         # base values and current values
         self.base_hp = base_hp
@@ -141,13 +147,6 @@ class Karakter:
 
     def total_resistance(self) -> int:
         return self.resistance + (self.intelligence * self.tier * BASE_RESISTANCE_MULTIPLIER) + self.resistance_bonus
-
-    def skill_slot_limit(self) -> str:
-        count = len(self.slot_skill)
-        if count == 0:
-            return f"The {self.name} does not yet possess any skills"
-        elif count > BASE_CAPASITY_SKILL:
-            return f"inadequate capacity"
 
     def level_up(self):
         self.level += 1
@@ -262,7 +261,7 @@ class Karakter:
         self.hp = min(self.hp + amount, self.max_hp)
         print(f"{self.name} memulihkan HP sebesar {self.hp - old}. HP sekarang: {self.hp}/{self.max_hp}")
         return True
-    
+
     def heal_energy(self, amount: int) -> bool:
         """Pulihkan Energy, jangan melebihi max_energy."""
         if amount <= 0:
