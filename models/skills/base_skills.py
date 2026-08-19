@@ -59,6 +59,23 @@ class Skills:
     def max_competence(self):
         return self.level ** 2 * 100
 
+    @property
+    def dict_skill(self) -> dict:
+        dict_skill = {
+            "Level": self.level,
+            "Energy": self.energy,
+            "Mana": self.mana,
+            "Strength": self.strength,
+            "Agility": self.agility,
+            "Defense": self.defense,
+            "Vitality": self.vitality,
+            "Magic": self.magic,
+            "Dexterity": self.dexterity,
+            "Resistance": self.resistance,
+            "Intellegence": self.intellegence,
+        }
+        return dict_skill
+
     @classmethod
     def from_db_row(cls, row):
         required = {
