@@ -233,6 +233,23 @@ class Karakter:
             f"STR: {safe_total('total_strength')} | AGI: {safe_total('total_agility')} | DEF: {safe_total('total_defense')}\n"
         )
 
+    def dict_karaker(self) -> dict:
+        dict_karaker = {
+            "Level": self.level,
+            "Energy": self.base_energy,
+            "Mana": self.base_mana,
+            "Strength": self.strength,
+            "Agility": self.agility,
+            "Defense": self.defense,
+            "Vitality": self.vitality,
+            "Magic": self.magic,
+            "Dexterity": self.dexterity,
+            "Resistance": self.resistance,
+            "Intelligence": self.intelligence,
+        }
+
+        return dict_karaker
+
     def use_energy(self, amount: int) -> bool:
         """Kurangi energy jika cukup, kembalikan True; jika tidak cukup, jangan ubah energy dan kembalikan False."""
         if amount <= 0:
