@@ -1,6 +1,16 @@
 from config import BASE_HP, BASE_ENERGY, BASE_MANA
 from base_karakter import Karakter
-from physical import HeavySmash, BattleCry, CycloneSlash, BerserkCharge, BasicJab
+from physical import (
+    # Fighter's innate ability
+    HeavySmash, BattleCry, CycloneSlash, BerserkCharge, BasicJab
+    # Tank's innate ability
+    # Mage's innate ability
+    # Assassin's innate ability
+    # Marksman's innate ability
+    # Support's innate ability
+    # Wizard's innate ability
+    # Necromancer's innate ability
+)
 
 class Fighter(Karakter):
     def __init__(
@@ -306,7 +316,8 @@ class Necromancer(Karakter):
 # EXAMPLE
 karu = Fighter()
 jab = BasicJab()
-print(jab.dict_karaker)
+
+print(jab.dict_skill)
 print(karu.skill_01)
 print(karu.strength)
-print(karu.dict_karaker["Energy"])
+print(karu.change_skill(jab))
