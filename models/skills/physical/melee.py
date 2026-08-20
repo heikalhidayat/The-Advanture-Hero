@@ -552,3 +552,84 @@ class CircularSlash(Skills):
             energy, mana, strength, agility, defense, vitality, magic,
             dexterity, resistance, intelligence
         )
+
+class PoisonBlade(Skills):
+    def __init__(
+        self,
+        name = "Poison Blade",
+        category = "Physical",
+        armed = False,
+        range_type = "Melee",
+        debuff = "Stun",
+        level = 1,
+        competence = 0,
+        energy = BASE_ENERGY,
+        mana = 0,
+        strength = 3,
+        agility = 2,
+        defense = 0,
+        vitality = BASE_VITALITY,
+        magic = 0,
+        dexterity = 4,
+        resistance = 0,
+        intelligence = 0
+    ):
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence, 
+            energy, mana, strength, agility, defense, vitality, magic, 
+            dexterity, resistance, intelligence
+        )
+
+class FlurryBlows(Skills):
+    def __init__(
+        self,
+        name = "Flurry Blows",
+        category = "Physical",
+        armed = False,
+        range_type = "Melee",
+        debuff = None,
+        level = 1,
+        competence = 0,
+        energy = BASE_ENERGY,
+        mana = 0,
+        strength = 4,
+        agility = 3,
+        defense = 0,
+        vitality = BASE_VITALITY,
+        magic = 0,
+        dexterity = 2,
+        resistance = 0,
+        intelligence = 0
+    ):
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence, 
+            energy, mana, strength, agility, defense, vitality, magic, 
+            dexterity, resistance, intelligence
+        )
+
+class Assassinate(Skills):
+    def __init__(
+        self,
+        name = "Assassinate",
+        category = "Physical",
+        armed = False,
+        range_type = "Melee",
+        debuff = None,
+        level = 1,
+        competence = 0,
+        energy = BASE_ENERGY,
+        mana = 0,
+        strength = 6,
+        agility = 2,
+        defense = 0,
+        vitality = BASE_VITALITY,
+        magic = 0,
+        dexterity = 1,
+        resistance = 0,
+        intelligence = 0
+    ):
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence, 
+            energy, mana, strength, agility, defense, vitality, magic, 
+            dexterity, resistance, intelligence
+        )
