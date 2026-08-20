@@ -72,7 +72,7 @@ class Skills:
             "Magic": self.magic,
             "Dexterity": self.dexterity,
             "Resistance": self.resistance,
-            "Intellegence": self.intellegence,
+            "Intelligence": self.intelligence,
         }
         return dict_skill
 
