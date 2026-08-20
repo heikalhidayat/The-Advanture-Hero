@@ -1,15 +1,27 @@
 from config import BASE_HP, BASE_ENERGY, BASE_MANA
 from base_karakter import Karakter
-from physical import (
-    # Fighter's innate ability
-    HeavySmash, BattleCry, CycloneSlash, BerserkCharge, BasicJab
-    # Tank's innate ability
-    # Mage's innate ability
-    # Assassin's innate ability
-    # Marksman's innate ability
-    # Support's innate ability
-    # Wizard's innate ability
-    # Necromancer's innate ability
+
+from melee_physical import (
+    HeavySmash, BattleCry, CycloneSlash, BerserkCharge, BasicJab,
+    ShieldBash, IronFortress, GroundTremor, BastionHope,
+    PoisonBlade, FlurryBlows, Assassinate
+)
+
+from mid_range_physical import (
+    ShadowStep, TumbleEscape,
+)
+
+from long_range_physical import (
+    QuickShot, PiercingArrow, HallArrows,
+)
+
+from mid_range_magical import (
+    HealingGrace, Holysanctuary, RaiseUndead, FrostNova,
+)
+from long_range_magical import (
+    Fireball, MagicShield, LightningStrike, MeteorStrike, DivineIntervention,
+    ArmyDarkness, SoulFeast, Decay, BlackHole, GravityWell, ChronoShift,
+    GuardianLink
 )
 
 class Fighter(Karakter):
@@ -91,6 +103,11 @@ class Tank(Karakter):
             agility_bonus, defense_bonus
         )
 
+        self.skill_01 = ShiedlBash()
+        self.skill_02 = IronFortress()
+        self.skill_03 = GroundTremor()
+        self.skill_04 = BastionHope()
+
 class Mage(Karakter):
     def __init__(
         self,
@@ -127,6 +144,11 @@ class Mage(Karakter):
             vitality, magic, dexterity, resistance, intelligence, strength_bonus,
             agility_bonus, defense_bonus
         )
+
+        self.skill_01 = Fireball()
+        self.skill_02 = MagicShield()
+        self.skill_03 = LightningStrike()
+        self.skill_04 = MeteorStrike()
 
 class Assassin(Karakter):
     def __init__(
@@ -165,6 +187,11 @@ class Assassin(Karakter):
             agility_bonus, defense_bonus
         )
 
+        self.skill_01 = ShadowStep()
+        self.skill_02 = PoisonBlade()
+        self.skill_03 = FlurryBlows()
+        self.skill_04 = Assassinate()
+
 class Marksman(Karakter):
     def __init__(
         self,
@@ -201,6 +228,11 @@ class Marksman(Karakter):
             vitality, magic, dexterity, resistance, intelligence, strength_bonus,
             agility_bonus, defense_bonus
         )
+
+        self.skill_01 = QuickShot()
+        self.skill_02 = PiercingArrow()
+        self.skill_03 = TumbleEscape()
+        self.skill_04 = HallArrows()
 
 class Support(Karakter):
     def __init__(
@@ -239,6 +271,11 @@ class Support(Karakter):
             agility_bonus, defense_bonus
         )
 
+        self.skill_01 = HealingGrace()
+        self.skill_02 = Holysanctuary()
+        self.skill_03 = GuardianLink()
+        self.skill_04 = DivineIntervention()
+
 class Wizard(Karakter):
     def __init__(
         self,
@@ -276,6 +313,11 @@ class Wizard(Karakter):
             agility_bonus, defense_bonus
         )
 
+        self.skill_01 = FrostNova()
+        self.skill_02 = ChronoShift()
+        self.skill_03 = GravityWell()
+        self.skill_04 = BlackHole()
+
 class Necromancer(Karakter):
     def __init__(
         self,
@@ -312,6 +354,11 @@ class Necromancer(Karakter):
             vitality, magic, dexterity, resistance, intelligence, strength_bonus,
             agility_bonus, defense_bonus
         )
+
+        self.skill_01 = RaiseUndead()
+        self.skill_02 = Decay()
+        self.skill_03 = SoulFeast()
+        self.skill_04 = ArmyDarkness()
 
 # EXAMPLE
 karu = Fighter()
