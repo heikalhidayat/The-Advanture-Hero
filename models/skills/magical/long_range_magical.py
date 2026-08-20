@@ -278,10 +278,10 @@ class MeteorStrike(Skills):
             resistance, intelligence
         )
 
-class GuardianLing(Skills):
+class GuardianLink(Skills):
     def __init__(
         self,
-        name = "Guardian Ling",
+        name = "Guardian Link",
         category = "Magical",
         armed = False,
         range_type = "Long-Range",
