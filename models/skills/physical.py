@@ -109,7 +109,7 @@ class HeavySmash(Skills):
         strength = 6,
         agility = 1,
         defense = 1,
-        vitality = 1,
+        vitality = BASE_VITALITY,
         magic = 0,
         dexterity = 1,
         resistance = 0,
@@ -136,7 +136,7 @@ class BattleCry(Skills):
         strength = 5,
         agility = 1,
         defense = 3,
-        vitality = 1,
+        vitality = BASE_VITALITY,
         magic = 0,
         dexterity = 1,
         resistance = 0,
@@ -163,7 +163,7 @@ class CycloneSlash(Skills):
         strength = 4,
         agility = 2,
         defense = 0,
-        vitality = 1,
+        vitality = BASE_VITALITY,
         magic = 0,
         dexterity = 3,
         resistance = 0,
@@ -190,7 +190,7 @@ class BerserkCharge(Skills):
         strength = 5,
         agility = 2,
         defense = 0,
-        vitality = 2,
+        vitality = BASE_VITALITY,
         magic = 0,
         dexterity = 1,
         resistance = 0,
@@ -201,7 +201,115 @@ class BerserkCharge(Skills):
             energy, mana, strength, agility, defense, vitality, magic,
             dexterity, resistance, intelligence
     )     
+        
+class ShieldBash(Skills):
+    def __init__(
+        self,
+        name = "Shield Bash",
+        category = "Physical",
+        armed = False,
+        range_type = "Melee",
+        debuff = "Stun",
+        level = 1,
+        competence = 0,
+        energy = BASE_ENERGY,
+        mana = 0,
+        strength = 3,
+        agility = 0,
+        defense = 6,
+        vitality = BASE_VITALITY,
+        magic = 0,
+        dexterity = 0,
+        resistance = 0,
+        intelligence = 0
+    ):
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence,
+            energy, mana, strength, agility, defense, vitality, magic,
+            dexterity, resistance, intelligence
+        )
+
+class IronFortress(Skills):
+    def __init__(
+        self,
+        name = "Iron Fortress",
+        category = "Physical",
+        armed = False,
+        range_type = "Melee",
+        debuff = "Stun",
+        level = 1,
+        competence = 0,
+        energy = BASE_ENERGY,
+        mana = 0,
+        strength = 4,
+        agility = 0,
+        defense = 5,
+        vitality = BASE_VITALITY,
+        magic = 0,
+        dexterity = ,
+        resistance = 0,
+        intelligence = 0
+    ):
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence,
+            energy, mana, strength, agility, defense, vitality, magic,
+            dexterity, resistance, intelligence
+        )
          
+class GroundTremor(skills):
+    def __init__(
+        self,
+        name = "Ground Tremor",
+        category = "Physical",
+        armed = False,
+        range_type = "Melee",
+        debuff = "Stun",
+        level = 1,
+        competence = 0,
+        energy = BASE_ENERGY,
+        mana = 0,
+        strength = 3,
+        agility = 2,
+        defense = 4,
+        vitality = BASE_VITALITY,
+        magic = 0,
+        dexterity = 0,
+        resistance = 0,
+        intelligence = 0
+    ):
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence,
+            energy, mana, strength, agility, defense, vitality, magic,
+            dexterity, resistance, intelligence
+        )
+
+class BastionHope(Skills):
+    def __init__(
+        self,
+        name = "Bastion Hope",
+        category = "Physical",
+        armed = False,
+        range_type = "Melee",
+        debuff = "Stun",
+        level = 1,
+        competence = 0,
+        energy = BASE_ENERGY,
+        mana = 0,
+        strength = 0,
+        agility = 0,
+        defense = 9,
+        vitality = BASE_VITALITY,
+        magic = 0,
+        dexterity = 0,
+        resistance = 0,
+        intelligence = 0
+    ):
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence,
+            energy, mana, strength, agility, defense, vitality, magic,
+            dexterity, resistance, intelligence
+        )
+
 class SwepingLeg(Skills):
     def __init__(
         self,
