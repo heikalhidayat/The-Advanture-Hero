@@ -35,33 +35,6 @@ class ManaBurst(Skills):
             resistance, intelligence
         )
 
-class ShockTounch(Skills):
-    def __init__(
-        self,
-        name = "Shock Tounch",
-        category = "Magical",
-        armed = False,
-        range_type = "Long-Range",
-        debuff = "Stun",
-        level = 1,
-        competence = 0,
-        energy = BASE_ENERGY,
-        mana = BASE_MANA,
-        strength = 0,
-        agility = 0,
-        defense = 0,
-        vitality = 0,
-        magic = BASE_MAGIC,
-        dexterity = 0,
-        resistance = BASE_RESISTANCE,
-        intelligence = BASE_INTELLIGENCE
-    ):
-        super().__init__(
-            name, category, armed, range_type, debuff, level, competence, 
-            energy, mana, strength, agility, defense, vitality, magic, dexterity,
-            resistance, intelligence
-        )
-
 class ShockWave(Skills):
     def __init__(
         self,
