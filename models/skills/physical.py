@@ -557,9 +557,9 @@ class EnergyEdge(Skills):
     def __init__(
         self,
         name = "Energy Edge",
-        category = "Magical",
+        category = "Physical",
         armed = False,
-        range_type = "Ranged",
+        range_type = "Long-Range",
         debuff = "Stun",
         level = 1,
         competence = 0,
@@ -571,6 +571,222 @@ class EnergyEdge(Skills):
         vitality = BASE_VITALITY,
         magic = 0,
         dexterity = BASE_DEXTERITY,
+        resistance = 0,
+        intelligence = 0
+    ):
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence, 
+            energy, mana, strength, agility, defense, vitality, magic, 
+            dexterity, resistance, intelligence
+        )
+
+class ShadowStep(Skills):
+    def __init__(
+        self,
+        name = "Shadow Step",
+        category = "Physical",
+        armed = False,
+        range_type = "Mid-Range",
+        debuff = None,
+        level = 1,
+        competence = 0,
+        energy = BASE_ENERGY,
+        mana = 0,
+        strength = 1,
+        agility = 5,
+        defense = 0,
+        vitality = BASE_VITALITY,
+        magic = 0,
+        dexterity = 3,
+        resistance = 0,
+        intelligence = 0
+    ):
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence, 
+            energy, mana, strength, agility, defense, vitality, magic, 
+            dexterity, resistance, intelligence
+        )
+
+class PoisonBlade(Skills):
+    def __init__(
+        self,
+        name = "Poison Blade",
+        category = "Physical",
+        armed = False,
+        range_type = "Melee",
+        debuff = "Stun",
+        level = 1,
+        competence = 0,
+        energy = BASE_ENERGY,
+        mana = 0,
+        strength = 3,
+        agility = 2,
+        defense = 0,
+        vitality = BASE_VITALITY,
+        magic = 0,
+        dexterity = 4,
+        resistance = 0,
+        intelligence = 0
+    ):
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence, 
+            energy, mana, strength, agility, defense, vitality, magic, 
+            dexterity, resistance, intelligence
+        )
+
+class FlurryBlows(Skills):
+    def __init__(
+        self,
+        name = "Flurry Blows",
+        category = "Physical",
+        armed = False,
+        range_type = "Melee",
+        debuff = None,
+        level = 1,
+        competence = 0,
+        energy = BASE_ENERGY,
+        mana = 0,
+        strength = 4,
+        agility = 3,
+        defense = 0,
+        vitality = BASE_VITALITY,
+        magic = 0,
+        dexterity = 2,
+        resistance = 0,
+        intelligence = 0
+    ):
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence, 
+            energy, mana, strength, agility, defense, vitality, magic, 
+            dexterity, resistance, intelligence
+        )
+
+class Assassinate(Skills):
+    def __init__(
+        self,
+        name = "Assassinate",
+        category = "Physical",
+        armed = False,
+        range_type = "Melee",
+        debuff = None,
+        level = 1,
+        competence = 0,
+        energy = BASE_ENERGY,
+        mana = 0,
+        strength = 6,
+        agility = 2,
+        defense = 0,
+        vitality = BASE_VITALITY,
+        magic = 0,
+        dexterity = 1,
+        resistance = 0,
+        intelligence = 0
+    ):
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence, 
+            energy, mana, strength, agility, defense, vitality, magic, 
+            dexterity, resistance, intelligence
+        )
+
+class QuickShot(Skills):
+    def __init__(
+        self,
+        name = "Quick Shot",
+        category = "Physical",
+        armed = False,
+        range_type = "Long-Range",
+        debuff = None,
+        level = 1,
+        competence = 0,
+        energy = BASE_ENERGY,
+        mana = 0,
+        strength = 2,
+        agility = 4,
+        defense = 0,
+        vitality = BASE_VITALITY,
+        magic = 0,
+        dexterity = 3,
+        resistance = 0,
+        intelligence = 0
+    ):
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence, 
+            energy, mana, strength, agility, defense, vitality, magic, 
+            dexterity, resistance, intelligence
+        )
+
+class PiercingArrow(Skills):
+    def __init__(
+        self,
+        name = "Piercing Arrow",
+        category = "Physical",
+        armed = False,
+        range_type = "Long-Range",
+        debuff = None,
+        level = 1,
+        competence = 0,
+        energy = BASE_ENERGY,
+        mana = 0,
+        strength = 3,
+        agility = 1,
+        defense = 0,
+        vitality = BASE_VITALITY,
+        magic = 0,
+        dexterity = 5,
+        resistance = 0,
+        intelligence = 0
+    ):
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence, 
+            energy, mana, strength, agility, defense, vitality, magic, 
+            dexterity, resistance, intelligence
+        )
+
+class TumbleEscape(Skills):
+    def __init__(
+        self,
+        name = "Tumble Escape",
+        category = "Physical",
+        armed = False,
+        range_type = "Mid-Range",
+        debuff = None,
+        level = 1,
+        competence = 0,
+        energy = BASE_ENERGY,
+        mana = 0,
+        strength = 1,
+        agility = 6,
+        defense = 0,
+        vitality = BASE_VITALITY,
+        magic = 0,
+        dexterity = 2,
+        resistance = 0,
+        intelligence = 0
+    ):
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence, 
+            energy, mana, strength, agility, defense, vitality, magic,
+            dexterity, resistance, intelligence
+        )
+
+class HallArrows(Skills):
+    def __init__(
+        self,
+        name = "Hall Arrows",
+        category = "Physical",
+        armed = False,
+        range_type = "Long-Range",
+        debuff = None,
+        level = 1,
+        competence = 0,
+        energy = BASE_ENERGY,
+        mana = 0,
+        strength = 3,
+        agility = 2,
+        defense = 0,
+        vitality = BASE_VITALITY,
+        magic = 0,
+        dexterity = 4,
         resistance = 0,
         intelligence = 0
     ):
