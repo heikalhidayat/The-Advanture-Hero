@@ -137,7 +137,7 @@ class Karakter:
         return dict_karaker
     
     @property
-    def change_skill(self, new_skill):
+    def change_skill(self, new_skill: dict):
         new_skill.activate_skill(self.dict_karaker)
 
     @property
