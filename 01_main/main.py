@@ -5,6 +5,10 @@ import sqlite3
 import time
 import random
 
+# ==============================================================================
+# IMPORT REQUIRED FILES
+# ==============================================================================
+
 # Import constanta
 from config import DATABASE_NAME, MENU_OPTIONS, LOBBY_ROOM, SUMMONING_TYPE, TOWER_FLOOR, CARD_SUMMONING
 
@@ -18,15 +22,33 @@ from karakter import Mage, Tank, Assassin, Support, Marksman, Fighter, Wizard, N
 from normal_enemy import Slime
 
 # Import Skills
-from magical import (
-    ManaBurst, ShockTounch, ShockWave, RepelWave, ArcaneRing,
-    MagicShield, MagicArrow, SparkProjectile
+from melee_magical import (
+    ShockTounch, 
 )
-from physical import (
-    BasicJab, LowKick, HeavyFist, SwepingLeg, PalmPush,
-    ElbowCharge, AirSlap, StrikeSlash, QuickTrust, WideSwing,
-    GuardBreak, CircularSlash, EnergyEdge
+from mid_range_magical (
+    HealingGrace, HolySantuary, FrostNova, RaiseUndead, 
 )
+from long_range_magical (
+    ManaBurst, ShockWave, RepelWave, ArcaneRing, MagicShield, MagicArrow, SparkProjectile,
+    Fireball, LightningStrike, MeteorStrike, GuardianLink, DivineIntervention, ChronoShift,
+    GravityWell, BlackHole, Decay, SoulFeast, ArmyDarkness,
+)
+from melee_physical import (
+    BasicJab, LowKick, HeavyFist, HeavySmash, BattleCry, CycloneSlash, BerserkCharge,
+    ShieldBash, IronFortress, GRroundTremor, BastionHope, SwepingLeg, PalmPush, ElbowCharge,
+    AirSlap, StrikeSlash, QuickTrust, WideSwing, GuardBreak, CircularSlash, PoisonBlade,
+    FlurryBlows, Assassinate,
+)
+from mid_range_physical (
+    ShadowStep, TumbleEscape,
+)
+from long_range_physical (
+    EnergyEdge, HallArrows, PiercingArrow, QuickShot,
+)
+
+# ==============================================================================
+#
+# ==============================================================================
 
 CLASS_KARAKTER_CARD = {
     "Mage": Mage,
@@ -39,13 +61,37 @@ CLASS_KARAKTER_CARD = {
     "Necromancer": Necromancer
 }
 
+class InvalidMenuChoiceError(Exception):
+    pass
+
+def get_choice(x, y):
+    while True:
+        try:
+            choice = int(input(f"\n{x}: "))
+
+            if choice not in y:
+                raise InvalidMenuChoiceError
+
+            return choice
+
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+
+        except InvalidMenuChoiceError as e:
+            print(f"Invalid input {e}")
+
+def exit_bottom(x, y):
+    input(f"\nPress {x} to {y}...")
+
 def jeda_loading(second):
      '''jeda loading'''
      for i in range(5):
          print(".", end="")
          time.sleep(second)
 
-
+# ==============================================================================
+#
+# ==============================================================================
 def login():
     user_name = input("Masukkan username: ")
 
@@ -91,28 +137,6 @@ def login():
 
     return id_player, user_name, items, gold_player
 
-class InvalidMenuChoiceError(Exception):
-    pass
-
-def get_choice(x, y):
-    while True:
-        try:
-            choice = int(input(f"\n{x}: "))
-
-            if choice not in y:
-                raise InvalidMenuChoiceError
-
-            return choice
-
-        except ValueError:
-            print("Invalid input. Please enter a number.")
-
-        except InvalidMenuChoiceError as e:
-            print(f"Invalid input {e}")
-
-def exit_bottom(x, y):
-    input(f"\nPress {x} to {y}...")
-
 def menu():
     print("\n============== MENU UTAMA ==============\n")
     for i,(number, option) in enumerate(MENU_OPTIONS.items()):
@@ -147,8 +171,10 @@ def barracks(id_player):
     cursor = conn.cursor()
 
     cursor.execute('''SELECT name, job, tier, level, exp,
-                             base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence,
-                             strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus
+                             base_hp, base_energy, base_mana, strength, agility, 
+                             defense, vitality, magic, dexterity, resistance,
+                             intelligence, strength_bonus, agility_bonus, 
+                             defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus
                       FROM karakter
                       WHERE id_player = ?''', (id_player,)
                   )
@@ -388,8 +414,8 @@ def main():
             print("\nThank you for playing!")
             break
 
-# =================================================
+# ==============================================================================
 # MAIN PROGRAM
-# =================================================
+# ==============================================================================
 if __name__ == "__main__":
     main()
