@@ -14,7 +14,7 @@ class ManaBurst(Skills):
         name = "Mana Burst",
         category = "Magical",
         armed = False,
-        range_type = "Ranged",
+        range_type = "Long-Range",
         debuff = "Stun",
         level = 1,
         competence = 0,
@@ -29,7 +29,11 @@ class ManaBurst(Skills):
         resistance = BASE_RESISTANCE,
         intelligence = BASE_INTELLIGENCE
     ):
-        super().__init__(name, category, armed, range_type, debuff, level, competence, energy, mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence)
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence, 
+            energy, mana, strength, agility, defense, vitality, magic, dexterity,
+            resistance, intelligence
+        )
 
 class ShockTounch(Skills):
     def __init__(
@@ -37,7 +41,7 @@ class ShockTounch(Skills):
         name = "Shock Tounch",
         category = "Magical",
         armed = False,
-        range_type = "Ranged",
+        range_type = "Long-Range",
         debuff = "Stun",
         level = 1,
         competence = 0,
@@ -52,7 +56,11 @@ class ShockTounch(Skills):
         resistance = BASE_RESISTANCE,
         intelligence = BASE_INTELLIGENCE
     ):
-        super().__init__(name, category, armed, range_type, debuff, level, competence, energy, mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence)
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence, 
+            energy, mana, strength, agility, defense, vitality, magic, dexterity,
+            resistance, intelligence
+        )
 
 class ShockWave(Skills):
     def __init__(
@@ -60,7 +68,7 @@ class ShockWave(Skills):
         name = "Shock Wave",
         category = "Magical",
         armed = False,
-        range_type = "Ranged",
+        range_type = "Long-Range",
         debuff = "Stun",
         level = 1,
         competence = 0,
@@ -75,7 +83,11 @@ class ShockWave(Skills):
         resistance = BASE_RESISTANCE,
         intelligence = BASE_INTELLIGENCE
     ):
-        super().__init__(name, category, armed, range_type, debuff, level, competence, energy, mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence)
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence,
+            energy, mana, strength, agility, defense, vitality, magic, 
+            dexterity, resistance, intelligence
+        )
 
 class RepelWave(Skills):
     def __init__(
@@ -83,7 +95,7 @@ class RepelWave(Skills):
         name = "Repel Wave",
         category = "Magical",
         armed = False,
-        range_type = "Ranged",
+        range_type = "Long-Range",
         debuff = "Stun",
         level = 1,
         competence = 0,
@@ -98,7 +110,11 @@ class RepelWave(Skills):
         resistance = BASE_RESISTANCE,
         intelligence = BASE_INTELLIGENCE
     ):
-        super().__init__(name, category, armed, range_type, debuff, level, competence, energy, mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence)
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence, 
+            energy, mana, strength, agility, defense, vitality, magic, dexterity,
+            resistance, intelligence
+        )
 
 class ArcaneRing(Skills):
     def __init__(
@@ -106,7 +122,7 @@ class ArcaneRing(Skills):
         name = "Arcane Ring",
         category = "Magical",
         armed = False,
-        range_type = "Ranged",
+        range_type = "Long-Range",
         debuff = "Stun",
         level = 1,
         competence = 0,
@@ -121,7 +137,11 @@ class ArcaneRing(Skills):
         resistance = BASE_RESISTANCE,
         intelligence = BASE_INTELLIGENCE
     ):
-        super().__init__(name, category, armed, range_type, debuff, level, competence, energy, mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence)
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence,
+            energy, mana, strength, agility, defense, vitality, magic, dexterity,
+            resistance, intelligence
+        )
 
 class MagicShield(Skills):
     def __init__(
@@ -129,7 +149,7 @@ class MagicShield(Skills):
         name = "Magic Shield",
         category = "Magical",
         armed = False,
-        range_type = "Ranged",
+        range_type = "Long-Range",
         debuff = "Stun",
         level = 1,
         competence = 0,
@@ -144,7 +164,11 @@ class MagicShield(Skills):
         resistance = BASE_RESISTANCE,
         intelligence = BASE_INTELLIGENCE
     ):
-        super().__init__(name, category, armed, range_type, debuff, level, competence, energy, mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence)
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence, 
+            energy, mana, strength, agility, defense, vitality, magic, dexterity, 
+            resistance, intelligence
+        )
 
 class MagicArrow(Skills):
     def __init__(
@@ -152,7 +176,7 @@ class MagicArrow(Skills):
         name = "Magic Arrow",
         category = "Magical",
         armed = False,
-        range_type = "Ranged",
+        range_type = "Long-Range",
         debuff = "Stun",
         level = 1,
         competence = 0,
@@ -167,7 +191,11 @@ class MagicArrow(Skills):
         resistance = BASE_RESISTANCE,
         intelligence = BASE_INTELLIGENCE
     ):
-        super().__init__(name, category, armed, range_type, debuff, level, competence, energy, mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence)
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence,
+            energy, mana, strength, agility, defense, vitality, magic, dexterity,
+            resistance, intelligence
+        )
 
 class SparkProjectile(Skills):
     def __init__(
@@ -175,7 +203,7 @@ class SparkProjectile(Skills):
         name = "Spark Projectile",
         category = "Magical",
         armed = False,
-        range_type = "Ranged",
+        range_type = "Long-Range",
         debuff = "Stun",
         level = 1,
         competence = 0,
@@ -190,4 +218,89 @@ class SparkProjectile(Skills):
         resistance = BASE_RESISTANCE,
         intelligence = BASE_INTELLIGENCE
     ):
-        super().__init__(name, category, armed, range_type, debuff, level, competence, energy, mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence)
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence,
+            energy, mana, strength, agility, defense, vitality, magic, dexterity, 
+            resistance, intelligence
+        )
+
+class Fireball(Skills):
+    def __init__(
+        self,
+        name = "Fireball",
+        category = "Magical",
+        armed = False,
+        range_type = "Long-Range",
+        debuff = None,
+        level = 1,
+        competence = 0,
+        energy = BASE_ENERGY,
+        mana = BASE_MANA,
+        strength = 0,
+        agility = 0,
+        defense = 0,
+        vitality = 0,
+        magic = 6,
+        dexterity = 0,
+        resistance = 3,
+        intelligence = BASE_INTELLIGENCE
+    ):
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence,
+            energy, mana, strength, agility, defense, vitality, magic, dexterity,
+            resistance, intelligence
+        )
+
+class LightningStrike(Skills):
+    def __init__(
+        self,
+        name = "Lightning Strike",
+        category = "Magical",
+        armed = False,
+        range_type = "Long-Range",
+        debuff = "Stun",
+        level = 1,
+        competence = 0,
+        energy = BASE_ENERGY,
+        mana = BASE_MANA,
+        strength = 0,
+        agility = 0,
+        defense = 0,
+        vitality = 0,
+        magic = 7,
+        dexterity = 0,
+        resistance = 2,
+        intelligence = BASE_INTELLIGENCE
+    ):
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence,
+            energy, mana, strength, agility, defense, vitality, magic, dexterity,
+            resistance, intelligence
+    )
+
+class MeteorStrike(Skills):
+    def __init__(
+        self,
+        name = "Meteor Strike",
+        category = "Magical",
+        armed = False,
+        range_type = "Long-Range",
+        debuff = "Stun",
+        level = 1,
+        competence = 0,
+        energy = BASE_ENERGY,
+        mana = BASE_MANA,
+        strength = 0,
+        agility = 0,
+        defense = 0,
+        vitality = 0,
+        magic = 9,
+        dexterity = 0,
+        resistance = 0,
+        intelligence = BASE_INTELLIGENCE
+    ):
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence,
+            energy, mana, strength, agility, defense, vitality, magic, dexterity,
+            resistance, intelligence
+        )
