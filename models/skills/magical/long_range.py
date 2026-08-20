@@ -14,7 +14,7 @@ class ManaBurst(Skills):
         name = "Mana Burst",
         category = "Magical",
         armed = False,
-        range_type = "Long-Range",
+        range_type = "Melee",
         debuff = "Stun",
         level = 1,
         competence = 0,
