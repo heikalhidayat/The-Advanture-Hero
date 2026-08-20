@@ -163,9 +163,9 @@ class Skills:
         missing = [name for name, required in reqs.items() if player_stats.get(name.lower(), 0) < required]
 
         if not missing:
-            return f"{self.name} activated"
+            return True
 
-        return f"({', '.join(missing)}) tidak memenuhi persyaratan"
+        return f"({', '.join(missing)})"
 
     def __repr__(self) -> str:
         return f"Skills(name={self.name!r}, category={self.category!r}, armed={self.armed}, range_type={self.range_type!r}, debuff={self.debuff!r}, level={self.level})"
