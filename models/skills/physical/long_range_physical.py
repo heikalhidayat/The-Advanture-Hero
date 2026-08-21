@@ -40,7 +40,7 @@ class EnergyEdge(Skills):
             dexterity, resistance, intelligence
         )
 
-  class HallArrows(Skills):
+class HallArrows(Skills):
     def __init__(
         self,
         name = "Hall Arrows",
