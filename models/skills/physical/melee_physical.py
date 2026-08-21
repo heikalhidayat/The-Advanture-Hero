@@ -256,7 +256,7 @@ class IronFortress(Skills):
             dexterity, resistance, intelligence
         )
          
-class GroundTremor(skills):
+class GroundTremor(Skills):
     def __init__(
         self,
         name = "Ground Tremor",
