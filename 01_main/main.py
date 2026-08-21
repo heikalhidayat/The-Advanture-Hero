@@ -139,20 +139,20 @@ def login():
 
 def menu():
     print("\n============== MENU UTAMA ==============\n")
-    for i,(number, option) in enumerate(MENU_OPTIONS.items()):
+    for i, (number, option) in enumerate(MENU_OPTIONS.items()):
         print(f"{i+1}. {option}")
 
 def lobby():
     print("-" * 40)
     print("================= LOBBY ================")
     print("-" * 40, "\n")
-    for i,(number, option) in enumerate(LOBBY_ROOM.items()):
+    for i, (number, option) in enumerate(LOBBY_ROOM.items()):
         print(f"{i+1}. {option}")
 
 def tower_floor():
     print("\n======== Go Beyond Your Limits =========")
     print("-" * 40)
-    for i,(number, option) in enumerate(TOWER_FLOOR.items()):
+    for i, (number, option) in enumerate(TOWER_FLOOR.items()):
         print(f"{i+1}. {option}")
 
 def monster():
@@ -190,6 +190,16 @@ def barracks(id_player):
         choice = get_choice("Select a character to view more information", range(1, len(all_character) + 1))
         selected_character = all_character[choice - 1]
         print(f"{CLASS_KARAKTER_CARD[selected_character["job"]]().__str__()}")
+
+        card_skills = [
+            CLASS_KARAKTER_CARD[selected_character["job"]]().skill_01.name,
+            CLASS_KARAKTER_CARD[selected_character["job"]]().skill_02.name, 
+            CLASS_KARAKTER_CARD[selected_character["job"]]().skill_03.name,
+            CLASS_KARAKTER_CARD[selected_character["job"]]().skill_04.name
+        ]
+
+        for i, skill in enumerate(card_skills):
+            print(f"{i+1}. Skill{i+1}: {skill}")
 
     conn.commit()
     conn.close()
@@ -238,11 +248,11 @@ def alchemical_laboratory():
 
 def summoning_room():
     print("\n=========== SUMMONING ROOM ============\n")
-    for i,(number, option) in enumerate(SUMMONING_TYPE.items()):
+    for i, (number, option) in enumerate(SUMMONING_TYPE.items()):
         print(f"{i+1}. {option}")
 
 def card_summoning_hero():
-    for i,(number, option) in enumerate(CARD_SUMMONING.items()):
+    for i, (number, option) in enumerate(CARD_SUMMONING.items()):
         print(f"{i+1}. {option}")
 
 def card_summoning_weapon():
