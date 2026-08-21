@@ -272,7 +272,7 @@ class Support(Karakter):
         )
 
         self.skill_01 = HealingGrace()
-        self.skill_02 = Holysanctuary()
+        self.skill_02 = HolySantuary()
         self.skill_03 = GuardianLink()
         self.skill_04 = DivineIntervention()
 
