@@ -67,7 +67,7 @@ class HallArrows(Skills):
             dexterity, resistance, intelligence
         )
 
-    class PiercingArrow(Skills):
+class PiercingArrow(Skills):
     def __init__(
         self,
         name = "Piercing Arrow",
@@ -94,7 +94,7 @@ class HallArrows(Skills):
             dexterity, resistance, intelligence
         )
 
-    class QuickShot(Skills):
+class QuickShot(Skills):
     def __init__(
         self,
         name = "Quick Shot",
