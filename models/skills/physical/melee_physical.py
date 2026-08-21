@@ -246,7 +246,7 @@ class IronFortress(Skills):
         defense = 5,
         vitality = BASE_VITALITY,
         magic = 0,
-        dexterity = ,
+        dexterity = 0,
         resistance = 0,
         intelligence = 0
     ):
