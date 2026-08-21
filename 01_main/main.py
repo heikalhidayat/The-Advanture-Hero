@@ -35,7 +35,7 @@ from long_range_magical import (
 )
 from melee_physical import (
     BasicJab, LowKick, HeavyFist, HeavySmash, BattleCry, CycloneSlash, BerserkCharge,
-    ShieldBash, IronFortress, GRroundTremor, BastionHope, SwepingLeg, PalmPush, ElbowCharge,
+    ShieldBash, IronFortress, GroundTremor, BastionHope, SwepingLeg, PalmPush, ElbowCharge,
     AirSlap, StrikeSlash, QuickTrust, WideSwing, GuardBreak, CircularSlash, PoisonBlade,
     FlurryBlows, Assassinate,
 )
