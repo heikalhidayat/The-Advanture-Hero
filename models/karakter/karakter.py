@@ -16,7 +16,7 @@ from long_range_physical import (
 )
 
 from mid_range_magical import (
-    HealingGrace, Holysanctuary, RaiseUndead, FrostNova,
+    HealingGrace, HolySantuary, RaiseUndead, FrostNova,
 )
 from long_range_magical import (
     Fireball, MagicShield, LightningStrike, MeteorStrike, DivineIntervention,
