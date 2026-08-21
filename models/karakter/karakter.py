@@ -103,7 +103,7 @@ class Tank(Karakter):
             agility_bonus, defense_bonus
         )
 
-        self.skill_01 = ShiedlBash()
+        self.skill_01 = ShieldBash()
         self.skill_02 = IronFortress()
         self.skill_03 = GroundTremor()
         self.skill_04 = BastionHope()
