@@ -23,12 +23,12 @@ from normal_enemy import Slime
 
 # Import Skills
 from melee_magical import (
-    ShockTounch, 
+    ShockTounch,
 )
-from mid_range_magical (
-    HealingGrace, HolySantuary, FrostNova, RaiseUndead, 
+from mid_range_magical import (
+    HealingGrace, HolySantuary, FrostNova, RaiseUndead,
 )
-from long_range_magical (
+from long_range_magical import (
     ManaBurst, ShockWave, RepelWave, ArcaneRing, MagicShield, MagicArrow, SparkProjectile,
     Fireball, LightningStrike, MeteorStrike, GuardianLink, DivineIntervention, ChronoShift,
     GravityWell, BlackHole, Decay, SoulFeast, ArmyDarkness,
@@ -39,10 +39,10 @@ from melee_physical import (
     AirSlap, StrikeSlash, QuickTrust, WideSwing, GuardBreak, CircularSlash, PoisonBlade,
     FlurryBlows, Assassinate,
 )
-from mid_range_physical (
+from mid_range_physical import (
     ShadowStep, TumbleEscape,
 )
-from long_range_physical (
+from long_range_physical import (
     EnergyEdge, HallArrows, PiercingArrow, QuickShot,
 )
 
@@ -171,9 +171,9 @@ def barracks(id_player):
     cursor = conn.cursor()
 
     cursor.execute('''SELECT name, job, tier, level, exp,
-                             base_hp, base_energy, base_mana, strength, agility, 
+                             base_hp, base_energy, base_mana, strength, agility,
                              defense, vitality, magic, dexterity, resistance,
-                             intelligence, strength_bonus, agility_bonus, 
+                             intelligence, strength_bonus, agility_bonus,
                              defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus
                       FROM karakter
                       WHERE id_player = ?''', (id_player,)
@@ -209,7 +209,7 @@ def activate_ability(id_player):
             (id_player),
         )
     )
-        
+
     conn.commit()
     conn.close()
 
@@ -263,7 +263,7 @@ def summoning_heroes(id_player):
             id_player, name, job, tier, level, exp, base_hp, base_energy, base_mana, strength,
             agility, defense, vitality, magic, dexterity, resistance, intelligence,
             strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus
-        ) 
+        )
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''', (
                    (id_player),
                    (summoning_free.name),
