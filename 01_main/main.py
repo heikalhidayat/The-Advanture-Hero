@@ -185,7 +185,8 @@ def barracks(id_player, x):
 
     # Cek apakah sudah ada karakter
     if len(all_character) == 0:
-        print("\nMaster! Anda belum memiliki hero")
+        print("\nMaster! Anda belum memiliki hero!\n")
+        return False
     else:
         for i, character in enumerate(all_character):
             print(f"{i+1}. Name: {character["name"]} | Job: {character["job"]}")
@@ -204,13 +205,16 @@ def barracks(id_player, x):
         for i, skill in enumerate(card_skills):
             print(f"{i+1}. Skill{i+1}: {skill}")
 
+        return card_skills
+
     conn.commit()
     conn.close()
 
-    return len(all_character)
-
-def attack_logic():
+def attack_logic(card_skills):
     while True:
+        for i, skill in enumerate(card_skills):
+            print(f"{i+1}. Skill{i+1}: {skill}")
+
         choice_attack = get_choice("Select a skill", SKILL)
 
 def activate_ability(id_player):
@@ -332,12 +336,16 @@ def main():
 
                 # Tower Floor
                 if lobby_choice == 1:
-                    barracks(id_player, "Choose your hero, Master!")
-                    while True:
+                    card_skills = barracks(id_player, "Choose your hero, Master!")
+                    while card_skills is False:
+                        continue
+                    else:
+                        jeda_loading(0.51)
                         tower_floor()
                         tower_floor_choice = get_choice("Select the desired Tower Floor", TOWER_FLOOR)
                         if tower_floor_choice == 1:
                             monster()
+                            attack_logic(card_skills)
                         elif tower_floor_choice == 2:
                             pass
                         elif tower_floor_choice == 3:
