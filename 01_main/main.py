@@ -10,7 +10,10 @@ import random
 # ==============================================================================
 
 # Import constanta
-from config import DATABASE_NAME, MENU_OPTIONS, LOBBY_ROOM, SUMMONING_TYPE, TOWER_FLOOR, CARD_SUMMONING
+from config import (
+    DATABASE_NAME, MENU_OPTIONS, LOBBY_ROOM, SUMMONING_TYPE, TOWER_FLOOR,
+    CARD_SUMMONING, SKILL,
+)
 
 # Import database
 from database import init_database
@@ -193,7 +196,7 @@ def barracks(id_player, x):
 
         card_skills = [
             CLASS_KARAKTER_CARD[selected_character["job"]]().skill_01.name,
-            CLASS_KARAKTER_CARD[selected_character["job"]]().skill_02.name, 
+            CLASS_KARAKTER_CARD[selected_character["job"]]().skill_02.name,
             CLASS_KARAKTER_CARD[selected_character["job"]]().skill_03.name,
             CLASS_KARAKTER_CARD[selected_character["job"]]().skill_04.name
         ]
@@ -205,6 +208,10 @@ def barracks(id_player, x):
     conn.close()
 
     return len(all_character)
+
+def attack_logic():
+    while True:
+        choice_attack = get_choice("Select a skill", SKILL)
 
 def activate_ability(id_player):
     # belum lengkap
@@ -257,7 +264,7 @@ def card_summoning_hero():
     for i, (number, option) in enumerate(CARD_SUMMONING.items()):
         print(f"{i+1}. {option}")
 
-def card_summoning_weapon():
+def card_summoning_equipment():
     pass
 
 def summoning_heroes(id_player):
@@ -398,13 +405,13 @@ def main():
 
                         elif summoning_choice == 2:
                             while True:
-                                card_summoning_weapon()
-                                card_summoning_weapon_choice = get_choice("Select a summoning card, Master!", CARD_SUMMONING)
-                                if card_summoning_weapon_choice == 1:
+                                card_summoning_equipment()
+                                card_summoning_equipment_choice = get_choice("Select a summoning card, Master!", CARD_SUMMONING)
+                                if card_summoning_equipment_choice == 1:
                                     exit_bottom("enter", "continue")
-                                elif card_summoning_weapon_choice == 2:
+                                elif card_summoning_equipment_choice == 2:
                                     exit_bottom("enter", "continue")
-                                elif card_summoning_weapon_choice == 3:
+                                elif card_summoning_equipment_choice == 3:
                                     break
 
                         elif summoning_choice == 3:
