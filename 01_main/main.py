@@ -207,6 +207,13 @@ def barracks(id_player, x):
 
         return card_skills
 
+    def attack_logic(card_skills):
+        while True:
+            for i, skill in enumerate(card_skills):
+                print(f"{i+1}. Skill{i+1}: {skill}")
+
+            choice_attack = get_choice("Select a skill", SKILL)
+
     conn.commit()
     conn.close()
 
