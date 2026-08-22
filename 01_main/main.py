@@ -162,7 +162,7 @@ def monster():
     total_exp = random.randint(100, 200) * (tier_monster * level_monster)
     print(Slime(tier=tier_monster, level=level_monster, exp=total_exp).__str_monster__())
 
-def barracks(id_player):
+def barracks(id_player, x):
     print("\n=============== BARRACKS ===============")
     print("-" * 40)
 
@@ -187,7 +187,7 @@ def barracks(id_player):
         for i, character in enumerate(all_character):
             print(f"{i+1}. Name: {character["name"]} | Job: {character["job"]}")
 
-        choice = get_choice("Select a character to view more information", range(1, len(all_character) + 1))
+        choice = get_choice(x, range(1, len(all_character) + 1))
         selected_character = all_character[choice - 1]
         print(f"{CLASS_KARAKTER_CARD[selected_character["job"]]().__str__()}")
 
@@ -203,6 +203,8 @@ def barracks(id_player):
 
     conn.commit()
     conn.close()
+
+    return len(all_character)
 
 def activate_ability(id_player):
     # belum lengkap
@@ -323,6 +325,7 @@ def main():
 
                 # Tower Floor
                 if lobby_choice == 1:
+                    barracks(id_player, "Choose your hero, Master!")
                     while True:
                         tower_floor()
                         tower_floor_choice = get_choice("Select the desired Tower Floor", TOWER_FLOOR)
@@ -351,7 +354,7 @@ def main():
 
                 # Barracks
                 elif lobby_choice == 2:
-                    barracks(id_player)
+                    barracks(id_player, "Select a character to view more information")
                     exit_bottom("enter", "continue")
                     break
 
