@@ -26,7 +26,13 @@ class Enemy(Karakter):
         dexterity_bonus = 0,
         resistance_bonus = 0
     ):
-        super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus)
+        super().__init__(
+            name, job, tier, level, exp, base_hp, base_energy,
+            base_mana, strength, agility, defense, vitality, magic,
+            dexterity, resistance, intelligence, strength_bonus, 
+            agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, 
+            resistance_bonus
+        )
         self.drop_item = None
 
     @property
