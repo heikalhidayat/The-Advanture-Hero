@@ -148,8 +148,8 @@ class Karakter:
     def max_mana(self) -> int:
         return self.base_mana + (self.intelligence * self.tier * BASE_MANA_MULTIPLIER)
 
-    def total_strength(self) -> int:
-        return self.strength + (self.vitality * self.tier * BASE_STRENGTH_MULTIPLIER) + self.strength_bonus
+    def total_strength(self, skill) -> int:
+        return self.strength + (self.vitality * self.tier * BASE_STRENGTH_MULTIPLIER) + self.strength_bonus + skill.total_damage()
 
     def total_agility(self) -> int:
         return self.agility + (self.vitality * self.tier * BASE_AGILITY_MULTIPLIER) + self.agility_bonus
