@@ -248,40 +248,41 @@ def barracks(id_player, x):
 
         choice = get_choice(x, range(1, len(all_character) + 1))
         selected_character = all_character[choice - 1]
-        print(f"{CLASS_KARAKTER_CARD[selected_character["job"]]().__str__()}")
+        character = CLASS_KARAKTER_CARD[selected_character["job"]]()
+        print(f"{character.__str__()}")
 
         card_skills = [
-            CLASS_KARAKTER_CARD[selected_character["job"]]().skill_01.name,
-            CLASS_KARAKTER_CARD[selected_character["job"]]().skill_02.name,
-            CLASS_KARAKTER_CARD[selected_character["job"]]().skill_03.name,
-            CLASS_KARAKTER_CARD[selected_character["job"]]().skill_04.name
+            character.skill_01.name,
+            character.skill_02.name,
+            character.skill_03.name,
+            character.skill_04.name
         ]
 
         for i, skill in enumerate(card_skills):
             print(f"{i+1}. Skill{i+1}: {skill}")
 
-        return card_skills
+        return card_skills, character
 
     conn.commit()
     conn.close()
 
-def attack_logic(card_skills):
+def attack_logic(card_skills, character):
         while True:
             for i, skill in enumerate(card_skills):
                 print(f"{i+1}. Skill{i+1}: {skill}")
 
             choice_attack = get_choice("Select a skill", SKILL)
             if choice_attack == 1:
-                CLASS_SKILLS_CARD[card_skills[0]]()
+                character.total_strength(CLASS_SKILLS_CARD[card_skills[0]]().total_damage())
                 break
             elif choice_attack == 2:
-                CLASS_SKILLS_CARD[card_skills[1]]()
+                character.total_strength(CLASS_SKILLS_CARD[card_skills[1]]().total_damage())
                 break
             elif choice_attack == 3:
-                CLASS_SKILLS_CARD[card_skills[2]]()
+                character.total_strength(CLASS_SKILLS_CARD[card_skills[2]]().total_damage())
                 break
             elif choice_attack == 4:
-                CLASS_SKILLS_CARD[card_skills[3]]()
+                character.total_strength(CLASS_SKILLS_CARD[card_skills[3]]().total_damage())
                 break
 
 def activate_ability(id_player):
@@ -403,7 +404,7 @@ def main():
 
                 # Tower Floor
                 if lobby_choice == 1:
-                    card_skills = barracks(id_player, "Choose your hero, Master!")
+                    card_skills, character = barracks(id_player, "Choose your hero, Master!")
                     while card_skills is False:
                         break
                     else:
