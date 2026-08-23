@@ -64,6 +64,61 @@ CLASS_KARAKTER_CARD = {
     "Necromancer": Necromancer
 }
 
+CLASS_SKILLS_CARD = {
+    "Shock Tounch": ShockTounch,
+    "Healing Grace": HealingGrace,
+    "Holy Santuary": HolySantuary,
+    "Frost Nova": FrostNova,
+    "Raise Undead": RaiseUndead,
+    "Mana Burst": ManaBurst,
+    "Shock Wave": ShockWave,
+    "Repel Wave": RepelWave,
+    "Arcane Ring": ArcaneRing,
+    "Magic Shield": MagicShield,
+    "Magic Arrow": MagicArrow,
+    "Spark Projectile": SparkProjectile,
+    "Fireball": Fireball,
+    "Lightning Strike": LightningStrike,
+    "Meteor Strike": MeteorStrike,
+    "Guardian Link": GuardianLink,
+    "Divine Intervention": DivineIntervention,
+    "Chrono Shift": ChronoShift,
+    "Gravity Well": GravityWell,
+    "Black Hole": BlackHole,
+    "Decay": Decay,
+    "Soul Feast": SoulFeast,
+    "Army Darkness": ArmyDarkness,
+    "Basic Jab": BasicJab,
+    "Low Kick": LowKick,
+    "Heavy Fist": HeavyFist,
+    "Heavy Smash": HeavySmash,
+    "Battle Cry": BattleCry,
+    "Cyclone Slash": CycloneSlash,
+    "Berserk Charge": BerserkCharge,
+    "Shield Bash": ShieldBash,
+    "Iron Fortress": IronFortress,
+    "Ground Tremor": GroundTremor,
+    "Bastion Hope": BastionHope,
+    "Sweping Leg": SwepingLeg,
+    "Palm Push": PalmPush,
+    "Elbow Charge": ElbowCharge,
+    "Air Slap": AirSlap,
+    "Strike Slash": StrikeSlash,
+    "Quick Trust": QuickTrust,
+    "Wide Swing": WideSwing,
+    "Guard Break": GuardBreak,
+    "Circular Slash": CircularSlash,
+    "Poison Blade": PoisonBlade,
+    "Flurry Blows": FlurryBlows,
+    "Assassinate": Assassinate,
+    "Shadow Step": ShadowStep,
+    "Tumble Escape": TumbleEscape,
+    "Energy Edge": EnergyEdge,
+    "Hall Arrows": HallArrows,
+    "Piercing Arrow": PiercingArrow,
+    "Quick Shot": QuickShot,
+}
+
 class InvalidMenuChoiceError(Exception):
     pass
 
@@ -207,17 +262,27 @@ def barracks(id_player, x):
 
         return card_skills
 
-    def attack_logic(card_skills):
+    conn.commit()
+    conn.close()
+
+def attack_logic(card_skills):
         while True:
             for i, skill in enumerate(card_skills):
                 print(f"{i+1}. Skill{i+1}: {skill}")
 
             choice_attack = get_choice("Select a skill", SKILL)
             if choice_attack == 1:
-                
-
-    conn.commit()
-    conn.close()
+                CLASS_SKILLS_CARD[card_skills[0]]()
+                break
+            elif choice_attack == 2:
+                CLASS_SKILLS_CARD[card_skills[1]]()
+                break
+            elif choice_attack == 3:
+                CLASS_SKILLS_CARD[card_skills[2]]()
+                break
+            elif choice_attack == 4:
+                CLASS_SKILLS_CARD[card_skills[3]]()
+                break
 
 def activate_ability(id_player):
     # belum lengkap
@@ -340,7 +405,7 @@ def main():
                 if lobby_choice == 1:
                     card_skills = barracks(id_player, "Choose your hero, Master!")
                     while card_skills is False:
-                        continue
+                        break
                     else:
                         jeda_loading(0.51)
                         tower_floor()
