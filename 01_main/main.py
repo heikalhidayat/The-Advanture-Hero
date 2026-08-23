@@ -413,7 +413,7 @@ def main():
                         tower_floor_choice = get_choice("Select the desired Tower Floor", TOWER_FLOOR)
                         if tower_floor_choice == 1:
                             monster()
-                            attack_logic(card_skills)
+                            attack_logic(card_skills, character)
                         elif tower_floor_choice == 2:
                             pass
                         elif tower_floor_choice == 3:
