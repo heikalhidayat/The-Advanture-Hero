@@ -1,4 +1,11 @@
 from base_enemy import Enemy
+# Import skills monster
+from melee_physical import GelatinousAbsorb
+from mid_range_physical import BounceStrike
+from long_range_physical import
+from melee_magic import SlimeDivide
+from mid_range_magic import
+from long_range_magic import AcidSpit
 
 class Slime(Enemy):
     def __init__(
@@ -38,10 +45,10 @@ class Slime(Enemy):
             agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, 
             resistance_bonus, drop_item
         )
-        self.skill_01 = None
-        self.skill_02 = None
-        self.skill_03 = None
-        self.skill_04 = None
+        self.skill_01 = BounceStrike()
+        self.skill_02 = AcidSpit()
+        self.skill_03 = GelatinousAbsorb()
+        self.skill_04 = SlimeDivide()
 
 class GoblinScout(Enemy):
     def __init__(
