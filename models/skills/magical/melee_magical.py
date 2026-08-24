@@ -35,10 +35,10 @@ class ShockTounch(Skills):
             resistance, intelligence
         )
 
-class SlimeDivine(Skills):
+class SlimeDivide(Skills):
     def __init__(
         self,
-        name = "Slime Divine",
+        name = "Slime Divide",
         category = "Magical",
         armed = False,
         range_type = "Melee",
