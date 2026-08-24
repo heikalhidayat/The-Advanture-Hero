@@ -8,6 +8,10 @@ class Enemy(Karakter):
         tier = 1,
         level = 1,
         exp = 0,
+        skill_01 = None,
+        skill_02 = None,
+        skill_03 = None,
+        skill_04 = None,
         base_hp = 0,
         base_energy = 0,
         base_mana = 0,
@@ -27,7 +31,7 @@ class Enemy(Karakter):
         resistance_bonus = 0
     ):
         super().__init__(
-            name, job, tier, level, exp, base_hp, base_energy,
+            name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04, base_hp, base_energy,
             base_mana, strength, agility, defense, vitality, magic,
             dexterity, resistance, intelligence, strength_bonus, 
             agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, 
