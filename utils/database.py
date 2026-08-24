@@ -89,6 +89,22 @@ def init_database():
         )
     '''
     )
+
+    cursor.execute(
+        '''
+        CREATE TABLE IF NOT EXISTS equipment (
+            id_equipment INTEGER PRIMARY KEY AUTOINCREMENT,
+            id_player INTEGER,
+            name VARCHAR,
+            category VARCHAR,
+            kind VARCHAR,
+            price INTEGER,
+            capasity INTEGER,
+            base_durability INTEGER,
+            current_durability INTEGER
+        )
+    '''
+    )
     
     conn.commit()
     conn.close()
