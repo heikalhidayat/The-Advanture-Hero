@@ -633,3 +633,30 @@ class Assassinate(Skills):
             energy, mana, strength, agility, defense, vitality, magic, 
             dexterity, resistance, intelligence
         )
+
+class GelatinousAbsorb(Skills):
+    def __init__(
+        self,
+        name = "Gelatinous Absorb",
+        category = "Physical",
+        armed = False,
+        range_type = "Melee",
+        debuff = None,
+        level = 1,
+        competence = 0,
+        energy = BASE_ENERGY,
+        mana = 0,
+        strength = 3,
+        agility = 2,
+        defense = 4,
+        vitality = BASE_VITALITY,
+        magic = 0,
+        dexterity = 0,
+        resistance = 0,
+        intelligence = 0
+    ):
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence, 
+            energy, mana, strength, agility, defense, vitality, magic, 
+            dexterity, resistance, intelligence
+        )
