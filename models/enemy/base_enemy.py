@@ -34,7 +34,6 @@ class Enemy(Karakter):
         resistance_bonus: int,
         # drop
         drop_item: str,
-        drop_exp: int,
     ):
         super().__init__(
             name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04,
@@ -44,7 +43,6 @@ class Enemy(Karakter):
             resistance_bonus
         )
         self.drop_item = drop_item
-        self.drop_exp = drop_exp
 
     @property
     def total_drop_exp(self) -> int:
