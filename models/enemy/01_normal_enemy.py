@@ -7,7 +7,11 @@ class Slime(Enemy):
         job = "Normal", 
         tier = 1,
         level = 1,
-        exp = 0,
+        exp = 100,
+        skill_01 = None,
+        skill_02 = None,
+        skill_03 = None,
+        skill_04 = None,
         base_hp = 100,
         base_energy = 0,
         base_mana = 0,
@@ -27,7 +31,17 @@ class Slime(Enemy):
         resistance_bonus = 0,
         drop_item = 1,
     ):
-        super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus)
+        super().__init__(
+            name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04,
+            base_hp, base_energy, base_mana, strength, agility, defense, 
+            vitality, magic, dexterity, resistance, strength_bonus, 
+            agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, 
+            resistance_bonus, drop_item
+        )
+        self.skill_01 = None
+        self.skill_02 = None
+        self.skill_03 = None
+        self.skill_04 = None
 
 class GoblinScout(Enemy):
     def __init__(
@@ -36,7 +50,11 @@ class GoblinScout(Enemy):
         job = "Normal", 
         tier = 1,
         level = 1,
-        exp = 0,
+        exp = 100,
+        skill_01 = None,
+        skill_02 = None,
+        skill_03 = None,
+        skill_04 = None,
         base_hp = 150,
         base_energy = 0,
         base_mana = 0,
@@ -56,7 +74,17 @@ class GoblinScout(Enemy):
         resistance_bonus = 0,
         drop_item = 0,
     ):
-        super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus)
+        super().__init__(
+            name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04,
+            base_hp, base_energy, base_mana, strength, agility, defense, 
+            vitality, magic, dexterity, resistance, strength_bonus, 
+            agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, 
+            resistance_bonus, drop_item
+        )
+        self.skill_01 = None
+        self.skill_02 = None
+        self.skill_03 = None
+        self.skill_04 = None
 
 class Giantrat(Enemy):
     def __init__(
@@ -65,7 +93,11 @@ class Giantrat(Enemy):
         job = "Normal", 
         tier = 1,
         level = 1,
-        exp = 0,
+        exp = 100,
+        skill_01 = None,
+        skill_02 = None,
+        skill_03 = None,
+        skill_04 = None,
         base_hp = 200,
         base_energy = 0,
         base_mana = 0,
@@ -85,7 +117,17 @@ class Giantrat(Enemy):
         resistance_bonus = 0,
         drop_item = 1,
     ):
-        super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus)
+        super().__init__(
+            name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04,
+            base_hp, base_energy, base_mana, strength, agility, defense, 
+            vitality, magic, dexterity, resistance, strength_bonus, 
+            agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, 
+            resistance_bonus, drop_item
+        )
+        self.skill_01 = None
+        self.skill_02 = None
+        self.skill_03 = None
+        self.skill_04 = None
 
 class GoblinWarrior(Enemy):
     def __init__(
@@ -94,7 +136,11 @@ class GoblinWarrior(Enemy):
         job = "Normal", 
         tier = 1,
         level = 1,
-        exp = 0,
+        exp = 100,
+        skill_01 = None,
+        skill_02 = None,
+        skill_03 = None,
+        skill_04 = None,
         base_hp = 250,
         base_energy = 0,
         base_mana = 0,
@@ -114,7 +160,17 @@ class GoblinWarrior(Enemy):
         resistance_bonus = 0,
         drop_item = 0,
     ):
-        super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus)
+        super().__init__(
+            name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04,
+            base_hp, base_energy, base_mana, strength, agility, defense, 
+            vitality, magic, dexterity, resistance, strength_bonus, 
+            agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, 
+            resistance_bonus, drop_item
+        )
+        self.skill_01 = None
+        self.skill_02 = None
+        self.skill_03 = None
+        self.skill_04 = None
 
 class SkeletonWarrior(Enemy):
     def __init__(
@@ -123,7 +179,11 @@ class SkeletonWarrior(Enemy):
         job = "Normal", 
         tier = 1,
         level = 1,
-        exp = 0,
+        exp = 100,
+        skill_01 = None,
+        skill_02 = None,
+        skill_03 = None,
+        skill_04 = None,
         base_hp = 300,
         base_energy = 0,
         base_mana = 0,
@@ -143,7 +203,17 @@ class SkeletonWarrior(Enemy):
         resistance_bonus = 0,
         drop_item = 0,
     ):
-        super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus)
+        super().__init__(
+            name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04,
+            base_hp, base_energy, base_mana, strength, agility, defense, 
+            vitality, magic, dexterity, resistance, strength_bonus, 
+            agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, 
+            resistance_bonus, drop_item
+        )
+        self.skill_01 = None
+        self.skill_02 = None
+        self.skill_03 = None
+        self.skill_04 = None
 
 class Kobold(Enemy):
     def __init__(
@@ -152,7 +222,11 @@ class Kobold(Enemy):
         job = "Normal", 
         tier = 1,
         level = 1,
-        exp = 0,
+        exp = 100,
+        skill_01 = None,
+        skill_02 = None,
+        skill_03 = None,
+        skill_04 = None,
         base_hp = 350,
         base_energy = 0,
         base_mana = 0,
@@ -172,7 +246,17 @@ class Kobold(Enemy):
         resistance_bonus = 0,
         drop_item = 1,
     ):
-        super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus)
+        super().__init__(
+            name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04,
+            base_hp, base_energy, base_mana, strength, agility, defense, 
+            vitality, magic, dexterity, resistance, strength_bonus, 
+            agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, 
+            resistance_bonus, drop_item
+        )
+        self.skill_01 = None
+        self.skill_02 = None
+        self.skill_03 = None
+        self.skill_04 = None
 
 class GiantSpider(Enemy):
     def __init__(
@@ -181,7 +265,11 @@ class GiantSpider(Enemy):
         job = "Normal", 
         tier = 1,
         level = 1,
-        exp = 0,
+        exp = 100,
+        skill_01 = None,
+        skill_02 = None,
+        skill_03 = None,
+        skill_04 = None,
         base_hp = 400,
         base_energy = 0,
         base_mana = 0,
@@ -201,7 +289,17 @@ class GiantSpider(Enemy):
         resistance_bonus = 0,
         drop_item = 0,
     ):
-        super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus)
+        super().__init__(
+            name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04,
+            base_hp, base_energy, base_mana, strength, agility, defense, 
+            vitality, magic, dexterity, resistance, strength_bonus, 
+            agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, 
+            resistance_bonus, drop_item
+        )
+        self.skill_01 = None
+        self.skill_02 = None
+        self.skill_03 = None
+        self.skill_04 = None
 
 class FeralWolf(Enemy):
     def __init__(
@@ -210,7 +308,11 @@ class FeralWolf(Enemy):
         job = "Normal", 
         tier = 1,
         level = 1,
-        exp = 0,
+        exp = 100,
+        skill_01 = None,
+        skill_02 = None,
+        skill_03 = None,
+        skill_04 = None,
         base_hp = 450,
         base_energy = 0,
         base_mana = 0,
@@ -230,7 +332,17 @@ class FeralWolf(Enemy):
         resistance_bonus = 0,
         drop_item = 0,
     ):
-        super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus)
+        super().__init__(
+            name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04,
+            base_hp, base_energy, base_mana, strength, agility, defense, 
+            vitality, magic, dexterity, resistance, strength_bonus, 
+            agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, 
+            resistance_bonus, drop_item
+        )
+        self.skill_01 = None
+        self.skill_02 = None
+        self.skill_03 = None
+        self.skill_04 = None
 
 class Imps(Enemy):
     def __init__(
@@ -239,7 +351,11 @@ class Imps(Enemy):
         job = "Normal", 
         tier = 1,
         level = 1,
-        exp = 0,
+        exp = 100,
+        skill_01 = None,
+        skill_02 = None,
+        skill_03 = None,
+        skill_04 = None,
         base_hp = 500,
         base_energy = 0,
         base_mana = 0,
@@ -259,4 +375,14 @@ class Imps(Enemy):
         resistance_bonus = 0,
         drop_item = 0,
     ):
-        super().__init__(name, job, tier, level, exp, base_hp, base_energy, base_mana, strength, agility, defense, vitality, magic, dexterity, resistance, strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus)
+        super().__init__(
+            name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04,
+            base_hp, base_energy, base_mana, strength, agility, defense, 
+            vitality, magic, dexterity, resistance, strength_bonus, 
+            agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, 
+            resistance_bonus, drop_item
+        )
+        self.skill_01 = None
+        self.skill_02 = None
+        self.skill_03 = None
+        self.skill_04 = None
