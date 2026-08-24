@@ -66,3 +66,30 @@ class TumbleEscape(Skills):
             energy, mana, strength, agility, defense, vitality, magic,
             dexterity, resistance, intelligence
         )
+
+class BounceStrike(Skills):
+    def __init__(
+        self,
+        name = "Bounce Strike",
+        category = "Physical",
+        armed = False,
+        range_type = "Mid-Range",
+        debuff = None,
+        level = 1,
+        competence = 0,
+        energy = BASE_ENERGY,
+        mana = 0,
+        strength = 3,
+        agility = 3,
+        defense = 3,
+        vitality = BASE_VITALITY,
+        magic = 0,
+        dexterity = 0,
+        resistance = 0,
+        intelligence = 0
+    ):
+        super().__init__(
+            name, category, armed, range_type, debuff, level, competence, 
+            energy, mana, strength, agility, defense, vitality, magic,
+            dexterity, resistance, intelligence
+        )
