@@ -228,20 +228,27 @@ def barracks(id_player, x):
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
-    cursor.execute('''SELECT name, job, tier, level, exp,
-                             base_hp, base_energy, base_mana, strength, agility,
-                             defense, vitality, magic, dexterity, resistance,
-                             intelligence, strength_bonus, agility_bonus,
-                             defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus
-                      FROM karakter
-                      WHERE id_player = ?''', (id_player,)
-                  )
+    cursor.execute(
+        '''
+        SELECT 
+            name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04,
+            base_hp, base_energy, base_mana, strength, agility, defense, vitality,
+            magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus,
+            defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus
+        FROM 
+            karakter
+        WHERE 
+            id_player = ?
+        ''', 
+            (id_player,)
+    )
+
     all_character = cursor.fetchall()
 
     # Cek apakah sudah ada karakter
     if len(all_character) == 0:
         print("\nMaster! Anda belum memiliki hero!\n")
-        return False
+        return None, None
     else:
         for i, character in enumerate(all_character):
             print(f"{i+1}. Name: {character["name"]} | Job: {character["job"]}")
@@ -261,7 +268,7 @@ def barracks(id_player, x):
         for i, skill in enumerate(card_skills):
             print(f"{i+1}. Skill{i+1}: {skill}")
 
-        return card_skills, character
+    return card_skills, character
 
     conn.commit()
     conn.close()
@@ -291,14 +298,17 @@ def activate_ability(id_player):
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
-    cursor.execute('''
+    cursor.execute(
+        '''
         INSERT INTO skill (
-            id_player, name, category, armed, range_type, debuff, level, competence, energy, mana,
-            strength, agility, defense, vitality, magic, dexterity, resistance, intelligence
+            id_player, name, category, armed, range_type, debuff, level,
+            competence, energy, mana, strength, agility, defense, vitality, 
+            magic, dexterity, resistance, intelligence
         )
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',(
-            (id_player),
-        )
+        VALUES 
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ''',
+            (id_player,)
     )
 
     conn.commit()
@@ -349,36 +359,45 @@ def summoning_heroes(id_player):
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
-    cursor.execute('''
+    cursor.execute(
+        '''
         INSERT INTO karakter (
-            id_player, name, job, tier, level, exp, base_hp, base_energy, base_mana, strength,
-            agility, defense, vitality, magic, dexterity, resistance, intelligence,
-            strength_bonus, agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus
+            id_player, name, job, tier, level, exp, skill_01, skill_02, skill_03,
+            skill_04, base_hp, base_energy, base_mana, strength, agility,
+            defense, vitality, magic, dexterity, resistance, intelligence,
+            strength_bonus, agility_bonus, defense_bonus, magic_bonus, 
+            dexterity_bonus, resistance_bonus
         )
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''', (
-                   (id_player),
-                   (summoning_free.name),
-                   (summoning_free.job),
-                   (summoning_free.tier),
-                   (summoning_free.level),
-                   (summoning_free.exp),
-                   (summoning_free.base_hp),
-                   (summoning_free.base_energy),
-                   (summoning_free.base_mana),
-                   (summoning_free.strength),
-                   (summoning_free.agility),
-                   (summoning_free.defense),
-                   (summoning_free.vitality),
-                   (summoning_free.magic),
-                   (summoning_free.dexterity),
-                   (summoning_free.resistance),
-                   (summoning_free.intelligence),
-                   (summoning_free.strength_bonus),
-                   (summoning_free.agility_bonus),
-                   (summoning_free.defense_bonus),
-                   (summoning_free.magic_bonus),
-                   (summoning_free.dexterity_bonus),
-                   (summoning_free.resistance_bonus)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ''', 
+            (
+                (id_player),
+                (summoning_free.name),
+                (summoning_free.job),
+                (summoning_free.tier),
+                (summoning_free.level),
+                (summoning_free.exp),
+                (summoning_free.skill_01),
+                (summoning_free.skill_02),
+                (summoning_free.skill_03),
+                (summoning_free.skill_04),
+                (summoning_free.base_hp),
+                (summoning_free.base_energy),
+                (summoning_free.base_mana),
+                (summoning_free.strength),
+                (summoning_free.agility),
+                (summoning_free.defense),
+                (summoning_free.vitality),
+                (summoning_free.magic),
+                (summoning_free.dexterity),
+                (summoning_free.resistance),
+                (summoning_free.intelligence),
+                (summoning_free.strength_bonus),
+                (summoning_free.agility_bonus),
+                (summoning_free.defense_bonus),
+                (summoning_free.magic_bonus),
+                (summoning_free.dexterity_bonus),
+                (summoning_free.resistance_bonus)
            )
     )
 
@@ -405,7 +424,7 @@ def main():
                 # Tower Floor
                 if lobby_choice == 1:
                     card_skills, character = barracks(id_player, "Choose your hero, Master!")
-                    while card_skills is False:
+                    while card_skills is None:
                         break
                     else:
                         jeda_loading(0.51)
