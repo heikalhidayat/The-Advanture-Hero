@@ -41,7 +41,7 @@ class Slime(Enemy):
         super().__init__(
             name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04,
             base_hp, base_energy, base_mana, strength, agility, defense, 
-            vitality, magic, dexterity, resistance, strength_bonus, 
+            vitality, magic, dexterity, resistance, intelligence, strength_bonus, 
             agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, 
             resistance_bonus, drop_item
         )
@@ -84,7 +84,7 @@ class GoblinScout(Enemy):
         super().__init__(
             name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04,
             base_hp, base_energy, base_mana, strength, agility, defense, 
-            vitality, magic, dexterity, resistance, strength_bonus, 
+            vitality, magic, dexterity, resistance, intelligence, strength_bonus, 
             agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, 
             resistance_bonus, drop_item
         )
@@ -127,7 +127,7 @@ class Giantrat(Enemy):
         super().__init__(
             name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04,
             base_hp, base_energy, base_mana, strength, agility, defense, 
-            vitality, magic, dexterity, resistance, strength_bonus, 
+            vitality, magic, dexterity, resistance, intelligence, strength_bonus, 
             agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, 
             resistance_bonus, drop_item
         )
@@ -170,7 +170,7 @@ class GoblinWarrior(Enemy):
         super().__init__(
             name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04,
             base_hp, base_energy, base_mana, strength, agility, defense, 
-            vitality, magic, dexterity, resistance, strength_bonus, 
+            vitality, magic, dexterity, resistance, intelligence, strength_bonus, 
             agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, 
             resistance_bonus, drop_item
         )
@@ -213,7 +213,7 @@ class SkeletonWarrior(Enemy):
         super().__init__(
             name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04,
             base_hp, base_energy, base_mana, strength, agility, defense, 
-            vitality, magic, dexterity, resistance, strength_bonus, 
+            vitality, magic, dexterity, resistance, intelligence, strength_bonus, 
             agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, 
             resistance_bonus, drop_item
         )
@@ -256,7 +256,7 @@ class Kobold(Enemy):
         super().__init__(
             name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04,
             base_hp, base_energy, base_mana, strength, agility, defense, 
-            vitality, magic, dexterity, resistance, strength_bonus, 
+            vitality, magic, dexterity, resistance, intelligence, strength_bonus, 
             agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, 
             resistance_bonus, drop_item
         )
@@ -299,7 +299,7 @@ class GiantSpider(Enemy):
         super().__init__(
             name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04,
             base_hp, base_energy, base_mana, strength, agility, defense, 
-            vitality, magic, dexterity, resistance, strength_bonus, 
+            vitality, magic, dexterity, resistance, intelligence, strength_bonus, 
             agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, 
             resistance_bonus, drop_item
         )
@@ -342,7 +342,7 @@ class FeralWolf(Enemy):
         super().__init__(
             name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04,
             base_hp, base_energy, base_mana, strength, agility, defense, 
-            vitality, magic, dexterity, resistance, strength_bonus, 
+            vitality, magic, dexterity, resistance, intelligence, strength_bonus, 
             agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, 
             resistance_bonus, drop_item
         )
@@ -385,7 +385,7 @@ class Imps(Enemy):
         super().__init__(
             name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04,
             base_hp, base_energy, base_mana, strength, agility, defense, 
-            vitality, magic, dexterity, resistance, strength_bonus, 
+            vitality, magic, dexterity, resistance, intelligence, strength_bonus, 
             agility_bonus, defense_bonus, magic_bonus, dexterity_bonus, 
             resistance_bonus, drop_item
         )
