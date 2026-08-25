@@ -368,7 +368,7 @@ def summoning_heroes(id_player):
             strength_bonus, agility_bonus, defense_bonus, magic_bonus, 
             dexterity_bonus, resistance_bonus
         )
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ''', 
             (
                 (id_player),
@@ -377,10 +377,10 @@ def summoning_heroes(id_player):
                 (summoning_free.tier),
                 (summoning_free.level),
                 (summoning_free.exp),
-                (summoning_free.skill_01),
-                (summoning_free.skill_02),
-                (summoning_free.skill_03),
-                (summoning_free.skill_04),
+                (summoning_free.skill_01.name),
+                (summoning_free.skill_02.name),
+                (summoning_free.skill_03.name),
+                (summoning_free.skill_04.name),
                 (summoning_free.base_hp),
                 (summoning_free.base_energy),
                 (summoning_free.base_mana),
