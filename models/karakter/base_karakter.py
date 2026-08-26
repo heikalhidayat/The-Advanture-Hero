@@ -196,7 +196,6 @@ class Karakter:
         self.resistance += (STAT_INCREASE_RESISTANCE * self.level)
         # recompute exp cap
         self.max_exp = self.compute_max_exp()
-        print(f"LEVEL UP! {self.name} naik ke Level {self.level}")
 
     def gain_exp(self, amount: int):
         self.exp += amount
