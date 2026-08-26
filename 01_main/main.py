@@ -218,7 +218,9 @@ def monster():
     tier_monster = random.randint(1, 3)
     level_monster = random.randint(1, 5)
     total_exp = random.randint(100, 200) * (tier_monster * level_monster)
-    print(Slime(tier=tier_monster, level=level_monster, exp=total_exp).__str_monster__())
+    monster = copy.deepcopy(Slime(tier=tier_monster, level=level_monster, exp=total_exp))
+    monster.level_up()
+    print(f"{monster.__str__()}")
 
 def barracks(id_player, x):
     print("\n=============== BARRACKS ===============")
