@@ -56,7 +56,7 @@ class Skills:
         self.intelligence = intelligence
 
     @property
-    def max_competence(self):
+    def max_competence(self) -> int:
         return self.level ** 2 * 100
 
     @property
@@ -106,9 +106,9 @@ class Skills:
             intelligence=int(row("intelligence",0))
         )
 
+    @property
     def total_damage(self) -> int:
-        damage = (((self.strength + self.agility or self.dexterity)*self.vitality)*self.level) or (((self.magic + self.dexterity)*self.intelligence)*self.level)
-        return damage
+        return (((self.strength + self.agility or self.dexterity)*self.vitality)*self.level) or (((self.magic + self.dexterity)*self.intelligence)*self.level)
 
     def level_up(self):
         self.level += 1
