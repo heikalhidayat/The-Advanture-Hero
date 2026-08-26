@@ -111,34 +111,20 @@ SKILL = {
 # ============================================
 MENU_OPTIONS = {
     1: "Lobby",
-    2: "Karakter",
-    3: "Shop",
-    4: "Exit"
+    2: "Shop",
+    3: "Exit"
 }
 
 LOBBY_ROOM = {
     1: "Tower Gate",
     2: "Barracks",
-    3: "Training Area",
-    4: "Armory",
-    5: "Blacksmith Shop",
-    6: "Alchemical Laboratory",
-    7: "Summoning Room",
-    8: "Back"
+    3: "Summoning Room",
+    4: "Back"
 }
 
 TOWER_FLOOR = {
     1: "The Threshold",
-    2: "Whispering Woods",
-    3: "Clockwork Foundry",
-    4: "Catacombs of Despair",
-    5: "Molten Core",
-    6: "Frostbite Peak",
-    7: "Stromseeker Spires",
-    8: "Archive of Forbidden Lore",
-    9: "Void Nexus",
-    10: "Apex of the Conqueror",
-    11: "Back"
+    2: "Back"
 }
 
 SUMMONING_TYPE = {
