@@ -230,16 +230,16 @@ def barracks(id_player, x):
 
     cursor.execute(
         '''
-        SELECT 
+        SELECT
             name, job, tier, level, exp, skill_01, skill_02, skill_03, skill_04,
             base_hp, base_energy, base_mana, strength, agility, defense, vitality,
             magic, dexterity, resistance, intelligence, strength_bonus, agility_bonus,
             defense_bonus, magic_bonus, dexterity_bonus, resistance_bonus
-        FROM 
+        FROM
             karakter
-        WHERE 
+        WHERE
             id_player = ?
-        ''', 
+        ''',
             (id_player,)
     )
 
@@ -280,16 +280,16 @@ def attack_logic(card_skills, character):
 
             choice_attack = get_choice("Select a skill", SKILL)
             if choice_attack == 1:
-                character.total_strength(CLASS_SKILLS_CARD[card_skills[0]]().total_damage())
+                character.total_damage(CLASS_SKILLS_CARD[card_skills[0]]())
                 break
             elif choice_attack == 2:
-                character.total_strength(CLASS_SKILLS_CARD[card_skills[1]]().total_damage())
+                character.total_damage(CLASS_SKILLS_CARD[card_skills[1]]())
                 break
             elif choice_attack == 3:
-                character.total_strength(CLASS_SKILLS_CARD[card_skills[2]]().total_damage())
+                character.total_damage(CLASS_SKILLS_CARD[card_skills[2]]())
                 break
             elif choice_attack == 4:
-                character.total_strength(CLASS_SKILLS_CARD[card_skills[3]]().total_damage())
+                character.total_damage(CLASS_SKILLS_CARD[card_skills[3]]())
                 break
 
 def activate_ability(id_player):
@@ -302,10 +302,10 @@ def activate_ability(id_player):
         '''
         INSERT INTO skill (
             id_player, name, category, armed, range_type, debuff, level,
-            competence, energy, mana, strength, agility, defense, vitality, 
+            competence, energy, mana, strength, agility, defense, vitality,
             magic, dexterity, resistance, intelligence
         )
-        VALUES 
+        VALUES
             (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ''',
             (id_player,)
@@ -349,11 +349,11 @@ def summoning_heroes(id_player):
             id_player, name, job, tier, level, exp, skill_01, skill_02, skill_03,
             skill_04, base_hp, base_energy, base_mana, strength, agility,
             defense, vitality, magic, dexterity, resistance, intelligence,
-            strength_bonus, agility_bonus, defense_bonus, magic_bonus, 
+            strength_bonus, agility_bonus, defense_bonus, magic_bonus,
             dexterity_bonus, resistance_bonus
         )
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ''', 
+        ''',
             (
                 (id_player),
                 (summoning_free.name),
