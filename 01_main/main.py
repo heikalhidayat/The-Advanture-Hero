@@ -321,22 +321,6 @@ def activate_ability(id_player):
         for i, skill in enumerate(skill_available):
             print(f"{i+1}. {skill}")
 
-def training_area():
-    print("\n============= TRAINING AREA ============")
-    print("-" * 40)
-
-def armory():
-    print("\n================ ARMORY ================")
-    print("-" * 40)
-
-def blacksmith_shop():
-    print("\n============ BLACKSMITH SHOP ===========")
-    print("-" * 40)
-
-def alchemical_laboratory():
-    print("\n======== ALCHEMICAL RABORATORY ========")
-    print("-" * 40)
-
 def summoning_room():
     print("\n=========== SUMMONING ROOM ============\n")
     for i, (number, option) in enumerate(SUMMONING_TYPE.items()):
@@ -435,24 +419,6 @@ def main():
                             attack_logic(card_skills, character)
                         elif tower_floor_choice == 2:
                             pass
-                        elif tower_floor_choice == 3:
-                            pass
-                        elif tower_floor_choice == 4:
-                            pass
-                        elif tower_floor_choice == 5:
-                            pass
-                        elif tower_floor_choice == 6:
-                            pass
-                        elif tower_floor_choice == 7:
-                            pass
-                        elif tower_floor_choice == 8:
-                            pass
-                        elif tower_floor_choice == 9:
-                            pass
-                        elif tower_floor_choice == 10:
-                            pass
-                        elif tower_floor_choice == 11:
-                            break
 
                 # Barracks
                 elif lobby_choice == 2:
@@ -460,28 +426,8 @@ def main():
                     exit_bottom("enter", "continue")
                     break
 
-                # Training Area
-                elif lobby_choice == 3:
-                    training_area()
-                    exit_bottom("enter", "continue")
-
-                # Armory
-                elif lobby_choice == 4:
-                    armory()
-                    exit_bottom("enter", "continue")
-
-                # Blacksmith Shop
-                elif lobby_choice == 5:
-                    blacksmith_shop()
-                    exit_bottom("enter", "continue")
-
-                # Alchemical Laboratory
-                elif lobby_choice == 6:
-                    alchemical_laboratory()
-                    exit_bottom("enter", "continue")
-
                 # Summoning Room
-                elif lobby_choice == 7:
+                elif lobby_choice == 3:
                     while True:
                         summoning_room()
                         summoning_choice = get_choice("Choose the summon you want, Master!", SUMMONING_TYPE)
@@ -513,19 +459,15 @@ def main():
                             break
 
                 # Back
-                elif lobby_choice == 8:
+                elif lobby_choice == 4:
                     break
 
-        # KARAKTER
+        # SHOP
         elif menu_choice == 2:
             pass
 
-        # SHOP
-        elif menu_choice == 3:
-            pass
-
         # EXIT
-        elif menu_choice == 4:
+        elif menu_choice == 3:
             print("\nThank you for playing!")
             break
 
