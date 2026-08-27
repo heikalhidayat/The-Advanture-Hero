@@ -431,6 +431,8 @@ def main():
                         tower_floor()
                         tower_floor_choice = get_choice("Select the desired Tower Floor", TOWER_FLOOR)
                         if tower_floor_choice == 1:
+                            print(CLASS_SKILLS_CARD[card_skills[0]]().total_damage()) # disini perlu perbaikan
+                            print(character.total_damage(CLASS_SKILLS_CARD[card_skills[0]]()))
                             monster()
                             attack_logic(card_skills, character, monster())
                         elif tower_floor_choice == 2:
