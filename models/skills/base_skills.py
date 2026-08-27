@@ -106,7 +106,6 @@ class Skills:
             intelligence=int(row("intelligence",0))
         )
 
-    @property
     def total_damage(self) -> int:
         return (((self.strength + self.agility or self.dexterity)*self.vitality)*self.level) or (((self.magic + self.dexterity)*self.intelligence)*self.level)
 
