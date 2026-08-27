@@ -107,7 +107,7 @@ class Skills:
         )
 
     def total_damage(self) -> int:
-        return (((self.strength + self.agility or self.dexterity)*self.vitality)*self.level) or (((self.magic + self.dexterity)*self.intelligence)*self.level)
+        return (((self.strength + self.agility + self.dexterity)*self.vitality)*self.level) or (((self.magic + self.dexterity)*self.intelligence)*self.level)
 
     def level_up(self):
         self.level += 1
