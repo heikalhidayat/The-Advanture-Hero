@@ -107,8 +107,13 @@ class Skills:
         )
 
     def total_damage(self) -> int:
-        return (((self.strength + self.agility + self.dexterity)*self.vitality)*self.level) or (((self.magic + self.dexterity)*self.intelligence)*self.level)
-
+        physical_damage = (((self.strength + self.agility + self.dexterity)*self.vitality)*self.level)
+        magical_damage = (((self.magic + self.dexterity)*self.intelligence)*self.level)
+        if physical_damage > magical_damage:
+            return physical_damage
+        else:
+            return magical_damage
+       
     def level_up(self):
         self.level += 1
         # Naikkan persyaratan stats
