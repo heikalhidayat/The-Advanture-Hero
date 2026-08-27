@@ -19,7 +19,9 @@ from config import (
 from database import init_database
 
 # Import karakter
-from karakter import Mage, Tank, Assassin, Support, Marksman, Fighter, Wizard, Necromancer
+from karakter import (
+    Mage, Tank, Assassin, Support, Marksman, Fighter, Wizard, Necromancer
+)
 
 # Import monster
 from normal_enemy import Slime
@@ -32,15 +34,16 @@ from mid_range_magical import (
     HealingGrace, HolySantuary, FrostNova, RaiseUndead,
 )
 from long_range_magical import (
-    ManaBurst, ShockWave, RepelWave, ArcaneRing, MagicShield, MagicArrow, SparkProjectile,
-    Fireball, LightningStrike, MeteorStrike, GuardianLink, DivineIntervention, ChronoShift,
-    GravityWell, BlackHole, Decay, SoulFeast, ArmyDarkness,
+    ManaBurst, ShockWave, RepelWave, ArcaneRing, MagicShield, MagicArrow,
+    SparkProjectile, Fireball, LightningStrike, MeteorStrike, GuardianLink,
+    DivineIntervention, ChronoShift, GravityWell, BlackHole, Decay, SoulFeast,
+    ArmyDarkness,
 )
 from melee_physical import (
-    BasicJab, LowKick, HeavyFist, HeavySmash, BattleCry, CycloneSlash, BerserkCharge,
-    ShieldBash, IronFortress, GroundTremor, BastionHope, SwepingLeg, PalmPush, ElbowCharge,
-    AirSlap, StrikeSlash, QuickTrust, WideSwing, GuardBreak, CircularSlash, PoisonBlade,
-    FlurryBlows, Assassinate,
+    BasicJab, LowKick, HeavyFist, HeavySmash, BattleCry, CycloneSlash,
+    BerserkCharge, ShieldBash, IronFortress, GroundTremor, BastionHope,
+    SwepingLeg, PalmPush, ElbowCharge, AirSlap, StrikeSlash, QuickTrust,
+    WideSwing, GuardBreak, CircularSlash, PoisonBlade, FlurryBlows, Assassinate,
 )
 from mid_range_physical import (
     ShadowStep, TumbleEscape,
