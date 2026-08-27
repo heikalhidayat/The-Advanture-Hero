@@ -138,6 +138,17 @@ def get_choice(x, y):
         except InvalidMenuChoiceError as e:
             print(f"Invalid input {e}")
 
+def bottom_yes_no(x):
+    while True:
+        choice = input(f"\n{x}: (y/n)")
+
+        if choice.lower() == "y":
+            return True
+        elif choice.lower() == "n":
+            return False
+        else:
+            print(f"Invalid input")
+
 def exit_bottom(x, y):
     input(f"\nPress {x} to {y}...")
 
@@ -220,7 +231,9 @@ def monster():
     total_exp = random.randint(100, 200) * (tier_monster * level_monster)
     monster = copy.deepcopy(Slime(tier=tier_monster, level=level_monster, exp=total_exp))
     monster.level_up()
+
     print(f"{monster.__str__()}")
+    return monster
 
 def barracks(id_player, x):
     print("\n=============== BARRACKS ===============")
@@ -275,53 +288,54 @@ def barracks(id_player, x):
     conn.commit()
     conn.close()
 
-def attack_logic(card_skills, character):
+def total_damage(card_skills, character, monster, x):
+
+    print(f"{character.name} using a skill {card_skills[x]}")
+
+    # mengurangi akumulasi damage dengan total defense monster
+    total_damage = character.total_damage(CLASS_SKILLS_CARD[card_skills[x]]()) - monster.total_defense()
+    if total_damage > 0:
+        monster.base_hp -= total_damage
+    else:
+        print(f"{monster.name} dodged the attack!")
+
+def win_condition(character, monster):
+    print(f"{monster.name} has been defeated!")
+
+    drop_exp = monster.total_drop_exp
+    character.gain_exp(drop_exp)
+
+    print(f"{character.name} gained {drop_exp} experience points!")
+
+    drop_item = monster.drop_item
+    if drop_item is not None:
+        print(f"{character.name} gained a {drop_item}!")
+    else:
+        print(f"{character.name} did not gain any items!")
+
+def attack_logic(card_skills, character, monster):
         while True:
             for i, skill in enumerate(card_skills):
                 print(f"{i+1}. Skill{i+1}: {skill}")
 
             choice_attack = get_choice("Select a skill", SKILL)
             if choice_attack == 1:
-                character.total_damage(CLASS_SKILLS_CARD[card_skills[0]]())
-                break
+                total_damage(card_skills, character, monster, 0)
             elif choice_attack == 2:
-                character.total_damage(CLASS_SKILLS_CARD[card_skills[1]]())
-                break
+                total_damage(card_skills, character, monster, 1)
             elif choice_attack == 3:
-                character.total_damage(CLASS_SKILLS_CARD[card_skills[2]]())
-                break
+                total_damage(card_skills, character, monster, 2)
             elif choice_attack == 4:
-                character.total_damage(CLASS_SKILLS_CARD[card_skills[3]]())
+                total_damage(card_skills, character, monster, 3)
+
+            # Kondisi Kalah
+            if character.base_hp <= 0:
+                print(f"{character.name} has been defeated!")
                 break
-
-def activate_ability(id_player):
-    # belum lengkap
-    conn = sqlite3.connect(DATABASE_NAME)
-    conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
-
-    cursor.execute(
-        '''
-        INSERT INTO skill (
-            id_player, name, category, armed, range_type, debuff, level,
-            competence, energy, mana, strength, agility, defense, vitality,
-            magic, dexterity, resistance, intelligence
-        )
-        VALUES
-            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ''',
-            (id_player,)
-    )
-
-    conn.commit()
-    conn.close()
-
-    skill_available = SLOT_SKILL # ganti jadi ke database
-    if len(skill_available) == 0:
-        print("Do not yet possess those skills")
-    else:
-        for i, skill in enumerate(skill_available):
-            print(f"{i+1}. {skill}")
+            # Kondisi Menang
+            if monster.base_hp <= 0:
+                win_condition(monster, character)
+                break
 
 def summoning_room():
     print("\n=========== SUMMONING ROOM ============\n")
@@ -418,7 +432,7 @@ def main():
                         tower_floor_choice = get_choice("Select the desired Tower Floor", TOWER_FLOOR)
                         if tower_floor_choice == 1:
                             monster()
-                            attack_logic(card_skills, character)
+                            attack_logic(card_skills, character, monster())
                         elif tower_floor_choice == 2:
                             pass
 
