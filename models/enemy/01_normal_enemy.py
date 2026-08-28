@@ -93,7 +93,7 @@ class GoblinScout(Enemy):
         self.skill_03 = None
         self.skill_04 = None
 
-class Giantrat(Enemy):
+class GiantRat(Enemy):
     def __init__(
         self,
         name = "Giant Rat",
