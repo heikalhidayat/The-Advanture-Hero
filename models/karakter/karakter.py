@@ -359,12 +359,3 @@ class Necromancer(Karakter):
         self.skill_02 = Decay()
         self.skill_03 = SoulFeast()
         self.skill_04 = ArmyDarkness()
-
-# EXAMPLE
-karu = Fighter()
-jab = BasicJab()
-
-print(jab.dict_skill)
-print(karu.skill_01)
-print(karu.strength)
-print(karu.change_skill(jab))
