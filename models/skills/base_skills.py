@@ -195,20 +195,3 @@ class Skills:
             f"Resistance: {self.resistance}\n"
             f"Intelligence: {self.intelligence}\n"
           )
-
-# Example
-player_stats = {
-      "Level": 1,
-      "Energy": 100,
-      "Mana": 100,
-      "Strength": 50,
-      "Agility": 100,
-      "Defense": 100,
-      "Vitality": 100,
-      "Magic": 100,
-      "Dexterity": 100,
-      "Resistance": 100,
-      "Intelligence": 100,
-}
-
-stats_lower = {key.lower(): value for key, value in player_stats.items()}
