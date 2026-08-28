@@ -3,7 +3,7 @@ from math import e
 import copy
 import sqlite3
 import time
-import rd as rd
+import random as rd
 
 # ==============================================================================
 # IMPORT REQUIRED FILES
