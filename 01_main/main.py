@@ -3,7 +3,7 @@ from math import e
 import copy
 import sqlite3
 import time
-import random
+import rd as rd
 
 # ==============================================================================
 # IMPORT REQUIRED FILES
@@ -229,9 +229,9 @@ def tower_floor():
 
 def monster():
     print("\nDefeat the enemies in front of you!\n")
-    tier_monster = random.randint(1, 3)
-    level_monster = random.randint(1, 5)
-    total_exp = random.randint(100, 200) * (tier_monster * level_monster)
+    tier_monster = rd.randint(1, 3)
+    level_monster = rd.randint(1, 5)
+    total_exp = rd.randint(100, 200) * (tier_monster * level_monster)
     monster = copy.deepcopy(Slime(tier=tier_monster, level=level_monster, exp=total_exp))
     monster.level_up()
 
@@ -303,13 +303,21 @@ def total_damage(card_skills, character, monster, x):
         print(f"{monster.name} dodged the attack!")
 
 def monster_attack(character, monster):
-    random = random.randint(0, 3)
-    skill = "skill_0" + random
-    print(f"{monster.name} using a skill {getattr(monster.skill).name}")
+    available_skills = [monster.skill_01, monster.skill_02, monster.skill_03, monster.skill_04]
+    available_skills = [s for s in available_skills if s is not None]
 
-    total_damage = monster.total_damage() - character.total_defense()
-    if total_damage > 0:
-        character.base_hp -= total_damage
+    if not available_skills:
+        print(f"{monster.name} has no skills available!")
+        return
+
+    selected_skill = rd.choice(available_skills)
+
+    print(f"{monster.name} using a skill {selected_skill.name}")
+
+    total_dmg = monster.total_damage(selected_skill) - character.total_defense()
+    if total_dmg > 0:
+        character.base_hp -= total_dmg
+        print(f"{character.name} takes {total_dmg} damage!")
     else:
         print(f"{character.name} dodged the attack!")
 
@@ -329,28 +337,30 @@ def win_condition(character, monster):
 
 def attack_logic(card_skills, character, monster):
         while True:
+            print(f"\n{character.name} HP: {character.base_hp}/{character.max_hp}")
+            print(f"{monster.name} HP: {monster.base_hp}/{monster.max_hp}\n")
+
             for i, skill in enumerate(card_skills):
                 print(f"{i+1}. Skill{i+1}: {skill}")
 
-            choice_attack = get_choice("Select a skill", SKILL)
-            if choice_attack == 1:
-                total_damage(card_skills, character, monster, 0)
-            elif choice_attack == 2:
-                total_damage(card_skills, character, monster, 1)
-            elif choice_attack == 3:
-                total_damage(card_skills, character, monster, 2)
-            elif choice_attack == 4:
-                total_damage(card_skills, character, monster, 3)
+            choice_attack = get_choice("Select a skill", range(1, len(card_skills) + 1))
+            
+            # Player Attack
+            total_damage(card_skills, character, monster, choice_attack - 1)
 
-            # Kondisi Kalah
-            if character.base_hp <= 0:
-                print(f"{character.name} has been defeated!")
-                break
             # Kondisi Menang
             if monster.base_hp <= 0:
                 win_condition(monster, character)
                 break
 
+            # Monster counter attack
+            monster_attack(character, monster)
+
+            # Kondisi Kalah
+            if character.base_hp <= 0:
+                print(f"{character.name} has been defeated!")
+                break
+    
 def summoning_room():
     print("\n=========== SUMMONING ROOM ============\n")
     for i, (number, option) in enumerate(SUMMONING_TYPE.items()):
@@ -365,7 +375,7 @@ def card_summoning_equipment():
 
 def summoning_heroes(id_player):
     list_karakter = [Mage(), Tank(), Assassin(), Support(), Marksman(), Fighter(), Wizard(), Necromancer()]
-    summoning_free = random.choice(list_karakter)
+    summoning_free = rd.choice(list_karakter)
     print(f"Congratulations, Master! You have gained a hero:\n\n{summoning_free.__str__()}", sep="")
 
     # Masukkan ke database
