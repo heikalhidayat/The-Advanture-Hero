@@ -293,14 +293,16 @@ def barracks(id_player, x):
 
 def total_damage(card_skills, character, monster, x):
 
-    print(f"{character.name} using a skill {card_skills[x]}")
+    print(f"\n{character.name} using a skill {card_skills[x]}")
+    jeda_loading(0.2)
 
     # mengurangi akumulasi damage dengan total defense monster
     total_damage = character.total_damage(CLASS_SKILLS_CARD[card_skills[x]]()) - monster.total_defense()
     if total_damage > 0:
         monster.base_hp -= total_damage
+        print(f"\n{monster.name} takes {total_damage} damage!\n")
     else:
-        print(f"{monster.name} dodged the attack!")
+        print(f"\n{monster.name} dodged the attack!\n")
 
 def monster_attack(character, monster):
     available_skills = [monster.skill_01, monster.skill_02, monster.skill_03, monster.skill_04]
@@ -312,28 +314,29 @@ def monster_attack(character, monster):
 
     selected_skill = rd.choice(available_skills)
 
-    print(f"{monster.name} using a skill {selected_skill.name}")
+    print(f"\n{monster.name} using a skill {selected_skill.name}")
+    jeda_loading(0.2)
 
     total_dmg = monster.total_damage(selected_skill) - character.total_defense()
     if total_dmg > 0:
         character.base_hp -= total_dmg
-        print(f"{character.name} takes {total_dmg} damage!")
+        print(f"\n{character.name} takes {total_dmg} damage!\n")
     else:
-        print(f"{character.name} dodged the attack!")
+        print(f"\n{character.name} dodged the attack!\n")
 
 def win_condition(character, monster):
-    print(f"{monster.name} has been defeated!")
+    print(f"\n{monster.name} has been defeated!\n")
 
     drop_exp = monster.total_drop_exp
     character.gain_exp(drop_exp)
 
-    print(f"{character.name} gained {drop_exp} experience points!")
+    print(f"{character.name} gained {drop_exp} experience points!\n")
 
     drop_item = monster.drop_item
     if drop_item is not None:
-        print(f"{character.name} gained a {drop_item}!")
+        print(f"{character.name} gained a {drop_item}!\n")
     else:
-        print(f"{character.name} did not gain any items!")
+        print(f"{character.name} did not gain any items!\n")
 
 def attack_logic(card_skills, character, monster):
         while True:
