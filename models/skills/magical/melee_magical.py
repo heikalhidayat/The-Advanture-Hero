@@ -1,4 +1,4 @@
-from base_skills import Skills
+from models.skills.base_skills import Skills
 
 from config import (
       BASE_ENERGY,

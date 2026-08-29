@@ -1,4 +1,4 @@
-from base_enemy import Enemy
+from models.enemy.base_enemy import Enemy
 
 class AncientDragon(Enemy):
     def __init__(
@@ -129,7 +129,7 @@ class Phoenix(Enemy):
         self.skill_03 = None
         self.skill_04 = None
 
-class Leviathan(Ememy):
+class Leviathan(Enemy):
     '''Penguasa lautan terdalam dengan sihir banjur bandang'''
     def __init__(
         self,

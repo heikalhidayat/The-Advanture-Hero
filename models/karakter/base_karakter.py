@@ -1,5 +1,5 @@
 # Import config base atribut
-from config import (
+from config.config import (
     # Import config base atribut
     BASE_HP, BASE_ENERGY, BASE_MANA, BASE_STRENGTH, BASE_AGILITY, BASE_DEFENSE,
     BASE_MAGIC, BASE_DEXTERITY, BASE_RESISTANCE,

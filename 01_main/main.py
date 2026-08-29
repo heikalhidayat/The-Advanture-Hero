@@ -10,45 +10,45 @@ import random as rd
 # ==============================================================================
 
 # Import constanta
-from config import (
+from config.config import (
     DATABASE_NAME, MENU_OPTIONS, LOBBY_ROOM, SUMMONING_TYPE, TOWER_FLOOR,
     CARD_SUMMONING, SKILL,
 )
 
 # Import database
-from database import init_database
+from utils.database import init_database
 
 # Import karakter
-from karakter import (
+from models.karakter.karakter import (
     Mage, Tank, Assassin, Support, Marksman, Fighter, Wizard, Necromancer
 )
 
 # Import monster
-from normal_enemy import Slime
+from models.enemy.normal_enemy import Slime
 
 # Import Skills
-from melee_magical import (
+from models.skills.magical.melee_magical import (
     ShockTounch,
 )
-from mid_range_magical import (
+from models.skills.magical.mid_range_magical import (
     HealingGrace, HolySantuary, FrostNova, RaiseUndead,
 )
-from long_range_magical import (
+from models.skills.magical.long_range_magical import (
     ManaBurst, ShockWave, RepelWave, ArcaneRing, MagicShield, MagicArrow,
     SparkProjectile, Fireball, LightningStrike, MeteorStrike, GuardianLink,
     DivineIntervention, ChronoShift, GravityWell, BlackHole, Decay, SoulFeast,
     ArmyDarkness,
 )
-from melee_physical import (
+from models.skills.physical.melee_physical import (
     BasicJab, LowKick, HeavyFist, HeavySmash, BattleCry, CycloneSlash,
     BerserkCharge, ShieldBash, IronFortress, GroundTremor, BastionHope,
     SwepingLeg, PalmPush, ElbowCharge, AirSlap, StrikeSlash, QuickTrust,
     WideSwing, GuardBreak, CircularSlash, PoisonBlade, FlurryBlows, Assassinate,
 )
-from mid_range_physical import (
+from models.skills.physical.mid_range_physical import (
     ShadowStep, TumbleEscape,
 )
-from long_range_physical import (
+from models.skills.physical.long_range_physical import (
     EnergyEdge, HallArrows, PiercingArrow, QuickShot,
 )
 

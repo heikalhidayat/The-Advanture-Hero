@@ -1,4 +1,4 @@
-from base_enemy import Enemy
+from models.enemy.base_enemy import Enemy
 
 class Minotaur(Enemy):
     '''Monster berkepala banteng yang menjaga labirin dan koridor sempit'''

@@ -1,4 +1,4 @@
-from base_enemy import Enemy
+from models.enemy.base_enemy import Enemy
 
 class OrcBerseker(Enemy):
     '''Makhluk berbadan besar dengan kapak ganda'''
@@ -137,7 +137,7 @@ class Harpy(Enemy):
     def __init__(
         self,
         name = "Harpy",
-        monster_type = "Rare",
+        job = "Rare",
         tier = 2,
         level = 1,
         exp = 200,
@@ -181,7 +181,7 @@ class CentaurArcher(Enemy):
     def __init__(
         self,
         name = "Centaur Archer",
-        monster_type = "Rare",
+        job = "Rare",
         tier = 2,
         level = 1,
         exp = 200,
@@ -225,7 +225,7 @@ class ZombiePlaguebringer(Enemy):
     def __init__(
         self,
         name = "Zombie Plague Bringer",
-        monster_type = "Rare",
+        job = "Rare",
         tier = 2,
         level = 1,
         exp = 200,
@@ -269,7 +269,7 @@ class Werewolf(Enemy):
     def __init__(
         self,
         name = "Werewolf",
-        monster_type = "Rare",
+        job = "Rare",
         tier = 2,
         level = 1,
         exp = 200,
@@ -313,7 +313,7 @@ class Basilisk(Enemy):
     def __init__(
         self,
         name = "Basilisk",
-        monster_type = "Rare",
+        job = "Rare",
         tier = 2,
         level = 1,
         exp = 200,

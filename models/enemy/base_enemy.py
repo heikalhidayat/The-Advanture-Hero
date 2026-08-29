@@ -1,4 +1,4 @@
-from base_karakter import Karakter
+from models.karakter.base_karakter import Karakter
 
 class Enemy(Karakter):
     def __init__(

@@ -1,6 +1,6 @@
-from base_skills import Skills
+from models.skill.base_skills import Skills
 
-from config import (
+from config.config import (
       BASE_ENERGY,
       BASE_MANA,
       BASE_MAGIC,

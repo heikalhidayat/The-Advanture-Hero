@@ -1,6 +1,6 @@
 from typing import Required
 # Import stat increase
-from config import (
+from config.config import (
     STAT_INCREASE_ENERGY,
     STAT_INCREASE_MANA,
     STAT_INCREASE_STRENGTH,

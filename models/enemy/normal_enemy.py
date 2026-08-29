@@ -1,11 +1,11 @@
-from base_enemy import Enemy
+from models.enemy.base_enemy import Enemy
 # Import skills monster
-from melee_physical import GelatinousAbsorb
-from mid_range_physical import BounceStrike
+from models.skills.physical.melee_physical import GelatinousAbsorb
+from models.skills.physical.mid_range_physical import BounceStrike
 # kapasitas untuk long_range_physical
-from melee_magical import SlimeDivide
+from models.skills.magical.melee_magical import SlimeDivide
 # kapasitas untuk mid_range_magic
-from long_range_magical import AcidSpit
+from models.skills.magical.long_range_magical import AcidSpit
 
 class Slime(Enemy):
     def __init__(

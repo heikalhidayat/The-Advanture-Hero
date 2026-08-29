@@ -1,24 +1,24 @@
-from config import BASE_HP, BASE_ENERGY, BASE_MANA
-from base_karakter import Karakter
+from config.config import BASE_HP, BASE_ENERGY, BASE_MANA
+from models.karakter.base_karakter import Karakter
 
-from melee_physical import (
+from models.skills.physical.melee_physical import (
     HeavySmash, BattleCry, CycloneSlash, BerserkCharge, BasicJab,
     ShieldBash, IronFortress, GroundTremor, BastionHope,
     PoisonBlade, FlurryBlows, Assassinate
 )
 
-from mid_range_physical import (
+from models.skills.physical.mid_range_physical import (
     ShadowStep, TumbleEscape,
 )
 
-from long_range_physical import (
+from models.skills.physical.long_range_physical import (
     QuickShot, PiercingArrow, HallArrows,
 )
 
-from mid_range_magical import (
+from models.skills.magical.mid_range_magical import (
     HealingGrace, HolySantuary, RaiseUndead, FrostNova,
 )
-from long_range_magical import (
+from models.skills.magical.long_range_magical import (
     Fireball, MagicShield, LightningStrike, MeteorStrike, DivineIntervention,
     ArmyDarkness, SoulFeast, Decay, BlackHole, GravityWell, ChronoShift,
     GuardianLink

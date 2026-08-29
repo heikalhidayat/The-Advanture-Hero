@@ -1,5 +1,5 @@
-from config import BASE_DURABILITY
-from base_equipment import Equipment
+from config.config import BASE_DURABILITY
+from models.equipment.base_equipment import Equipment
 
 class Strength(Equipment):
     def __init__(
