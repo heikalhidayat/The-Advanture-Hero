@@ -353,7 +353,7 @@ def attack_logic(card_skills, character, monster):
 
             # Kondisi Menang
             if monster.base_hp <= 0:
-                win_condition(monster, character)
+                win_condition(character, monster)
                 break
 
             # Monster counter attack
