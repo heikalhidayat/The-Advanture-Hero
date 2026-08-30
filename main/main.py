@@ -234,6 +234,9 @@ def monster():
     total_exp = rd.randint(100, 200) * (tier_monster * level_monster)
     monster = copy.deepcopy(Slime(tier=tier_monster, level=level_monster, exp=total_exp))
     monster.level_up()
+    monster.current_hp = monster.max_hp
+    monster.current_energy = monster.max_energy
+    monster.current_mana = monster.max_mana
 
     print(f"{monster.__str__()}")
     return monster
@@ -274,6 +277,10 @@ def barracks(id_player, x):
         choice = get_choice(x, range(1, len(all_character) + 1))
         selected_character = all_character[choice - 1]
         character = CLASS_KARAKTER_CARD[selected_character["job"]]()
+        character.current_hp = character.max_hp
+        character.current_energy = character.max_energy
+        character.current_mana = character.max_mana
+        
         print(f"{character.__str__()}")
 
         card_skills = [
@@ -299,7 +306,7 @@ def total_damage(card_skills, character, monster, x):
     # mengurangi akumulasi damage dengan total defense monster
     total_damage = character.total_damage(CLASS_SKILLS_CARD[card_skills[x]]()) - monster.total_defense()
     if total_damage > 0:
-        monster.base_hp -= total_damage
+        monster.current_hp -= total_damage
         print(f"\n{monster.name} takes {total_damage} damage!\n")
     else:
         print(f"\n{monster.name} dodged the attack!\n")
@@ -319,7 +326,7 @@ def monster_attack(character, monster):
 
     total_dmg = monster.total_damage(selected_skill) - character.total_defense()
     if total_dmg > 0:
-        character.base_hp -= total_dmg
+        character.current_hp -= total_dmg
         print(f"\n{character.name} takes {total_dmg} damage!\n")
     else:
         print(f"\n{character.name} dodged the attack!\n")
@@ -340,8 +347,8 @@ def win_condition(character, monster):
 
 def attack_logic(card_skills, character, monster):
         while True:
-            print(f"\n{character.name} HP: {character.base_hp}/{character.max_hp}")
-            print(f"{monster.name} HP: {monster.base_hp}/{monster.max_hp}\n")
+            print(f"\n{character.name} HP: {character.current_hp}/{character.max_hp}")
+            print(f"{monster.name} HP: {monster.current_hp}/{monster.max_hp}\n")
 
             for i, skill in enumerate(card_skills):
                 print(f"{i+1}. Skill{i+1}: {skill}")
@@ -352,7 +359,7 @@ def attack_logic(card_skills, character, monster):
             total_damage(card_skills, character, monster, choice_attack - 1)
 
             # Kondisi Menang
-            if monster.base_hp <= 0:
+            if monster.current_hp <= 0:
                 win_condition(character, monster)
                 break
 
@@ -360,7 +367,7 @@ def attack_logic(card_skills, character, monster):
             monster_attack(character, monster)
 
             # Kondisi Kalah
-            if character.base_hp <= 0:
+            if character.current_hp <= 0:
                 print(f"{character.name} has been defeated!")
                 break
     
