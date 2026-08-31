@@ -298,6 +298,10 @@ def barracks(id_player, x):
     conn.commit()
     conn.close()
 
+def change_character_skills(character, new_skills):
+    skills_available = []
+    # Check if the new skills are valid and available for the character's job
+
 def total_damage(card_skills, character, monster, x):
 
     print(f"\n{character.name} using a skill {card_skills[x]}")
@@ -473,6 +477,10 @@ def main():
                 # Barracks
                 elif lobby_choice == 2:
                     barracks(id_player, "Select a character to view more information")
+                    change_skill = bottom_yes_no("Do you want to change the skills of your character, Master?")
+                    if change_skill:
+                        # Implement skill changing logic here
+                        pass
                     exit_bottom("enter", "continue")
                     break
 
