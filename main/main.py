@@ -298,9 +298,56 @@ def barracks(id_player, x):
     conn.commit()
     conn.close()
 
-def change_character_skills(character, new_skills):
+def check_character_skills(id_player, character):
+    conn = sqlite3.connect(DATABASE_NAME)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    cursor.execute(
+        '''
+        SELECT 
+            name, category, armed, range_type, debuff, level, competence, energy, mana,
+            strength, agility, defense, vitality, magic, dexterity, resistance, intelligence
+        FROM 
+            skills
+        WHERE
+            id_player = ?
+        ''',
+            (id_player,)
+    )
+
+    all_skills = cursor.fetchall()
+    if len(all_skills) == 0:
+        print("\nMaster! You don't have any skills yet!\n")
+        return
+    else:
+        skills_available =[]
+        for skill in all_skills:
+            if skill["name"] in CLASS_SKILLS_CARD:
+                skill_class = CLASS_SKILLS_CARD[skill["name"]]
+                if isinstance(skill_class(), SKILL):
+                    skills_available.append(skill_class())
+                else:
+                    print(f"{skill['name']} is not a valid skill for {character.job}.")
+            else:
+                print(f"{skill['name']} is not a recognized skill.")
+
+    conn.commit()
+    conn.close()
+
+def change_character_skills(id_player, character, new_skills):
     skills_available = []
+
     # Check if the new skills are valid and available for the character's job
+    for skill_name in new_skills:
+        if skill_name in CLASS_SKILLS_CARD:
+            skill_class = CLASS_SKILLS_CARD[skill_name]
+            if isinstance(skill_class(), SKILL):
+                skills_available.append(skill_class())
+            else:
+                print(f"{skill_name} is not a valid skill for {character.job}.")
+        else:
+            print(f"{skill_name} is not a recognized skill.")
 
 def total_damage(card_skills, character, monster, x):
 
