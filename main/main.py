@@ -143,14 +143,18 @@ def get_choice(x, y):
 
 def bottom_yes_no(x):
     while True:
-        choice = input(f"\n{x}: (y/n)")
+        try:
+            choice = input(f"\n{x}: (y/n)")
 
-        if choice.lower() == "y":
-            return True
-        elif choice.lower() == "n":
-            return False
-        else:
-            print(f"Invalid input")
+            if choice.lower() == "y":
+                return True
+            elif choice.lower() == "n":
+                return False
+            else:
+                print(f"Invalid input. Please enter y or n.")
+
+        except ValueError:
+            print("Invalid input. Please enter y or n.")
 
 def exit_bottom(x, y):
     input(f"\nPress {x} to {y}...")
@@ -321,33 +325,16 @@ def check_character_skills(id_player, character):
         print("\nMaster! You don't have any skills yet!\n")
         return
     else:
-        skills_available =[]
-        for skill in all_skills:
-            if skill["name"] in CLASS_SKILLS_CARD:
-                skill_class = CLASS_SKILLS_CARD[skill["name"]]
-                if isinstance(skill_class(), SKILL):
-                    skills_available.append(skill_class())
-                else:
-                    print(f"{skill['name']} is not a valid skill for {character.job}.")
-            else:
-                print(f"{skill['name']} is not a recognized skill.")
+        for i, skill in enumerate(all_skills):
+            print(f"{i+1}. {skill.name}")
 
     conn.commit()
     conn.close()
 
-def change_character_skills(id_player, character, new_skills):
+def change_character_skills(i):
     skills_available = []
-
-    # Check if the new skills are valid and available for the character's job
-    for skill_name in new_skills:
-        if skill_name in CLASS_SKILLS_CARD:
-            skill_class = CLASS_SKILLS_CARD[skill_name]
-            if isinstance(skill_class(), SKILL):
-                skills_available.append(skill_class())
-            else:
-                print(f"{skill_name} is not a valid skill for {character.job}.")
-        else:
-            print(f"{skill_name} is not a recognized skill.")
+    for skill in skills_available:
+        print(f"{i+1}. {skill.name}")
 
 def total_damage(card_skills, character, monster, x):
 
@@ -525,11 +512,10 @@ def main():
                 elif lobby_choice == 2:
                     barracks(id_player, "Select a character to view more information")
                     change_skill = bottom_yes_no("Do you want to change the skills of your character, Master?")
-                    if change_skill:
-                        # Implement skill changing logic here
-                        pass
-                    exit_bottom("enter", "continue")
-                    break
+                    if change_skill == True:
+                        check_character_skills(id_player, character)
+                    else:
+                        break
 
                 # Summoning Room
                 elif lobby_choice == 3:
