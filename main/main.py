@@ -331,10 +331,8 @@ def check_character_skills(id_player, character):
     conn.commit()
     conn.close()
 
-def change_character_skills(i):
-    skills_available = []
-    for skill in skills_available:
-        print(f"{i+1}. {skill.name}")
+def change_character_skills(id_player, character):
+    check_character_skills(id_player, character)
 
 def total_damage(card_skills, character, monster, x):
 
