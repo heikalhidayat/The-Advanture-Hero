@@ -35,7 +35,31 @@ class Equipment:
         self.magic = magic
         self.dexterity = dexterity
         self.resistance = resistance
-    
+
+    def total_strenth(self, amount: int) -> int:
+        self.strenth += amount
+        return self.strenth
+
+    def total_agility(self, amount: int) -> int:
+        self.agility += amount
+        return self.agility
+
+    def total_defense(self, amount: int) -> int:
+        self.defense += amount
+        return self.defense
+
+    def total_magic(self, amount: int) -> int:
+        self.magic += amount
+        return self.magic
+
+    def total_dexterity(self, amount: int) -> int:
+        self.dexterity += amount
+        return self.dexterity
+
+    def total_resistance(self, amount: int) -> int:
+        self.resistance += amount
+        return self.resistance
+
     def repair(self, amount: int) -> int:
         self.current_durability += amount
         if self.current_durability > self.base_durability:
@@ -62,7 +86,7 @@ class Equipment:
             "====================\n"
             f"[{self.current_durability}/{self.base_durability}]\n\n"
             f"Category: {self.category}\n"
-            f"Kind: {self.kind}"
+            f"Kind: {self.kind}\n"
             f"Str: {self.strenth} | Agi: {self.agility} | Def: {self.defense}\n"
             f"Mag: {self.magic} | Dex: {self.dexterity} | Res: {self.resistance}\n"
         )
