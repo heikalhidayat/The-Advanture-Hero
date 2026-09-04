@@ -105,7 +105,13 @@ def init_database():
             price INTEGER,
             capasity INTEGER,
             base_durability INTEGER,
-            current_durability INTEGER
+            current_durability INTEGER,
+            strength INTEGER,
+            agility INTEGER,
+            defense INTEGER,
+            magic INTEGER,
+            dexterity INTEGER,
+            resistance INTEGER
         )
     '''
     )

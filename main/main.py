@@ -326,8 +326,10 @@ def check_character_skills(id_player):
 
 def select_skill_to_change(card_skills):
     print("\nSelect a skill to change:\n")
+
     for i, skill in enumerate(card_skills):
         print(f"{i+1}. {skill.name}")
+
     choice = get_choice("Select a skill to change", range(1, len(card_skills) + 1))
     skill_old = card_skills[choice - 1]
     return skill_old
@@ -340,6 +342,7 @@ def change_character_skills(id_player, card_skills, all_skills, character):
         choice = get_choice("Select a skill to equip", range(1, len(all_skills) + 1))
         selected_skill = all_skills[choice - 1]
         character.change_skill(skill_old, selected_skill)
+
         print(f"\n{character.name} has changed {skill_old} to {selected_skill.name}!\n")
 
 def total_damage(card_skills, character, monster, x):
@@ -379,7 +382,7 @@ def win_condition(character, monster):
     print(f"\n{monster.name} has been defeated!\n")
 
     drop_exp = monster.total_drop_exp
-    character.gain_exp(drop_exp)
+    character.gain_exp(drop_exp) # Character gains experience points
 
     print(f"{character.name} gained {drop_exp} experience points!\n")
 
@@ -487,9 +490,9 @@ def summoning_equipment(id_player):
         '''
         INSERT INTO inventory (
             id_player, item_name, category, kind, price, capasity, base_durability, 
-            current_durability, damage, resistance
+            current_durability, strength, agility, defense, magic, dexterity, resistance
         )
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ''',
             (
                 (id_player),
@@ -500,7 +503,11 @@ def summoning_equipment(id_player):
                 (summoning_free.capasity),
                 (summoning_free.base_durability),
                 (summoning_free.current_durability),
-                (summoning_free.damage),
+                (summoning_free.strength),
+                (summoning_free.agility),
+                (summoning_free.defense),
+                (summoning_free.magic),
+                (summoning_free.dexterity),
                 (summoning_free.resistance)
             )
         )
