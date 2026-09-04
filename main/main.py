@@ -52,6 +52,9 @@ from models.skills.physical.long_range_physical import (
     EnergyEdge, HallArrows, PiercingArrow, QuickShot,
 )
 
+# Import Equipment
+from models.equipment.list_equipment import list_equipment
+
 # ==============================================================================
 #
 # ==============================================================================
@@ -165,6 +168,9 @@ def jeda_loading(second):
          print(".", end="")
          time.sleep(second)
 
+def message(x):
+    print (f"\n{x} Still under development, Master!\n")
+
 # ==============================================================================
 #
 # ==============================================================================
@@ -213,22 +219,9 @@ def login():
 
     return id_player, user_name, items, gold_player
 
-def menu():
-    print("\n============== MENU UTAMA ==============\n")
-    for i, (number, option) in enumerate(MENU_OPTIONS.items()):
-        print(f"{i+1}. {option}")
-
-def lobby():
-    print("-" * 40)
-    print("================= LOBBY ================")
-    print("-" * 40, "\n")
-    for i, (number, option) in enumerate(LOBBY_ROOM.items()):
-        print(f"{i+1}. {option}")
-
-def tower_floor():
-    print("\n======== Go Beyond Your Limits =========")
-    print("-" * 40)
-    for i, (number, option) in enumerate(TOWER_FLOOR.items()):
+def menu(x, y):
+    print(f"\n============== {x} ==============\n")
+    for i, (number, option) in enumerate(y.items()):
         print(f"{i+1}. {option}")
 
 def monster():
@@ -421,18 +414,10 @@ def attack_logic(card_skills, character, monster):
             if character.current_hp <= 0:
                 print(f"{character.name} has been defeated!")
                 break
-    
-def summoning_room():
-    print("\n=========== SUMMONING ROOM ============\n")
-    for i, (number, option) in enumerate(SUMMONING_TYPE.items()):
-        print(f"{i+1}. {option}")
 
-def card_summoning_hero():
-    for i, (number, option) in enumerate(CARD_SUMMONING.items()):
+def card_summon(x):
+    for i, (number, option) in enumerate(x.items()):
         print(f"{i+1}. {option}")
-
-def card_summoning_equipment():
-    pass
 
 def summoning_heroes(id_player):
     list_karakter = [Mage(), Tank(), Assassin(), Support(), Marksman(), Fighter(), Wizard(), Necromancer()]
@@ -489,6 +474,40 @@ def summoning_heroes(id_player):
     conn.commit()
     conn.close()
 
+def summoning_equipment(id_player):
+    summoning_free = rd.choice(list_equipment)
+    print(f"Congratulations, Master! You have gained an equipment:\n\n{summoning_free.__str__()}", sep="")
+
+    # Enter into database
+    conn = sqlite3.connect(DATABASE_NAME)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    cursor.execute(
+        '''
+        INSERT INTO inventory (
+            id_player, item_name, category, kind, price, capasity, base_durability, 
+            current_durability, damage, resistance
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ''',
+            (
+                (id_player),
+                (summoning_free.name),
+                (summoning_free.category),
+                (summoning_free.kind),
+                (summoning_free.price),
+                (summoning_free.capasity),
+                (summoning_free.base_durability),
+                (summoning_free.current_durability),
+                (summoning_free.damage),
+                (summoning_free.resistance)
+            )
+        )
+
+    conn.commit()
+    conn.close()
+
 def main():
     init_database()
     id_player, user_name, items, gold_player = login()
@@ -496,14 +515,14 @@ def main():
     print("\n", "-" * 40, "\n   Welcome In Game The Advanture Hero   \n", "-" * 40, sep="")
 
     while True:
-        menu()
+        menu("MENU UTAMA", MENU_OPTIONS)
         menu_choice = get_choice("menu", MENU_OPTIONS)
 
         # LOBBY
         if menu_choice == 1:
 
           while True:
-                lobby()
+                menu("LOBBY", LOBBY_ROOM)
                 lobby_choice = get_choice("Lobby", LOBBY_ROOM)
 
                 # Tower Floor
@@ -513,13 +532,14 @@ def main():
                         break
                     else:
                         jeda_loading(0.51)
-                        tower_floor()
+                        menu("TOWER FLOOR", TOWER_FLOOR)
                         tower_floor_choice = get_choice("Select the desired Tower Floor", TOWER_FLOOR)
                         if tower_floor_choice == 1:
                             monster()
                             attack_logic(card_skills, character, monster())
                         elif tower_floor_choice == 2:
-                            pass
+                            message("TOWER FLOOR 2")
+                            exit_bottom("enter", "continue")
 
                 # Barracks
                 elif lobby_choice == 2:
@@ -537,28 +557,31 @@ def main():
                 # Summoning Room
                 elif lobby_choice == 3:
                     while True:
-                        summoning_room()
+                        menu("SUMMONING ROOM", SUMMONING_TYPE)
                         summoning_choice = get_choice("Choose the summon you want, Master!", SUMMONING_TYPE)
 
                         if summoning_choice == 1:
                             while True:
-                                card_summoning_hero()
+                                card_summon(CARD_SUMMONING)
                                 card_summoning_hero_choice = get_choice("Select a summoning card, Master!", CARD_SUMMONING)
                                 if card_summoning_hero_choice == 1:
                                     summoning_heroes(id_player)
                                     exit_bottom("enter", "continue")
                                 elif card_summoning_hero_choice == 2:
+                                    message("pay to summon")
                                     exit_bottom("enter", "continue")
                                 elif card_summoning_hero_choice == 3:
                                     break
 
                         elif summoning_choice == 2:
                             while True:
-                                card_summoning_equipment()
+                                card_summon(CARD_SUMMONING)
                                 card_summoning_equipment_choice = get_choice("Select a summoning card, Master!", CARD_SUMMONING)
                                 if card_summoning_equipment_choice == 1:
+                                    summoning_equipment(id_player)
                                     exit_bottom("enter", "continue")
                                 elif card_summoning_equipment_choice == 2:
+                                    message("pay to summon")
                                     exit_bottom("enter", "continue")
                                 elif card_summoning_equipment_choice == 3:
                                     break
@@ -572,7 +595,8 @@ def main():
 
         # SHOP
         elif menu_choice == 2:
-            pass
+            message("SHOP")
+            exit_bottom("enter", "continue")
 
         # EXIT
         elif menu_choice == 3:
