@@ -103,7 +103,7 @@ def init_database():
             category VARCHAR,
             kind VARCHAR,
             price INTEGER,
-            capasity INTEGER,
+            capacity INTEGER,
             base_durability INTEGER,
             current_durability INTEGER,
             strength INTEGER,

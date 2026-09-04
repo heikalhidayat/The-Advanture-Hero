@@ -489,7 +489,7 @@ def summoning_equipment(id_player):
     cursor.execute(
         '''
         INSERT INTO inventory (
-            id_player, item_name, category, kind, price, capasity, base_durability, 
+            id_player, item_name, category, kind, price, capacity, base_durability, 
             current_durability, strength, agility, defense, magic, dexterity, resistance
         )
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -500,7 +500,7 @@ def summoning_equipment(id_player):
                 (summoning_free.category),
                 (summoning_free.kind),
                 (summoning_free.price),
-                (summoning_free.capasity),
+                (summoning_free.capacity),
                 (summoning_free.base_durability),
                 (summoning_free.current_durability),
                 (summoning_free.strength),
