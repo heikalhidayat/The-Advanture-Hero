@@ -302,7 +302,7 @@ def barracks(id_player, x):
     conn.commit()
     conn.close()
 
-def check_character_skills(id_player, character):
+def check_character_skills(id_player):
     conn = sqlite3.connect(DATABASE_NAME)
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
@@ -323,16 +323,21 @@ def check_character_skills(id_player, character):
     all_skills = cursor.fetchall()
     if len(all_skills) == 0:
         print("\nMaster! You don't have any skills yet!\n")
-        return
+        return None
     else:
         for i, skill in enumerate(all_skills):
             print(f"{i+1}. {skill.name}")
+        return all_skills
 
     conn.commit()
     conn.close()
 
-def change_character_skills(id_player, character):
-    check_character_skills(id_player, character)
+def change_character_skills(id_player, all_skills):
+    # select a skill to change
+    check_character_skills(id_player)
+    if check_character_skills(id_player) == True:
+        choice = get_choice("Select a skill to change", range(1, len(all_skills) + 1))
+        selected_skill = all_skills[choice - 1]
 
 def total_damage(card_skills, character, monster, x):
 
