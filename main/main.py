@@ -56,7 +56,7 @@ from models.skills.physical.long_range_physical import (
 from models.equipment.list_equipment import list_equipment
 
 # ==============================================================================
-#
+# CLASS DEFINITIONS
 # ==============================================================================
 
 CLASS_KARAKTER_CARD = {
@@ -172,7 +172,7 @@ def message(x):
     print (f"\n{x} Still under development, Master!\n")
 
 # ==============================================================================
-#
+# FUNCTION DEFINITIONS
 # ==============================================================================
 def login():
     user_name = input("Masukkan username: ")
