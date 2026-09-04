@@ -16,6 +16,7 @@ from config.config import (
 class Skills:
     def __init__(
         self,
+        # Information
         name: str,
         category: str,
         armed: bool,
@@ -23,6 +24,7 @@ class Skills:
         debuff: str,
         level: int,
         competence: int,
+        # Stats
         energy: int,
         mana: int,
         strength: int,

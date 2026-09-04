@@ -1,20 +1,40 @@
 class Equipment:
     def __init__(
         self,
+        # Information
         name: str,
         category: str,
         kind: str,
         price: int,
         capasity: int,
+        # Base Values
         base_durability: int,
+        # Core Stats
+        strenth: int,
+        agility: int,
+        defense: int, 
+        magic: int,
+        dexterity: int, 
+        resistance: int,
     ):
+        # Information
         self.name = name
         self.category = category
         self.kind = kind
         self.price = price
         self.capasity = capasity
+
+        # Base Values
         self.base_durability = base_durability
         self.current_durability = base_durability
+
+        # Core Stats
+        self.strenth = strenth
+        self.agility = agility
+        self.defense = defense
+        self.magic = magic
+        self.dexterity = dexterity
+        self.resistance = resistance
     
     def repair(self, amount: int) -> int:
         self.current_durability += amount
@@ -43,4 +63,6 @@ class Equipment:
             f"[{self.current_durability}/{self.base_durability}]\n\n"
             f"Category: {self.category}\n"
             f"Kind: {self.kind}"
+            f"Str: {self.strenth} | Agi: {self.agility} | Def: {self.defense}\n"
+            f"Mag: {self.magic} | Dex: {self.dexterity} | Res: {self.resistance}\n"
         )
