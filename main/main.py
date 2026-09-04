@@ -332,11 +332,21 @@ def check_character_skills(id_player):
     conn.commit()
     conn.close()
 
+def select_skill_to_change(all_skills):
+    print("\nSelect a skill to change:\n")
+    for i, skill in enumerate(all_skills):
+        print(f"{i+1}. {skill.name}")
+    choice = get_choice("Select a skill to change", range(1, len(all_skills) + 1))
+    selected_skill = all_skills[choice - 1]
+    return selected_skill
+
 def change_character_skills(id_player, all_skills):
     # select a skill to change
+    skill = select_skill_to_change(all_skills)
+    # check if the player has any skills
     check_character_skills(id_player)
     if check_character_skills(id_player) == True:
-        choice = get_choice("Select a skill to change", range(1, len(all_skills) + 1))
+        choice = get_choice("Select a skill to equip", range(1, len(all_skills) + 1))
         selected_skill = all_skills[choice - 1]
 
 def total_damage(card_skills, character, monster, x):
