@@ -10,7 +10,7 @@ class Equipment:
         # Base Values
         base_durability: int,
         # Core Stats
-        strenth: int,
+        strength: int,
         agility: int,
         defense: int, 
         magic: int,
@@ -29,16 +29,16 @@ class Equipment:
         self.current_durability = base_durability
 
         # Core Stats
-        self.strenth = strenth
+        self.strength = strength
         self.agility = agility
         self.defense = defense
         self.magic = magic
         self.dexterity = dexterity
         self.resistance = resistance
 
-    def total_strenth(self, amount: int) -> int:
-        self.strenth += amount
-        return self.strenth
+    def total_strength(self, amount: int) -> int:
+        self.strength += amount
+        return self.strength
 
     def total_agility(self, amount: int) -> int:
         self.agility += amount
@@ -87,6 +87,6 @@ class Equipment:
             f"[{self.current_durability}/{self.base_durability}]\n\n"
             f"Category: {self.category}\n"
             f"Kind: {self.kind}\n"
-            f"Str: {self.strenth} | Agi: {self.agility} | Def: {self.defense}\n"
+            f"Str: {self.strength} | Agi: {self.agility} | Def: {self.defense}\n"
             f"Mag: {self.magic} | Dex: {self.dexterity} | Res: {self.resistance}\n"
         )

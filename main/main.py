@@ -488,8 +488,8 @@ def summoning_equipment(id_player):
 
     cursor.execute(
         '''
-        INSERT INTO inventory (
-            id_player, item_name, category, kind, price, capacity, base_durability, 
+        INSERT INTO equipment (
+            id_player, name, category, kind, price, capacity, base_durability, 
             current_durability, strength, agility, defense, magic, dexterity, resistance
         )
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
