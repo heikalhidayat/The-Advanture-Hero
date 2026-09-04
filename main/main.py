@@ -322,7 +322,6 @@ def check_character_skills(id_player):
 
     all_skills = cursor.fetchall()
     if len(all_skills) == 0:
-        print("\nMaster! You don't have any skills yet!\n")
         return None
     else:
         for i, skill in enumerate(all_skills):
@@ -332,22 +331,23 @@ def check_character_skills(id_player):
     conn.commit()
     conn.close()
 
-def select_skill_to_change(all_skills):
+def select_skill_to_change(card_skills):
     print("\nSelect a skill to change:\n")
-    for i, skill in enumerate(all_skills):
+    for i, skill in enumerate(card_skills):
         print(f"{i+1}. {skill.name}")
-    choice = get_choice("Select a skill to change", range(1, len(all_skills) + 1))
-    selected_skill = all_skills[choice - 1]
-    return selected_skill
+    choice = get_choice("Select a skill to change", range(1, len(card_skills) + 1))
+    skill_old = card_skills[choice - 1]
+    return skill_old
 
-def change_character_skills(id_player, all_skills):
+def change_character_skills(id_player, card_skills, all_skills, character):
     # select a skill to change
-    skill = select_skill_to_change(all_skills)
+    skill_old = select_skill_to_change(card_skills)
     # check if the player has any skills
-    check_character_skills(id_player)
-    if check_character_skills(id_player) == True:
+    if check_character_skills(id_player) is not None:
         choice = get_choice("Select a skill to equip", range(1, len(all_skills) + 1))
         selected_skill = all_skills[choice - 1]
+        character.change_skill(skill_old, selected_skill)
+        print(f"\n{character.name} has changed {skill_old} to {selected_skill.name}!\n")
 
 def total_damage(card_skills, character, monster, x):
 
@@ -526,7 +526,11 @@ def main():
                     barracks(id_player, "Select a character to view more information")
                     change_skill = bottom_yes_no("Do you want to change the skills of your character, Master?")
                     if change_skill == True:
-                        check_character_skills(id_player, character)
+                        all_skills = check_character_skills(id_player)
+                        if all_skills is not None:
+                            change_character_skills(id_player, card_skills, all_skills, character)
+                        else:
+                            print("\nMaster! You don't have any skills yet!\n")
                     else:
                         break
 

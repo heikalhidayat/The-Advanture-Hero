@@ -173,7 +173,19 @@ class Karakter:
     def total_damage(self, skill) -> int:
         return self.total_strength() + skill.total_damage()
 
-    def change_skill(self, new_skill: dict):
+    def change_skill(self, skill_old, new_skill: dict):
+        # Remove old skill
+        if skill_old == "skill_01":
+            self.skill_01 = new_skill["name"]
+        elif skill_old == "skill_02":
+            self.skill_02 = new_skill["name"]
+        elif skill_old == "skill_03":
+            self.skill_03 = new_skill["name"]
+        elif skill_old == "skill_04":
+            self.skill_04 = new_skill["name"]
+        else:
+            return f"{skill_old} is not a valid skill slot"
+        
         result = new_skill.activate_skill(self.dict_karaker)
         if result == True:
             return f"{self.name} Activate skill {new_skill.name}"
