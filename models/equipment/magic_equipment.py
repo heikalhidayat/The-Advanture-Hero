@@ -1,25 +1,7 @@
 from config.config import BASE_DURABILITY
 from models.equipment.base_equipment import Equipment
 
-class Magic(Equipment):
-    def __init__(
-        self,
-        name: str,
-        category: "Magic",
-        kind: str,
-        price: int,
-        capasity: int,
-        base_durability: int,
-        magic: int
-    ):
-        super().__init__(name, category, kind, price, capasity, base_durability)
-        self.magic = magic
-
-    def total_magic(self, amount: int) -> int:
-        self.magic += amount
-        return self.magic
-
-class WoodenStaff(Magic):
+class WoodenStaff(Equipment):
     '''
     Tongkat kayu tua berinti kristal mentah yang berfungsi
     untuk memfokuskan sihir.
@@ -30,13 +12,21 @@ class WoodenStaff(Magic):
         category = "Magic",
         kind = "Weapon",
         price = 120,
-        capasity = 3,
+        capacity = 3,
         base_durability = BASE_DURABILITY,
-        magic = 5
+        strength = 0,
+        agility = 0,
+        defense = 0,
+        magic = 5,
+        dexterity = 0,
+        resistance = 0
     ):
-        super().__init__(name, category, kind, price, capasity, base_durability, magic)
+        super().__init__(
+            name, category, kind, price, capacity, base_durability, strength,
+            agility, defense, magic, dexterity, resistance
+        )
 
-class MagicWand(Magic):
+class MagicWand(Equipment):
     '''
     Tongkat sihir pendek yang dapat meningkatkan daya hancur.
     '''
@@ -46,13 +36,21 @@ class MagicWand(Magic):
         category = "Magic",
         kind = "Weapon",
         price = 500,
-        capasity = 3,
+        capacity = 3,
         base_durability = BASE_DURABILITY,
-        magic = 15
+        strength = 0,
+        agility = 0,
+        defense = 0,
+        magic = 15,
+        dexterity = 0,
+        resistance = 0
     ):
-        super().__init__(name, category, kind, price, capasity, base_durability, magic)
+        super().__init__(
+            name, category, kind, price, capacity, base_durability, strength,
+            agility, defense, magic, dexterity, resistance
+        )
 
-class SilkRobe(Magic):
+class SilkRobe(Equipment):
     '''
     Jubah sutra yang ditenun menggunakan benang khusus penyerap mana.
     '''
@@ -62,13 +60,21 @@ class SilkRobe(Magic):
         category = "Magic",
         kind = "Armor",
         price = 200,
-        capasity = 3,
+        capacity = 3,
         base_durability = BASE_DURABILITY,
-        magic = 6
+        strength = 0,
+        agility = 0,
+        defense = 0,
+        magic = 6,
+        dexterity = 0,
+        resistance = 0
     ):
-        super().__init__(name, category, kind, price, capasity, base_durability, magic)
+        super().__init__(
+            name, category, kind, price, capacity, base_durability, strength,
+            agility, defense, magic, dexterity, resistance
+        )
 
-class MageHat(Magic):
+class MageHat(Equipment):
     '''
     Topi kain berujung lancip yang membantu mempertajam konsentrasi.
     '''
@@ -78,13 +84,21 @@ class MageHat(Magic):
         category = "Magic",
         kind = "Armor",
         price = 100,
-        capasity = 3,
+        capacity = 3,
         base_durability = BASE_DURABILITY,
-        magic = 3
+        strength = 0,
+        agility = 0,
+        defense = 0,
+        magic = 3,
+        dexterity = 0,
+        resistance = 0
     ):
-        super().__init__(name, category, kind, price, capasity, base_durability, magic)
+        super().__init__(
+            name, category, kind, price, capacity, base_durability, strength,
+            agility, defense, magic, dexterity, resistance
+        )
 
-class CrystalRing(Magic):
+class CrystalRing(Equipment):
     '''
     Cincin yang terkoneksi langsung dengan kapasitas mana.
     '''
@@ -94,8 +108,16 @@ class CrystalRing(Magic):
         category = "Magic",
         kind = "Accessory",
         price = 300,
-        capasity = 3,
+        capacity = 3,
         base_durability = BASE_DURABILITY,
-        magic = 10
+        strength = 0,
+        agility = 0,
+        defense = 0,
+        magic = 10,
+        dexterity = 0,
+        resistance = 0
     ):
-        super().__init__(name, category, kind, price, capasity, base_durability, magic)
+        super().__init__(
+            name, category, kind, price, capacity, base_durability, strength,
+            agility, defense, magic, dexterity, resistance
+        )

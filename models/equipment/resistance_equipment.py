@@ -1,25 +1,7 @@
 from config.config import BASE_DURABILITY
 from models.equipment.base_equipment import Equipment
 
-class Resistance(Equipment):
-    def __init__(
-        self,
-        name: str,
-        category: "Resistance",
-        kind: str,
-        price: int,
-        capasity: int,
-        base_durability: int,
-        resistance: int
-    ):
-        super().__init__(name, category, kind, price, capasity, base_durability)
-        self.resistance = resistance
-
-    def total_resistance(self, amount: int) -> int:
-        self.resistance += amount
-        return self.resistance
-
-class HeavyCloak(Resistance):
+class HeavyCloak(Equipment):
     '''
     Jubal wol tebal berlapis zat anti-bakar.
     '''
@@ -29,13 +11,21 @@ class HeavyCloak(Resistance):
         category = "Resistance",
         kind = "Armor",
         price = 250,
-        capasity = 3,
+        capacity = 3,
         base_durability = BASE_DURABILITY,
+        strength = 0,
+        agility = 0,
+        defense = 0,
+        magic = 0,
+        dexterity = 0,
         resistance = 8
     ):
-        super().__init__(name, category, kind, price, capasity, base_durability, resistance)
+        super().__init__(
+            name, category, kind, price, capacity, base_durability, strength,
+            agility, defense, magic, dexterity, resistance
+        )
 
-class LeatherVest(Resistance):
+class LeatherVest(Equipment):
     '''
     Rompi kulit yang dinetralkan menggunakan ramuan khusus.
     '''
@@ -45,13 +35,21 @@ class LeatherVest(Resistance):
         category = "Resistance",
         kind = "Armor",
         price = 180,
-        capasity = 3,
+        capacity = 3,
         base_durability = BASE_DURABILITY,
+        strength = 0,
+        agility = 0,
+        defense = 0,
+        magic = 0,
+        dexterity = 0,
         resistance = 5
     ):
-        super().__init__(name, category, kind, price, capasity, base_durability, resistance)
+        super().__init__(
+            name, category, kind, price, capacity, base_durability, strength,
+            agility, defense, magic, dexterity, resistance
+        )
 
-class JadeRing(Resistance):
+class JadeRing(Equipment):
     '''
     Cincin dari batu giok hijau penangkal kutukan.
     '''
@@ -61,13 +59,21 @@ class JadeRing(Resistance):
         category = "Resistance",
         kind = "Armor",
         price = 300,
-        capasity = 1,
+        capacity = 1,
         base_durability = BASE_DURABILITY,
+        strength = 0,
+        agility = 0,
+        defense = 0,
+        magic = 0,
+        dexterity = 0,
         resistance = 7
     ):
-        super().__init__(name, category, kind, price, capasity, base_durability, resistance)
+        super().__init__(
+            name, category, kind, price, capacity, base_durability, strength,
+            agility, defense, magic, dexterity, resistance
+        )
 
-class Talisman(Resistance):
+class Talisman(Equipment):
     '''
     Jimat kertas bertuliskan mantra pelindung.
     '''
@@ -77,8 +83,16 @@ class Talisman(Resistance):
         category = "Resistance",
         kind = "Accessory",
         price = 200,
-        capasity = 1,
+        capacity = 1,
         base_durability = BASE_DURABILITY,
+        strength = 0,
+        agility = 0,
+        defense = 0,
+        magic = 0,
+        dexterity = 0,
         resistance = 4
     ):
-        super().__init__(name, category, kind, price, capasity, base_durability, resistance)
+        super().__init__(
+            name, category, kind, price, capacity, base_durability, strength,
+            agility, defense, magic, dexterity, resistance
+        )

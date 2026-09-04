@@ -1,38 +1,28 @@
 from config.config import BASE_DURABILITY
 from models.equipment.base_equipment import Equipment
 
-class Strength(Equipment):
-    def __init__(
-        self,
-        name: str,
-        category: "Strength",
-        kind: str,
-        price: int,
-        capasity: int,
-        base_durability: int,
-        strength: int
-    ):
-        super().__init__(name, category, kind, price, capasity, base_durability)
-        self.strength = strength
-
-    def total_strength(self, amount: int) -> int:
-        self.strength += amount
-        return self.strength
-
-class GreatSword(Strength):
+class GreatSword(Equipment):
     def __init__(
         self,
         name = "Great Sword",
         category = "Strength",
         kind = "Weapon",
         price = 500,
-        capasity = 8,
+        capacity = 8,
         base_durability = BASE_DURABILITY,
-        strength = 20
+        strength = 20,
+        agility = 0,
+        defense = 0,
+        magic = 0,
+        dexterity = 0,
+        resistance = 0
     ):
-        super().__init__(name, category, kind, price, capasity, base_durability, strength)
+        super().__init__(
+            name, category, kind, price, capacity, base_durability, strength,
+            agility, defense, magic, dexterity, resistance
+        )
 
-class BattleAxe(Strength):
+class BattleAxe(Equipment):
     '''
     Kapak perang berat yang membutuhkan tenaga besar untuk diayunkan,
     namun menghasilkan damage yang besar.
@@ -43,13 +33,21 @@ class BattleAxe(Strength):
         category = "Strength",
         kind = "Weapon",
         price = 300,
-        capasity = 7,
+        capacity = 7,
         base_durability = BASE_DURABILITY,
-        strength = 20
+        strength = 20,
+        agility = 0,
+        defense = 0,
+        magic = 0,
+        dexterity = 0,
+        resistance = 0
     ):
-        super().__init__(name, category, kind, price, capasity, base_durability, strength)
+        super().__init__(
+            name, category, kind, price, capacity, base_durability, strength,
+            agility, defense, magic, dexterity, resistance
+        )
 
-class LongSword(Strength):
+class LongSword(Equipment):
     '''
     Pedang besi dua tangan standar.
     '''
@@ -59,26 +57,42 @@ class LongSword(Strength):
         category = "Strength",
         kind = "Weapon",
         price = 150,
-        capasity = 8,
+        capacity = 8,
         base_durability = BASE_DURABILITY,
-        strength = 5
+        strength = 5,
+        agility = 0,
+        defense = 0,
+        magic = 0,
+        dexterity = 0,
+        resistance = 0
     ):
-        super().__init__(name, category, kind, price, capasity, base_durability, strength)
+        super().__init__(
+            name, category, kind, price, capacity, base_durability, strength,
+            agility, defense, magic, dexterity, resistance
+        )
 
-class Mace(Strength):
+class Mace(Equipment):
     def __init__(
         self,
         name = "Mace",
         category = "Strength",
         kind = "Weapon",
         price = 200,
-        capasity = 8,
+        capacity = 8,
         base_durability = BASE_DURABILITY,
-        strength = 10
+        strength = 10,
+        agility = 0,
+        defense = 0,
+        magic = 0,
+        dexterity = 0,
+        resistance = 0
     ):
-        super().__init__(name, category, kind, price, capasity, base_durability, strength)
+        super().__init__(
+            name, category, kind, price, capacity, base_durability, strength,
+            agility, defense, magic, dexterity, resistance
+        )
 
-class IronGauntlets(Strength):
+class IronGauntlets(Equipment):
     '''
     Sarung tangan besi yang menambah berat pukulan tangan.
     '''
@@ -88,8 +102,16 @@ class IronGauntlets(Strength):
         category = "Strength",
         kind = "Armor",
         price = 100,
-        capasity = 8,
+        capacity = 8,
         base_durability = BASE_DURABILITY,
-        strength = 5
+        strength = 5,
+        agility = 0,
+        defense = 0,
+        magic = 0,
+        dexterity = 0,
+        resistance = 0
     ):
-        super().__init__(name, category, kind, price, capasity, base_durability, strength)
+        super().__init__(
+            name, category, kind, price, capacity, base_durability, strength,
+            agility, defense, magic, dexterity, resistance
+        )

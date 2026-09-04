@@ -6,7 +6,7 @@ class Equipment:
         category: str,
         kind: str,
         price: int,
-        capasity: int,
+        capacity: int,
         # Base Values
         base_durability: int,
         # Core Stats
@@ -22,7 +22,7 @@ class Equipment:
         self.category = category
         self.kind = kind
         self.price = price
-        self.capasity = capasity
+        self.capacity = capacity
 
         # Base Values
         self.base_durability = base_durability

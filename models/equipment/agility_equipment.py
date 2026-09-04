@@ -1,25 +1,7 @@
 from config.config import BASE_DURABILITY
 from models.equipment.base_equipment import Equipment
 
-class Agility(Equipment):
-    def __init__(
-        self,
-        name: str,
-        category: "Agility",
-        kind: str,
-        price: int,
-        capasity: int,
-        base_durability: int,
-        agility: int
-    ):
-        super().__init__(name, category, kind, price, capasity, base_durability)
-        self.agility = agility
-
-    def total_agility(self, amount: int) -> int:
-        self.agility += amount
-        return self.agility
-
-class Dagger(Agility):
+class Dagger(Equipment):
     '''
     Pisau genggam ringan, memungkinkan penggunanya melakukan tusukan
     cepat bertubi-tubi.
@@ -30,13 +12,21 @@ class Dagger(Agility):
         category = "Agility",
         kind = "Weapon",
         price = 100,
-        capasity = 2,
+        capacity = 2,
         base_durability = BASE_DURABILITY,
-        agility = 4
+        strength = 0,
+        agility = 4,
+        defense = 0,
+        magic = 0,
+        dexterity = 0,
+        resistance = 0
     ):
-        super().__init__(name, category, kind, price, capasity, base_durability, agility)
+        super().__init__(
+            name, category, kind, price, capacity, base_durability, strength, agility,
+            defense, magic, dexterity, resistance
+        )
 
-class LeatherBoots(Agility):
+class LeatherBoots(Equipment):
     '''
     Sepatu berbahan kulit elastis yang tidak bersuara, 
     dirancang khusus untuk meningkatkan kecepatan.
@@ -47,13 +37,21 @@ class LeatherBoots(Agility):
         category = "Agility",
         kind = "Armor",
         price = 80,
-        capasity = 2,
+        capacity = 2,
         base_durability = BASE_DURABILITY,
-        agility = 3
+        strength = 0,
+        agility = 3,
+        defense = 0,
+        magic = 0,
+        dexterity = 0,
+        resistance = 0
     ):
-        super().__init__(name, category, kind, price, capasity, base_durability, agility)
+        super().__init__(
+            name, category, kind, price, capacity, base_durability, strength, agility,
+            defense, magic, dexterity, resistance
+        )
 
-class ClothCloak(Agility):
+class ClothCloak(Equipment):
     '''
     Jubah kain tipis yang berkibar mengikuti arah angin.
     '''
@@ -63,13 +61,21 @@ class ClothCloak(Agility):
         category = "Agility",
         kind = "Armor",
         price = 150,
-        capasity = 4,
+        capacity = 4,
         base_durability = BASE_DURABILITY,
-        agility = 5
+        strength = 0,
+        agility = 5,
+        defense = 0,
+        magic = 0,
+        dexterity = 0,
+        resistance = 0
     ):
-        super().__init__(name, category, kind, price, capasity, base_durability, agility)
+        super().__init__(
+            name, category, kind, price, capacity, base_durability, strength, agility,
+            defense, magic, dexterity, resistance
+        )
 
-class SilverNecklace(Agility):
+class SilverNecklace(Equipment):
     '''
     Kalung perak yang memberikan erek meringankan beban tubuh.
     '''
@@ -79,13 +85,21 @@ class SilverNecklace(Agility):
         category = "Agility",
         kind = "Accessory",
         price = 200,
-        capasity = 1,
+        capacity = 1,
         base_durability = BASE_DURABILITY,
-        agility = 4
+        strength = 0,
+        agility = 4,
+        defense = 0,
+        magic = 0,
+        dexterity = 0,
+        resistance = 0
     ):
-        super().__init__(name, category, kind, price, capasity, base_durability, agility)
+        super().__init__(
+            name, category, kind, price, capacity, base_durability, strength, agility,
+            defense, magic, dexterity, resistance
+        )
 
-class PocketWatch(Agility):
+class PocketWatch(Equipment):
     '''
     Jam saku kuno yang bisa memperlambat waktu.
     '''
@@ -95,8 +109,16 @@ class PocketWatch(Agility):
         category = "Agility",
         kind = "Accessory",
         price = 300,
-        capasity = 1,
+        capacity = 1,
         base_durability = BASE_DURABILITY,
-        agility = 8
+        strength = 0,
+        agility = 8,
+        defense = 0,
+        magic = 0,
+        dexterity = 0,
+        resistance = 0
     ):
-        super().__init__(name, category, kind, price, capasity, base_durability, agility)
+        super().__init__(
+            name, category, kind, price, capacity, base_durability, strength, agility,
+            defense, magic, dexterity, resistance
+        )

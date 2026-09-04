@@ -1,25 +1,7 @@
 from config.config import BASE_DURABILITY
 from models.equipment.base_equipment import Equipment
 
-class Defense(Equipment):
-    def __init__(
-        self,
-        name: str,
-        category: "Defense",
-        kind: str,
-        price: int,
-        capasity: int,
-        base_durability: int,
-        defense: int
-    ):
-        super().__init__(name, category, kind, price, capasity, base_durability)
-        self.defense = defense
-
-    def total_defense(self, amount: int) -> int:
-        self.defense += amount
-        return self.defense
-
-class IronShield(Defense):
+class IronShield(Equipment):
     '''
     Perisai besi bundar untuk menangkis rentetan serangan fisik.
     '''
@@ -29,13 +11,21 @@ class IronShield(Defense):
         category = "Defense",
         kind = "Weapon",
         price = 180,
-        capasity = 5,
+        capacity = 5,
         base_durability = BASE_DURABILITY,
-        defense = 8
+        strength = 0,
+        agility = 0,
+        defense = 8,
+        magic = 0,
+        dexterity = 0,
+        resistance = 0
     ): 
-        super().__init__(name, category, kind, price, capasity, base_durability, defense)
+        super().__init__(
+            name, category, kind, price, capacity, base_durability, strength, 
+            agility, defense, magic, dexterity, resistance
+        )
 
-class ChainMail(Defense):
+class ChainMail(Equipment):
     '''
     Baju zirah besi yang menutup seluruh dada.
     '''
@@ -45,13 +35,21 @@ class ChainMail(Defense):
         category = "Defense",
         kind = "Armor",
         price = 400,
-        capasity = 6,
+        capacity = 6,
         base_durability = BASE_DURABILITY,
-        defense = 15
+        strength = 0,
+        agility = 0,
+        defense = 15,
+        magic = 0,
+        dexterity = 0,
+        resistance = 0
     ):
-        super().__init__(name, category, kind, price, capasity, base_durability, defense)
+        super().__init__(
+            name, category, kind, price, capacity, base_durability, strength, 
+            agility, defense, magic, dexterity, resistance
+        )
 
-class IronHelm(Defense):
+class IronHelm(Equipment):
     '''
     Pelindung kepala dari baja.
     '''
@@ -61,8 +59,16 @@ class IronHelm(Defense):
         category = "Defense",
         kind = "Armor",
         price = 150,
-        capasity = 3,
+        capacity = 3,
         base_durability = BASE_DURABILITY,
-        defense = 5
+        strength = 0,
+        agility = 0,
+        defense = 5,
+        magic = 0,
+        dexterity = 0,
+        resistance = 0
     ):
-        super().__init__(name, category, kind, price, capasity, base_durability, defense)
+        super().__init__(
+            name, category, kind, price, capacity, base_durability, strength, 
+            agility, defense, magic, dexterity, resistance
+        )

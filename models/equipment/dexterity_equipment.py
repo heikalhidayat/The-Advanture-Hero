@@ -1,25 +1,7 @@
 from config.config import BASE_DURABILITY
 from models.equipment.base_equipment import Equipment
 
-class Dexterity(Equipment):
-    def __init__(
-        self,
-        name: str,
-        category: "Dexterity",
-        kind: str,
-        price: int,
-        capasity: int,
-        base_durability: int,
-        dexterity: int
-    ):
-        super().__init__(name, category, kind, price, capasity, base_durability)
-        self.dexterity = dexterity
-
-    def total_dexterity(self, amount: int) -> int:
-        self.dexterity += amount
-        return self.dexterity
-
-class ShortBow(Dexterity):
+class ShortBow(Equipment):
     '''
     Busur pendek yang mudah ditarik.
     '''
@@ -29,13 +11,21 @@ class ShortBow(Dexterity):
         category = "Dexterity",
         kind = "Weapon",
         price = 130,
-        capasity = 3,
+        capacity = 3,
         base_durability = BASE_DURABILITY,
-        dexterity = 5
+        strength = 0,
+        agility = 0,
+        defense = 0,
+        magic = 0,
+        dexterity = 5,
+        resistance = 0
     ):
-        super().__init__(name, category, kind, price, capasity, base_durability, dexterity)
+        super().__init__(
+            name, category, kind, price, capacity, base_durability, strength,
+            agility, defense, magic, dexterity, resistance
+        )
 
-class LeatherGloves(Dexterity):
+class LeatherGloves(Equipment):
     '''
     Sarung tangan kulit yang menambah kecepatan tangan.
     '''
@@ -45,21 +35,37 @@ class LeatherGloves(Dexterity):
         category = "Dexterity",
         kind = "Armor",
         price = 90,
-        capasity = 1,
+        capacity = 1,
         base_durability = BASE_DURABILITY,
-        dexterity = 3
+        strength = 0,
+        agility = 0,
+        defense = 0,
+        magic = 0,
+        dexterity = 3,
+        resistance = 0
     ):
-        super().__init__(name, category, kind, price, capasity, base_durability, dexterity)
+        super().__init__(
+            name, category, kind, price, capacity, base_durability, strength,
+            agility, defense, magic, dexterity, resistance
+        )
 
-class LeatherHood(Dexterity):
+class LeatherHood(Equipment):
     def __init__(
         self,
         name = "Leather Hood",
         category = "Dexterity",
         kind = "Armor",
         price = 110,
-        capasity = 2,
+        capacity = 2,
         base_durability = BASE_DURABILITY,
-        dexterity = 4
+        strength = 0,
+        agility = 0,
+        defense = 0,
+        magic = 0,
+        dexterity = 4,
+        resistance = 0
     ):
-        super().__init__(name, category, kind, price, capasity, base_durability, dexterity)
+        super().__init__(
+            name, category, kind, price, capacity, base_durability, strength,
+            agility, defense, magic, dexterity, resistance
+        )
