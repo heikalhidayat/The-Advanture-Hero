@@ -596,8 +596,12 @@ def main():
                         elif summoning_choice == 3:
                             break
 
-                # Back
+                # Armory
                 elif lobby_choice == 4:
+                    break
+
+                # Back
+                elif lobby_choice == 5:
                     break
 
         # SHOP

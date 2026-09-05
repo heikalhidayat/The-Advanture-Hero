@@ -119,7 +119,8 @@ LOBBY_ROOM = {
     1: "Tower Gate",
     2: "Barracks",
     3: "Summoning Room",
-    4: "Back"
+    4: "Armory",
+    5: "Back"
 }
 
 TOWER_FLOOR = {
