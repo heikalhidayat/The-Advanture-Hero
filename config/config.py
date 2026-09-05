@@ -130,7 +130,7 @@ TOWER_FLOOR = {
 
 SUMMONING_TYPE = {
     1: "Summon a Hero",
-    2: "Summoning a Equipment",
+    2: "Summon a Equipment",
     3: "Back"
 }
 

@@ -144,10 +144,10 @@ def get_choice(x, y):
         except InvalidMenuChoiceError as e:
             print(f"Invalid input {e}")
 
-def bottom_yes_no(x):
+def button_yes_no(button):
     while True:
         try:
-            choice = input(f"\n{x}: (y/n)")
+            choice = input(f"\n{button}: (y/n)")
 
             if choice.lower() == "y":
                 return True
@@ -159,8 +159,8 @@ def bottom_yes_no(x):
         except ValueError:
             print("Invalid input. Please enter y or n.")
 
-def exit_bottom(x, y):
-    input(f"\nPress {x} to {y}...")
+def exit_button(button, explanation):
+    input(f"\nPress {button} to {explanation}...")
 
 def jeda_loading(second):
      '''jeda loading'''
@@ -219,9 +219,9 @@ def login():
 
     return id_player, user_name, items, gold_player
 
-def menu(x, y):
-    print(f"\n============== {x} ==============\n")
-    for i, (number, option) in enumerate(y.items()):
+def menu(tittle, menu_options):
+    print(f"\n============== {tittle} ==============\n")
+    for i, (number, option) in enumerate(menu_options.items()):
         print(f"{i+1}. {option}")
 
 def monster():
@@ -546,12 +546,12 @@ def main():
                             attack_logic(card_skills, character, monster())
                         elif tower_floor_choice == 2:
                             message("TOWER FLOOR 2")
-                            exit_bottom("enter", "continue")
+                            exit_button("enter", "continue")
 
                 # Barracks
                 elif lobby_choice == 2:
                     barracks(id_player, "Select a character to view more information")
-                    change_skill = bottom_yes_no("Do you want to change the skills of your character, Master?")
+                    change_skill = button_yes_no("Do you want to change the skills of your character, Master?")
                     if change_skill == True:
                         all_skills = check_character_skills(id_player)
                         if all_skills is not None:
@@ -573,10 +573,10 @@ def main():
                                 card_summoning_hero_choice = get_choice("Select a summoning card, Master!", CARD_SUMMONING)
                                 if card_summoning_hero_choice == 1:
                                     summoning_heroes(id_player)
-                                    exit_bottom("enter", "continue")
+                                    exit_button("enter", "continue")
                                 elif card_summoning_hero_choice == 2:
                                     message("pay to summon")
-                                    exit_bottom("enter", "continue")
+                                    exit_button("enter", "continue")
                                 elif card_summoning_hero_choice == 3:
                                     break
 
@@ -586,10 +586,10 @@ def main():
                                 card_summoning_equipment_choice = get_choice("Select a summoning card, Master!", CARD_SUMMONING)
                                 if card_summoning_equipment_choice == 1:
                                     summoning_equipment(id_player)
-                                    exit_bottom("enter", "continue")
+                                    exit_button("enter", "continue")
                                 elif card_summoning_equipment_choice == 2:
                                     message("pay to summon")
-                                    exit_bottom("enter", "continue")
+                                    exit_button("enter", "continue")
                                 elif card_summoning_equipment_choice == 3:
                                     break
 
@@ -607,7 +607,7 @@ def main():
         # SHOP
         elif menu_choice == 2:
             message("SHOP")
-            exit_bottom("enter", "continue")
+            exit_button("enter", "continue")
 
         # EXIT
         elif menu_choice == 3:
