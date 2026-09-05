@@ -209,6 +209,9 @@ class Karakter:
         # recompute exp cap
         self.max_exp = self.compute_max_exp()
 
+        # create a message to indicate the level up
+        print(f"{self.name} has leveled up to level {self.level}!")
+
     def gain_exp(self, amount: int):
         self.exp += amount
         while self.exp >= self.max_exp:
