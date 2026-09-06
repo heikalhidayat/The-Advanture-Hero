@@ -131,7 +131,8 @@ TOWER_FLOOR = {
 SUMMONING_TYPE = {
     1: "Summon a Hero",
     2: "Summoning a Equipment",
-    3: "Back"
+    3: "Summon a Skill",
+    4: "Back"
 }
 
 CARD_SUMMONING = {

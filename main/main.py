@@ -520,6 +520,45 @@ def summoning_equipment(id_player):
 
 def summoning_skills(id_player):
     summoning_free = rd.choice(list_skills)
+    print(f"Congratulations, Master! You have gained a skill:\n\n{summoning_free.__str__()}", sep="")
+
+    # Enter into database
+    conn = sqlite3.connect(DATABASE_NAME)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    cursor.execute(
+        '''
+        INSERT INTO skills (
+            id_player, name, category, armed, range_type, debuff, level, competence, energy, mana, 
+            strength, agility, defense, vitality, magic, dexterity, resistance, intelligence
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ''',
+            (
+                (id_player),
+                (summoning_free.name),
+                (summoning_free.category),
+                (summoning_free.armed),
+                (summoning_free.range_type),
+                (summoning_free.debuff),
+                (summoning_free.level),
+                (summoning_free.competence),
+                (summoning_free.energy),
+                (summoning_free.mana),
+                (summoning_free.strength),
+                (summoning_free.agility),
+                (summoning_free.defense),
+                (summoning_free.vitality),
+                (summoning_free.magic),
+                (summoning_free.dexterity),
+                (summoning_free.resistance),
+                (summoning_free.intelligence)
+            )
+    )
+
+    conn.commit()
+    conn.close()
 
 def main():
     init_database()
