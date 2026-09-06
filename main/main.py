@@ -283,20 +283,23 @@ def barracks(id_player, x):
         
         print(f"{character.__str__()}")
 
-        card_skills = [
-            character.skill_01.name,
-            character.skill_02.name,
-            character.skill_03.name,
-            character.skill_04.name
-        ]
-
-        for i, skill in enumerate(card_skills):
-            print(f"{i+1}. Skill{i+1}: {skill}")
-
-    return card_skills, character
+    return character
 
     conn.commit()
     conn.close()
+
+def card_skills(character):
+    card_skills = [
+        character.skill_01.name,
+        character.skill_02.name,
+        character.skill_03.name,
+        character.skill_04.name
+    ]
+
+    for i, skill in enumerate(card_skills):
+        print(f"{i+1}. Skill{i+1}: {skill}")
+
+    return card_skills
 
 def check_character_skills(id_player):
     conn = sqlite3.connect(DATABASE_NAME)
@@ -321,7 +324,7 @@ def check_character_skills(id_player):
         return None
     else:
         for i, skill in enumerate(all_skills):
-            print(f"{i+1}. {skill.name}")
+            print(f"{i+1}. Name: {skill["name"]} | Category: {skill["category"]}")
         return all_skills
 
     conn.commit()
@@ -579,8 +582,8 @@ def main():
 
                 # Tower Floor
                 if lobby_choice == 1:
-                    card_skills, character = barracks(id_player, "Choose your hero, Master!")
-                    while card_skills is None:
+                    character = barracks(id_player, "Choose your hero, Master!")
+                    while character is None:
                         break
                     else:
                         jeda_loading(0.51)
@@ -596,6 +599,7 @@ def main():
                 # Barracks
                 elif lobby_choice == 2:
                     barracks(id_player, "Select a character to view more information")
+                    card_skills = card_skills(character)
                     change_skill = button_yes_no("Do you want to change the skills of your character, Master?")
                     if change_skill == True:
                         all_skills = check_character_skills(id_player)
