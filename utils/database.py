@@ -8,7 +8,7 @@ def get_karakter_by_id(id_karakter):
     cursor.execute(
         '''
         SELECT * 
-        FROM username 
+        FROM karakter 
         WHERE id_karakter = ?
         ''',
         (id_karakter)
