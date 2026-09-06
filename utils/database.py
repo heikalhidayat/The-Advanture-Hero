@@ -3,6 +3,7 @@ import sqlite3
 
 def get_karakter_by_id(id_karakter):
     conn = sqlite3.connect(DATABASE_NAME)
+    conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
     cursor.execute(
@@ -16,7 +17,7 @@ def get_karakter_by_id(id_karakter):
     result = cursor.fetchone()
 
     conn.close()
-    return result
+    return dict(result)
 
 def init_database():
     conn = sqlite3.connect(DATABASE_NAME)
