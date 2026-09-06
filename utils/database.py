@@ -1,6 +1,23 @@
 from config.config import DATABASE_NAME
 import sqlite3
 
+def get_karakter_by_id(id_karakter):
+    conn = sqlite3.connect(DATABASE_NAME)
+    cursor = conn.cursor()
+
+    cursor.execute(
+        '''
+        SELECT * 
+        FROM username 
+        WHERE id_karakter = ?
+        ''',
+        (id_karakter)
+    )
+    result = cursor.fetchone()
+
+    conn.close()
+    return result
+
 def init_database():
     conn = sqlite3.connect(DATABASE_NAME)
     cursor = conn.cursor()
