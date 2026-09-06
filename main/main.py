@@ -639,6 +639,19 @@ def main():
                                     break
 
                         elif summoning_choice == 3:
+                            while True:
+                                card_summon(CARD_SUMMONING)
+                                card_summoning_skill_choice = get_choice("Select a skill card, Master!", CARD_SUMMONING)
+                                if card_summoning_skill_choice == 1:
+                                    summoning_skills(id_player)
+                                    exit_button("enter", "continue")
+                                elif card_summoning_skill_choice == 2:
+                                    message("pay to summon")
+                                    exit_button("enter", "continue")
+                                elif card_summoning_skill_choice == 3:
+                                    break
+
+                        elif summoning_choice == 4:
                             break
 
                 # Armory
