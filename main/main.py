@@ -42,7 +42,7 @@ from models.skills.magical.long_range_magical import (
 from models.skills.physical.melee_physical import (
     BasicJab, LowKick, HeavyFist, HeavySmash, BattleCry, CycloneSlash,
     BerserkCharge, ShieldBash, IronFortress, GroundTremor, BastionHope,
-    SwepingLeg, PalmPush, ElbowCharge, AirSlap, StrikeSlash, QuickTrust,
+    SweepingLeg, PalmPush, ElbowCharge, AirSlap, StrikeSlash, QuickTrust,
     WideSwing, GuardBreak, CircularSlash, PoisonBlade, FlurryBlows, Assassinate,
 )
 from models.skills.physical.mid_range_physical import (
@@ -54,6 +54,9 @@ from models.skills.physical.long_range_physical import (
 
 # Import Equipment
 from models.equipment.list_equipment import list_equipment
+
+# Import Skills
+from models.skills.list_skills import list_skills
 
 # ==============================================================================
 # CLASS DEFINITIONS
@@ -105,7 +108,7 @@ CLASS_SKILLS_CARD = {
     "Iron Fortress": IronFortress,
     "Ground Tremor": GroundTremor,
     "Bastion Hope": BastionHope,
-    "Sweping Leg": SwepingLeg,
+    "Sweeping Leg": SweepingLeg,
     "Palm Push": PalmPush,
     "Elbow Charge": ElbowCharge,
     "Air Slap": AirSlap,
@@ -514,6 +517,9 @@ def summoning_equipment(id_player):
 
     conn.commit()
     conn.close()
+
+def summoning_skills(id_player):
+    summoning_free = rd.choice(list_skills)
 
 def main():
     init_database()

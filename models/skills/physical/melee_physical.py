@@ -309,10 +309,10 @@ class BastionHope(Skills):
             dexterity, resistance, intelligence
         )
 
-class SwepingLeg(Skills):
+class SweepingLeg(Skills):
     def __init__(
         self,
-        name = "Sweping Leg",
+        name = "Sweeping Leg",
         category = "Physical",
         armed = False,
         range_type = "Melee",
