@@ -19,6 +19,18 @@ def get_karakter_by_id(id_karakter):
     conn.close()
     return dict(result)
 
+def get_username_by_id(id_karakter):
+    conn = sqlite3.connect(DATABASE_NAME)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM username WHERE id_player = ?", (id_karakter))
+
+    result = cursor.fetchone()
+
+    conn.close()
+    return dict(result)
+
 def init_database():
     conn = sqlite3.connect(DATABASE_NAME)
     cursor = conn.cursor()
