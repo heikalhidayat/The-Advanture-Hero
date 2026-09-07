@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Server is running!"
+    return "Server is running"
 
 @app.route("/username/<id>")
 def get_username(id):
