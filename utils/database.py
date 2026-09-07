@@ -1,31 +1,67 @@
 from config.config import DATABASE_NAME
 import sqlite3
 
-def get_karakter_by_id(id_karakter):
+def get_username_by_id(id_player):
     conn = sqlite3.connect(DATABASE_NAME)
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
-    cursor.execute(
-        '''
-        SELECT * 
-        FROM karakter 
-        WHERE id_karakter = ?
-        ''',
-        (id_karakter)
-    )
+    cursor.execute("SELECT * FROM username WHERE id_karakter = ?", (id_player))
     result = cursor.fetchone()
 
     conn.close()
     return dict(result)
 
-def get_username_by_id(id_karakter):
+def get_inventory_by_id(id_item):
     conn = sqlite3.connect(DATABASE_NAME)
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
-    cursor.execute("SELECT * FROM username WHERE id_player = ?", (id_karakter))
+    cursor.execute("SELECT * FROM inventory WHERE id_item = ?", (id_item))
+    result = cursor.fetchone()
 
+    conn.close()
+    return dict(result)
+
+def get_pocket_by_id(id_pocket):
+    conn = sqlite3.connect(DATABASE_NAME)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM pocket WHERE id_pocket = ?", (id_pocket))
+    result = cursor.fetchone()
+
+    conn.close()
+    return dict(result)
+
+def get_karakter_by_id(id_karakter):
+    conn = sqlite3.connect(DATABASE_NAME)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM karakter WHERE id_karakter = ?", (id_karakter))
+    result = cursor.fetchone()
+
+    conn.close()
+    return dict(result)
+
+def get_skills_by_id(id_skills):
+    conn = sqlite3.connect(DATABASE_NAME)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM skills WHERE id_skills = ?", (id_skills))
+    result = cursor.fetchone()
+
+    conn.close()
+    return dict(result)
+
+def get_equipment_by_id(id_equipment):
+    conn = sqlite3.connect(DATABASE_NAME)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM equipment WHERE id_equipment = ?", (id_equipment))
     result = cursor.fetchone()
 
     conn.close()
@@ -57,6 +93,7 @@ def init_database():
     cursor.execute(
         '''
         CREATE TABLE IF NOT EXISTS pocket (
+            id_pocket INTEGER PRIMARY KEY AUTOINCREMENT,
             id_player INTEGER PRIMARY KEY,
             gold_player INTEGER
         )
