@@ -6,7 +6,7 @@ def get_username_by_id(id_player):
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
-    cursor.execute("SELECT * FROM username WHERE id_karakter = ?", (id_player))
+    cursor.execute("SELECT * FROM username WHERE id_player = ?", (id_player))
     result = cursor.fetchone()
 
     conn.close()
