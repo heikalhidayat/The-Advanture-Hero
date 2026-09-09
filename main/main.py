@@ -396,7 +396,7 @@ def win_condition(character, monster):
     if drop_item is not None:
         print(f"{character.name} gained a {drop_item}!\n")
     else:
-        print(f"{character.name} did not gain any items!\n")
+        print(f"{character.name} did not gain any items!!\n")
 
 def attack_logic(card_skills, character, monster):
         while True:
