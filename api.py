@@ -1,8 +1,9 @@
-from flask import (Flask, jsonify)
+from flask import (Flask, jsonify, request)
 
 from utils.database import (
     get_username_by_id, get_inventory_by_id, get_pocket_by_id,
-    get_karakter_by_id, get_skills_by_id, get_equipment_by_id
+    get_karakter_by_id, get_skills_by_id, get_equipment_by_id,
+    get_by_id
 )
 
 app = Flask(__name__)
@@ -12,8 +13,8 @@ def home():
     return "Server is running"
 
 @app.route("/username/<id>")
-def get_username(id):
-    data = get_username_by_id(id)
+def get_user(id):
+    data = get_by_id("username", "id_player", id)
     return jsonify(data)
 
 @app.route("/inventory/<id>")

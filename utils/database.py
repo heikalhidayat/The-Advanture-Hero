@@ -1,6 +1,21 @@
 from config.config import DATABASE_NAME
 import sqlite3
 
+def get_by_id(name, value, id):
+    get_name = f"get_{name}_by_id"
+    def get_name(id):
+        conn = sqlite3.connect(DATABASE_NAME)
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+
+        cursor.execute(f"SELECT * FROM {name} WHERE {value} = ?", (id))
+        result = cursor.fetchone()
+
+        conn.close()
+        return dict(result)
+
+    return get_name(id)
+
 def get_username_by_id(id_player):
     conn = sqlite3.connect(DATABASE_NAME)
     conn.row_factory = sqlite3.Row
