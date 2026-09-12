@@ -330,19 +330,19 @@ def check_character_skills(id_player):
     conn.commit()
     conn.close()
 
-def select_skill_to_change(card_skills):
+def select_skill_to_change(call_card_skills):
     print("\nSelect a skill to change:\n")
 
-    for i, skill in enumerate(card_skills):
-        print(f"{i+1}. {skill.name}")
+    for i, skill in enumerate(call_card_skills):
+        print(f"{i+1}. {skill}")
 
-    choice = get_choice("Select a skill to change", range(1, len(card_skills) + 1))
+    choice = get_choice("Select a skill to change", range(1, len(call_card_skills) + 1))
     skill_old = card_skills[choice - 1]
     return skill_old
 
-def change_character_skills(id_player, card_skills, all_skills, character):
+def change_character_skills(id_player, call_card_skills, all_skills, character):
     # select a skill to change
-    skill_old = select_skill_to_change(card_skills)
+    skill_old = select_skill_to_change(call_card_skills)
     # check if the player has any skills
     if check_character_skills(id_player) is not None:
         choice = get_choice("Select a skill to equip", range(1, len(all_skills) + 1))
@@ -589,22 +589,23 @@ def main():
                         jeda_loading(0.51)
                         menu("TOWER FLOOR", TOWER_FLOOR)
                         tower_floor_choice = get_choice("Select the desired Tower Floor", TOWER_FLOOR)
+                        call_card_skills = card_skills(character)
                         if tower_floor_choice == 1:
                             monster()
-                            attack_logic(card_skills, character, monster())
+                            attack_logic(call_card_skills, character, monster())
                         elif tower_floor_choice == 2:
                             message("TOWER FLOOR 2")
                             exit_button("enter", "continue")
 
                 # Barracks
                 elif lobby_choice == 2:
-                    barracks(id_player, "Select a character to view more information")
-                    card_skills = card_skills(character)
+                    character = barracks(id_player, "Select a character to view more information")
+                    call_card_skills = card_skills(character)
                     change_skill = button_yes_no("Do you want to change the skills of your character, Master?")
                     if change_skill == True:
                         all_skills = check_character_skills(id_player)
                         if all_skills is not None:
-                            change_character_skills(id_player, card_skills, all_skills, character)
+                            change_character_skills(id_player, call_card_skills, all_skills, character)
                         else:
                             print("\nMaster! You don't have any skills yet!\n")
                     else:
