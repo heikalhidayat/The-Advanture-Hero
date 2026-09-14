@@ -563,6 +563,19 @@ def summoning_skills(id_player):
     conn.commit()
     conn.close()
 
+def summoning_option(type_summon):
+    while True:
+        card_summon(CARD_SUMMONING)
+        card_summoning_choice = get_choice("Select a summoning card, Master!", CARD_SUMMONING)
+        if card_summoning_choice == 1:
+            type_summon
+            exit_button("enter", "continue")
+        elif card_summoning_choice == 2:
+            message("pay to summon")
+            exit_button("enter", "continue")
+        elif card_summoning_choice == 3:
+            break
+
 def main():
     init_database()
     id_player, user_name, items, gold_player = login()
@@ -618,43 +631,13 @@ def main():
                         summoning_choice = get_choice("Choose the summon you want, Master!", SUMMONING_TYPE)
 
                         if summoning_choice == 1:
-                            while True:
-                                card_summon(CARD_SUMMONING)
-                                card_summoning_hero_choice = get_choice("Select a summoning card, Master!", CARD_SUMMONING)
-                                if card_summoning_hero_choice == 1:
-                                    summoning_heroes(id_player)
-                                    exit_button("enter", "continue")
-                                elif card_summoning_hero_choice == 2:
-                                    message("pay to summon")
-                                    exit_button("enter", "continue")
-                                elif card_summoning_hero_choice == 3:
-                                    break
+                            summoning_choice(summoning_heroes(id_player))
 
                         elif summoning_choice == 2:
-                            while True:
-                                card_summon(CARD_SUMMONING)
-                                card_summoning_equipment_choice = get_choice("Select a summoning card, Master!", CARD_SUMMONING)
-                                if card_summoning_equipment_choice == 1:
-                                    summoning_equipment(id_player)
-                                    exit_button("enter", "continue")
-                                elif card_summoning_equipment_choice == 2:
-                                    message("pay to summon")
-                                    exit_button("enter", "continue")
-                                elif card_summoning_equipment_choice == 3:
-                                    break
+                            summoning_choice(summoning_equipment(id_player))
 
                         elif summoning_choice == 3:
-                            while True:
-                                card_summon(CARD_SUMMONING)
-                                card_summoning_skill_choice = get_choice("Select a skill card, Master!", CARD_SUMMONING)
-                                if card_summoning_skill_choice == 1:
-                                    summoning_skills(id_player)
-                                    exit_button("enter", "continue")
-                                elif card_summoning_skill_choice == 2:
-                                    message("pay to summon")
-                                    exit_button("enter", "continue")
-                                elif card_summoning_skill_choice == 3:
-                                    break
+                            summoning_choice(summoning_skills(id_player))
 
                         elif summoning_choice == 4:
                             break
