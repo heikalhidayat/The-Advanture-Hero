@@ -631,13 +631,13 @@ def main():
                         summoning_choice = get_choice("Choose the summon you want, Master!", SUMMONING_TYPE)
 
                         if summoning_choice == 1:
-                            summoning_choice(summoning_heroes(id_player))
+                            summoning_option(summoning_heroes(id_player))
 
                         elif summoning_choice == 2:
-                            summoning_choice(summoning_equipment(id_player))
+                            summoning_option(summoning_equipment(id_player))
 
                         elif summoning_choice == 3:
-                            summoning_choice(summoning_skills(id_player))
+                            summoning_option(summoning_skills(id_player))
 
                         elif summoning_choice == 4:
                             break
