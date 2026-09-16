@@ -563,7 +563,7 @@ def summoning_skills(id_player):
     conn.commit()
     conn.close()
 
-def summoning_option(type_summon):
+def summoning_option(type_summon: function):
     while True:
         card_summon(CARD_SUMMONING)
         card_summoning_choice = get_choice("Select a summoning card, Master!", CARD_SUMMONING)
