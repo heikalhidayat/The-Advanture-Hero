@@ -563,12 +563,12 @@ def summoning_skills(id_player):
     conn.commit()
     conn.close()
 
-def summoning_option(type_summon: function):
+def summoning_option(type_summon: function, id_player):
     while True:
         card_summon(CARD_SUMMONING)
         card_summoning_choice = get_choice("Select a summoning card, Master!", CARD_SUMMONING)
         if card_summoning_choice == 1:
-            type_summon
+            type_summon(id_player)
             exit_button("enter", "continue")
         elif card_summoning_choice == 2:
             message("pay to summon")
@@ -631,13 +631,13 @@ def main():
                         summoning_choice = get_choice("Choose the summon you want, Master!", SUMMONING_TYPE)
 
                         if summoning_choice == 1:
-                            summoning_option(summoning_heroes(id_player))
+                            summoning_option(summoning_heroes, id_player)
 
                         elif summoning_choice == 2:
-                            summoning_option(summoning_equipment(id_player))
+                            summoning_option(summoning_equipment, id_player)
 
                         elif summoning_choice == 3:
-                            summoning_option(summoning_skills(id_player))
+                            summoning_option(summoning_skills, id_player)
 
                         elif summoning_choice == 4:
                             break

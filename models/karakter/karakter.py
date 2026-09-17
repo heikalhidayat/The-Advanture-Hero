@@ -70,7 +70,7 @@ class Tank(Karakter):
     def __init__(
         self,
         name = "Aegis",
-        job = "Tanker",
+        job = "Tank",
         tier = 1,
         level = 1, 
         exp = 0, 
