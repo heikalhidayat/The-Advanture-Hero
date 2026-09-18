@@ -43,7 +43,7 @@ def init_database():
         '''
         CREATE TABLE IF NOT EXISTS pocket (
             id_pocket INTEGER PRIMARY KEY AUTOINCREMENT,
-            id_player INTEGER PRIMARY KEY,
+            id_player INTEGER,
             gold_player INTEGER
         )
     '''
