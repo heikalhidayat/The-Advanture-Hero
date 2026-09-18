@@ -269,7 +269,7 @@ def barracks(id_player, x):
     # Cek apakah sudah ada karakter
     if len(all_character) == 0:
         print("\nMaster! Anda belum memiliki hero!\n")
-        return None, None
+        return None
     else:
         for i, character in enumerate(all_character):
             print(f"{i+1}. Name: {character["name"]} | Job: {character["job"]}")
@@ -596,9 +596,7 @@ def main():
                 # Tower Floor
                 if lobby_choice == 1:
                     character = barracks(id_player, "Choose your hero, Master!")
-                    while character is None:
-                        break
-                    else:
+                    if character is not None:
                         jeda_loading(0.51)
                         menu("TOWER FLOOR", TOWER_FLOOR)
                         tower_floor_choice = get_choice("Select the desired Tower Floor", TOWER_FLOOR)
@@ -609,6 +607,8 @@ def main():
                         elif tower_floor_choice == 2:
                             message("TOWER FLOOR 2")
                             exit_button("enter", "continue")
+                    else:
+                        break
 
                 # Barracks
                 elif lobby_choice == 2:
