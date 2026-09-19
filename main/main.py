@@ -131,12 +131,12 @@ CLASS_SKILLS_CARD = {
 class InvalidMenuChoiceError(Exception):
     pass
 
-def get_choice(x, y):
+def get_choice(description, option):
     while True:
         try:
-            choice = int(input(f"\n{x}: "))
+            choice = int(input(f"\n{description}: "))
 
-            if choice not in y:
+            if choice not in option:
                 raise InvalidMenuChoiceError
 
             return choice
