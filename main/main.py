@@ -607,8 +607,9 @@ def main():
                         elif tower_floor_choice == 2:
                             message("TOWER FLOOR 2")
                             exit_button("enter", "continue")
+                            break
                     else:
-                        break
+                        summoning_option(summoning_heroes, id_player)
 
                 # Barracks
                 elif lobby_choice == 2:
