@@ -268,7 +268,7 @@ def barracks(id_player, x):
 
     # Cek apakah sudah ada karakter
     if len(all_character) == 0:
-        print("\nMaster! Anda belum memiliki hero!\n")
+        print("\nMaster! You don't have a hero yet!\n")
         return None
     else:
         for i, character in enumerate(all_character):
@@ -574,7 +574,25 @@ def summoning_option(type_summon: function, id_player):
             message("pay to summon")
             exit_button("enter", "continue")
         elif card_summoning_choice == 3:
-            break
+            break\
+
+def armory(id_player):
+    conn = sqlite3.connect(DATABASE_NAME)
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    cursor.execute(
+        '''
+        SELECT
+            name, category, kind, price, capacity, base_durability, current_durabilty, 
+            strength, agility, defense, magic, dexterity, resistance
+        FROM
+            equipment
+        WHERE
+            id_player = ?
+        ''',
+            (id_player,)
+    )
 
 def main():
     init_database()
