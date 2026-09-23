@@ -594,6 +594,18 @@ def armory(id_player):
             (id_player,)
     )
 
+    all_equipment = cursor.fetchall()
+
+    if len(all_equipment) == 0:
+        print("\nMaster! You don't have a equipment yet!")
+        return None
+    else:
+        for i, equipment in enumerate(all_equipment):
+            print(f"{i+1}. Name: {equipment["name"]} | Category: {equipment["category"]}")
+
+    conn.commit()
+    conn.close()
+    
 def main():
     init_database()
     id_player, user_name, items, gold_player = login()
