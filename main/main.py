@@ -584,7 +584,7 @@ def armory(id_player):
     cursor.execute(
         '''
         SELECT
-            name, category, kind, price, capacity, base_durability, current_durabilty, 
+            name, category, kind, price, capacity, base_durability, current_durability, 
             strength, agility, defense, magic, dexterity, resistance
         FROM
             equipment
@@ -603,6 +603,7 @@ def armory(id_player):
         for i, equipment in enumerate(all_equipment):
             print(f"{i+1}. Name: {equipment["name"]} | Category: {equipment["category"]}")
 
+    
     conn.commit()
     conn.close()
     
@@ -675,7 +676,7 @@ def main():
 
                 # Armory
                 elif lobby_choice == 4:
-                    break
+                    armory(id_player)
 
                 # Back
                 elif lobby_choice == 5:
