@@ -577,6 +577,8 @@ def summoning_option(type_summon: function, id_player):
             break\
 
 def armory(id_player):
+    print("\n================ Armory ================")
+    print("-" * 40)
     conn = sqlite3.connect(DATABASE_NAME)
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
@@ -603,7 +605,10 @@ def armory(id_player):
         for i, equipment in enumerate(all_equipment):
             print(f"{i+1}. Name: {equipment["name"]} | Category: {equipment["category"]}")
 
-    
+        choice = get_choice("Choice equipment!", range(1, len(all_equipment) + 1))
+        sel_equip = all_equipment[choice - 1]
+        print(sel_equip)
+
     conn.commit()
     conn.close()
     
