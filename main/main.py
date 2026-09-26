@@ -58,6 +58,14 @@ from models.equipment.list_equipment import list_equipment
 # Import Skills
 from models.skills.list_skills import list_skills
 
+# Import Equipment
+from models.equipment.agility_equipment import (
+    Dagger, LeatherBoots, ClothCloak, SilverNecklace, PocketWatch
+)
+from models.equipment.defense_equipment import (
+    IronShield, ChainMail, IronHelm
+)
+
 # ==============================================================================
 # CLASS DEFINITIONS
 # ==============================================================================
@@ -126,6 +134,20 @@ CLASS_SKILLS_CARD = {
     "Hall Arrows": HallArrows,
     "Piercing Arrow": PiercingArrow,
     "Quick Shot": QuickShot,
+}
+
+EQUIPMENT_CARD = {
+    # Agility Equipment
+    "Dagger": Dagger,
+    "Leather Boots": LeatherBoots,
+    "Cloth Cloak": ClothCloak,
+    "Silver Necklace": SilverNecklace,
+    "Pocket watch": PocketWatch,
+    # Defense Equipment
+    "Iron Shield": IronShield,
+    "Chain Mail": ChainMail,
+    "Iron Helm": IronHelm,
+    # Dexterity Equipment
 }
 
 class InvalidMenuChoiceError(Exception):
