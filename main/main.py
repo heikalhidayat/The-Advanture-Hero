@@ -65,6 +65,9 @@ from models.equipment.agility_equipment import (
 from models.equipment.defense_equipment import (
     IronShield, ChainMail, IronHelm
 )
+from models.equipment.dexterity_equipment import (
+    ShortBow
+)
 
 # ==============================================================================
 # CLASS DEFINITIONS
@@ -148,6 +151,7 @@ EQUIPMENT_CARD = {
     "Chain Mail": ChainMail,
     "Iron Helm": IronHelm,
     # Dexterity Equipment
+    "Short Bow": ShortBow
 }
 
 class InvalidMenuChoiceError(Exception):
