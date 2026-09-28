@@ -66,7 +66,16 @@ from models.equipment.defense_equipment import (
     IronShield, ChainMail, IronHelm
 )
 from models.equipment.dexterity_equipment import (
-    ShortBow
+    ShortBow, LeatherGloves, LeatherHood
+)
+from models.equipment.magic_equipment import (
+    WoodenStaff, MagicWand, SilkRobe, MageHat, CrystalRing
+)
+from models.equipment.resistance_equipment import (
+    HeavyCloak, LeatherVest, JadeRing, Talisman
+)
+from models.equipment.strength_equipment import (
+    GreatSword, BattleAxe, LongSword, Mace, IronGauntlets
 )
 
 # ==============================================================================
@@ -151,7 +160,26 @@ EQUIPMENT_CARD = {
     "Chain Mail": ChainMail,
     "Iron Helm": IronHelm,
     # Dexterity Equipment
-    "Short Bow": ShortBow
+    "Short Bow": ShortBow,
+    "Leather Gloves": LeatherGloves,
+    "Leather Hood": LeatherHood,
+    # Magic Equipment
+    "Wooden Staff": WoodenStaff,
+    "Magic Wand": MagicWand,
+    "Silk Robe": SilkRobe,
+    "Mage Hat": MageHat,
+    "Crystal Ring": CrystalRing,
+    # Resistance Equipment
+    "Heavy Cloak": HeavyCloak,
+    "Leather Vest": LeatherVest,
+    "Jade Ring": JadeRing,
+    "Talisman": Talisman,
+    # Strength Equipment
+    "Great Sword": GreatSword,
+    "Battle Axe": BattleAxe,
+    "Long Sword": LongSword,
+    "Mace": Mace,
+    "Iron Gauntlets": IronGauntlets,
 }
 
 class InvalidMenuChoiceError(Exception):
