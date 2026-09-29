@@ -661,7 +661,10 @@ def armory(id_player):
 
         choice = get_choice("Choice equipment!", range(1, len(all_equipment) + 1))
         sel_equip = all_equipment[choice - 1]
-        print(sel_equip)
+        equip = EQUIPMENT_CARD[sel_equip["name"]]()
+        print(equip.__str__())
+
+    return equip
 
     conn.commit()
     conn.close()
