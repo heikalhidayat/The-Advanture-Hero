@@ -739,6 +739,7 @@ def main():
                 # Armory
                 elif lobby_choice == 4:
                     armory(id_player)
+                    exit_button("enter", "continue")
 
                 # Back
                 elif lobby_choice == 5:

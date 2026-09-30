@@ -112,7 +112,7 @@ SKILL = {
 MENU_OPTIONS = {
     1: "Lobby",
     2: "Shop",
-    3: "Exit"
+    0: "Exit"
 }
 
 LOBBY_ROOM = {
