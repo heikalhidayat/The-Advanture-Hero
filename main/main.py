@@ -739,6 +739,8 @@ def main():
                 # Armory
                 elif lobby_choice == 4:
                     armory(id_player)
+                    btn = button_yes_no("Do you want to change the equipment of your character, Master?")
+    
                     exit_button("enter", "continue")
 
                 # Back
