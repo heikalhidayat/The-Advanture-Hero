@@ -739,7 +739,7 @@ def main():
                 # Armory
                 elif lobby_choice == 4:
                     armory(id_player)
-                    char_opsi = barracks(id_player, "Select a character to change equipment")
+                    char_opsi = barracks(id_player, "Select a character to equip with the item.")
                     btn = button_yes_no("Do you want to change the equipment of your character, Master?")
     
                     exit_button("enter", "continue")
