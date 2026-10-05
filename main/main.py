@@ -698,7 +698,6 @@ def main():
                             monster()
                             attack_logic(call_card_skills, character, monster())
                         elif tower_floor_choice == 2:
-                            message("TOWER FLOOR 2")
                             exit_button("enter", "continue")
                             break
                     else:
