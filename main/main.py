@@ -671,7 +671,7 @@ def armory(id_player):
     
 def main():
     init_database()
-    id_player, user_name, items, gold_player = login()
+    id_player, user_name, items = login()
 
     print("\n", "-" * 40, "\n   Welcome In Game The Advanture Hero   \n", "-" * 40, sep="")
 
