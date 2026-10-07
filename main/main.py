@@ -721,7 +721,7 @@ def main():
                 elif lobby_choice == 3:
                     while True:
                         menu("SUMMONING ROOM", SUMMONING_TYPE)
-                        summoning_choice = get_choice("Choose the summon you want, Master!", SUMMONING_TYPE)
+                        summoning_choice = get_choice("Master!Choose the summon you want", SUMMONING_TYPE)
 
                         if summoning_choice == 1:
                             summoning_option(summoning_heroes, id_player)
